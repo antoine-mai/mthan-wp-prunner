@@ -9,10 +9,6 @@ if (empty($post_options) && is_single()) {
 // Determine footer layout configuration
 $footer_layout = !empty($post_options['custom_footer_layout']) ? $post_options['custom_footer_layout'] : 'style-1';
 
-// Render global "After Content" sections (set in Theme Options > Layout Settings)
-$page_type = (is_home() || is_archive() || is_search()) ? 'blog' : 'main';
-mthan_render_sections('after', $page_type);
-
 // Load the selected footer style template
 get_template_part('template-parts/footer', $footer_layout);
 ?>

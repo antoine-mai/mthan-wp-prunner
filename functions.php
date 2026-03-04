@@ -59,37 +59,12 @@ if (file_exists(get_template_directory() . '/incs/theme-options.php')) {
 }
 
 /**
- * Render a list of sections.
- *
- * @param string $position  'before' or 'after'
- * @param string $page_type 'main' or 'blog'
+ * Helper: include a list of section items.
  */
-function mthan_render_sections($position = 'before', $page_type = 'main')
+function mthan_include_section_items($items)
 {
-    $theme_options = get_option('mthan_theme_options');
-    $layouts_tabs = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : array();
-
-    // Determine global key
-    $global_key = $page_type . '_layout_' . $position . '_content';
-    $global_sections = !empty($layouts_tabs[$global_key]) ? $layouts_tabs[$global_key] : array();
-
-    // Per-page/post override (group field)
-    $post_sections = array();
-    if (is_singular()) {
-        $meta_key = is_page() ? 'mthan_page_options' : 'mthan_post_options';
-        $post_meta = get_post_meta(get_the_ID(), $meta_key, true);
-        $group_key = (is_page() ? 'page' : 'post') . '_' . $position . '_content';
-        if (!empty($post_meta[$group_key]) && is_array($post_meta[$group_key])) {
-            $post_sections = $post_meta[$group_key];
-        }
-    }
-
-    // Use per-post list if set, otherwise fall back to global
-    $sections_to_render = !empty($post_sections) ? $post_sections : (array)$global_sections;
-
     $sections_dir = get_template_directory() . '/sections/';
-    foreach ($sections_to_render as $item) {
-        // Each item is an array with 'section_template' key (from group field)
+    foreach ((array)$items as $item) {
         if (!is_array($item) || empty($item['section_template'])) {
             continue;
         }
@@ -100,12 +75,46 @@ function mthan_render_sections($position = 'before', $page_type = 'main')
     }
 }
 
+/**
+ * Render global sections from Theme Options > Layout Settings.
+ *
+ * @param string $position  'before' or 'after'
+ * @param string $page_type 'main' or 'blog'
+ */
+function mthan_render_global_sections($position = 'before', $page_type = 'main')
+{
+    $theme_options = get_option('mthan_theme_options');
+    $layouts_tabs = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : array();
+    $global_key = $page_type . '_layout_' . $position . '_content';
+    $items = !empty($layouts_tabs[$global_key]) ? $layouts_tabs[$global_key] : array();
+    mthan_include_section_items($items);
+}
+
+/**
+ * Render per-page/post sections from the page/post metabox.
+ *
+ * @param string $position 'before' or 'after'
+ */
+function mthan_render_page_sections($position = 'before')
+{
+    if (!is_singular()) {
+        return;
+    }
+    $meta_key = is_page() ? 'mthan_page_options' : 'mthan_post_options';
+    $post_meta = get_post_meta(get_the_ID(), $meta_key, true);
+    $group_key = (is_page() ? 'page' : 'post') . '_' . $position . '_content';
+    $items = !empty($post_meta[$group_key]) && is_array($post_meta[$group_key])
+        ? $post_meta[$group_key]
+        : array();
+    mthan_include_section_items($items);
+}
+
 // Admin JS: auto-fill section Name field from select label
 function mthan_admin_section_autofill_js()
 {
 ?>
 <script>
-    (function  ($ ) {
+    (fu nct ion  ($ ) {
         function syncSectionName($select) {
             var label = $select.find('option:selected').text().trim();
             var $group = $select.closest('.csf-field-group-item, .csf-group-item');
@@ -115,7 +124,7 @@ function mthan_admin_section_autofill_js()
             }
         }
         // On change
-        $(document).on('change', 'select', functi on  () {
+        $(document).on('change', 'select' ,  functi on  () {
             var $select = $(this);
             // Only target selects inside group items that have a data-section-name input nearby
             var $group = $select.closest('.csf-field-group-item, .csf-group-item');
@@ -124,15 +133,15 @@ function mthan_admin_section_autofill_js()
             }
         });
         // On cloning (when new group item is added)
-        $(document).on('csf:group-added csf:repeater-added', func tion (e, $ item) {
-            $item.find('select').each(fu nc tion () {
+        $(document).on('csf:group-added csf:repeater-ad ded', func  tion (e, $ item) {
+            $item.find('sele ct ').each(fu nc tion () {
                 var $s = $(this);
                 var $g = $s.closest('.csf-field-group-item, .csf-group-item');
                 if ($g.length && $g.find('input[data-section-name]').length) {
                     syncSectionName($s);
                 }
             });
-        });
+      ;
     })(jy);
 </script>
 <?php

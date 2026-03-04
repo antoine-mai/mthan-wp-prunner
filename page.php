@@ -1,13 +1,13 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
-get_header(); ?>
-
-<main id="site-content">
-<?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-        <h1><?php the_title(); ?></h1>
-        <div class="entry-content"><?php the_content(); ?></div>
-    </article>
-<?php endwhile; endif; ?>
-</main>
-
-<?php get_footer(); ?>
+get_header();
+mthan_render_global_sections('before', 'main');
+mthan_render_page_sections('before');
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
+        the_content();
+    endwhile;
+endif;
+mthan_render_page_sections('after');
+mthan_render_global_sections('after', 'main');
+get_footer();
