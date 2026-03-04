@@ -32,6 +32,6 @@ if (is_singular()) {
     $meta_key = is_page() ? 'mthan_page_options' : 'mthan_post_options';
     $post_meta = get_post_meta(get_the_ID(), $meta_key, true);
     if (!empty($post_meta['custom_header_layout']) && $post_meta['custom_header_layout'] != 'default') {
-        $header_layout = $post_meta['custom_header_layout'];
     }
-}et_template_part('template-parts/header', $header_layout);
+}
+get_template_part('template-parts/header', $header_layout);
