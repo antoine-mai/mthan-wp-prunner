@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="testimonials-one alt-color">
         <div class="auto-container">
             <div class="title-box">

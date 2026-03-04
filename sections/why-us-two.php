@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="why-us-two">
         <div class="outer-container">
             <div class="row clearfix">

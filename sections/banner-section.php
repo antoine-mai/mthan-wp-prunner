@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="banner-section banner-two">
 
 		<div class="banner-carousel owl-theme owl-carousel">

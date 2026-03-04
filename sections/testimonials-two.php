@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="testimonials-two">
         <div class="pattern-layer"></div>
         <div class="auto-container">

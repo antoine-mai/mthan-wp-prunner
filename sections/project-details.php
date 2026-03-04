@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="project-details">
             <div class="auto-container">
                 <div class="main-image"><a href="images/gallery/53.jpg" class="lightbox-image" data-fancybox="gallery"><img src="images/gallery/53.jpg" alt="" title=""></a></div>

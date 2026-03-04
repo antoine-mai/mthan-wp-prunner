@@ -21,13 +21,19 @@ jQuery(document).ready(function ($) {
             },
             success: function (response) {
                 $btn.removeClass('updating').text('Pull Latest Updates');
-                $log.show().html('<strong>Success:</strong><br>' + response.data);
+                if (response.success) {
+                    $log.show().html('<strong>Success:</strong><br>' + response.data);
+                } else {
+                    $log.show().html('<strong style="color:#ff4444;">Error:</strong><br>' + response.data);
+                }
             },
             error: function (xhr, status, error) {
                 $btn.removeClass('updating').text('Pull Latest Updates');
                 var errMsg = "Unknown error occurred.";
                 if (xhr.responseJSON && xhr.responseJSON.data) {
                     errMsg = xhr.responseJSON.data;
+                } else if (xhr.responseText) {
+                    errMsg = "Raw response: " + xhr.responseText;
                 }
                 $log.show().html('<strong style="color:#ff4444;">Error:</strong><br>' + errMsg);
             }

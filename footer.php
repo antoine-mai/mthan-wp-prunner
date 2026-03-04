@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <footer id="site-footer">
     <div class="site-info">
         &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>

@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Blog Settings
 CSF::createSection($prefix, array(
     'id' => 'blog_settings',

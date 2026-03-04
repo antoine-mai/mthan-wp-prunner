@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="what-we-do">
         <div class="tabs-box service-tabs">
             <div class="upper-box">

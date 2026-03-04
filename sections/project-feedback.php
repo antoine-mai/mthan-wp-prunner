@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="project-feedback">
             <div class="image-layer" style="background-image: url(images/background/quote-bg.jpg);"></div>
             <div class="auto-container">

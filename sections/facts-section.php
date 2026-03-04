@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="facts-section">
         <div class="image-layer" style="background-image: url(images/background/image-6.jpg);"></div>
         <div class="auto-container">

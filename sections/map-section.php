@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="map-section">
         <div class="map-outer">
             <div class="map-box">

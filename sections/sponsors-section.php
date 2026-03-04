@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="sponsors-section">
         <div class="sponsors-outer">
             <!--Sponsors-->

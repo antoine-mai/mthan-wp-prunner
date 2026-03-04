@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="awards-section">
         <div class="bottom-image"><img src="images/resource/anim-image-4.png" alt="" title=""></div>
         <div class="auto-container">

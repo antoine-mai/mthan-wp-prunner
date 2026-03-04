@@ -1,4 +1,5 @@
-<?php get_header(); ?>
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
+get_header(); ?>
 
 <main id="site-content">
     <h1><?php the_archive_title(); ?></h1>

@@ -1,4 +1,5 @@
-<?php get_header(); ?>
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
+get_header(); ?>
 
 <main id="site-content">
 <?php if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>

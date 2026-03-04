@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Footer Settings
 CSF::createSection($prefix, array(
     'id' => 'footer_settings',

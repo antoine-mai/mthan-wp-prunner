@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="work-process">
         <div class="round-pattern-layer"></div>
         <div class="right-leaf"><img src="images/resource/leaf-1.png" alt="" title=""></div>

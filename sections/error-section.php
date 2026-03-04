@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="error-section">
         <div class="image-layer" style="background-image: url(images/background/bg-404.jpg);"></div>
 

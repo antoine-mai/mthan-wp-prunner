@@ -1,5 +1,4 @@
-<?php
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Define some constants
 define( "RECIPIENT_NAME", "John Doe" );
 define( "RECIPIENT_EMAIL", "youremail@emailservice.com" );

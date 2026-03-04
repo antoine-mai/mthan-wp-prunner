@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="why-us">
         <div class="pattern-layer"></div>
         <div class="right-leaf"></div>

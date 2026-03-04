@@ -1,4 +1,5 @@
-<?php get_header(); ?>
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
+get_header(); ?>
 
 <main id="site-content">
     <h1><?php esc_html_e( 'Page not found', 'my-theme' ); ?></h1>

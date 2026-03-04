@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="coming-soon">
         <div class="image-layer" style="background-image: url(images/background/bg-coming-soon.jpg);"></div>
 

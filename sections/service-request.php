@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="service-request">
         <div class="auto-container">
             <div class="inner-box">

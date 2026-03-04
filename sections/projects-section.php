@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="projects-section">
         <div class="auto-container">
             <div class="sec-title">

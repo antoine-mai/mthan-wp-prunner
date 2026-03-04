@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // System Settings
 CSF::createSection($prefix, array(
     'id' => 'system_settings',

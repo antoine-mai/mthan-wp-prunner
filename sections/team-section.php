@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="team-section">
         <div class="left-leaf"><img src="images/resource/leaf-2.png" alt="" title=""></div>
         <div class="right-leaf"><img src="images/resource/leaf-3.png" alt="" title=""></div>

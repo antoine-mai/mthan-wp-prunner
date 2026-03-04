@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 <head>

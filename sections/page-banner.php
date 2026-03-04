@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="page-banner">
         <div class="image-layer" style="background-image:url(images/background/banner-image-1.jpg);"></div>
         <div class="banner-bottom-pattern"></div>

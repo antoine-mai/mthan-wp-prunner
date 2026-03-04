@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="mvg-history">
         <div class="mvg">
             <div class="auto-container">

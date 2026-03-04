@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="gallery-section">
         <div class="auto-container">
             <div class="title-box">

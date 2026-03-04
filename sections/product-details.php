@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="product-details">
         <div class="auto-container">
             <div class="basic-details">

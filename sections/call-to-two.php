@@ -1,3 +1,4 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
 <section class="call-to-two">
         <div class="image-layer" style="background-image: url(images/background/call-to-bg.jpg);"></div>
         <div class="auto-container">

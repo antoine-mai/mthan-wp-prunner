@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Basic template part for content
 ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>

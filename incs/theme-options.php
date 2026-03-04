@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Control core classes for avoid errors
 if (class_exists('CSF')) {
 

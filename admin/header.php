@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Header Settings
 CSF::createSection($prefix, array(
     'id' => 'header_settings',

@@ -1,4 +1,4 @@
-<?php
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 // Sections Settings
 $section_fields = array();
 $sections_path = get_template_directory() . '/sections/';
