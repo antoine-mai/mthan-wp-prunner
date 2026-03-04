@@ -32,7 +32,6 @@ CSF::createSection($prefix, array(
             array(
             'id' => 'layouts_tabs',
             'type' => 'tabbed',
-            'title' => 'Layout Sections',
             'tabs' => array(
                     array(
                     'title' => 'Main Layout',
@@ -129,4 +128,4 @@ CSF::createSection($prefix, array(
             ),
         ),
     )
-));// EOF
+)); // EOF
