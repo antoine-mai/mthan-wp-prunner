@@ -13,7 +13,7 @@ if (!function_exists('mthan_setup')) {
         add_theme_support('html5', array('search-form', 'comment-form', 'comment-list', 'gallery', 'caption'));
         load_theme_textdomain('mthan-wp', get_template_directory() . '/languages');
         register_nav_menus(array(
-            'primary' => __('Primary Menu', 'mthan-wp'),
+            'primary-menu' => __('Primary Menu', 'mthan-wp'),
         ));
     }
 }
