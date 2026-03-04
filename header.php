@@ -35,3 +35,9 @@ if (is_singular()) {
     }
 }
 get_template_part('template-parts/header', $header_layout);
+?>
+        <?php
+// Render global "Before Content" sections (set in Theme Options > Layout Settings)
+$page_type = (is_home() || is_archive() || is_search()) ? 'blog' : 'main';
+mthan_render_sections('before', $page_type);
+?>

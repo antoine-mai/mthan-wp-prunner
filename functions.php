@@ -57,3 +57,46 @@ if (file_exists(get_template_directory() . '/incs/codestar/codestar-framework.ph
 if (file_exists(get_template_directory() . '/incs/theme-options.php')) {
     require_once get_template_directory() . '/incs/theme-options.php';
 }
+
+/**
+ * Render a list of sections.
+ *
+ * @param string $position  'before' or 'after'
+ * @param string $page_type 'main' or 'blog'
+ */
+function mthan_render_sections($position = 'before', $page_type = 'main')
+{
+    $theme_options = get_option('mthan_theme_options');
+    $layouts_tabs = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : array();
+
+    // Determine global key
+    $global_key = $page_type . '_layout_' . $position . '_content';
+    $global_sections = !empty($layouts_tabs[$global_key]) ? $layouts_tabs[$global_key] : array();
+
+    // Per-page/post override (sorter field)
+    $post_sections = array();
+    if (is_singular()) {
+        $meta_key = is_page() ? 'mthan_page_options' : 'mthan_post_options';
+        $post_meta = get_post_meta(get_the_ID(), $meta_key, true);
+        $sorter_key = (is_page() ? 'page' : 'post') . '_' . $position . '_content';
+        if (!empty($post_meta[$sorter_key]['enabled'])) {
+            $post_sections = $post_meta[$sorter_key]['enabled'];
+        }
+    }
+
+    // Use per-post list if set, otherwise fall back to global
+    $sections_to_render = !empty($post_sections) ? $post_sections : (array)$global_sections;
+
+    $sections_dir = get_template_directory() . '/sections/';
+    foreach ($sections_to_render as $section_key => $section_label) {
+        // Key can be a filename (from sorter) or an array entry (from group)
+        $filename = is_array($section_label) && !empty($section_label['section_template'])
+            ? $section_label['section_template']
+            : (is_string($section_key) ? $section_key : $section_label);
+
+        $file = $sections_dir . $filename . '.php';
+        if (file_exists($file)) {
+            include $file;
+        }
+    }
+}
