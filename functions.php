@@ -73,14 +73,14 @@ function mthan_render_sections($position = 'before', $page_type = 'main')
     $global_key = $page_type . '_layout_' . $position . '_content';
     $global_sections = !empty($layouts_tabs[$global_key]) ? $layouts_tabs[$global_key] : array();
 
-    // Per-page/post override (sorter field)
+    // Per-page/post override (group field)
     $post_sections = array();
     if (is_singular()) {
         $meta_key = is_page() ? 'mthan_page_options' : 'mthan_post_options';
         $post_meta = get_post_meta(get_the_ID(), $meta_key, true);
-        $sorter_key = (is_page() ? 'page' : 'post') . '_' . $position . '_content';
-        if (!empty($post_meta[$sorter_key]['enabled'])) {
-            $post_sections = $post_meta[$sorter_key]['enabled'];
+        $group_key = (is_page() ? 'page' : 'post') . '_' . $position . '_content';
+        if (!empty($post_meta[$group_key]) && is_array($post_meta[$group_key])) {
+            $post_sections = $post_meta[$group_key];
         }
     }
 
@@ -88,13 +88,12 @@ function mthan_render_sections($position = 'before', $page_type = 'main')
     $sections_to_render = !empty($post_sections) ? $post_sections : (array)$global_sections;
 
     $sections_dir = get_template_directory() . '/sections/';
-    foreach ($sections_to_render as $section_key => $section_label) {
-        // Key can be a filename (from sorter) or an array entry (from group)
-        $filename = is_array($section_label) && !empty($section_label['section_template'])
-            ? $section_label['section_template']
-            : (is_string($section_key) ? $section_key : $section_label);
-
-        $file = $sections_dir . $filename . '.php';
+    foreach ($sections_to_render as $item) {
+        // Each item is an array with 'section_template' key (from group field)
+        if (!is_array($item) || empty($item['section_template'])) {
+            continue;
+        }
+        $file = $sections_dir . $item['section_template'] . '.php';
         if (file_exists($file)) {
             include $file;
         }
@@ -106,7 +105,7 @@ function mthan_admin_section_autofill_js()
 {
 ?>
 <script>
-    (function ($) {
+    (function  ($ ) {
         function syncSectionName($select) {
             var label = $select.find('option:selected').text().trim();
             var $group = $select.closest('.csf-field-group-item, .csf-group-item');
@@ -116,7 +115,7 @@ function mthan_admin_section_autofill_js()
             }
         }
         // On change
-        $(document).on('change', 'select', function () {
+        $(document).on('change', 'select', functi on  () {
             var $select = $(this);
             // Only target selects inside group items that have a data-section-name input nearby
             var $group = $select.closest('.csf-field-group-item, .csf-group-item');
@@ -125,8 +124,8 @@ function mthan_admin_section_autofill_js()
             }
         });
         // On cloning (when new group item is added)
-        $(document).on('csf:group-added csf:repeater-added', function (e, $item) {
-            $item.find('select').each(function () {
+        $(document).on('csf:group-added csf:repeater-added', func tion (e, $ item) {
+            $item.find('select').each(fu nc tion () {
                 var $s = $(this);
                 var $g = $s.closest('.csf-field-group-item, .csf-group-item');
                 if ($g.length && $g.find('input[data-section-name]').length) {
@@ -134,7 +133,7 @@ function mthan_admin_section_autofill_js()
                 }
             });
         });
-    })(jQuery);
+    })(jy);
 </script>
 <?php
 }
