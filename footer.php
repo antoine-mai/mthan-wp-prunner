@@ -1,10 +1,21 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-<footer id="site-footer">
-    <div class="site-info">
-        &copy; <?php echo date( 'Y' ); ?> <?php bloginfo( 'name' ); ?>
-    </div>
-</footer>
+<?php
+$theme_options = get_option('mthan_theme_options');
+$post_options = get_post_meta(get_the_ID(), 'mthan_page_options', true);
+if (empty($post_options) && is_single()) {
+    $post_options = get_post_meta(get_the_ID(), 'mthan_post_options', true);
+}
+
+// Determine footer layout configuration
+$footer_layout = !empty($post_options['custom_footer_layout'])
+    ? $post_options['custom_footer_layout']
+    : (!empty($theme_options['footer_layout']) ? $theme_options['footer_layout'] : 'style-1');
+
+// Load the selected footer style template
+get_template_part('template-parts/footer', $footer_layout);
+?>
 
 <?php wp_footer(); ?>
 </body>
+
 </html>
