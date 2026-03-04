@@ -34,6 +34,11 @@ if (class_exists('CSF')) {
         }
     }
 
+    // Include all section option files from admin/section-options/
+    foreach (glob($admin_dir . 'section-options/*.php') as $section_option_file) {
+        require_once $section_option_file;
+    }
+
     // Include all metabox files from the admin/metabox folder
     $metabox_dir = get_template_directory() . '/admin/metabox/';
     $metaboxes = array(
