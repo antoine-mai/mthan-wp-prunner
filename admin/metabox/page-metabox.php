@@ -129,4 +129,10 @@ if (class_exists('CSF')) {
                 'options' => array(
                     '' => 'Default (From Theme Options)',
                     'style-1' => 'Style 1',
-        
+                    'style-2' => 'Style 2',
+                ),
+            ),
+        )
+    ));
+
+}
