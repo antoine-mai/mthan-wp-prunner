@@ -28,11 +28,11 @@ function mthan_enqueue_assets()
 }
 add_action('wp_enqueue_scripts', 'mthan_enqueue_assets');
 // Include Codestar Framework
-if (file_exists(get_template_directory() . '/inc/codestar/codestar-framework.php')) {
-    require_once get_template_directory() . '/inc/codestar/codestar-framework.php';
+if (file_exists(get_template_directory() . '/incs/codestar/codestar-framework.php')) {
+    require_once get_template_directory() . '/incs/codestar/codestar-framework.php';
 }
 
 // Include Theme Options
-if (file_exists(get_template_directory() . '/inc/theme-options.php')) {
-    require_once get_template_directory() . '/inc/theme-options.php';
+if (file_exists(get_template_directory() . '/incs/theme-options.php')) {
+    require_once get_template_directory() . '/incs/theme-options.php';
 }

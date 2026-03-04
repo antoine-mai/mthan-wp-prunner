@@ -16,18 +16,20 @@ if (class_exists('CSF')) {
         'theme' => 'light', // Preferred theme
     ));
 
-    // Create a section
-    CSF::createSection($prefix, array(
-        'title' => 'General Settings',
-        'icon' => 'fas fa-cogs',
-        'fields' => array(
-                array(
-                'id' => 'example_text',
-                'type' => 'text',
-                'title' => 'Example Text',
-                'desc' => 'This is an example text field.',
-            ),
-        )
-    ));
+    // Include all section files from the admin folder
+    $admin_dir = get_template_directory() . '/admin/';
+    $sections = array(
+        'general.php',
+        'header.php',
+        'footer.php',
+        'blog.php',
+        'social.php',
+    );
+
+    foreach ($sections as $section) {
+        if (file_exists($admin_dir . $section)) {
+            require_once $admin_dir . $section;
+        }
+    }
 
 }
