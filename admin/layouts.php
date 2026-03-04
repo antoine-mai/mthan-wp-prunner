@@ -34,7 +34,7 @@ CSF::createSection($prefix, array(
             'type' => 'tabbed',
             'title' => 'Layout Sections',
             'tabs' => array(
-                array(
+                    array(
                     'title' => 'Main Layout',
                     'icon' => 'fas fa-home',
                     'fields' => array(
@@ -74,7 +74,7 @@ CSF::createSection($prefix, array(
                         ),
                     ),
                 ),
-                array(
+                    array(
                     'title' => 'Blog Layout',
                     'icon' => 'fas fa-blog',
                     'fields' => array(
@@ -146,4 +146,5 @@ CSF::createSection($prefix, array(
             'default' => 'style-1',
         ),
 
-   
+    )
+));
