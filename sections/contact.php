@@ -123,8 +123,8 @@ function mthan_section_contact_html($section_data) {
 function mthan_section_contact_html_1($section_data) {
     $sec_title    = !empty($section_data['contact_sec_title']) ? $section_data['contact_sec_title'] : 'Contact Us';
     $sec_subtitle = !empty($section_data['contact_sec_subtitle']) ? $section_data['contact_sec_subtitle'] : 'Get in Touch';
-    $discount     = !empty($section_data['contact_discount_text']) ? $section_data['contact_discount_text'] : '';
-    $subtext      = !empty($section_data['contact_sub_text']) ? $section_data['contact_sub_text'] : '';
+    $discount     = !empty($section_data['contact_discount_text']) ? $section_data['contact_discount_text'] : 'Save up to 40%';
+    $subtext      = !empty($section_data['contact_sub_text']) ? $section_data['contact_sub_text'] : 'Get free estimates from Pruners lawn care and gardening professionals in your city.';
 ?>
 <section class="contact-section">
         <div class="pattern-layer"></div>
@@ -213,11 +213,11 @@ function mthan_section_contact_html_1($section_data) {
  */
 function mthan_section_contact_html_2($section_data) {
     $sec_title    = !empty($section_data['contact_sec_title']) ? $section_data['contact_sec_title'] : 'Contact Us';
-    $subtext      = !empty($section_data['contact_sub_text']) ? $section_data['contact_sub_text'] : '';
+    $subtext      = !empty($section_data['contact_sub_text']) ? $section_data['contact_sub_text'] : 'Fill out the form below and then Set a Day and Time that works best for you!.';
     $map_iframe   = !empty($section_data['contact_map_iframe']) ? $section_data['contact_map_iframe'] : '';
-    $addr         = !empty($section_data['contact_info_address']) ? $section_data['contact_info_address'] : '';
-    $phone        = !empty($section_data['contact_info_phone']) ? $section_data['contact_info_phone'] : '';
-    $email        = !empty($section_data['contact_info_email']) ? $section_data['contact_info_email'] : '';
+    $addr         = !empty($section_data['contact_info_address']) ? $section_data['contact_info_address'] : '53 Garden Street Los Anegles 90029 USA';
+    $phone        = !empty($section_data['contact_info_phone']) ? $section_data['contact_info_phone'] : '(+5) 678 90 12 345';
+    $email        = !empty($section_data['contact_info_email']) ? $section_data['contact_info_email'] : 'service@Prunersteam.com';
 ?>
 <section class="contact-two">
         <div class="pattern-layer"></div>
@@ -321,8 +321,9 @@ function mthan_section_contact_html_2($section_data) {
 function mthan_section_contact_html_3($section_data) {
     $sec_title    = !empty($section_data['contact_sec_title']) ? $section_data['contact_sec_title'] : 'Contact Us';
     $sec_subtitle = !empty($section_data['contact_sec_subtitle']) ? $section_data['contact_sec_subtitle'] : 'Get in Touch';
-    $office_text  = !empty($section_data['contact_main_office_text']) ? $section_data['contact_main_office_text'] : '';
-    $hours        = !empty($section_data['contact_working_hours']) ? explode("\n", str_replace("\r", "", $section_data['contact_working_hours'])) : array();
+    $office_text  = !empty($section_data['contact_main_office_text']) ? $section_data['contact_main_office_text'] : 'PO Box 515381 Lander, Garden Street LA 90029 USA.';
+    $hours_raw    = !empty($section_data['contact_working_hours']) ? $section_data['contact_working_hours'] : "Mon-Friday: 09am to 07pm\nSat: 10.00am to 04pm";
+    $hours        = explode("\n", str_replace("\r", "", $hours_raw));
     $bg_image     = !empty($section_data['contact_form_bg_image']['url']) ? $section_data['contact_form_bg_image']['url'] : '';
     $person_img   = !empty($section_data['contact_right_person_image']['url']) ? $section_data['contact_right_person_image']['url'] : '';
 ?>
