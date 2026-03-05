@@ -1,41 +1,88 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?');
+<?php defined('ABSPATH') || exit;
 
-// banner_slides is a CSF group repeater nested inside the layout group.
-// $section_data is provided by mthan_include_section_items().
-$raw_slides = !empty($section_data['banner_slides']) && is_array($section_data['banner_slides'])
-    ? $section_data['banner_slides']
-    : array();
+// ──────────────────────────────────────────────────────────────────
+// Banner Section
+// ──────────────────────────────────────────────────────────────────
 
-$slides = array();
-foreach ($raw_slides as $s) {
-    $img   = !empty($s['image']['url']) ? $s['image']['url'] : '';
-    $title = !empty($s['title'])        ? $s['title']        : '';
-    if (!$img && !$title) { continue; }
-    $btn1_id = !empty($s['btn1_link']) ? $s['btn1_link'] : '';
-    $btn2_id = !empty($s['btn2_link']) ? $s['btn2_link'] : '';
-    $slides[] = array(
-        'img'       => $img,
-        'subtitle'  => !empty($s['subtitle'])  ? $s['subtitle']  : '',
-        'title'     => $title,
-        'align'     => !empty($s['align'])     ? $s['align']     : 'left',
-        'btn1_text' => !empty($s['btn1_text']) ? $s['btn1_text'] : '',
-        'btn1_link' => $btn1_id ? get_permalink((int) $btn1_id) : '#',
-        'btn2_text' => !empty($s['btn2_text']) ? $s['btn2_text'] : '',
-        'btn2_link' => $btn2_id ? get_permalink((int) $btn2_id) : '#',
+/**
+ * Returns the CSF field definitions for the banner section instance.
+ * Called by mthan_get_section_instance_fields() in section-instance-fields.php.
+ *
+ * NOTE: 'title' field MUST be first — CSF group.php:96 uses fields[0] value
+ * as the accordion title text. 'image' (media → array) as fields[0] caused
+ * "Array to string conversion".
+ *
+ * @return array[]
+ */
+function mthan_section_banner_options()
+{
+    return array(
+        array('type' => 'subheading', 'content' => 'Banner Section Options'),
+        array(
+            'id'           => 'banner_slides',
+            'type'         => 'group',
+            'title'        => 'Slides',
+            'button_title' => '+ Add Slide',
+            'fields'       => array(
+                array('id' => 'title',    'type' => 'text',   'title' => 'Title (H1)'),
+                array('id' => 'subtitle', 'type' => 'text',   'title' => 'Subtitle'),
+                array('id' => 'image',    'type' => 'media',  'library' => 'image', 'title' => 'Background Image'),
+                array('id' => 'align',    'type' => 'select', 'title' => 'Alignment',      'options' => array('left' => 'Left', 'right' => 'Right'), 'default' => 'left'),
+                array('id' => 'btn1_text','type' => 'text',   'title' => 'Button 1 Text',  'default' => 'Read More'),
+                mthan_page_select_field('btn1_link', 'Button 1 Page'),
+                array('id' => 'btn2_text','type' => 'text',   'title' => 'Button 2 Text',  'default' => 'Contact Us'),
+                mthan_page_select_field('btn2_link', 'Button 2 Page'),
+            ),
+        ),
     );
 }
 
+/**
+ * Renders the banner section HTML.
+ * Called by mthan_include_section_items() via function dispatch.
+ *
+ * @param array $section_data Per-instance field values from CSF.
+ */
+function mthan_section_banner_html($section_data)
+{
+    $raw_slides = !empty($section_data['banner_slides']) && is_array($section_data['banner_slides'])
+        ? $section_data['banner_slides']
+        : array();
 
-// Fallback to default slides if none configured
-if (empty($slides)) {
-    $base = get_template_directory_uri() . '/assets/images/main-slider/';
-    $slides = array(
-            array('img' => $base . '4.jpg', 'subtitle' => 'High Quality &amp; Affordable Price', 'title' => 'Unique Designs', 'align' => 'left', 'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Contact Us', 'btn2_link' => '#'),
-            array('img' => $base . '5.jpg', 'subtitle' => 'Adding Perfection to Your Lawn', 'title' => 'Lawn Stylist', 'align' => 'right', 'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services', 'btn2_link' => '#'),
-            array('img' => $base . '3.jpg', 'subtitle' => 'Solutions for Your Green Edge', 'title' => 'Build and Care', 'align' => 'left', 'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services', 'btn2_link' => '#'),
-    );
-}
-?>
+    $slides = array();
+    foreach ($raw_slides as $s) {
+        $img   = !empty($s['image']['url']) ? $s['image']['url'] : '';
+        $title = !empty($s['title'])        ? $s['title']        : '';
+        if (!$img && !$title) { continue; }
+
+        $btn1_id = !empty($s['btn1_link']) ? $s['btn1_link'] : '';
+        $btn2_id = !empty($s['btn2_link']) ? $s['btn2_link'] : '';
+        // multiple => true returns an array; take the first selected page
+        if (is_array($btn1_id)) { $btn1_id = reset($btn1_id); }
+        if (is_array($btn2_id)) { $btn2_id = reset($btn2_id); }
+
+        $slides[] = array(
+            'img'       => $img,
+            'subtitle'  => !empty($s['subtitle'])  ? $s['subtitle']  : '',
+            'title'     => $title,
+            'align'     => !empty($s['align'])     ? $s['align']     : 'left',
+            'btn1_text' => !empty($s['btn1_text']) ? $s['btn1_text'] : '',
+            'btn1_link' => $btn1_id ? get_permalink((int) $btn1_id) : '#',
+            'btn2_text' => !empty($s['btn2_text']) ? $s['btn2_text'] : '',
+            'btn2_link' => $btn2_id ? get_permalink((int) $btn2_id) : '#',
+        );
+    }
+
+    // Fallback to default slides if none configured
+    if (empty($slides)) {
+        $base   = get_template_directory_uri() . '/assets/images/main-slider/';
+        $slides = array(
+            array('img' => $base . '4.jpg', 'subtitle' => 'High Quality &amp; Affordable Price', 'title' => 'Unique Designs', 'align' => 'left',  'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Contact Us', 'btn2_link' => '#'),
+            array('img' => $base . '5.jpg', 'subtitle' => 'Adding Perfection to Your Lawn',      'title' => 'Lawn Stylist',   'align' => 'right', 'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services',   'btn2_link' => '#'),
+            array('img' => $base . '3.jpg', 'subtitle' => 'Solutions for Your Green Edge',       'title' => 'Build and Care', 'align' => 'left',  'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services',   'btn2_link' => '#'),
+        );
+    }
+    ?>
 <section class="banner-section banner-two">
     <div class="banner-carousel owl-theme owl-carousel">
         <?php foreach ($slides as $slide) { $alignment_class = ($slide['align'] === 'right') ? ' right-aligned' : ''; ?>
@@ -81,3 +128,5 @@ if (empty($slides)) {
         <?php } ?>
     </div>
 </section>
+    <?php
+}
