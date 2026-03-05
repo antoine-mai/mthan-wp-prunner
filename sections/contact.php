@@ -8,7 +8,7 @@ function mthan_section_contact_options()
 {
     return array(
         array(
-            'id'      => 'style',
+            'id'      => 'contact_style',
             'type'    => 'select',
             'title'   => 'Style',
             'options' => array(
@@ -19,85 +19,85 @@ function mthan_section_contact_options()
             'default' => '1',
         ),
         array(
-            'id'    => 'sec_subtitle',
+            'id'    => 'contact_sec_subtitle',
             'type'  => 'text',
             'title' => 'Subtitle',
             'default' => 'Get in Touch',
         ),
         array(
-            'id'    => 'sec_title',
+            'id'    => 'contact_sec_title',
             'type'  => 'text',
             'title' => 'Title',
             'default' => 'Contact Us',
         ),
         array(
-            'id'    => 'discount_text',
+            'id'    => 'contact_discount_text',
             'type'  => 'text',
             'title' => 'Discount Label',
             'default' => 'Save up to 40%',
-            'dependency' => array('style', '==', '1'),
+            'dependency' => array('contact_style', '==', '1'),
         ),
         array(
-            'id'    => 'sub_text',
+            'id'    => 'contact_sub_text',
             'type'  => 'textarea',
             'title' => 'Sub-text (Description)',
             'default' => 'Get free estimates from Pruners lawn care and gardening professionals in your city.',
-            'dependency' => array('style', 'any', '1,2'),
+            'dependency' => array('contact_style', 'any', '1,2'),
         ),
         // Style 2 specific
         array(
-            'id'    => 'map_iframe',
+            'id'    => 'contact_map_iframe',
             'type'  => 'textarea',
             'title' => 'Map Iframe URL/Embed',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('contact_style', '==', '2'),
         ),
         array(
-            'id'    => 'info_address',
+            'id'    => 'contact_info_address',
             'type'  => 'textarea',
             'title' => 'Address Text',
             'default' => '53 Garden Street Los Anegles 90029 USA',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('contact_style', '==', '2'),
         ),
         array(
-            'id'    => 'info_phone',
+            'id'    => 'contact_info_phone',
             'type'  => 'text',
             'title' => 'Phone Number',
-            'default' => '(+5) 678 90 12 345',
-            'dependency' => array('style', '==', '2'),
+            'default' => '+(5) 678 90 12 345',
+            'dependency' => array('contact_style', '==', '2'),
         ),
         array(
-            'id'    => 'info_email',
+            'id'    => 'contact_info_email',
             'type'  => 'text',
             'title' => 'Email Address',
             'default' => 'service@Prunersteam.com',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('contact_style', '==', '2'),
         ),
         // Style 3 specific
         array(
-            'id'    => 'main_office_text',
+            'id'    => 'contact_main_office_text',
             'type'  => 'textarea',
             'title' => 'Main Office Address',
             'default' => 'PO Box 515381 Lander, Garden Street LA 90029 USA.',
-            'dependency' => array('style', '==', '3'),
+            'dependency' => array('contact_style', '==', '3'),
         ),
         array(
-            'id'    => 'working_hours',
+            'id'    => 'contact_working_hours',
             'type'  => 'textarea',
             'title' => 'Working Hours List (one per line)',
             'default' => "Mon-Friday: 09am to 07pm\nSat: 10.00am to 04pm",
-            'dependency' => array('style', '==', '3'),
+            'dependency' => array('contact_style', '==', '3'),
         ),
         array(
-            'id'    => 'form_bg_image',
+            'id'    => 'contact_form_bg_image',
             'type'  => 'upload',
             'title' => 'Form BG Image',
-            'dependency' => array('style', '==', '3'),
+            'dependency' => array('contact_style', '==', '3'),
         ),
         array(
-            'id'    => 'right_person_image',
+            'id'    => 'contact_right_person_image',
             'type'  => 'upload',
             'title' => 'Right Person Image',
-            'dependency' => array('style', '==', '3'),
+            'dependency' => array('contact_style', '==', '3'),
         ),
     );
 }
@@ -106,7 +106,7 @@ function mthan_section_contact_options()
  * Render the contact section.
  */
 function mthan_section_contact_html($section_data) {
-    $style = isset($section_data['style']) ? $section_data['style'] : '1';
+    $style = isset($section_data['contact_style']) ? $section_data['contact_style'] : '1';
     
     if ($style === '2') {
         mthan_section_contact_html_2($section_data);
@@ -121,10 +121,10 @@ function mthan_section_contact_html($section_data) {
  * Style 1 Rendering (Image Right)
  */
 function mthan_section_contact_html_1($section_data) {
-    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Contact Us';
-    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Get in Touch';
-    $discount     = !empty($section_data['discount_text']) ? $section_data['discount_text'] : '';
-    $subtext      = !empty($section_data['sub_text']) ? $section_data['sub_text'] : '';
+    $sec_title    = !empty($section_data['contact_sec_title']) ? $section_data['contact_sec_title'] : 'Contact Us';
+    $sec_subtitle = !empty($section_data['contact_sec_subtitle']) ? $section_data['contact_sec_subtitle'] : 'Get in Touch';
+    $discount     = !empty($section_data['contact_discount_text']) ? $section_data['contact_discount_text'] : '';
+    $subtext      = !empty($section_data['contact_sub_text']) ? $section_data['contact_sub_text'] : '';
 ?>
 <section class="contact-section">
         <div class="pattern-layer"></div>
@@ -212,12 +212,12 @@ function mthan_section_contact_html_1($section_data) {
  * Style 2 Rendering (Map Left)
  */
 function mthan_section_contact_html_2($section_data) {
-    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Contact Us';
-    $subtext      = !empty($section_data['sub_text']) ? $section_data['sub_text'] : '';
-    $map_iframe   = !empty($section_data['map_iframe']) ? $section_data['map_iframe'] : '';
-    $addr         = !empty($section_data['info_address']) ? $section_data['info_address'] : '';
-    $phone        = !empty($section_data['info_phone']) ? $section_data['info_phone'] : '';
-    $email        = !empty($section_data['info_email']) ? $section_data['info_email'] : '';
+    $sec_title    = !empty($section_data['contact_sec_title']) ? $section_data['contact_sec_title'] : 'Contact Us';
+    $subtext      = !empty($section_data['contact_sub_text']) ? $section_data['contact_sub_text'] : '';
+    $map_iframe   = !empty($section_data['contact_map_iframe']) ? $section_data['contact_map_iframe'] : '';
+    $addr         = !empty($section_data['contact_info_address']) ? $section_data['contact_info_address'] : '';
+    $phone        = !empty($section_data['contact_info_phone']) ? $section_data['contact_info_phone'] : '';
+    $email        = !empty($section_data['contact_info_email']) ? $section_data['contact_info_email'] : '';
 ?>
 <section class="contact-two">
         <div class="pattern-layer"></div>
@@ -319,12 +319,12 @@ function mthan_section_contact_html_2($section_data) {
  * Style 3 Rendering (Split Content)
  */
 function mthan_section_contact_html_3($section_data) {
-    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Contact Us';
-    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Get in Touch';
-    $office_text  = !empty($section_data['main_office_text']) ? $section_data['main_office_text'] : '';
-    $hours        = !empty($section_data['working_hours']) ? explode("\n", str_replace("\r", "", $section_data['working_hours'])) : array();
-    $bg_image     = !empty($section_data['form_bg_image']['url']) ? $section_data['form_bg_image']['url'] : '';
-    $person_img   = !empty($section_data['right_person_image']['url']) ? $section_data['right_person_image']['url'] : '';
+    $sec_title    = !empty($section_data['contact_sec_title']) ? $section_data['contact_sec_title'] : 'Contact Us';
+    $sec_subtitle = !empty($section_data['contact_sec_subtitle']) ? $section_data['contact_sec_subtitle'] : 'Get in Touch';
+    $office_text  = !empty($section_data['contact_main_office_text']) ? $section_data['contact_main_office_text'] : '';
+    $hours        = !empty($section_data['contact_working_hours']) ? explode("\n", str_replace("\r", "", $section_data['contact_working_hours'])) : array();
+    $bg_image     = !empty($section_data['contact_form_bg_image']['url']) ? $section_data['contact_form_bg_image']['url'] : '';
+    $person_img   = !empty($section_data['contact_right_person_image']['url']) ? $section_data['contact_right_person_image']['url'] : '';
 ?>
 <section class="contact-three">
         <div class="outer-container">
