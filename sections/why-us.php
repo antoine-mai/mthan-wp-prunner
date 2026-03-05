@@ -101,7 +101,7 @@ function mthan_section_why_us_options()
             'id'     => 'why_repeater',
             'type'   => 'group',
             'title'  => 'Why Us Blocks',
-            'max'    => 6,
+            'max'    => 8,
             'fields' => array(
                 array(
                     'id'    => 'title',
@@ -159,6 +159,18 @@ function mthan_section_why_us_options()
                     'title' => 'Expert Staff',
                     'icon' => 'flaticon-gardener-1',
                     'text' => 'Take trivial example which of ever undertakes laborious physical exercise.',
+                    'link' => '#'
+                ),
+                array(
+                    'title' => '100% Guarantee',
+                    'icon' => 'flaticon-medal-1',
+                    'text' => 'Indignation and dislike mens who are so beguiled & the demoralized.',
+                    'link' => '#'
+                ),
+                array(
+                    'title' => 'Ontime Delivery',
+                    'icon' => 'flaticon-on-time',
+                    'text' => 'Readable content page when looking at its layout making look like readable.',
                     'link' => '#'
                 ),
             )
