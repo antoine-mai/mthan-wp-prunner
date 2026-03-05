@@ -4,7 +4,10 @@
  *
  * @param array $section_data Per-instance CSF field values.
 **/
-function mthan_section_contact_three_html($section_data) { ?>
+function mthan_section_contact_three_html($section_data) { 
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="contact-three">
         <div class="outer-container">
             <div class="row clearfix">

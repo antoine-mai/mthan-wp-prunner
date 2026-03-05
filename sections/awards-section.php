@@ -5,6 +5,10 @@
  * @param array $section_data Per-instance CSF field values.
 **/ 
 function mthan_section_awards_section_html($section_data) { ?>
+<?php
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="awards-section">
         <div class="bottom-image"><img src="images/resource/anim-image-4.png" alt="" title=""></div>
         <div class="auto-container">

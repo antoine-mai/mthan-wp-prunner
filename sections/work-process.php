@@ -4,7 +4,10 @@
  *
  * @param array $section_data Per-instance CSF field values.
 **/
-function mthan_section_work_process_html($section_data) { ?>
+function mthan_section_work_process_html($section_data) { 
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="work-process">
         <div class="round-pattern-layer"></div>
         <div class="right-leaf"><img src="images/resource/leaf-1.png" alt="" title=""></div>

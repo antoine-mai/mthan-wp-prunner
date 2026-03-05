@@ -4,7 +4,10 @@
  *
  * @param array $section_data Per-instance CSF field values.
 **/
-function mthan_section_projects_two_html($section_data) { ?>
+function mthan_section_projects_two_html($section_data) { 
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="projects-two">
         <div class="auto-container">
             <div class="upper-box clearfix">
@@ -124,4 +127,4 @@ function mthan_section_projects_two_html($section_data) { ?>
             </div>
         </div>
     </section>
-}
+<?php }

@@ -4,7 +4,10 @@
  *
  * @param array $section_data Per-instance CSF field values.
 **/
-function mthan_section_why_us_two_html($section_data) { ?>
+function mthan_section_why_us_two_html($section_data) { 
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="why-us-two">
     <div class="outer-container">
         <div class="row clearfix">

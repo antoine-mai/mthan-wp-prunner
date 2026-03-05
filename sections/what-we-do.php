@@ -4,7 +4,10 @@
  *
  * @param array $section_data Per-instance CSF field values.
 **/
-function mthan_section_what_we_do_html($section_data) { ?>
+function mthan_section_what_we_do_html($section_data) { 
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="what-we-do">
         <div class="tabs-box service-tabs">
             <div class="upper-box">

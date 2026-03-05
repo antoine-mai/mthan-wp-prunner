@@ -4,14 +4,21 @@
  *
  * @param array $section_data Per-instance CSF field values.
 **/
-function mthan_section_team_section_html($section_data) { ?>
+function mthan_section_team_section_html($section_data) {
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="team-section">
     <div class="left-leaf"><img src="images/resource/leaf-2.png" alt="" title=""></div>
     <div class="right-leaf"><img src="images/resource/leaf-3.png" alt="" title=""></div>
     <div class="auto-container">
         <div class="upper-box clearfix">
             <div class="sec-title">
-                <div class="title-icon"><span class="icon"><img src="images/icons/leaf-two.png" alt="" title=""></span></div>
+                <div class="title-icon">
+                    <span class="icon">
+                        <img src="images/icons/leaf-two.png" alt="" title="">
+                    </span>
+                </div>
                 <div class="subtitle"><?php echo $sec_subtitle; ?></div>
                 <h2><?php echo $sec_title; ?></h2>
             </div>

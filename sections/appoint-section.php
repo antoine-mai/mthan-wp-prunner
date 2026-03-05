@@ -1,11 +1,14 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the appoint-section section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_appoint_section_html($section_data) {
+**/
+function mthan_section_appoint_section_html($section_data) { ?>
+<?php
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="appoint-section">
         <div class="auto-container">
 
@@ -203,4 +206,4 @@ function mthan_section_appoint_section_html($section_data) {
 
         </div>
     </section>
-}
+<?php }

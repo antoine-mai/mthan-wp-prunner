@@ -2,9 +2,13 @@
 /**
  * Render the about-three section.
  *
- * @param array $section_data Per-instance CSF field values.
+ * @param array $data Per-instance CSF field values.
 **/
 function mthan_section_about_three_html($section_data) { ?>
+<?php
+    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+?>
 <section class="about-three">
         <div class="auto-container">
         	<div class="row clearfix">
@@ -12,7 +16,11 @@ function mthan_section_about_three_html($section_data) { ?>
                 <div class="text-column col-lg-6 col-md-12 col-sm-12">
                     <div class="inner">
                         <div class="sec-title">
-                            <div class="title-icon"><span class="icon"><img src="images/icons/leaf-two.png" alt="" title=""></span></div>
+                            <div class="title-icon">
+                                <span class="icon">
+                                    <img src="images/icons/leaf-two.png" alt="" title="">
+                                </span>
+                            </div>
                             <div class="subtitle"><?php echo $sec_subtitle; ?></div>
                             <h2><?php echo $sec_title; ?></h2>
                         </div>
