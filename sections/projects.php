@@ -68,16 +68,16 @@ function mthan_section_projects_options()
             'max'    => 7,
             'fields' => array(
                 array(
+                    'id'    => 'cat_label',
+                    'type'  => 'text',
+                    'title' => 'Category Label',
+                ),
+                array(
                     'id'      => 'image',
                     'type'    => 'media',
                     'library' => 'image',
                     'preview' => false,
                     'title'   => 'Image',
-                ),
-                array(
-                    'id'    => 'cat_label',
-                    'type'  => 'text',
-                    'title' => 'Category Label',
                 ),
                 array(
                     'id'    => 'title',
