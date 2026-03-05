@@ -85,9 +85,9 @@ function mthan_get_section_instance_fields()
             array('id' => 'title',    'type' => 'text',   'title' => 'Title (H1)'),
             array('id' => 'align',    'type' => 'select', 'title' => 'Alignment', 'options' => array('left' => 'Left', 'right' => 'Right'), 'default' => 'left'),
             array('id' => 'btn1_text','type' => 'text',   'title' => 'Button 1 Text', 'default' => 'Read More'),
-            array('id' => 'btn1_link','type' => 'select', 'title' => 'Button 1 Page', 'options' => 'pages'),
+            array('id' => 'btn1_link','type' => 'select', 'title' => 'Button 1 Page', 'options' => ['pages', 'posts']),
             array('id' => 'btn2_text','type' => 'text',   'title' => 'Button 2 Text', 'default' => 'Contact Us'),
-            array('id' => 'btn2_link','type' => 'select', 'title' => 'Button 2 Page', 'options' => 'pages'),
+            array('id' => 'btn2_link','type' => 'select', 'title' => 'Button 2 Page', 'options' => ['pages', 'posts']),
         ),
     );
 
