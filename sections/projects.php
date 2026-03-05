@@ -195,13 +195,13 @@ function mthan_section_projects_html_1($section_data) {
     $lower         = !empty($section_data['lower_text']) ? $section_data['lower_text'] : '';
     $all_link      = !empty($section_data['view_all_link']) ? $section_data['view_all_link'] : '#';
     $fallback_imgs = array(
-        get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-2.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-3.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-4.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-5.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-6.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-7.jpg',
+        get_template_directory_uri() . '/assets/images/resource/featured-image-8.jpg',
     );
 ?>
 <section class="projects-section">
