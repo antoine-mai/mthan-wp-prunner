@@ -8,24 +8,6 @@ function mthan_section_services_options()
 {
     return array(
             array(
-            'id' => 'services_sec_subtitle',
-            'type' => 'text',
-            'title' => 'Subtitle',
-            'default' => 'Our Solutions',
-        ),
-            array(
-            'id' => 'services_sec_title',
-            'type' => 'text',
-            'title' => 'Title',
-            'default' => 'Main Services',
-        ),
-            array(
-            'id' => 'services_sec_text',
-            'type' => 'textarea',
-            'title' => 'Description',
-            'default' => 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.',
-        ),
-            array(
             'id' => 'services_list',
             'type' => 'group',
             'title' => 'Services List',
@@ -86,39 +68,10 @@ function mthan_section_services_options()
  **/
 function mthan_section_services_html($section_data)
 {
-    $sec_title = !empty($section_data['services_sec_title']) ? $section_data['services_sec_title'] : 'Main Services';
-    $sec_subtitle = !empty($section_data['services_sec_subtitle']) ? $section_data['services_sec_subtitle'] : 'Our Solutions';
-    $sec_text = !empty($section_data['services_sec_text']) ? $section_data['services_sec_text'] : '';
     $services_repeater = !empty($section_data['services_list']) && is_array($section_data['services_list']) ? $section_data['services_list'] : array();
 ?>
 <section class="main-services">
     <div class="auto-container">
-        <div class="title-box">
-            <div class="row clearfix">
-                <div class="left-col col-xl-6 col-lg-12 col-md-12">
-                    <div class="sec-title alternate">
-                        <div class="title-icon"><span class="icon"><img
-                                    src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png"
-                                    alt="<?php echo esc_attr($sec_subtitle); ?>"
-                                    title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
-                        <div class="subtitle">
-                            <?php echo esc_html($sec_subtitle); ?>
-                        </div>
-                        <h2>
-                            <?php echo esc_html($sec_title); ?>
-                        </h2>
-                    </div>
-                </div>
-                <?php if ($sec_text): ?>
-                <div class="right-col col-xl-6 col-lg-12 col-md-12">
-                    <div class="text">
-                        <?php echo esc_html($sec_text); ?>
-                    </div>
-                </div>
-                <?php
-    endif; ?>
-            </div>
-        </div>
 
         <div class="row clearfix">
             <?php if (is_array($services_repeater)) : foreach ($services_repeater as $service):
