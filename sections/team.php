@@ -46,11 +46,14 @@ function mthan_section_team_options()
             'id'     => 'team_repeater',
             'type'   => 'group',
             'title'  => 'Team Members',
+            'max'    => 4,
             'fields' => array(
                 array(
-                    'id'    => 'image',
-                    'type'  => 'upload',
-                    'title' => 'Member Image',
+                    'id'      => 'image',
+                    'type'    => 'media',
+                    'library' => 'image',
+                    'preview' => false,
+                    'title'   => 'Member Image',
                 ),
                 array(
                     'id'    => 'name',
@@ -83,6 +86,40 @@ function mthan_section_team_options()
                     'title' => 'Instagram Link',
                 ),
             ),
+            'default' => array(
+                array(
+                    'name'        => 'Robert Adson',
+                    'designation' => 'Garden Expert',
+                    'phone'       => '(+5) 678 90 12 345',
+                    'facebook'    => '#',
+                    'twitter'     => '#',
+                    'instagram'   => '#',
+                ),
+                array(
+                    'name'        => 'Helena Reese',
+                    'designation' => 'Landscape Designer',
+                    'phone'       => '(+5) 678 90 12 346',
+                    'facebook'    => '#',
+                    'twitter'     => '#',
+                    'instagram'   => '#',
+                ),
+                array(
+                    'name'        => 'Samuel Moris',
+                    'designation' => 'Lead Gardener',
+                    'phone'       => '(+5) 678 90 12 347',
+                    'facebook'    => '#',
+                    'twitter'     => '#',
+                    'instagram'   => '#',
+                ),
+                array(
+                    'name'        => 'James Carter',
+                    'designation' => 'Hardscape Specialist',
+                    'phone'       => '(+5) 678 90 12 348',
+                    'facebook'    => '#',
+                    'twitter'     => '#',
+                    'instagram'   => '#',
+                ),
+            ),
         ),
     );
 }
@@ -104,6 +141,12 @@ function mthan_section_team_html($section_data) {
         mthan_section_team_html_2($section_data);
         return;
     }
+    $fallback_imgs = array(
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-1.jpg',
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-2.jpg',
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-3.jpg',
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-4.jpg',
+    );
 ?>
 <section class="team-section">
     <div class="left-leaf"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/leaf-2.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></div>
@@ -128,11 +171,14 @@ function mthan_section_team_html($section_data) {
 
         <div class="team-box">
             <div class="row clearfix">
-                <?php foreach($team_repeater as $member): 
-                    $img   = !empty($member['image']['url']) ? $member['image']['url'] : '';
+                <?php foreach($team_repeater as $i => $member): 
+                    $img   = !empty($member['image']['url']) ? $member['image']['url'] : $fallback_imgs[$i % count($fallback_imgs)];
                     $name  = !empty($member['name']) ? $member['name'] : '';
                     $des   = !empty($member['designation']) ? $member['designation'] : '';
                     $phone = !empty($member['phone']) ? $member['phone'] : '';
+                    $fb    = !empty($member['facebook']) ? $member['facebook'] : '';
+                    $tw    = !empty($member['twitter']) ? $member['twitter'] : '';
+                    $inst  = !empty($member['instagram']) ? $member['instagram'] : '';
                 ?>
                 <!--Team block-->
                 <div class="team-block col-lg-4 col-md-6 col-sm-12">
@@ -140,6 +186,13 @@ function mthan_section_team_html($section_data) {
                         <div class="upper">
                             <div class="image-box">
                                 <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>" title="<?php echo esc_attr($name); ?>">
+                                <div class="social-box">
+                                    <ul class="clearfix">
+                                        <?php if($fb): ?><li><a href="<?php echo esc_url($fb); ?>"><span class="fab fa-facebook-f"></span></a></li><?php endif; ?>
+                                        <?php if($tw): ?><li><a href="<?php echo esc_url($tw); ?>"><span class="fab fa-twitter"></span></a></li><?php endif; ?>
+                                        <?php if($inst): ?><li><a href="<?php echo esc_url($inst); ?>"><span class="fab fa-instagram"></span></a></li><?php endif; ?>
+                                    </ul>
+                                </div>
                             </div>
                         </div>
                         <div class="lower">
@@ -168,6 +221,12 @@ function mthan_section_team_html_2($section_data) {
     $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Professional Team';
     $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Gardeners';
     $team_repeater = !empty($section_data['team_repeater']) ? $section_data['team_repeater'] : array();
+    $fallback_imgs = array(
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-1.jpg',
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-2.jpg',
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-3.jpg',
+        get_template_directory_uri() . '/assets/images/resource/testi-thumb-4.jpg',
+    );
 ?>
 <section class="team-two">  
     <div class="auto-container">
@@ -179,8 +238,8 @@ function mthan_section_team_html_2($section_data) {
     
         <div class="team-box">
             <div class="team-carousel owl-theme owl-carousel">
-                <?php foreach($team_repeater as $member): 
-                    $img   = !empty($member['image']['url']) ? $member['image']['url'] : '';
+                <?php foreach($team_repeater as $i => $member): 
+                    $img   = !empty($member['image']['url']) ? $member['image']['url'] : $fallback_imgs[$i % count($fallback_imgs)];
                     $name  = !empty($member['name']) ? $member['name'] : '';
                     $des   = !empty($member['designation']) ? $member['designation'] : '';
                     $phone = !empty($member['phone']) ? $member['phone'] : '';
