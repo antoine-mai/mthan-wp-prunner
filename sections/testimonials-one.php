@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the testimonials-one section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_testimonials_one_html($section_data) {
+**/
+function mthan_section_testimonials_one_html($section_data) { ?>
 <section class="testimonials-one alt-color">
         <div class="auto-container">
             <div class="title-box">
@@ -155,7 +154,6 @@ function mthan_section_testimonials_one_html($section_data) {
 
                 </div>
             </div>
-
         </div>
     </section>
-}
+<?php }

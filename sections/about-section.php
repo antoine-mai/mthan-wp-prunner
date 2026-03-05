@@ -68,4 +68,4 @@ $sec_text = !empty($section_data['about-section_text']) ? $section_data['about-s
         </div>
     </div>
 </section>
-}
+<?php }

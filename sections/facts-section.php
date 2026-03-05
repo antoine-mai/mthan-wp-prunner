@@ -1,5 +1,4 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
-
 /**
  * Render the facts-section section.
  *
@@ -44,9 +43,8 @@ $defaults = array(
                     </h4>
                 </div>
             </div>
-            <?php
-}?>
+            <?php } ?>
         </div>
     </div>
 </section>
-}
+<?php }

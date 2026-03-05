@@ -30,4 +30,4 @@ $title = !empty($section_data['page_banner_title']) ? $section_data['page_banner
         </div>
     </div>
 </section>
-}
+<?php }

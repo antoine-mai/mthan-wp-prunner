@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the work-process section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_work_process_html($section_data) {
+**/
+function mthan_section_work_process_html($section_data) { ?>
 <section class="work-process">
         <div class="round-pattern-layer"></div>
         <div class="right-leaf"><img src="images/resource/leaf-1.png" alt="" title=""></div>
@@ -116,4 +115,4 @@ function mthan_section_work_process_html($section_data) {
 
         </div>
     </section>
-}
+<?php }

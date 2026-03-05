@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the sponsors-section section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_sponsors_section_html($section_data) {
+**/ 
+function mthan_section_sponsors_section_html($section_data) { ?>
 <section class="sponsors-section">
         <div class="sponsors-outer">
             <!--Sponsors-->
@@ -24,4 +23,4 @@ function mthan_section_sponsors_section_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }

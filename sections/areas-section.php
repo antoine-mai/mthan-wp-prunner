@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the areas-section section.
  *
  * @param array $section_data Per-instance CSF field values.
  */
-function mthan_section_areas_section_html($section_data) {
+function mthan_section_areas_section_html($section_data) { ?>
 <section class="areas-section">
         <div class="auto-container">
             <div class="inner-container">
@@ -48,4 +47,4 @@ function mthan_section_areas_section_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }

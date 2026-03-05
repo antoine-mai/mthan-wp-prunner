@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the coming-soon section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_coming_soon_html($section_data) {
+**/
+function mthan_section_coming_soon_html($section_data) { ?>
 <section class="coming-soon">
         <div class="image-layer" style="background-image: url(images/background/bg-coming-soon.jpg);"></div>
 
@@ -37,4 +36,4 @@ function mthan_section_coming_soon_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }

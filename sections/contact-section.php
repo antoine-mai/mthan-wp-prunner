@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the contact-section section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_contact_section_html($section_data) {
+**/
+function mthan_section_contact_section_html($section_data) { ?>
 <section class="contact-section">
         <div class="pattern-layer"></div>
         <div class="auto-container">
@@ -86,4 +85,4 @@ function mthan_section_contact_section_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }

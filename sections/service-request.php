@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the service-request section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_service_request_html($section_data) {
+**/
+function mthan_section_service_request_html($section_data) { ?>
 <section class="service-request">
         <div class="auto-container">
             <div class="inner-box">
@@ -76,4 +75,4 @@ function mthan_section_service_request_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }

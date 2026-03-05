@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the call-to-two section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_call_to_two_html($section_data) {
+*/
+function mthan_section_call_to_two_html($section_data) { ?>
 <section class="call-to-two">
         <div class="image-layer" style="background-image: url(images/background/call-to-bg.jpg);"></div>
         <div class="auto-container">
@@ -26,4 +25,4 @@ function mthan_section_call_to_two_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }

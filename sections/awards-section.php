@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the awards-section section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_awards_section_html($section_data) {
+**/ 
+function mthan_section_awards_section_html($section_data) { ?>
 <section class="awards-section">
         <div class="bottom-image"><img src="images/resource/anim-image-4.png" alt="" title=""></div>
         <div class="auto-container">
@@ -118,4 +117,4 @@ function mthan_section_awards_section_html($section_data) {
 
         </div>
     </section>
-}
+<?php }

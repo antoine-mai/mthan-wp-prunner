@@ -1,11 +1,10 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
-
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Render the map-section section.
  *
  * @param array $section_data Per-instance CSF field values.
- */
-function mthan_section_map_section_html($section_data) {
+**/
+function mthan_section_map_section_html($section_data) { ?>
 <section class="map-section">
         <div class="map-outer">
             <div class="map-box">
@@ -13,4 +12,4 @@ function mthan_section_map_section_html($section_data) {
             </div>
         </div>
     </section>
-}
+<?php }
