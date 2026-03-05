@@ -136,9 +136,9 @@ function mthan_section_team_html($section_data)
     }
 
     $fallback_imgs = array(
-        get_template_directory_uri() . '/assets/images/resource/testi-thumb-1.jpg',
-        get_template_directory_uri() . '/assets/images/resource/testi-thumb-2.jpg',
-        get_template_directory_uri() . '/assets/images/resource/testi-thumb-3.jpg',
+        get_template_directory_uri() . '/assets/images/resource/team-1.jpg',
+        get_template_directory_uri() . '/assets/images/resource/team-2.jpg',
+        get_template_directory_uri() . '/assets/images/resource/team-3.jpg',
     );
 ?>
 <section class="team-section">
