@@ -122,19 +122,16 @@ function mthan_section_cta_html($section_data) {
             <div class="info-col col-xl-5 col-lg-12 col-md-12">
                 <div class="inner clearfix">
                     <ul class="info clearfix">
-                        <li><a href="<?php echo esc_url($btn_link); ?>"><span>
-                                     <?php echo esc_html($btn_text); ?>
-                                 </span> <i class="arrow flaticon-play-button-1"></i></a></li>
-                        <li><a href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $phone)); ?>"><span>
-                                     <?php echo esc_html($phone); ?>
-                                 </span></a></li>
+                        <li><a href="<?php echo esc_url($btn_link); ?>"><span><?php echo esc_html($btn_text); ?></span> <i class="arrow flaticon-play-button-1"></i></a></li>
+                        <li><a href="tel:<?php echo esc_attr(preg_replace('/\s+/', '', $phone)); ?>"><span><?php echo esc_html($phone); ?></span></a></li>
                     </ul>
                 </div>
             </div>
         </div>
     </div>
 </section>
-<?php }
+<?php
+}
 
 /**
  * Style 2 for CTA
@@ -159,8 +156,12 @@ function mthan_section_cta_html_2($section_data) {
                 <div class="links-col col-xl-5 col-lg-6 col-md-12">
                     <div class="inner clearfix">
                         <ul class="clearfix">
+                            <?php if ($btn1_text && $btn1_link) { ?>
                             <li><a href="<?php echo esc_url($btn1_link); ?>" class="theme-btn btn-style-four"><span class="btn-title"><?php echo esc_html($btn1_text); ?> <i class="arrow flaticon-play-button-1"></i></span></a></li>
+                            <?php } ?>
+                            <?php if ($btn2_text && $btn2_link) { ?>
                             <li><a href="<?php echo esc_url($btn2_link); ?>" class="theme-btn btn-style-five"><span class="btn-title"><?php echo esc_html($btn2_text); ?> <i class="arrow flaticon-play-button-1"></i></span></a></li>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
