@@ -49,16 +49,16 @@ function mthan_section_team_options()
             'max'    => 4,
             'fields' => array(
                 array(
+                    'id'    => 'name',
+                    'type'  => 'text',
+                    'title' => 'Name',
+                ),
+                array(
                     'id'      => 'image',
                     'type'    => 'media',
                     'library' => 'image',
                     'preview' => false,
                     'title'   => 'Member Image',
-                ),
-                array(
-                    'id'    => 'name',
-                    'type'  => 'text',
-                    'title' => 'Name',
                 ),
                 array(
                     'id'    => 'designation',
