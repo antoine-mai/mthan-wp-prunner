@@ -138,9 +138,9 @@ function mthan_section_testimonials_html($section_data)
         return;
     }
 
-    $sec_title    = !empty($section_data['testi_sec_title'])              ? $section_data['testi_sec_title']              : 'What Our Clients Say';
-    $sec_subtitle = !empty($section_data['testi_sec_subtitle'])           ? $section_data['testi_sec_subtitle']           : 'Our Testimonials';
-    $sec_desc     = !empty($section_data['testi_sec_desc'])               ? $section_data['testi_sec_desc']               : '';
+    $sec_title    = !empty($section_data['testi_sec_title'])              ? $section_data['testi_sec_title']              : 'Guarantee Success';
+    $sec_subtitle = !empty($section_data['testi_sec_subtitle'])           ? $section_data['testi_sec_subtitle']           : 'Testimonials';
+    $sec_desc     = !empty($section_data['testi_sec_desc'])               ? $section_data['testi_sec_desc']               : 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.';
     $testimonials = !empty($section_data['testimonials_repeater'])  ? $section_data['testimonials_repeater']  : array();
 
     $fallback_imgs = array(
