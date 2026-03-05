@@ -23,7 +23,7 @@
             </div>
             <ul>
                 <?php
-$categories = get_categories(array('orderby' => 'count', 'order' => 'DESC', 'hide_empty' => true));
+$categories = get_categories(array('orderby' => 'count', 'order' => 'DESC', 'hide_empty' => true, 'exclude' => get_cat_ID('Uncategorized')));
 foreach ($categories as $cat):
     $active = (is_category($cat->term_id)) ? ' class="active"' : '';
 ?>
