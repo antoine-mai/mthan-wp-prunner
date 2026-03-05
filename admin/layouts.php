@@ -18,8 +18,19 @@ CSF::createSection($prefix, array(
                     'title' => 'Main Layout',
                     'icon' => 'fas fa-home',
                     'fields' => array(
-                            array(
-                            'type' => 'subheading',
+                        array(
+                            'id'      => 'main_layout_sidebar',
+                            'type'    => 'image_select',
+                            'title'   => 'Main Sidebar',
+                            'options' => array(
+                                'full-width'    => get_template_directory_uri() . '/incs/codestar/assets/images/layout/no-sidebar.png',
+                                'left-sidebar'  => get_template_directory_uri() . '/incs/codestar/assets/images/layout/left-sidebar.png',
+                                'right-sidebar' => get_template_directory_uri() . '/incs/codestar/assets/images/layout/right-sidebar.png',
+                            ),
+                            'default' => 'full-width',
+                        ),
+                        array(
+                            'type'    => 'subheading',
                             'content' => 'Before Content',
                         ),
                             array(
@@ -62,8 +73,19 @@ CSF::createSection($prefix, array(
                     'title' => 'Blog Layout',
                     'icon' => 'fas fa-blog',
                     'fields' => array(
-                            array(
-                            'type' => 'subheading',
+                        array(
+                            'id'      => 'blog_layout_sidebar',
+                            'type'    => 'image_select',
+                            'title'   => 'Blog Sidebar',
+                            'options' => array(
+                                'full-width'    => get_template_directory_uri() . '/incs/codestar/assets/images/layout/no-sidebar.png',
+                                'left-sidebar'  => get_template_directory_uri() . '/incs/codestar/assets/images/layout/left-sidebar.png',
+                                'right-sidebar' => get_template_directory_uri() . '/incs/codestar/assets/images/layout/right-sidebar.png',
+                            ),
+                            'default' => 'right-sidebar',
+                        ),
+                        array(
+                            'type'    => 'subheading',
                             'content' => 'Before Content',
                         ),
                             array(

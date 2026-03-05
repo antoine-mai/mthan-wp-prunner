@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 get_header();
-mthan_render_global_sections('before', 'main');
+mthan_render_global_sections('before', 'blog');
 mthan_render_page_sections('before');
 
 // Blog post banner (replaces the generic page-banner for single posts)
@@ -208,5 +208,5 @@ if (have_posts()) {
 
 <?php
 mthan_render_page_sections('after');
-mthan_render_global_sections('after', 'main');
+mthan_render_global_sections('after', 'blog');
 get_footer();

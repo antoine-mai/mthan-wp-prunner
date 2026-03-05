@@ -3,10 +3,6 @@
  * Returns the CSF field definitions for the cta section instance.
  * @return array
  */
-/**
- * Returns the CSF field definitions for the cta section instance.
- * @return array
- */
 function mthan_section_cta_options()
 {
     return array(

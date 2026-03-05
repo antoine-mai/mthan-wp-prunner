@@ -66,16 +66,15 @@ if (class_exists('CSF')) {
         'fields' => array(
 
                 array(
-                'id' => 'page_layout',
+                'id' => 'page_layout_type',
                 'type' => 'select',
-                'title' => 'Page Layout',
+                'title' => 'Layout Type',
                 'options' => array(
-                    'default' => 'Default',
-                    'full-width' => 'Full Width',
-                    'left-sidebar' => 'Left Sidebar',
-                    'right-sidebar' => 'Right Sidebar',
+                    'main'    => 'Default Layout (Main)',
+                    'blog'    => 'Blog Layout',
+                    'service' => 'Service Layout',
                 ),
-                'default' => 'default',
+                'default' => 'main',
             ),
 
                 array(

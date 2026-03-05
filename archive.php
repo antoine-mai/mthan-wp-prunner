@@ -1,5 +1,8 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
-get_header(); ?>
+get_header();
+mthan_render_global_sections('before', 'blog');
+mthan_render_page_sections('before');
+?>
 
 <main id="site-content">
     <h1><?php the_archive_title(); ?></h1>
@@ -12,4 +15,7 @@ get_header(); ?>
 <?php endif; ?>
 </main>
 
-<?php get_footer(); ?>
+<?php 
+mthan_render_page_sections('after');
+mthan_render_global_sections('after', 'blog');
+get_footer(); ?>

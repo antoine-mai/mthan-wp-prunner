@@ -158,11 +158,35 @@ function mthan_render_global_sections($position = 'before', $page_type = 'main')
 }
 
 /**
+ * Get the current layout type (main, blog, service)
+ */
+function mthan_get_layout_type()
+{
+    if (is_singular('post')) {
+        return 'blog'; // Posts default to blog layout
+    }
+
+    if (is_page()) {
+        $meta      = get_post_meta(get_the_ID(), 'mthan_page_options', true);
+        $type      = !empty($meta['page_layout_type']) ? $meta['page_layout_type'] : 'main';
+        return $type;
+    }
+
+    if (is_home() || is_archive() || is_search()) {
+        return 'blog';
+    }
+
+    return 'main';
+}
+
+/**
  * Render per-page/post sections from the page/post metabox.
  */
 function mthan_render_page_sections($position = 'before')
 {
-    if (!is_singular()) { return; }
+    if (!is_singular()) {
+        return;
+    }
     $meta_key  = is_page() ? 'mthan_page_options' : 'mthan_post_options';
     $post_meta = get_post_meta(get_the_ID(), $meta_key, true);
 
@@ -174,7 +198,12 @@ function mthan_render_page_sections($position = 'before')
         }
     }
 
-    $group_key = (is_page() ? 'page' : 'post') . '_' . $position . '_content';
+    // Logic for determining which meta group to use
+    // For posts, we use 'post_before/after_content'
+    // For pages, we use 'page_before/after_content'
+    $group_prefix = is_page() ? 'page' : 'post';
+    $group_key    = $group_prefix . '_' . $position . '_content';
+
     $items     = !empty($post_meta[$group_key]) && is_array($post_meta[$group_key])
         ? $post_meta[$group_key]
         : array();
