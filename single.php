@@ -199,7 +199,7 @@ if (have_posts()) {
 
             <!--Sidebar Side-->
             <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
-                <?php get_sidebar(); ?>
+                <?php get_template_part('template-parts/sidebar', 'blog'); ?>
             </div>
 
         </div>
