@@ -63,6 +63,17 @@ CSF::createSection($prefix, array(
                     'icon' => 'fas fa-blog',
                     'fields' => array(
                         array(
+                            'id'      => 'blog_archive_template',
+                            'type'    => 'select',
+                            'title'   => 'Archive Template',
+                            'options' => array(
+                                'grid-2' => 'Grid 2 Columns',
+                                'grid-3' => 'Grid 3 Columns',
+                                'list'   => 'List View',
+                            ),
+                            'default' => 'grid-2',
+                        ),
+                        array(
                             'type'    => 'subheading',
                             'content' => 'Before Content',
                         ),

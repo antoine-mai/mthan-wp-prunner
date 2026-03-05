@@ -10,11 +10,29 @@ mthan_render_page_sections('before');
             <!--Content Side-->
             <div class="content-side col-lg-8 col-md-12 col-sm-12">
                 <div class="blog-content">
-                    <?php if (have_posts()) : while (have_posts()) : the_post();
-                        get_template_part('template-parts/content');
-                    endwhile; else : ?>
-                        <p><?php esc_html_e('No posts found.', 'mthan'); ?></p>
-                    <?php endif; ?>
+                    <?php 
+                    $theme_options = get_option('mthan_theme_options');
+                    $archive_template = !empty($theme_options['blog_archive_template']) ? $theme_options['blog_archive_template'] : 'grid-2';
+                    
+                    $row_class = 'row clearfix';
+                    $item_class = 'col-lg-6 col-md-12 col-sm-12'; // Default grid-2
+
+                    if ($archive_template == 'grid-3') {
+                        $item_class = 'col-lg-4 col-md-6 col-sm-12';
+                    } elseif ($archive_template == 'list') {
+                        $row_class = 'list-view';
+                        $item_class = 'col-12';
+                    }
+                    ?>
+                    <div class="<?php echo esc_attr($row_class); ?>">
+                        <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+                            <div class="news-block <?php echo esc_attr($item_class); ?> hvr-float-shadow">
+                                <?php get_template_part('template-parts/content'); ?>
+                            </div>
+                        <?php endwhile; else : ?>
+                            <p><?php esc_html_e('No posts found.', 'mthan'); ?></p>
+                        <?php endif; ?>
+                    </div>
                 </div>
             </div>
             <!--Sidebar Side-->
