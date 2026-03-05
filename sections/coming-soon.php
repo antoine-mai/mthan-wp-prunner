@@ -8,16 +8,20 @@ function mthan_section_coming_soon_options()
 {
     return array(
         array(
-            'id'    => 'cs_bg',
-            'type'  => 'media',
-            'title' => 'Background Image',
+            'id'      => 'cs_bg',
+            'type'    => 'media',
             'library' => 'image',
+            'preview' => false,
+            'title'   => 'Background Image',
+            'default' => array('url' => get_template_directory_uri() . '/assets/images/background/bg-coming-soon.jpg')
         ),
         array(
-            'id'    => 'cs_logo',
-            'type'  => 'media',
-            'title' => 'Logo',
+            'id'      => 'cs_logo',
+            'type'    => 'media',
             'library' => 'image',
+            'preview' => false,
+            'title'   => 'Logo',
+            'default' => array('url' => get_template_directory_uri() . '/assets/images/white-logo.png')
         ),
         array(
             'id'    => 'cs_big_text',

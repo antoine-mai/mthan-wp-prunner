@@ -18,15 +18,19 @@ function mthan_section_facts_options()
             'default' => '1',
         ),
         array(
-            'id'    => 'bg_image',
-            'type'  => 'upload',
-            'title' => 'Background Image',
+            'id'      => 'bg_image',
+            'type'    => 'media',
+            'library' => 'image',
+            'preview' => false,
+            'title'   => 'Background Image',
             'dependency' => array('style', '==', '1'),
+            'default' => array('url' => get_template_directory_uri() . '/assets/images/background/image-6.jpg')
         ),
         array(
             'id'     => 'facts_repeater',
             'type'   => 'group',
             'title'  => 'Fact Blocks',
+            'max'    => 4,
             'fields' => array(
                 array(
                     'id'    => 'title',

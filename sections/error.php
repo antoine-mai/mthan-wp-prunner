@@ -8,16 +8,20 @@ function mthan_section_error_options()
 {
     return array(
         array(
-            'id'    => 'error_bg',
-            'type'  => 'media',
-            'title' => 'Background Image',
+            'id'      => 'error_bg',
+            'type'    => 'media',
             'library' => 'image',
+            'preview' => false,
+            'title'   => 'Background Image',
+            'default' => array('url' => get_template_directory_uri() . '/assets/images/background/bg-404.jpg')
         ),
         array(
-            'id'    => 'error_title_img',
-            'type'  => 'media',
-            'title' => 'Error Image (e.g. 404)',
+            'id'      => 'error_title_img',
+            'type'    => 'media',
             'library' => 'image',
+            'preview' => false,
+            'title'   => 'Error Image (e.g. 404)',
+            'default' => array('url' => get_template_directory_uri() . '/assets/images/resource/404-image.png')
         ),
         array(
             'id'    => 'error_heading',
