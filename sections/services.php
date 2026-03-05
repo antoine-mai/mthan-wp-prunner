@@ -8,51 +8,51 @@ function mthan_section_services_options()
 {
     return array(
             array(
-            'id' => 'sec_subtitle',
+            'id' => 'services_sec_subtitle',
             'type' => 'text',
             'title' => 'Subtitle',
             'default' => 'Our Solutions',
         ),
             array(
-            'id' => 'sec_title',
+            'id' => 'services_sec_title',
             'type' => 'text',
             'title' => 'Title',
             'default' => 'Main Services',
         ),
             array(
-            'id' => 'sec_text',
+            'id' => 'services_sec_text',
             'type' => 'textarea',
             'title' => 'Description',
             'default' => 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.',
         ),
             array(
-            'id' => 'services_repeater',
+            'id' => 'services_list',
             'type' => 'group',
             'title' => 'Services List',
             'fields' => array(
                     array(
-                    'id' => 'image',
+                    'id' => 'services_image',
                     'type' => 'upload',
                     'title' => 'Image',
                 ),
                     array(
-                    'id' => 'icon',
+                    'id' => 'services_icon',
                     'type' => 'text',
                     'title' => 'Icon Class (Flaticon)',
                     'default' => 'flaticon-hedge',
                 ),
                     array(
-                    'id' => 'title',
+                    'id' => 'services_title',
                     'type' => 'text',
                     'title' => 'Title',
                 ),
                     array(
-                    'id' => 'text',
+                    'id' => 'services_text',
                     'type' => 'textarea',
                     'title' => 'Description',
                 ),
                     array(
-                    'id' => 'link',
+                    'id' => 'services_link',
                     'type' => 'text',
                     'title' => 'Link',
                     'default' => '#',
@@ -60,19 +60,19 @@ function mthan_section_services_options()
             ),
             'default' => array(
                     array(
-                    'title' => 'Spring Cleanup',
-                    'text' => 'Indignation and dislike men who are so beguiled demoralized ...',
-                    'icon' => 'flaticon-hedge',
+                    'services_title' => 'Spring Cleanup',
+                    'services_text' => 'Indignation and dislike men who are so beguiled demoralized ...',
+                    'services_icon' => 'flaticon-hedge',
                 ),
                     array(
-                    'title' => 'Garden Care',
-                    'text' => 'Frequently occur that pleasures have to berepudiated & accepted ...',
-                    'icon' => 'flaticon-wheelbarrow',
+                    'services_title' => 'Garden Care',
+                    'services_text' => 'Frequently occur that pleasures have to berepudiated & accepted ...',
+                    'services_icon' => 'flaticon-wheelbarrow',
                 ),
                     array(
-                    'title' => 'Water Fountain',
-                    'text' => 'Duty through weakness of will which is the same as saying through ...',
-                    'icon' => 'flaticon-sprinkler',
+                    'services_title' => 'Water Fountain',
+                    'services_text' => 'Duty through weakness of will which is the same as saying through ...',
+                    'services_icon' => 'flaticon-sprinkler',
                 ),
             ),
         ),
@@ -86,10 +86,10 @@ function mthan_section_services_options()
  **/
 function mthan_section_services_html($section_data)
 {
-    $sec_title = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Main Services';
-    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Solutions';
-    $sec_text = !empty($section_data['sec_text']) ? $section_data['sec_text'] : '';
-    $services_repeater = !empty($section_data['services_repeater']) ? $section_data['services_repeater'] : array();
+    $sec_title = !empty($section_data['services_sec_title']) ? $section_data['services_sec_title'] : 'Main Services';
+    $sec_subtitle = !empty($section_data['services_sec_subtitle']) ? $section_data['services_sec_subtitle'] : 'Our Solutions';
+    $sec_text = !empty($section_data['services_sec_text']) ? $section_data['services_sec_text'] : '';
+    $services_repeater = !empty($section_data['services_list']) ? $section_data['services_list'] : array();
 ?>
 <section class="main-services">
     <div class="auto-container">
@@ -122,11 +122,11 @@ function mthan_section_services_html($section_data)
 
         <div class="row clearfix">
             <?php foreach ($services_repeater as $service):
-        $img = !empty($service['image']['url']) ? $service['image']['url'] : '';
-        $icon = !empty($service['icon']) ? $service['icon'] : 'flaticon-hedge';
-        $title = !empty($service['title']) ? $service['title'] : '';
-        $text = !empty($service['text']) ? $service['text'] : '';
-        $link = !empty($service['link']) ? $service['link'] : '#';
+        $img = !empty($service['services_image']['url']) ? $service['services_image']['url'] : '';
+        $icon = !empty($service['services_icon']) ? $service['services_icon'] : 'flaticon-hedge';
+        $title = !empty($service['services_title']) ? $service['services_title'] : 'Service Title';
+        $text = !empty($service['services_text']) ? $service['services_text'] : 'Service text description here ...';
+        $link = !empty($service['services_link']) ? $service['services_link'] : '#';
 ?>
             <!--Service block-->
             <div class="service-block col-lg-4 col-md-6 col-sm-12">
