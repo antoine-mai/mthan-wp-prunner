@@ -22,6 +22,7 @@ function mthan_section_what_we_do_options()
             'id' => 'tabs_repeater',
             'type' => 'group',
             'title' => 'Services Tabs',
+            'max' => 5,
             'fields' => array(
                     array(
                     'id' => 'nav_title',
