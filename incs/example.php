@@ -1,2 +1,0 @@
-<?php
-// Example include file

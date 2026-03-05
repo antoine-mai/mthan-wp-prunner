@@ -4,14 +4,16 @@
  * All function definitions live in incs/.
  */
 
-// ── Core framework & options ───────────────────────────────────────
+// ── Core framework ─────────────────────────────────────────────────
 require_once get_template_directory() . '/incs/codestar/autoload.php';
-require_once get_template_directory() . '/incs/theme-options.php';
 
-// ── Theme helpers ─────────────────────────────────────────────────
-require_once get_template_directory() . '/incs/theme-setup.php';
+// ── Theme helpers (must load BEFORE theme-options; layouts.php calls these) ──
 require_once get_template_directory() . '/incs/section-helpers.php';
+require_once get_template_directory() . '/incs/theme-setup.php';
 require_once get_template_directory() . '/incs/admin-helpers.php';
+
+// ── Theme Options (loads admin/layouts.php which calls mthan_get_available_base_sections) ──
+require_once get_template_directory() . '/incs/theme-options.php';
 
 // ── Section files (registers mthan_section_*_html / *_options fns) ─
 add_action('after_setup_theme', function () {
