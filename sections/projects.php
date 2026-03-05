@@ -136,16 +136,16 @@ function mthan_section_projects_html($section_data) {
  * Style 1 Rendering (Carousel)
  */
 function mthan_section_projects_html_1($section_data) {
-    $sec_title     = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Recent Gallery';
-    $sec_subtitle  = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Projects';
-    $repeater      = isset($section_data['projects_repeater']) ? $section_data['projects_repeater'] : array();
-    $lower         = isset($section_data['lower_text']) ? $section_data['lower_text'] : '';
-    $all_link      = isset($section_data['view_all_link']) ? $section_data['view_all_link'] : '#';
+    $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Recent Gallery';
+    $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Projects';
+    $repeater      = !empty($section_data['projects_repeater']) ? $section_data['projects_repeater'] : array();
+    $lower         = !empty($section_data['lower_text']) ? $section_data['lower_text'] : '';
+    $all_link      = !empty($section_data['view_all_link']) ? $section_data['view_all_link'] : '#';
 ?>
 <section class="projects-section">
         <div class="auto-container">
             <div class="sec-title">
-                <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                 <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                 <h2><?php echo esc_html($sec_title); ?></h2>
             </div>
@@ -154,15 +154,15 @@ function mthan_section_projects_html_1($section_data) {
                 <div class="project-carousel owl-theme owl-carousel">
                     <?php foreach($repeater as $project): 
                         $img   = !empty($project['image']['url']) ? $project['image']['url'] : '';
-                        $cat   = isset($project['cat_label']) ? $project['cat_label'] : '';
-                        $title = isset($project['title']) ? $project['title'] : '';
-                        $link  = isset($project['link']) ? $project['link'] : '#';
+                        $cat   = !empty($project['cat_label']) ? $project['cat_label'] : '';
+                        $title = !empty($project['title']) ? $project['title'] : '';
+                        $link  = !empty($project['link']) ? $project['link'] : '#';
                     ?>
                     <!--Project Block-->
                     <div class="project-block">
                         <div class="inner-box">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" title="<?php echo esc_attr($title); ?>">
                             </div>
                             <div class="hover-box">
                                 <div class="hvr-content">
@@ -186,16 +186,16 @@ function mthan_section_projects_html_1($section_data) {
  * Style 2 Rendering (Masonry Grid)
  */
 function mthan_section_projects_html_2($section_data) {
-    $sec_title     = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle  = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $repeater      = isset($section_data['projects_repeater']) ? $section_data['projects_repeater'] : array();
-    $all_link      = isset($section_data['view_all_link']) ? $section_data['view_all_link'] : '#';
+    $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Recent Gallery';
+    $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Projects';
+    $repeater      = !empty($section_data['projects_repeater']) ? $section_data['projects_repeater'] : array();
+    $all_link      = !empty($section_data['view_all_link']) ? $section_data['view_all_link'] : '#';
 ?>
 <section class="projects-two">
         <div class="auto-container">
             <div class="upper-box clearfix">
                 <div class="sec-title">
-                    <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                    <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                     <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                     <h2><?php echo esc_html($sec_title); ?></h2>
                 </div>
@@ -208,17 +208,17 @@ function mthan_section_projects_html_2($section_data) {
                 <div class="row masonry-container clearfix">
                     <?php foreach($repeater as $project): 
                         $img      = !empty($project['image']['url']) ? $project['image']['url'] : '';
-                        $cat      = isset($project['cat_label']) ? $project['cat_label'] : '';
-                        $title    = isset($project['title']) ? $project['title'] : '';
-                        $link     = isset($project['link']) ? $project['link'] : '#';
-                        $is_large = isset($project['is_large']) ? $project['is_large'] : false;
+                        $cat      = !empty($project['cat_label']) ? $project['cat_label'] : '';
+                        $title    = !empty($project['title']) ? $project['title'] : '';
+                        $link     = !empty($project['link']) ? $project['link'] : '#';
+                        $is_large = !empty($project['is_large']) ? $project['is_large'] : false;
                         $col_cls  = $is_large ? 'col-lg-6 col-md-12 col-sm-12' : 'column-width col-lg-3 col-md-6 col-sm-12';
                     ?>
                     <!--Project Block-->
                     <div class="project-block-two masonry-item <?php echo esc_attr($col_cls); ?>">
                         <div class="inner-box">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" title="<?php echo esc_attr($title); ?>">
                             </div>
                             <div class="hover-box">
                                 <div class="hvr-content">
@@ -240,11 +240,11 @@ function mthan_section_projects_html_2($section_data) {
  * Style 3 Rendering (Filtered Gallery)
  */
 function mthan_section_projects_html_3($section_data) {
-    $sec_title        = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Recent Gallery';
-    $sec_subtitle     = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Projects';
-    $sec_text         = isset($section_data['sec_text']) ? $section_data['sec_text'] : '';
-    $filters_repeater = isset($section_data['filters_repeater']) ? $section_data['filters_repeater'] : array();
-    $gallery_repeater = isset($section_data['projects_repeater']) ? $section_data['projects_repeater'] : array();
+    $sec_title        = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Recent Gallery';
+    $sec_subtitle     = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Projects';
+    $sec_text         = !empty($section_data['sec_text']) ? $section_data['sec_text'] : '';
+    $filters_repeater = !empty($section_data['filters_repeater']) ? $section_data['filters_repeater'] : array();
+    $gallery_repeater = !empty($section_data['projects_repeater']) ? $section_data['projects_repeater'] : array();
 ?>
 <section class="gallery-section">
         <div class="auto-container">
@@ -252,7 +252,7 @@ function mthan_section_projects_html_3($section_data) {
                 <div class="row clearfix">
                     <div class="left-col col-xl-6 col-lg-12 col-md-12">
                         <div class="sec-title alternate">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-four.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                         </div>
@@ -271,8 +271,8 @@ function mthan_section_projects_html_3($section_data) {
                     <ul class="filter-tabs filter-btns clearfix">
                         <li class="active filter" data-role="button" data-filter="all">All</li>
                         <?php foreach($filters_repeater as $filter): 
-                            $label = isset($filter['label']) ? $filter['label'] : '';
-                            $f_cls = isset($filter['filter_class']) ? $filter['filter_class'] : '';
+                            $label = !empty($filter['label']) ? $filter['label'] : '';
+                            $f_cls = !empty($filter['filter_class']) ? $filter['filter_class'] : '';
                         ?>
                         <li class="filter" data-role="button" data-filter=".<?php echo esc_attr($f_cls); ?>"><?php echo esc_html($label); ?></li>
                         <?php endforeach; ?>
@@ -281,16 +281,16 @@ function mthan_section_projects_html_3($section_data) {
                 <div class="filter-list row">
                     <?php foreach($gallery_repeater as $item): 
                         $img        = !empty($item['image']['url']) ? $item['image']['url'] : '';
-                        $title      = isset($item['title']) ? $item['title'] : '';
-                        $cat_label  = isset($item['cat_label']) ? $item['cat_label'] : '';
-                        $link       = isset($item['link']) ? $item['link'] : '#';
-                        $f_classes  = isset($item['filter_classes']) ? $item['filter_classes'] : '';
+                        $title      = !empty($item['title']) ? $item['title'] : '';
+                        $cat_label  = !empty($item['cat_label']) ? $item['cat_label'] : '';
+                        $link       = !empty($item['link']) ? $item['link'] : '#';
+                        $f_classes  = !empty($item['filter_classes']) ? $item['filter_classes'] : '';
                     ?>
                     <!-- Gallery Item -->
                     <div class="gallery-item mix all <?php echo esc_attr($f_classes); ?> col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" title="<?php echo esc_attr($title); ?>">
                             </div>
                             <div class="hover-box">
                                 <div class="hvr-content">

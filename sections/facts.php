@@ -84,7 +84,7 @@ function mthan_section_facts_html_1($section_data) {
     $bg_image = isset($section_data['bg_image']) ? $section_data['bg_image'] : '';
     $repeater = isset($section_data['facts_repeater']) ? $section_data['facts_repeater'] : array();
     
-    $bg_url = !empty($bg_image['url']) ? $bg_image['url'] : get_template_directory_uri() . '/images/background/image-6.jpg';
+    $bg_url = !empty($bg_image['url']) ? $bg_image['url'] : get_template_directory_uri() . '/assets/images/background/image-6.jpg';
 ?>
 <section class="facts-section">
     <div class="image-layer" style="background-image: url(<?php echo esc_url($bg_url); ?>);"></div>

@@ -183,7 +183,7 @@ function mthan_section_product_details_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_product_details_html($section_data) { 
-    $image      = !empty($section_data['product_image']['url']) ? $section_data['product_image']['url'] : get_template_directory_uri() . '/images/resource/shop/10.jpg';
+    $image      = !empty($section_data['product_image']['url']) ? $section_data['product_image']['url'] : get_template_directory_uri() . '/assets/images/resource/shop/10.jpg';
     $title      = !empty($section_data['product_title']) ? $section_data['product_title'] : 'Rubber Glove';
     $rating     = !empty($section_data['product_rating']) ? (int)$section_data['product_rating'] : 5;
     $price      = !empty($section_data['product_price']) ? $section_data['product_price'] : '$19.00';
@@ -201,7 +201,7 @@ function mthan_section_product_details_html($section_data) {
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
                     <figure class="image">
                         <a href="<?php echo esc_url($image); ?>" class="lightbox-image" data-fancybox="gallery">
-                            <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>">
+                            <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" title="<?php echo esc_attr($title); ?>">
                         </a>
                     </figure>
                 </div>
@@ -273,12 +273,13 @@ function mthan_section_product_details_html($section_data) {
                         <div class="customer-comment">
                             <div class="row clearfix">
                                 <?php foreach($reviews as $rev): 
-                                    $rev_img = !empty($rev['author_image']['url']) ? $rev['author_image']['url'] : get_template_directory_uri() . '/images/resource/author-thumb-8.jpg';
+                                    $rev_img = !empty($rev['author_image']['url']) ? $rev['author_image']['url'] : get_template_directory_uri() . '/assets/images/resource/author-thumb-8.jpg';
                                     $rev_rating = !empty($rev['rating']) ? (int)$rev['rating'] : 5;
+                                    $rev_alt = !empty($rev['author_name']) ? $rev['author_name'] : 'Customer Avatar';
                                 ?>
                                 <div class="comment-col col-lg-6 col-ms-12 col-sm-12">
                                     <div class="comment">
-                                        <figure class="customer-thumb"><img src="<?php echo esc_url($rev_img); ?>" alt=""></figure>
+                                        <figure class="customer-thumb"><img src="<?php echo esc_url($rev_img); ?>" alt="<?php echo esc_attr($rev_alt); ?>" title="<?php echo esc_attr($rev_alt); ?>"></figure>
                                         <div class="info clearfix">
                                             <h4><?php echo esc_html($rev['author_name']); ?></h4>
                                             <span><?php echo esc_html($rev['date']); ?></span>
@@ -345,12 +346,13 @@ function mthan_section_product_details_html($section_data) {
             <h3>Related Products</h3>
             <div class="row clearfix">
                 <?php foreach($related as $rel): 
-                    $rel_img = !empty($rel['image']['url']) ? $rel['image']['url'] : get_template_directory_uri() . '/images/resource/shop/1.jpg';
+                    $rel_img = !empty($rel['image']['url']) ? $rel['image']['url'] : get_template_directory_uri() . '/assets/images/resource/shop/1.jpg';
+                    $rel_alt = !empty($rel['title']) ? $rel['title'] : 'Related Product';
                 ?>
                 <div class="shop-item col-xl-3 col-lg-4 col-md-6 col-sm-12 wow fadeInUp">
                     <div class="inner-box">
                         <div class="image">
-                            <a href="<?php echo esc_url($rel['link']); ?>"><img src="<?php echo esc_url($rel_img); ?>" alt=""></a>
+                            <a href="<?php echo esc_url($rel['link']); ?>"><img src="<?php echo esc_url($rel_img); ?>" alt="<?php echo esc_attr($rel_alt); ?>" title="<?php echo esc_attr($rel_alt); ?>"></a>
                         </div>
                         <div class="options">
                             <ul class="option-box clearfix">

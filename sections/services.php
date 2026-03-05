@@ -1,4 +1,5 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
+
 /**
  * Returns the CSF field definitions for the services section instance.
  * @return array
@@ -85,10 +86,10 @@ function mthan_section_services_options()
  **/
 function mthan_section_services_html($section_data)
 {
-    $sec_title = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Main Services';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Solutions';
-    $sec_text = isset($section_data['sec_text']) ? $section_data['sec_text'] : '';
-    $services_repeater = isset($section_data['services_repeater']) ? $section_data['services_repeater'] : array();
+    $sec_title = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Main Services';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Solutions';
+    $sec_text = !empty($section_data['sec_text']) ? $section_data['sec_text'] : '';
+    $services_repeater = !empty($section_data['services_repeater']) ? $section_data['services_repeater'] : array();
 ?>
 <section class="main-services">
     <div class="auto-container">
@@ -97,7 +98,9 @@ function mthan_section_services_html($section_data)
                 <div class="left-col col-xl-6 col-lg-12 col-md-12">
                     <div class="sec-title alternate">
                         <div class="title-icon"><span class="icon"><img
-                                    src="/wp-content/assets/images/icons/leaf-four.png" alt="" title=""></span></div>
+                                    src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png"
+                                    alt="<?php echo esc_attr($sec_subtitle); ?>"
+                                    title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                         <div class="subtitle">
                             <?php echo esc_html($sec_subtitle); ?>
                         </div>
@@ -119,18 +122,19 @@ function mthan_section_services_html($section_data)
 
         <div class="row clearfix">
             <?php foreach ($services_repeater as $service):
-        $img = isset($service['image']) ? $service['image'] : '';
-        $icon = isset($service['icon']) ? $service['icon'] : 'flaticon-hedge';
-        $title = isset($service['title']) ? $service['title'] : '';
-        $text = isset($service['text']) ? $service['text'] : '';
-        $link = isset($service['link']) ? $service['link'] : '#';
+        $img = !empty($service['image']['url']) ? $service['image']['url'] : '';
+        $icon = !empty($service['icon']) ? $service['icon'] : 'flaticon-hedge';
+        $title = !empty($service['title']) ? $service['title'] : '';
+        $text = !empty($service['text']) ? $service['text'] : '';
+        $link = !empty($service['link']) ? $service['link'] : '#';
 ?>
             <!--Service block-->
             <div class="service-block col-lg-4 col-md-6 col-sm-12">
                 <div class="inner-box">
                     <div class="upper">
                         <div class="image-box">
-                            <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>">
+                            <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>"
+                                title="<?php echo esc_attr($title); ?>">
                         </div>
                         <div class="hvr-icon"><span class="<?php echo esc_attr($icon); ?>"></span></div>
                     </div>

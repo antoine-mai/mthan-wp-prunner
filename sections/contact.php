@@ -121,10 +121,10 @@ function mthan_section_contact_html($section_data) {
  * Style 1 Rendering (Image Right)
  */
 function mthan_section_contact_html_1($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $discount     = isset($section_data['discount_text']) ? $section_data['discount_text'] : '';
-    $subtext      = isset($section_data['sub_text']) ? $section_data['sub_text'] : '';
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Contact Us';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Get in Touch';
+    $discount     = !empty($section_data['discount_text']) ? $section_data['discount_text'] : '';
+    $subtext      = !empty($section_data['sub_text']) ? $section_data['sub_text'] : '';
 ?>
 <section class="contact-section">
         <div class="pattern-layer"></div>
@@ -134,7 +134,7 @@ function mthan_section_contact_html_1($section_data) {
                 <div class="text-column col-lg-8 col-md-12 col-sm-12">
                     <div class="inner">
                         <div class="sec-title">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                             <div class="sub-text"><?php echo esc_html($subtext); ?></div>
@@ -198,7 +198,7 @@ function mthan_section_contact_html_1($section_data) {
                 <div class="image-column col-lg-4 col-md-12 col-sm-12">
                     <div class="inner">
                         <div class="image-box clearfix">
-                            <figure class="image"><img src="/wp-content/assets/images/resource/anim-image-2.png" alt="" title=""></figure>
+                            <figure class="image"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/anim-image-2.png" alt="<?php echo esc_attr($sec_title); ?>" title="<?php echo esc_attr($sec_title); ?>"></figure>
                         </div>
                     </div>
                 </div>
@@ -212,12 +212,12 @@ function mthan_section_contact_html_1($section_data) {
  * Style 2 Rendering (Map Left)
  */
 function mthan_section_contact_html_2($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $subtext      = isset($section_data['sub_text']) ? $section_data['sub_text'] : '';
-    $map_iframe   = isset($section_data['map_iframe']) ? $section_data['map_iframe'] : '';
-    $addr         = isset($section_data['info_address']) ? $section_data['info_address'] : '';
-    $phone        = isset($section_data['info_phone']) ? $section_data['info_phone'] : '';
-    $email        = isset($section_data['info_email']) ? $section_data['info_email'] : '';
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Contact Us';
+    $subtext      = !empty($section_data['sub_text']) ? $section_data['sub_text'] : '';
+    $map_iframe   = !empty($section_data['map_iframe']) ? $section_data['map_iframe'] : '';
+    $addr         = !empty($section_data['info_address']) ? $section_data['info_address'] : '';
+    $phone        = !empty($section_data['info_phone']) ? $section_data['info_phone'] : '';
+    $email        = !empty($section_data['info_email']) ? $section_data['info_email'] : '';
 ?>
 <section class="contact-two">
         <div class="pattern-layer"></div>
@@ -319,12 +319,12 @@ function mthan_section_contact_html_2($section_data) {
  * Style 3 Rendering (Split Content)
  */
 function mthan_section_contact_html_3($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $office_text  = isset($section_data['main_office_text']) ? $section_data['main_office_text'] : '';
-    $hours        = isset($section_data['working_hours']) ? explode("\n", str_replace("\r", "", $section_data['working_hours'])) : array();
-    $bg_image     = isset($section_data['form_bg_image']) ? $section_data['form_bg_image'] : '';
-    $person_img   = isset($section_data['right_person_image']) ? $section_data['right_person_image'] : '';
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Contact Us';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Get in Touch';
+    $office_text  = !empty($section_data['main_office_text']) ? $section_data['main_office_text'] : '';
+    $hours        = !empty($section_data['working_hours']) ? explode("\n", str_replace("\r", "", $section_data['working_hours'])) : array();
+    $bg_image     = !empty($section_data['form_bg_image']['url']) ? $section_data['form_bg_image']['url'] : '';
+    $person_img   = !empty($section_data['right_person_image']['url']) ? $section_data['right_person_image']['url'] : '';
 ?>
 <section class="contact-three">
         <div class="outer-container">
@@ -335,7 +335,7 @@ function mthan_section_contact_html_3($section_data) {
                         <div class="top-icon"><span class="flaticon-internet"></span></div>
                         <div class="content-box">
                             <div class="sec-title">
-                                <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                                <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                                 <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                                 <h2><?php echo esc_html($sec_title); ?></h2>
                             </div>
@@ -383,11 +383,11 @@ function mthan_section_contact_html_3($section_data) {
                 <!--Form Col-->
                 <div class="form-col col-xl-6 col-lg-12 col-md-12 col-sm-12">
                     <div class="image-layer" style="background-image:url(<?php echo esc_url($bg_image); ?>);"></div>
-                    <div class="image-right"><img src="<?php echo esc_url($person_img); ?>" alt=""></div>
+                    <div class="image-right"><img src="<?php echo esc_url($person_img); ?>" alt="<?php echo esc_attr($sec_title); ?>" title="<?php echo esc_attr($sec_title); ?>"></div>
                     <div class="inner clearfix">
                         <div class="content-box">
                             <div class="sec-title">
-                                <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                                <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                                 <div class="subtitle">Drop a Line</div>
                                 <h2>Send Message Us</h2>
                             </div>

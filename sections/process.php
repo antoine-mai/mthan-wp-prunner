@@ -89,20 +89,20 @@ function mthan_section_process_html($section_data) {
  * Style 1 Rendering (Image Blocks)
  */
 function mthan_section_process_html_1($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $header_text  = isset($section_data['header_text']) ? $section_data['header_text'] : '';
-    $repeater     = isset($section_data['process_repeater']) ? $section_data['process_repeater'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+    $header_text  = !empty($section_data['header_text']) ? $section_data['header_text'] : '';
+    $repeater     = !empty($section_data['process_repeater']) ? $section_data['process_repeater'] : array();
 ?>
 <section class="work-process">
         <div class="round-pattern-layer"></div>
-        <div class="right-leaf"><img src="/wp-content/assets/images/resource/leaf-1.png" alt="" title=""></div>
+        <div class="right-leaf"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/leaf-1.png" alt="<?php echo esc_attr($sec_title); ?>" title="<?php echo esc_attr($sec_title); ?>"></div>
         <div class="auto-container">
             <div class="title-box">
                 <div class="row clearfix">
                     <div class="left-col col-xl-6 col-lg-12 col-md-12">
                         <div class="sec-title alternate">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-four.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                         </div>
@@ -116,17 +116,17 @@ function mthan_section_process_html_1($section_data) {
             <div class="process">
                 <div class="row clearfix">
                     <?php foreach($repeater as $item): 
-                        $title = isset($item['title']) ? $item['title'] : '';
-                        $step  = isset($item['step_label']) ? $item['step_label'] : '';
-                        $icon  = isset($item['icon']) ? $item['icon'] : '';
-                        $img   = isset($item['image']) ? $item['image'] : '';
-                        $text  = isset($item['text']) ? $item['text'] : '';
+                        $title = !empty($item['title']) ? $item['title'] : '';
+                        $step  = !empty($item['step_label']) ? $item['step_label'] : '';
+                        $icon  = !empty($item['icon']) ? $item['icon'] : '';
+                        $img   = !empty($item['image']['url']) ? $item['image']['url'] : '';
+                        $text  = !empty($item['text']) ? $item['text'] : '';
                     ?>
                     <!--Process Block-->
                     <div class="process-block col-xl-3 col-lg-3 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="" title="">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>" title="<?php echo esc_attr($title); ?>">
                                 <div class="hover-box">
                                     <div class="hvr-content">
                                         <div class="text"><?php echo esc_html($text); ?></div>
@@ -154,10 +154,10 @@ function mthan_section_process_html_1($section_data) {
  * Style 2 Rendering (Icon Blocks)
  */
 function mthan_section_process_html_2($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $header_text  = isset($section_data['header_text']) ? $section_data['header_text'] : '';
-    $repeater     = isset($section_data['process_repeater']) ? $section_data['process_repeater'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : '';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
+    $header_text  = !empty($section_data['header_text']) ? $section_data['header_text'] : '';
+    $repeater     = !empty($section_data['process_repeater']) ? $section_data['process_repeater'] : array();
 ?>
 <section class="work-process-two">
         <div class="auto-container">
@@ -165,7 +165,7 @@ function mthan_section_process_html_2($section_data) {
                 <div class="row clearfix">
                     <div class="left-col col-xl-6 col-lg-12 col-md-12">
                         <div class="sec-title alternate">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-four.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                         </div>
@@ -179,10 +179,10 @@ function mthan_section_process_html_2($section_data) {
             <div class="process">
                 <div class="row clearfix">
                     <?php foreach($repeater as $item): 
-                        $title = isset($item['title']) ? $item['title'] : '';
-                        $step  = isset($item['step_label']) ? $item['step_label'] : '';
-                        $icon  = isset($item['icon']) ? $item['icon'] : '';
-                        $text  = isset($item['text']) ? $item['text'] : '';
+                        $title = !empty($item['title']) ? $item['title'] : '';
+                        $step  = !empty($item['step_label']) ? $item['step_label'] : '';
+                        $icon  = !empty($item['icon']) ? $item['icon'] : '';
+                        $text  = !empty($item['text']) ? $item['text'] : '';
                     ?>
                     <!--Process Block-->
                     <div class="process-block-two col-xl-3 col-lg-6 col-md-6 col-sm-12">

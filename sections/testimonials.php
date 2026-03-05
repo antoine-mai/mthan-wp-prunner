@@ -109,10 +109,10 @@ function mthan_section_testimonials_html($section_data) {
         return;
     }
 
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $sec_desc     = isset($section_data['sec_desc']) ? $section_data['sec_desc'] : '';
-    $testimonials = isset($section_data['testimonials_repeater']) ? $section_data['testimonials_repeater'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'What Our Clients Say';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Testimonials';
+    $sec_desc     = !empty($section_data['sec_desc']) ? $section_data['sec_desc'] : '';
+    $testimonials = !empty($section_data['testimonials_repeater']) ? $section_data['testimonials_repeater'] : array();
 ?>
 <section class="testimonials-one alt-color">
     <div class="auto-container">
@@ -120,7 +120,7 @@ function mthan_section_testimonials_html($section_data) {
             <div class="row clearfix">
                 <div class="left-col col-xl-6 col-lg-12 col-md-12">
                     <div class="sec-title alternate">
-                        <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-four.png" alt="" title=""></span></div>
+                        <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                         <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                         <h2><?php echo esc_html($sec_title); ?></h2>
                     </div>
@@ -134,18 +134,18 @@ function mthan_section_testimonials_html($section_data) {
         <div class="carousel-box">
             <div class="testimonial-carousel owl-theme owl-carousel">
                 <?php foreach($testimonials as $item): 
-                    $img    = isset($item['image']) ? $item['image'] : '';
-                    $name   = isset($item['name']) ? $item['name'] : '';
-                    $region = isset($item['region']) ? $item['region'] : '';
-                    $rating = isset($item['rating']) ? $item['rating'] : '5';
-                    $text   = isset($item['text']) ? $item['text'] : '';
+                    $img    = !empty($item['image']['url']) ? $item['image']['url'] : '';
+                    $name   = !empty($item['name']) ? $item['name'] : '';
+                    $region = !empty($item['region']) ? $item['region'] : '';
+                    $rating = !empty($item['rating']) ? $item['rating'] : '5';
+                    $text   = !empty($item['text']) ? $item['text'] : '';
                 ?>
                 <!--Block-->
                 <div class="testi-block">
                     <div class="inner-box">
                         <div class="content">
                             <div class="quote-icon"><span></span></div>
-                            <div class="image"><img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>"></div>
+                            <div class="image"><img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>" title="<?php echo esc_attr($name); ?>"></div>
                             <h6 class="name"><?php echo esc_html($name); ?></h6>
                             <div class="region"><?php echo esc_html($region); ?></div>
                             <div class="rating">
@@ -180,10 +180,10 @@ function mthan_section_testimonials_html($section_data) {
  * Render Style 2 (Split Layout)
  */
 function mthan_section_testimonials_html_2($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $testimonials = isset($section_data['testimonials_repeater']) ? $section_data['testimonials_repeater'] : array();
-    $decorative   = isset($section_data['decorative_thumbs']) ? $section_data['decorative_thumbs'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'What Our Clients Say';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Testimonials';
+    $testimonials = !empty($section_data['testimonials_repeater']) ? $section_data['testimonials_repeater'] : array();
+    $decorative   = !empty($section_data['decorative_thumbs']) ? $section_data['decorative_thumbs'] : array();
 ?>
 <section class="testimonials-two">
     <div class="pattern-layer"></div>
@@ -192,18 +192,18 @@ function mthan_section_testimonials_html_2($section_data) {
             <!--Column-->
             <div class="carousel-col col-lg-6 col-md-12 col-sm-12">
                 <div class="sec-title">
-                    <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                    <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                     <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                     <h2><?php echo esc_html($sec_title); ?></h2>
                 </div>
                 <div class="carousel-box">
                     <div class="testimonial-carousel-two owl-theme owl-carousel">
                         <?php foreach($testimonials as $item): 
-                            $name   = isset($item['name']) ? $item['name'] : '';
-                            $region = isset($item['region']) ? $item['region'] : '';
-                            $rating = isset($item['rating']) ? $item['rating'] : '5';
-                            $title  = isset($item['title']) ? $item['title'] : '';
-                            $text   = isset($item['text']) ? $item['text'] : '';
+                            $name   = !empty($item['name']) ? $item['name'] : '';
+                            $region = !empty($item['region']) ? $item['region'] : '';
+                            $rating = !empty($item['rating']) ? $item['rating'] : '5';
+                            $title  = !empty($item['title']) ? $item['title'] : '';
+                            $text   = !empty($item['text']) ? $item['text'] : '';
                         ?>
                         <!--Block-->
                         <div class="testi-block-two">
@@ -246,11 +246,11 @@ function mthan_section_testimonials_html_2($section_data) {
             <div class="thumbs-col col-lg-6 col-md-12 col-sm-12">
                 <div class="inner">
                     <?php foreach($decorative as $thumb): 
-                        $img = isset($thumb['image']) ? $thumb['image'] : '';
+                        $img = !empty($thumb['image']['url']) ? $thumb['image']['url'] : '';
                         if($img):
                     ?>
                     <div class="image-thumb">
-                        <div class="image"><img src="<?php echo esc_url($img); ?>" alt="testimonial thumb"></div>
+                        <div class="image"><img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($sec_title . ' Thumbnail'); ?>" title="<?php echo esc_attr($sec_title); ?>"></div>
                         <div class="icon"><span class="fa fa-quote-left"></span></div>
                     </div>
                     <?php endif; endforeach; ?>

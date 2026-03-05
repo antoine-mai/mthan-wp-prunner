@@ -143,10 +143,10 @@ function mthan_section_why_us_html($section_data) {
  * Style 1 Rendering (Grid)
  */
 function mthan_section_why_us_html_1($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $header_text  = isset($section_data['header_text']) ? $section_data['header_text'] : '';
-    $repeater     = isset($section_data['why_repeater']) ? $section_data['why_repeater'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'The Number One Choice For Landscaping';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'why choose us';
+    $header_text  = !empty($section_data['header_text']) ? $section_data['header_text'] : '';
+    $repeater     = !empty($section_data['why_repeater']) ? $section_data['why_repeater'] : array();
 ?>
 <section class="why-us">
         <div class="pattern-layer"></div>
@@ -156,7 +156,7 @@ function mthan_section_why_us_html_1($section_data) {
                 <div class="row clearfix">
                     <div class="left-col col-xl-6 col-lg-12 col-md-12">
                         <div class="sec-title alternate">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-four.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-four.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                         </div>
@@ -169,10 +169,10 @@ function mthan_section_why_us_html_1($section_data) {
 
             <div class="row clearfix">
                 <?php foreach($repeater as $item): 
-                    $title = isset($item['title']) ? $item['title'] : '';
-                    $icon  = isset($item['icon']) ? $item['icon'] : '';
-                    $text  = isset($item['text']) ? $item['text'] : '';
-                    $link  = isset($item['link']) ? $item['link'] : '';
+                    $title = !empty($item['title']) ? $item['title'] : '';
+                    $icon  = !empty($item['icon']) ? $item['icon'] : '';
+                    $text  = !empty($item['text']) ? $item['text'] : '';
+                    $link  = !empty($item['link']) ? $item['link'] : '';
                 ?>
                 <!--Why Block-->
                 <div class="why-block col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -197,17 +197,17 @@ function mthan_section_why_us_html_1($section_data) {
  * Style 2 Rendering (Split)
  */
 function mthan_section_why_us_html_2($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $bg_image     = isset($section_data['left_bg_image']) ? $section_data['left_bg_image'] : '';
-    $r_val        = isset($section_data['rating_value']) ? $section_data['rating_value'] : '';
-    $r_text       = isset($section_data['rating_text']) ? $section_data['rating_text'] : '';
-    $f_text       = isset($section_data['floated_text']) ? $section_data['floated_text'] : '';
-    $c_text       = isset($section_data['content_text']) ? $section_data['content_text'] : '';
-    $btn_text     = isset($section_data['btn_text']) ? $section_data['btn_text'] : '';
-    $btn_link     = isset($section_data['btn_link']) ? $section_data['btn_link'] : '';
-    $list_items   = isset($section_data['list_items']) ? explode("\n", str_replace("\r", "", $section_data['list_items'])) : array();
-    $repeater     = isset($section_data['why_repeater']) ? $section_data['why_repeater'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'The Number One Choice For Landscaping';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'why choose us';
+    $bg_image     = !empty($section_data['left_bg_image']['url']) ? $section_data['left_bg_image']['url'] : '';
+    $r_val        = !empty($section_data['rating_value']) ? $section_data['rating_value'] : '4.9';
+    $r_text       = !empty($section_data['rating_text']) ? $section_data['rating_text'] : 'Customer Rating';
+    $f_text       = !empty($section_data['floated_text']) ? $section_data['floated_text'] : 'Since 2008';
+    $c_text       = !empty($section_data['content_text']) ? $section_data['content_text'] : '';
+    $btn_text     = !empty($section_data['btn_text']) ? $section_data['btn_text'] : 'How We Work';
+    $btn_link     = !empty($section_data['btn_link']) ? $section_data['btn_link'] : '#';
+    $list_items   = !empty($section_data['list_items']) ? explode("\n", str_replace("\r", "", $section_data['list_items'])) : array();
+    $repeater     = !empty($section_data['why_repeater']) ? $section_data['why_repeater'] : array();
 ?>
 <section class="why-us-two">
     <div class="outer-container">
@@ -230,7 +230,11 @@ function mthan_section_why_us_html_2($section_data) {
                         <div class="pattern"></div>
                         <div class="content">
                             <div class="sec-title">
-                                <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-five.png" alt="" title=""></span></div>
+                                <div class="title-icon">
+                                    <span class="icon">
+                                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-five.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>" />
+                                    </span>
+                                </div>
                                 <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                                 <h2><?php echo esc_html($sec_title); ?></h2>
                             </div>
@@ -253,10 +257,10 @@ function mthan_section_why_us_html_2($section_data) {
                 <div class="inner clearfix">
                     <div class="row clearfix">
                         <?php foreach($repeater as $item): 
-                            $title = isset($item['title']) ? $item['title'] : '';
-                            $icon  = isset($item['icon']) ? $item['icon'] : '';
-                            $text  = isset($item['text']) ? $item['text'] : '';
-                            $link  = isset($item['link']) ? $item['link'] : '';
+                            $title = !empty($item['title']) ? $item['title'] : '';
+                            $icon  = !empty($item['icon']) ? $item['icon'] : '';
+                            $text  = !empty($item['text']) ? $item['text'] : '';
+                            $link  = !empty($item['link']) ? $item['link'] : '';
                         ?>
                         <!--Why Block-->
                         <div class="why-block-two col-lg-6 col-md-6 col-sm-12">
@@ -282,10 +286,10 @@ function mthan_section_why_us_html_2($section_data) {
  * Style 3 Rendering (Flap)
  */
 function mthan_section_why_us_html_3($section_data) {
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $header_text  = isset($section_data['header_text']) ? $section_data['header_text'] : '';
-    $repeater     = isset($section_data['why_repeater']) ? $section_data['why_repeater'] : array();
+    $sec_title    = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'The Number One Choice For Landscaping';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'why choose us';
+    $header_text  = !empty($section_data['header_text']) ? $section_data['header_text'] : '';
+    $repeater     = !empty($section_data['why_repeater']) ? $section_data['why_repeater'] : array();
 ?>
 <section class="why-us-three">
         <div class="auto-container">
@@ -293,7 +297,7 @@ function mthan_section_why_us_html_3($section_data) {
                 <div class="row clearfix">
                     <div class="left-col col-xl-6 col-lg-12 col-md-12">
                         <div class="sec-title alternate">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-eight.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-eight.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                         </div>
@@ -307,9 +311,9 @@ function mthan_section_why_us_html_3($section_data) {
             <div class="why-box">
                 <div class="row clearfix">
                     <?php foreach($repeater as $item): 
-                        $title = isset($item['title']) ? $item['title'] : '';
-                        $icon  = isset($item['icon']) ? $item['icon'] : '';
-                        $text  = isset($item['text']) ? $item['text'] : '';
+                        $title = !empty($item['title']) ? $item['title'] : '';
+                        $icon  = !empty($item['icon']) ? $item['icon'] : '';
+                        $text  = !empty($item['text']) ? $item['text'] : '';
                     ?>
                     <!--Why Block-->
                     <div class="why-block-three col-lg-4 col-md-6 col-sm-12">

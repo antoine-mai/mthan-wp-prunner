@@ -33,7 +33,7 @@ function mthan_section_sponsors_options()
  * @param array $section_data Per-instance CSF field values.
  **/ 
 function mthan_section_sponsors_html($section_data) { 
-    $sponsors_repeater = isset($section_data['sponsors_repeater']) ? $section_data['sponsors_repeater'] : array();
+    $sponsors_repeater = !empty($section_data['sponsors_repeater']) ? $section_data['sponsors_repeater'] : array();
 ?>
 <section class="sponsors-section">
         <div class="sponsors-outer">
@@ -42,13 +42,13 @@ function mthan_section_sponsors_html($section_data) {
                 <!--Sponsors Carousel-->
                 <div class="sponsors-carousel owl-theme owl-carousel">
                     <?php foreach($sponsors_repeater as $item): 
-                        $logo = isset($item['logo']) ? $item['logo'] : '';
-                        $link = isset($item['link']) ? $item['link'] : '#';
+                        $logo = !empty($item['logo']) ? $item['logo'] : '';
+                        $link = !empty($item['link']) ? $item['link'] : '#';
                         if($logo):
                     ?>
                     <div class="slide-item">
                         <figure class="image-box">
-                            <a href="<?php echo esc_url($link); ?>"><img src="<?php echo esc_url($logo); ?>" alt="sponsor"></a>
+                            <a href="<?php echo esc_url($link); ?>"><img src="<?php echo esc_url($logo); ?>" alt="<?php echo esc_attr__('sponsor', 'mthan'); ?>" title="<?php echo esc_attr__('sponsor', 'mthan'); ?>"></a>
                         </figure>
                     </div>
                     <?php endif; endforeach; ?>

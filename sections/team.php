@@ -93,12 +93,12 @@ function mthan_section_team_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_team_html($section_data) {
-    $style         = isset($section_data['team_style']) ? $section_data['team_style'] : 'style-1';
-    $sec_title     = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Professional Team';
-    $sec_subtitle  = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Gardeners';
-    $btn_text      = isset($section_data['btn_text']) ? $section_data['btn_text'] : '';
-    $btn_link      = isset($section_data['btn_link']) ? $section_data['btn_link'] : '';
-    $team_repeater = isset($section_data['team_repeater']) ? $section_data['team_repeater'] : array();
+    $style         = !empty($section_data['team_style']) ? $section_data['team_style'] : 'style-1';
+    $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Professional Team';
+    $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Gardeners';
+    $btn_text      = !empty($section_data['btn_text']) ? $section_data['btn_text'] : '';
+    $btn_link      = !empty($section_data['btn_link']) ? $section_data['btn_link'] : '#';
+    $team_repeater = !empty($section_data['team_repeater']) ? $section_data['team_repeater'] : array();
 
     if ($style === 'style-2') {
         mthan_section_team_html_2($section_data);
@@ -106,14 +106,14 @@ function mthan_section_team_html($section_data) {
     }
 ?>
 <section class="team-section">
-    <div class="left-leaf"><img src="/wp-content/assets/images/resource/leaf-2.png" alt="" title=""></div>
-    <div class="right-leaf"><img src="/wp-content/assets/images/resource/leaf-3.png" alt="" title=""></div>
+    <div class="left-leaf"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/leaf-2.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></div>
+    <div class="right-leaf"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/leaf-3.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></div>
     <div class="auto-container">
         <div class="upper-box clearfix">
             <div class="sec-title">
                 <div class="title-icon">
                     <span class="icon">
-                        <img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title="">
+                        <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>">
                     </span>
                 </div>
                 <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
@@ -129,23 +129,23 @@ function mthan_section_team_html($section_data) {
         <div class="team-box">
             <div class="row clearfix">
                 <?php foreach($team_repeater as $member): 
-                    $img   = isset($member['image']) ? $member['image'] : '';
-                    $name  = isset($member['name']) ? $member['name'] : '';
-                    $des   = isset($member['designation']) ? $member['designation'] : '';
-                    $phone = isset($member['phone']) ? $member['phone'] : '';
+                    $img   = !empty($member['image']['url']) ? $member['image']['url'] : '';
+                    $name  = !empty($member['name']) ? $member['name'] : '';
+                    $des   = !empty($member['designation']) ? $member['designation'] : '';
+                    $phone = !empty($member['phone']) ? $member['phone'] : '';
                 ?>
                 <!--Team block-->
                 <div class="team-block col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="upper">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>" title="<?php echo esc_attr($name); ?>">
                             </div>
                         </div>
                         <div class="lower">
                             <?php if ($phone): ?>
                             <div class="phone">
-                                <a href="#"><span class="icon flaticon-headphones"></span>Phone: <?php echo esc_html($phone); ?></a>
+                                <a href="tel:<?php echo esc_attr($phone); ?>"><span class="icon flaticon-headphones"></span>Phone: <?php echo esc_html($phone); ?></a>
                             </div>
                             <?php endif; ?>
                             <h5><a href="#"><?php echo esc_html($name); ?></a></h5>
@@ -165,14 +165,14 @@ function mthan_section_team_html($section_data) {
  * Render Style 2 (Carousel)
  */
 function mthan_section_team_html_2($section_data) {
-    $sec_title     = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Professional Team';
-    $sec_subtitle  = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Gardeners';
-    $team_repeater = isset($section_data['team_repeater']) ? $section_data['team_repeater'] : array();
+    $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Professional Team';
+    $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Gardeners';
+    $team_repeater = !empty($section_data['team_repeater']) ? $section_data['team_repeater'] : array();
 ?>
 <section class="team-two">  
     <div class="auto-container">
         <div class="sec-title">
-            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
             <h2><?php echo esc_html($sec_title); ?></h2>
         </div>
@@ -180,20 +180,20 @@ function mthan_section_team_html_2($section_data) {
         <div class="team-box">
             <div class="team-carousel owl-theme owl-carousel">
                 <?php foreach($team_repeater as $member): 
-                    $img   = isset($member['image']) ? $member['image'] : '';
-                    $name  = isset($member['name']) ? $member['name'] : '';
-                    $des   = isset($member['designation']) ? $member['designation'] : '';
-                    $phone = isset($member['phone']) ? $member['phone'] : '';
-                    $fb    = isset($member['facebook']) ? $member['facebook'] : '';
-                    $tw    = isset($member['twitter']) ? $member['twitter'] : '';
-                    $inst  = isset($member['instagram']) ? $member['instagram'] : '';
+                    $img   = !empty($member['image']['url']) ? $member['image']['url'] : '';
+                    $name  = !empty($member['name']) ? $member['name'] : '';
+                    $des   = !empty($member['designation']) ? $member['designation'] : '';
+                    $phone = !empty($member['phone']) ? $member['phone'] : '';
+                    $fb    = !empty($member['facebook']) ? $member['facebook'] : '';
+                    $tw    = !empty($member['twitter']) ? $member['twitter'] : '';
+                    $inst  = !empty($member['instagram']) ? $member['instagram'] : '';
                 ?>
                 <!--Team block-->
                 <div class="team-block-two">
                     <div class="inner-box">
                         <div class="upper">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>" title="<?php echo esc_attr($name); ?>">
                             </div>
                         </div>
                         <div class="lower">
@@ -201,7 +201,7 @@ function mthan_section_team_html_2($section_data) {
                             <h5><a href="#"><?php echo esc_html($name); ?></a></h5>
                             <div class="phone-box">
                                 <?php if ($phone): ?>
-                                <a href="#" class="phone">
+                                <a href="<?php echo (strpos($phone, '@') !== false) ? 'mailto:'.esc_attr($phone) : 'tel:'.esc_attr($phone); ?>" class="phone">
                                     <span class="icon <?php echo (strpos($phone, '@') !== false) ? 'flaticon-envelope-1' : 'flaticon-headphones'; ?>"></span>
                                     <?php echo esc_html($phone); ?>
                                 </a>

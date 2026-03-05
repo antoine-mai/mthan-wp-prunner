@@ -50,22 +50,22 @@ function mthan_section_request_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_request_html($section_data) { 
-    $sec_title     = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Free Estimates';
-    $sec_subtitle  = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Request a Quote';
-    $sec_sub_text  = isset($section_data['sec_sub_text']) ? $section_data['sec_sub_text'] : '';
-    $right_image   = isset($section_data['right_image']) ? $section_data['right_image'] : '';
-    $discount_text = isset($section_data['discount_text']) ? $section_data['discount_text'] : '';
-    $services_list = isset($section_data['services_list']) ? $section_data['services_list'] : '';
+    $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Free Estimates';
+    $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Request a Quote';
+    $sec_sub_text  = !empty($section_data['sec_sub_text']) ? $section_data['sec_sub_text'] : '';
+    $right_image   = !empty($section_data['right_image']) ? $section_data['right_image'] : '';
+    $discount_text = !empty($section_data['discount_text']) ? $section_data['discount_text'] : '';
+    $services_list = !empty($section_data['services_list']) ? $section_data['services_list'] : '';
 ?>
 <section class="service-request">
         <div class="auto-container">
             <div class="inner-box">
                 <?php if($right_image): ?>
-                <div class="right-image"><img src="<?php echo esc_url($right_image); ?>" alt="<?php echo esc_attr($sec_title); ?>"></div>
+                <div class="right-image"><img src="<?php echo esc_url($right_image); ?>" alt="<?php echo esc_attr($sec_title); ?>" title="<?php echo esc_attr($sec_title); ?>"></div>
                 <?php endif; ?>
                 <div class="content-box">
                     <div class="sec-title">
-                        <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                        <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                         <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                         <h2><?php echo esc_html($sec_title); ?></h2>
                         <?php if($sec_sub_text): ?>

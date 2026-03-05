@@ -63,16 +63,17 @@ function mthan_section_project_details_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_project_details_html($section_data) { 
-    $image   = !empty($section_data['project_image']['url']) ? $section_data['project_image']['url'] : get_template_directory_uri() . '/images/gallery/53.jpg';
+    $image   = !empty($section_data['project_image']['url']) ? $section_data['project_image']['url'] : get_template_directory_uri() . '/assets/images/gallery/53.jpg';
     $title   = !empty($section_data['project_title']) ? $section_data['project_title'] : 'Here to Know <br>About Our Project';
     $content = !empty($section_data['project_content']) ? $section_data['project_content'] : '';
     $info    = !empty($section_data['project_info']) ? $section_data['project_info'] : array();
+    $alt     = !empty($section_data['project_title']) ? strip_tags($section_data['project_title']) : 'Project Image';
 ?>
 <section class="project-details">
     <div class="auto-container">
         <div class="main-image">
             <a href="<?php echo esc_url($image); ?>" class="lightbox-image" data-fancybox="gallery">
-                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr(strip_tags($title)); ?>">
+                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($alt); ?>" title="<?php echo esc_attr($alt); ?>">
             </a>
         </div>
         <div class="upper-box">

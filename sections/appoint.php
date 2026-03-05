@@ -78,12 +78,24 @@ function mthan_section_appoint_html($section_data) { ?>
 
             <div class="upper-box clearfix">
                 <div class="sec-title">
-                    <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
-                    <div class="subtitle"><?php echo $sec_subtitle; ?></div>
-                    <h2><?php echo $sec_title; ?></h2>
+                    <div class="title-icon">
+                        <span class="icon">
+                            <img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>" />
+                        </span>
+                    </div>
+                    <div class="subtitle">
+                        <?php echo $sec_subtitle; ?>
+                    </div>
+                    <h2>
+                        <?php echo $sec_title; ?>
+                    </h2>
                 </div>
                 <div class="link-box">
-                    <a href="<?php echo esc_url($btn_link); ?>" class="theme-btn"><span class="btn-title"><?php echo $btn_text; ?> <i class="arrow flaticon-play-button-1"></i></span></a>
+                    <a href="<?php echo esc_url($btn_link); ?>" class="theme-btn">
+                        <span class="btn-title">
+                            <?php echo $btn_text; ?> <i class="arrow flaticon-play-button-1"></i>
+                        </span>
+                    </a>
                 </div>
             </div>
 
@@ -93,15 +105,24 @@ function mthan_section_appoint_html($section_data) { ?>
                         <div class="sel-box">
                             <div class="check">
                                 <input type="radio" name="sel-group" value="" id="sel-1" checked="">
-                                <label for="sel-1"><span class="round"></span><span class="txt">Commercial</span></label>
+                                <label for="sel-1">
+                                    <span class="round"></span>
+                                    <span class="txt">Commercial</span>
+                                </label>
                             </div>
                             <div class="check">
                                 <input type="radio" name="sel-group" value="" id="sel-2">
-                                <label for="sel-2"><span class="round"></span><span class="txt">Residential</span></label>
+                                <label for="sel-2">
+                                    <span class="round"></span>
+                                    <span class="txt">Residential</span>
+                                </label>
                             </div>
                             <div class="check">
                                 <input type="radio" name="sel-group" value="" id="sel-3">
-                                <label for="sel-3"><span class="round"></span><span class="txt">Industries</span></label>
+                                <label for="sel-3">
+                                    <span class="round"></span>
+                                    <span class="txt">Industries</span>
+                                </label>
                             </div>
                         </div>
                     </div>
@@ -109,10 +130,14 @@ function mthan_section_appoint_html($section_data) { ?>
                 <div class="column form-column col-lg-5 col-md-8 col-sm-12">
                     <div class="form-container">
                         <div class="title">
-                            <h5><?php echo $form_title; ?></h5>
+                            <h5>
+                                <?php echo $form_title; ?>
+                            </h5>
                         </div>
                         <div class="form-box">
-                            <div class="text"><?php echo $form_text; ?></div>
+                            <div class="text">
+                                <?php echo $form_text; ?>
+                            </div>
                             <div class="appointment-form default-form">
                                 <form method="post" action="contact.html">
                                     <div class="form-group">
@@ -197,12 +222,18 @@ function mthan_section_appoint_html($section_data) { ?>
                                     </div>
                                     <div class="form-group">
                                         <div class="field-inner">
-                                            <button type="submit" class="theme-btn btn-style-four alternate"><span class="btn-title">Get Appointment <i class="arrow flaticon-play-button-1"></i></span></button>
+                                            <button type="submit" class="theme-btn btn-style-four alternate">
+                                                <span class="btn-title">
+                                                    Get Appointment <i class="arrow flaticon-play-button-1"></i>
+                                                </span>
+                                            </button>
                                         </div>
                                     </div>
 
                                 </form>
-                                <div class="min-text"><?php echo $success_msg; ?></div>
+                                <div class="min-text">
+                                    <?php echo $success_msg; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -215,49 +246,65 @@ function mthan_section_appoint_html($section_data) { ?>
                         <div class="datepicker"></div>
 
                         <div class="choose-time">
-                            <div class="title"><span><?php echo $cal_title; ?></span></div>
+                            <div class="title">
+                                <span><?php echo $cal_title; ?></span>
+                            </div>
                             <div class="time-select">
                                 <ul class="clearfix">
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-1">
-                                            <label for="time-1"><span class="txt">09.00 am</span></label>
+                                            <label for="time-1">
+                                                <span class="txt">09.00 am</span>
+                                            </label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-2">
-                                            <label for="time-2"><span class="txt">09.00 am</span></label>
+                                            <label for="time-2">
+                                                <span class="txt">09.00 am</span>
+                                            </label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-3" checked="">
-                                            <label for="time-3"><span class="txt">10.30 am</span></label>
+                                            <label for="time-3">
+                                                <span class="txt">10.30 am</span>
+                                            </label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-4">
-                                            <label for="time-4"><span class="txt">12.00 pm</span></label>
+                                            <label for="time-4">
+                                                <span class="txt">12.00 pm</span>
+                                            </label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-5">
-                                            <label for="time-5"><span class="txt">02.00 pm</span></label>
+                                            <label for="time-5">
+                                                <span class="txt">02.00 pm</span>
+                                            </label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-6">
-                                            <label for="time-6"><span class="txt">05.00 pm</span></label>
+                                            <label for="time-6">
+                                                <span class="txt">05.00 pm</span>
+                                            </label>
                                         </div>
                                     </li>
                                     <li>
                                         <div class="check-two">
                                             <input type="radio" name="time-group" value="" id="time-7">
-                                            <label for="time-7"><span class="txt">07.00 pm</span></label>
+                                            <label for="time-7">
+                                                <span class="txt">07.00 pm</span>
+                                            </label>
                                         </div>
                                     </li>
                                 </ul>

@@ -67,12 +67,12 @@ function mthan_section_faqs_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_faqs_html($section_data) { 
-    $sec_title     = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Common Questions';
-    $sec_subtitle  = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Have some questions?';
-    $faqs_repeater = isset($section_data['faqs_repeater']) ? $section_data['faqs_repeater'] : array();
+    $sec_title     = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Common Questions';
+    $sec_subtitle  = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Have some questions?';
+    $faqs_repeater = !empty($section_data['faqs_repeater']) ? $section_data['faqs_repeater'] : array();
     
-    $side_title    = isset($section_data['side_title']) ? $section_data['side_title'] : 'Do You Have Questions?';
-    $side_text     = isset($section_data['side_text']) ? $section_data['side_text'] : 'Ask your questions to our expert team and get answers asap.';
+    $side_title    = !empty($section_data['side_title']) ? $section_data['side_title'] : 'Do You Have Questions?';
+    $side_text     = !empty($section_data['side_text']) ? $section_data['side_text'] : 'Ask your questions to our expert team and get answers asap.';
 ?>
 <section class="faqs-section">
         <div class="auto-container">
@@ -80,7 +80,7 @@ function mthan_section_faqs_html($section_data) {
                 <div class="left-column col-lg-8 col-md-12 col-sm-12">
                     <div class="inner">
                         <div class="sec-title">
-                            <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                            <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                             <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                             <h2><?php echo esc_html($sec_title); ?></h2>
                         </div>

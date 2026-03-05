@@ -79,8 +79,8 @@ function mthan_section_project_outline_html($section_data) {
         <?php if (!empty($outlines)) : ?>
         <div class="row clearfix">
             <?php foreach ($outlines as $item) : 
-                $img = !empty($item['image']['url']) ? $item['image']['url'] : get_template_directory_uri() . '/images/resource/featured-image-13.jpg';
-                $t   = !empty($item['title']) ? $item['title'] : '';
+                $img = !empty($item['image']['url']) ? $item['image']['url'] : get_template_directory_uri() . '/assets/images/resource/featured-image-13.jpg';
+                $t   = !empty($item['title']) ? $item['title'] : 'Project Outline';
                 $txt = !empty($item['text']) ? $item['text'] : '';
                 $lnk = !empty($item['link']) ? $item['link'] : '#';
             ?>
@@ -88,7 +88,7 @@ function mthan_section_project_outline_html($section_data) {
             <div class="outline-block col-lg-4 col-md-6 col-sm-12">
                 <div class="inner-box">
                     <div class="image-box">
-                        <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($t); ?>">
+                        <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($t); ?>" title="<?php echo esc_attr($t); ?>">
                     </div>
                     <div class="hover-box">
                         <div class="hvr-content">
@@ -104,4 +104,3 @@ function mthan_section_project_outline_html($section_data) {
     </div>
 </section>
 <?php }
-

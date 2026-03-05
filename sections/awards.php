@@ -101,17 +101,17 @@ function mthan_section_awards_html($section_data) {
     $text     = !empty($section_data['awards_text']) ? $section_data['awards_text'] : 'It is a long established fact that a reader will distracted by the readable content.';
     $btn_text = !empty($section_data['awards_btn_text']) ? $section_data['awards_btn_text'] : 'All Our Awards';
     $btn_link = !empty($section_data['awards_btn_link']) ? $section_data['awards_btn_link'] : '#';
-    $bg_image = !empty($section_data['awards_bg_image']['url']) ? $section_data['awards_bg_image']['url'] : 'images/background/awards-bg.jpg';
+    $bg_image = !empty($section_data['awards_bg_image']['url']) ? $section_data['awards_bg_image']['url'] : get_template_directory_uri() . '/assets/images/background/awards-bg.jpg';
     $awards   = !empty($section_data['awards_carousel']) ? $section_data['awards_carousel'] : array();
 ?>
 <section class="awards-section">
-        <div class="bottom-image"><img src="/wp-content/assets/images/resource/anim-image-4.png" alt="" title=""></div>
+        <div class="bottom-image"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/anim-image-4.png" alt="<?php echo esc_attr($subtitle); ?>" title="<?php echo esc_attr($subtitle); ?>"></div>
         <div class="auto-container">
             <div class="row clearfix">
                 <!--Left Column-->
                 <div class="left-col">
                     <div class="image-layer" style="background-image: url(<?php echo esc_url($bg_image); ?>);"></div>
-                        <div class="bg-icon"><img src="/wp-content/assets/images/icons/awards-bg-icon.png" alt="" title=""></div>
+                        <div class="bg-icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/awards-bg-icon.png" alt="<?php echo esc_attr($subtitle); ?>" title="<?php echo esc_attr($subtitle); ?>"></div>
                     <div class="inner clearfix">
                         <div class="content-box">
                             <div class="content">
@@ -139,7 +139,7 @@ function mthan_section_awards_html($section_data) {
                                     $a_year     = !empty($award['year']) ? $award['year'] : '';
                                     $a_subtitle = !empty($award['subtitle']) ? $award['subtitle'] : '';
                                     $a_title    = !empty($award['title']) ? $award['title'] : '';
-                                    $a_image    = !empty($award['image']['url']) ? $award['image']['url'] : 'images/gallery/7.jpg';
+                                    $a_image    = !empty($award['image']['url']) ? $award['image']['url'] : get_template_directory_uri() . '/assets/images/gallery/7.jpg';
                                 ?>
                                 <!--Award Block-->
                                 <div class="award-block">
@@ -148,7 +148,7 @@ function mthan_section_awards_html($section_data) {
                                         <div class="date"><?php echo esc_html($a_subtitle); ?></div>
                                         <h6><?php echo wp_kses_post($a_title); ?></h6>
                                         <div class="link-box">
-                                            <a href="<?php echo esc_url($a_image); ?>" class="has-tooltip lightbox-image" title="Award Images"><span class="fa fa-image"></span><span class="t-tip-box"><span class="t-t-text">Award Images</span></span></a>
+                                            <a href="<?php echo esc_url($a_image); ?>" class="has-tooltip lightbox-image" title="<?php echo esc_attr($a_title); ?>"><span class="fa fa-image"></span><span class="t-tip-box"><span class="t-t-text"><?php echo esc_html($a_title); ?></span></span></a>
                                         </div>
                                     </div>
                                 </div>

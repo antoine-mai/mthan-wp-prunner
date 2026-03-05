@@ -140,7 +140,7 @@ function mthan_section_cta_html($section_data) {
  * Style 2 for CTA
  */
 function mthan_section_cta_html_2($section_data) {
-    $bg_image = !empty($section_data['cta2_bg']['url']) ? $section_data['cta2_bg']['url'] : 'images/background/call-to-bg.jpg';
+    $bg_image = !empty($section_data['cta2_bg']['url']) ? $section_data['cta2_bg']['url'] : get_template_directory_uri() . '/assets/images/background/call-to-bg.jpg';
     $heading  = !empty($section_data['cta2_heading']) ? $section_data['cta2_heading'] : 'In Need of  Gardening & Landscaping <br>Maintenence Service?';
     $btn1_text = !empty($section_data['cta2_btn1_text']) ? $section_data['cta2_btn1_text'] : 'Commercial';
     $btn1_link = !empty($section_data['cta2_btn1_link']) ? $section_data['cta2_btn1_link'] : '#';

@@ -50,8 +50,8 @@ function mthan_section_error_options()
  * Render the error section.
  */
 function mthan_section_error_html($section_data) { 
-    $bg   = !empty($section_data['error_bg']['url']) ? $section_data['error_bg']['url'] : get_template_directory_uri() . '/images/background/bg-404.jpg';
-    $img  = !empty($section_data['error_title_img']['url']) ? $section_data['error_title_img']['url'] : get_template_directory_uri() . '/images/resource/404-image.png';
+    $bg   = !empty($section_data['error_bg']['url']) ? $section_data['error_bg']['url'] : get_template_directory_uri() . '/assets/images/background/bg-404.jpg';
+    $img  = !empty($section_data['error_title_img']['url']) ? $section_data['error_title_img']['url'] : get_template_directory_uri() . '/assets/images/resource/404-image.png';
     $hd   = !empty($section_data['error_heading']) ? $section_data['error_heading'] : 'Oops! Page Not Found.';
     $txt  = !empty($section_data['error_text']) ? $section_data['error_text'] : 'It looks like nothing was found at this location. Maybe try one of the links below or a search?';
     $btn_txt = !empty($section_data['error_btn_text']) ? $section_data['error_btn_text'] : 'Back to Home';
@@ -62,7 +62,7 @@ function mthan_section_error_html($section_data) {
 
         <div class="auto-container">
             <div class="error-image">
-                <img src="<?php echo esc_url($img); ?>" alt="" title="">
+                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($hd); ?>" title="<?php echo esc_attr($hd); ?>">
             </div>
 
             <div class="content-box">

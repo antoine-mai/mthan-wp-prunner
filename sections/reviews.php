@@ -101,13 +101,13 @@ function mthan_section_reviews_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_reviews_html($section_data) { 
-    $sec_title        = isset($section_data['sec_title']) ? $section_data['sec_title'] : 'Happy Customers';
-    $sec_subtitle     = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Feedback';
-    $form_title       = isset($section_data['review_form_title']) ? $section_data['review_form_title'] : '';
-    $form_text        = isset($section_data['review_form_text']) ? $section_data['review_form_text'] : '';
-    $avg_rating       = isset($section_data['avg_rating']) ? $section_data['avg_rating'] : '4.5';
-    $review_count     = isset($section_data['review_count']) ? $section_data['review_count'] : '';
-    $reviews_repeater = isset($section_data['reviews_repeater']) ? $section_data['reviews_repeater'] : array();
+    $sec_title        = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Happy Customers';
+    $sec_subtitle     = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Our Feedback';
+    $form_title       = !empty($section_data['review_form_title']) ? $section_data['review_form_title'] : '';
+    $form_text        = !empty($section_data['review_form_text']) ? $section_data['review_form_text'] : '';
+    $avg_rating       = !empty($section_data['avg_rating']) ? $section_data['avg_rating'] : '4.5';
+    $review_count     = !empty($section_data['review_count']) ? $section_data['review_count'] : '';
+    $reviews_repeater = !empty($section_data['reviews_repeater']) ? $section_data['reviews_repeater'] : array();
 ?>
 <section class="reviews-section">
         <div class="auto-container">
@@ -150,7 +150,7 @@ function mthan_section_reviews_html($section_data) {
 
             <div class="title-box clearfix">
                 <div class="sec-title">
-                    <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                    <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                     <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                     <h2><?php echo esc_html($sec_title); ?></h2>
                 </div>
@@ -174,13 +174,13 @@ function mthan_section_reviews_html($section_data) {
                 <div class="masonry-container row clearfix">
 
                     <?php foreach($reviews_repeater as $rev): 
-                        $img      = isset($rev['image']) ? $rev['image'] : '';
-                        $thumb    = isset($rev['thumb']) ? $rev['thumb'] : '';
-                        $name     = isset($rev['name']) ? $rev['name'] : '';
-                        $reg      = isset($rev['region']) ? $rev['region'] : '';
-                        $rat      = isset($rev['rating']) ? (float)$rev['rating'] : 5;
-                        $text     = isset($rev['text']) ? $rev['text'] : '';
-                        $vid      = isset($rev['video_url']) ? $rev['video_url'] : '';
+                        $img      = !empty($rev['image']) ? $rev['image'] : '';
+                        $thumb    = !empty($rev['thumb']) ? $rev['thumb'] : '';
+                        $name     = !empty($rev['name']) ? $rev['name'] : '';
+                        $reg      = !empty($rev['region']) ? $rev['region'] : '';
+                        $rat      = !empty($rev['rating']) ? (float)$rev['rating'] : 5;
+                        $text     = !empty($rev['text']) ? $rev['text'] : '';
+                        $vid      = !empty($rev['video_url']) ? $rev['video_url'] : '';
                         
                         $block_cls = $vid ? 'review-block-two' : 'review-block';
                     ?>
@@ -188,7 +188,7 @@ function mthan_section_reviews_html($section_data) {
                     <div class="<?php echo $block_cls; ?> masonry-item column-width col-lg-4 col-md-6 col-sm-12">
                         <div class="inner-box">
                             <div class="image-box">
-                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>">
+                                <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($name); ?>" title="<?php echo esc_attr($name); ?>">
                                 <?php if($vid): ?>
                                 <a href="<?php echo esc_url($vid); ?>" class="vid-link lightbox-image"><span class="play-icon flaticon-play-button-1"></span></a>
                                 <?php endif; ?>
@@ -196,7 +196,7 @@ function mthan_section_reviews_html($section_data) {
                             <div class="content">
                                 <div class="quote-icon"><span></span></div>
                                 <?php if($thumb): ?>
-                                <div class="image"><img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($name); ?>"></div>
+                                <div class="image"><img src="<?php echo esc_url($thumb); ?>" alt="<?php echo esc_attr($name); ?>" title="<?php echo esc_attr($name); ?>"></div>
                                 <?php endif; ?>
                                 <h6 class="name"><?php echo esc_html($name); ?></h6>
                                 <div class="region"><?php echo esc_html($reg); ?></div>

@@ -3,7 +3,7 @@
  * Render the mvg-history section.
  *
  * @param array $section_data Per-instance CSF field values.
-**/
+ **/
 
 /**
  * Returns the CSF field definitions for the mvg-history section instance.
@@ -120,12 +120,12 @@ function mthan_section_mvg_history_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_mvg_history_html($section_data) { 
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $mvg_blocks   = isset($section_data['mvg_blocks']) ? $section_data['mvg_blocks'] : array();
-    $desc_blocks  = isset($section_data['desc_carousel']) ? $section_data['desc_carousel'] : array();
-    $history      = isset($section_data['history_repeater']) ? $section_data['history_repeater'] : array();
-    $btn_text     = isset($section_data['history_btn_text']) ? $section_data['history_btn_text'] : '';
-    $btn_link     = isset($section_data['history_btn_link']) ? $section_data['history_btn_link'] : array();
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'Lander';
+    $mvg_blocks   = !empty($section_data['mvg_blocks']) ? $section_data['mvg_blocks'] : array();
+    $desc_blocks  = !empty($section_data['desc_carousel']) ? $section_data['desc_carousel'] : array();
+    $history      = !empty($section_data['history_repeater']) ? $section_data['history_repeater'] : array();
+    $btn_text     = !empty($section_data['history_btn_text']) ? $section_data['history_btn_text'] : 'View Full History';
+    $btn_link     = !empty($section_data['history_btn_link']) ? $section_data['history_btn_link'] : array();
 ?>
 <section class="mvg-history">
     <div class="mvg">
@@ -136,19 +136,21 @@ function mthan_section_mvg_history_html($section_data) {
                     <div class="mvg-col col-xl-9 col-lg-12 col-md-12 col-sm-12">
                         <div class="row clearfix">
                             <?php foreach($mvg_blocks as $block): 
-                                $title = isset($block['title']) ? $block['title'] : '';
-                                $sub   = isset($block['subtitle']) ? $block['subtitle'] : '';
-                                $lett  = isset($block['letter']) ? $block['letter'] : '';
-                                $img   = isset($block['image']) ? $block['image'] : '';
+                                $title = !empty($block['title']) ? $block['title'] : '';
+                                $sub   = !empty($block['subtitle']) ? $block['subtitle'] : $sec_subtitle;
+                                $lett  = !empty($block['letter']) ? $block['letter'] : '';
+                                $img   = !empty($block['image']) ? $block['image'] : '';
                                 $img_url = !empty($img['url']) ? $img['url'] : '';
                             ?>
                             <div class="mvg-block col-lg-4 col-md-6 col-sm-12">
                                 <div class="inner-box">
                                     <div class="image-box">
-                                        <img src="<?php echo esc_url($img_url); ?>" alt="" title="">
+                                        <?php if($img_url): ?>
+                                        <img src="<?php echo esc_url($img_url); ?>" alt="<?php echo esc_attr($title); ?>" title="<?php echo esc_attr($title); ?>">
+                                        <?php endif; ?>
                                     </div>
                                     <div class="lower-box">
-                                        <div class="subtitle"><?php if($sub): ?><span><?php echo esc_html($sub); ?></span><?php else: echo esc_html($sec_subtitle); endif; ?></div>
+                                        <div class="subtitle"><span><?php echo esc_html($sub); ?></span></div>
                                         <h5><?php echo esc_html($title); ?></h5>
                                         <div class="letter"><?php echo esc_html($lett); ?></div>
                                     </div>
@@ -163,10 +165,10 @@ function mthan_section_mvg_history_html($section_data) {
                         <div class="carousel-box">
                             <div class="mvg-carousel owl-theme owl-carousel">
                                 <?php foreach($desc_blocks as $desc): 
-                                    $title = isset($desc['title']) ? $desc['title'] : '';
-                                    $text  = isset($desc['text']) ? $desc['text'] : '';
-                                    $icon  = isset($desc['icon']) ? $desc['icon'] : 'flaticon-bullseye';
-                                    $link  = isset($desc['link']) ? $desc['link'] : array();
+                                    $title = !empty($desc['title']) ? $desc['title'] : '';
+                                    $text  = !empty($desc['text']) ? $desc['text'] : '';
+                                    $icon  = !empty($desc['icon']) ? $desc['icon'] : 'flaticon-bullseye';
+                                    $link  = !empty($desc['link']) ? $desc['link'] : array();
                                 ?>
                                 <div class="desc-block">
                                     <div class="inner">
@@ -193,9 +195,9 @@ function mthan_section_mvg_history_html($section_data) {
             <div class="carousel-box">
                 <div class="history-carousel owl-theme owl-carousel">
                     <?php foreach($history as $h): 
-                        $yr = isset($h['year']) ? $h['year'] : '';
-                        $tl = isset($h['title']) ? $h['title'] : '';
-                        $tx = isset($h['text']) ? $h['text'] : '';
+                        $yr = !empty($h['year']) ? $h['year'] : '';
+                        $tl = !empty($h['title']) ? $h['title'] : '';
+                        $tx = !empty($h['text']) ? $h['text'] : '';
                     ?>
                     <div class="history-block">
                         <div class="inner">
@@ -216,4 +218,3 @@ function mthan_section_mvg_history_html($section_data) {
     </div>
 </section>
 <?php }
-

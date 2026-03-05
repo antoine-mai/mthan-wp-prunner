@@ -91,7 +91,8 @@ function mthan_section_checkout_html($section_data)
                 <div class="product-information">
                     <div class="single-item clearfix">
                         <figure class="product-image"><img
-                                src="/wp-content/assets/images/resource/shop/prod-thumb-4.jpg" alt=""></figure>
+                                src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/shop/prod-thumb-4.jpg"
+                                alt="Hand Shovel" title="Hand Shovel"></figure>
                         <h5>Hand Shovel</h5>
                         <span class="dtl">$69.98</span>
                     </div>

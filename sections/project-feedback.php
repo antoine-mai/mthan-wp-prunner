@@ -58,7 +58,7 @@ function mthan_section_project_feedback_options()
  * @param array $section_data Per-instance CSF field values.
  **/
 function mthan_section_project_feedback_html($section_data) {
-    $bg      = !empty($section_data['feedback_bg']['url']) ? $section_data['feedback_bg']['url'] : get_template_directory_uri() . '/images/background/quote-bg.jpg';
+    $bg      = !empty($section_data['feedback_bg']['url']) ? $section_data['feedback_bg']['url'] : get_template_directory_uri() . '/assets/images/background/quote-bg.jpg';
     $title   = !empty($section_data['feedback_title']) ? $section_data['feedback_title'] : 'Get morethan we expected';
     $text    = !empty($section_data['feedback_text']) ? $section_data['feedback_text'] : 'Thank you for our beautiful new front! Your crew was outstanding & very professional!.';
     $rating  = !empty($section_data['feedback_rating']) ? (int)$section_data['feedback_rating'] : 5;
@@ -84,4 +84,3 @@ function mthan_section_project_feedback_html($section_data) {
     </div>
 </section>
 <?php }
-

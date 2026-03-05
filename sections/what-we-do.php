@@ -6,110 +6,110 @@
 function mthan_section_what_we_do_options()
 {
     return array(
-        array(
-            'id'    => 'sec_subtitle',
-            'type'  => 'text',
+            array(
+            'id' => 'sec_subtitle',
+            'type' => 'text',
             'title' => 'Subtitle',
             'default' => 'What We Do',
         ),
-        array(
-            'id'    => 'sec_title',
-            'type'  => 'text',
+            array(
+            'id' => 'sec_title',
+            'type' => 'text',
             'title' => 'Title',
             'default' => 'Special Services For You',
         ),
-        array(
-            'id'     => 'tabs_repeater',
-            'type'   => 'group',
-            'title'  => 'Services Tabs',
+            array(
+            'id' => 'tabs_repeater',
+            'type' => 'group',
+            'title' => 'Services Tabs',
             'fields' => array(
-                array(
-                    'id'    => 'nav_title',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'nav_title',
+                    'type' => 'text',
                     'title' => 'Nav Tab Title',
                 ),
-                array(
-                    'id'    => 'nav_icon',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'nav_icon',
+                    'type' => 'text',
                     'title' => 'Nav Tab Icon (flaticon class)',
                 ),
-                array(
-                    'id'    => 'bg_image',
-                    'type'  => 'upload',
+                    array(
+                    'id' => 'bg_image',
+                    'type' => 'upload',
                     'title' => 'Background Image (Left)',
                 ),
-                array(
-                    'id'    => 'box_title',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'box_title',
+                    'type' => 'text',
                     'title' => 'Project Box Title',
                     'default' => "Let's Start Your Project",
                 ),
-                array(
-                    'id'    => 'box_text',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'box_text',
+                    'type' => 'text',
                     'title' => 'Project Box Text',
                     'default' => 'Make an appointment & Start your project today.',
                 ),
-                array(
-                    'id'    => 'box_btn_text',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'box_btn_text',
+                    'type' => 'text',
                     'title' => 'Project Box Button Text',
                     'default' => 'Appointment',
                 ),
-                array(
-                    'id'    => 'box_btn_link',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'box_btn_link',
+                    'type' => 'text',
                     'title' => 'Project Box Button Link',
                     'default' => '#',
                 ),
-                array(
-                    'id'    => 'content_subtitle',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'content_subtitle',
+                    'type' => 'text',
                     'title' => 'Content Subtitle',
                     'default' => 'know About',
                 ),
-                array(
-                    'id'    => 'content_title',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'content_title',
+                    'type' => 'text',
                     'title' => 'Content Title',
                 ),
-                array(
-                    'id'    => 'content_text',
-                    'type'  => 'textarea',
+                    array(
+                    'id' => 'content_text',
+                    'type' => 'textarea',
                     'title' => 'Content Text',
                 ),
-                array(
-                    'id'    => 'bro_thumb',
-                    'type'  => 'upload',
+                    array(
+                    'id' => 'bro_thumb',
+                    'type' => 'upload',
                     'title' => 'Brochure Thumb',
                 ),
-                array(
-                    'id'    => 'bro_title',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'bro_title',
+                    'type' => 'text',
                     'title' => 'Brochure Title',
                     'default' => 'Projects & Case Studies',
                 ),
-                array(
-                    'id'    => 'bro_link_text',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'bro_link_text',
+                    'type' => 'text',
                     'title' => 'Brochure Link Text',
                     'default' => 'Download.pdf',
                 ),
-                array(
-                    'id'    => 'bro_link_url',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'bro_link_url',
+                    'type' => 'text',
                     'title' => 'Brochure Link URL',
                     'default' => '#',
                 ),
-                array(
-                    'id'    => 'more_link_text',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'more_link_text',
+                    'type' => 'text',
                     'title' => 'More Link Text',
                     'default' => 'More about service',
                 ),
-                array(
-                    'id'    => 'more_link_url',
-                    'type'  => 'text',
+                    array(
+                    'id' => 'more_link_url',
+                    'type' => 'text',
                     'title' => 'More Link URL',
                     'default' => '#',
                 ),
@@ -123,10 +123,11 @@ function mthan_section_what_we_do_options()
  *
  * @param array $section_data Per-instance CSF field values.
  **/
-function mthan_section_what_we_do_html($section_data) { 
-    $sec_title    = isset($section_data['sec_title']) ? $section_data['sec_title'] : '';
-    $sec_subtitle = isset($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : '';
-    $tabs         = isset($section_data['tabs_repeater']) ? $section_data['tabs_repeater'] : array();
+function mthan_section_what_we_do_html($section_data)
+{
+    $sec_title = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Special Services For You';
+    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'What We Do';
+    $tabs = !empty($section_data['tabs_repeater']) ? $section_data['tabs_repeater'] : array();
 ?>
 <section class="what-we-do">
         <div class="tabs-box service-tabs">
@@ -135,17 +136,17 @@ function mthan_section_what_we_do_html($section_data) {
 
                 <div class="auto-container">
                     <div class="sec-title">
-                        <div class="title-icon"><span class="icon"><img src="/wp-content/assets/images/icons/leaf-two.png" alt="" title=""></span></div>
+                        <div class="title-icon"><span class="icon"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/icons/leaf-two.png" alt="<?php echo esc_attr($sec_subtitle); ?>" title="<?php echo esc_attr($sec_subtitle); ?>"></span></div>
                         <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
                         <h2><?php echo esc_html($sec_title); ?></h2>
                     </div>
 
                     <div class="buttons">
                         <ul class="tab-buttons row clearfix">
-                            <?php foreach($tabs as $index => $tab): 
-                                $nav_title = isset($tab['nav_title']) ? $tab['nav_title'] : '';
-                                $nav_icon  = isset($tab['nav_icon']) ? $tab['nav_icon'] : '';
-                            ?>
+                            <?php foreach ($tabs as $index => $tab):
+        $nav_title = !empty($tab['nav_title']) ? $tab['nav_title'] : '';
+        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : '';
+?>
                             <li class="tab-btn <?php echo ($index === 0) ? 'active-btn' : ''; ?> col" data-tab="#tab-<?php echo esc_attr($index); ?>">
                                 <span class="hvr-seeds"></span>
                                 <div class="icon-box">
@@ -155,7 +156,8 @@ function mthan_section_what_we_do_html($section_data) {
                                 <div class="btn-title"><?php echo esc_html($nav_title); ?></div>
                                 <span class="arrow flaticon-right-1"></span>
                             </li>
-                            <?php endforeach; ?>
+                            <?php
+    endforeach; ?>
                         </ul>
                     </div>
 
@@ -163,23 +165,23 @@ function mthan_section_what_we_do_html($section_data) {
             </div>
 
             <div class="tabs-content">
-                <?php foreach($tabs as $index => $tab): 
-                    $nav_icon   = isset($tab['nav_icon']) ? $tab['nav_icon'] : '';
-                    $bg_image   = isset($tab['bg_image']) ? $tab['bg_image'] : '';
-                    $box_title  = isset($tab['box_title']) ? $tab['box_title'] : '';
-                    $box_text   = isset($tab['box_text']) ? $tab['box_text'] : '';
-                    $box_btn    = isset($tab['box_btn_text']) ? $tab['box_btn_text'] : '';
-                    $box_link   = isset($tab['box_btn_link']) ? $tab['box_btn_link'] : '';
-                    $c_subtitle = isset($tab['content_subtitle']) ? $tab['content_subtitle'] : '';
-                    $c_title    = isset($tab['content_title']) ? $tab['content_title'] : '';
-                    $c_text     = isset($tab['content_text']) ? $tab['content_text'] : '';
-                    $bro_thumb  = isset($tab['bro_thumb']) ? $tab['bro_thumb'] : '';
-                    $bro_title  = isset($tab['bro_title']) ? $tab['bro_title'] : '';
-                    $bro_l_text = isset($tab['bro_link_text']) ? $tab['bro_link_text'] : '';
-                    $bro_l_url  = isset($tab['bro_link_url']) ? $tab['bro_link_url'] : '';
-                    $m_text     = isset($tab['more_link_text']) ? $tab['more_link_text'] : '';
-                    $m_url      = isset($tab['more_link_url']) ? $tab['more_link_url'] : '';
-                ?>
+                <?php foreach ($tabs as $index => $tab):
+        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : '';
+        $bg_image = !empty($tab['bg_image']['url']) ? $tab['bg_image']['url'] : '';
+        $box_title = !empty($tab['box_title']) ? $tab['box_title'] : "Let's Start Your Project";
+        $box_text = !empty($tab['box_text']) ? $tab['box_text'] : '';
+        $box_btn = !empty($tab['box_btn_text']) ? $tab['box_btn_text'] : 'Appointment';
+        $box_link = !empty($tab['box_btn_link']) ? $tab['box_btn_link'] : '#';
+        $c_subtitle = !empty($tab['content_subtitle']) ? $tab['content_subtitle'] : 'know About';
+        $c_title = !empty($tab['content_title']) ? $tab['content_title'] : '';
+        $c_text = !empty($tab['content_text']) ? $tab['content_text'] : '';
+        $bro_thumb = !empty($tab['bro_thumb']['url']) ? $tab['bro_thumb']['url'] : '';
+        $bro_title = !empty($tab['bro_title']) ? $tab['bro_title'] : 'Projects & Case Studies';
+        $bro_l_text = !empty($tab['bro_link_text']) ? $tab['bro_link_text'] : 'Download.pdf';
+        $bro_l_url = !empty($tab['bro_link_url']) ? $tab['bro_link_url'] : '#';
+        $m_text = !empty($tab['more_link_text']) ? $tab['more_link_text'] : 'More about service';
+        $m_url = !empty($tab['more_link_url']) ? $tab['more_link_url'] : '#';
+?>
                 <!--Tab-->
                 <div class="tab <?php echo ($index === 0) ? 'active-tab' : ''; ?>" id="tab-<?php echo esc_attr($index); ?>">
                     <div class="row outer-container clearfix">
@@ -212,7 +214,8 @@ function mthan_section_what_we_do_html($section_data) {
                                     <div class="text"><?php echo esc_html($c_text); ?></div>
 
                                     <div class="b-box">
-                                        <?php if($bro_thumb): ?><div class="image"><a href="<?php echo esc_url($bro_l_url); ?>"><img src="<?php echo esc_url($bro_thumb); ?>" alt="brochure"></a></div><?php endif; ?>
+                                        <?php if ($bro_thumb): ?><div class="image"><a href="<?php echo esc_url($bro_l_url); ?>"><img src="<?php echo esc_url($bro_thumb); ?>" alt="<?php echo esc_attr($bro_title); ?>" title="<?php echo esc_attr($bro_title); ?>"></a></div><?php
+        endif; ?>
                                         <div class="bro-title"><?php echo esc_html($bro_title); ?></div>
                                         <div class="bro-link"><a href="<?php echo esc_url($bro_l_url); ?>" class="theme-btn"><?php echo esc_html($bro_l_text); ?> <i class="arrow flaticon-play-button-1"></i></a></div>
                                     </div>
@@ -225,9 +228,11 @@ function mthan_section_what_we_do_html($section_data) {
                         </div>
                     </div>
                 </div>
-                <?php endforeach; ?>
+                <?php
+    endforeach; ?>
 
             </div>
         </div>
     </section>
-<?php }
+<?php
+}
