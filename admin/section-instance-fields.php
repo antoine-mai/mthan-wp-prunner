@@ -70,19 +70,27 @@ function mthan_get_section_instance_fields()
     }
 
     // ──────────────────────────────────────────────────────────────────
-    // Banner Section (carousel slides)
+    // Banner Section — dynamic slides (group repeater)
     // ──────────────────────────────────────────────────────────────────
     $fields[] = array('type' => 'subheading', 'content' => 'Banner Section Options', 'dependency' => array('section_template', '==', 'banner-section'));
-    for ($i = 1; $i <= 3; $i++) {
-        $fields[] = array('id' => "banner_slide_{$i}_image", 'type' => 'media', 'library' => 'image', 'title' => "Slide {$i} – Background Image", 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_subtitle", 'type' => 'text', 'title' => "Slide {$i} – Subtitle", 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_title", 'type' => 'text', 'title' => "Slide {$i} – Title (H1)", 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_align", 'type' => 'select', 'title' => "Slide {$i} – Alignment", 'options' => array('left' => 'Left', 'right' => 'Right'), 'default' => ($i === 2 ? 'right' : 'left'), 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_btn1_text", 'type' => 'text', 'title' => "Slide {$i} – Button 1 Text", 'default' => 'Read More', 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_btn1_link", 'type' => 'text', 'title' => "Slide {$i} – Button 1 Link", 'default' => '#', 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_btn2_text", 'type' => 'text', 'title' => "Slide {$i} – Button 2 Text", 'default' => 'Contact Us', 'dependency' => array('section_template', '==', 'banner-section'));
-        $fields[] = array('id' => "banner_slide_{$i}_btn2_link", 'type' => 'text', 'title' => "Slide {$i} – Button 2 Link", 'default' => '#', 'dependency' => array('section_template', '==', 'banner-section'));
-    }
+    $fields[] = array(
+        'id' => 'banner_slides',
+        'type' => 'group',
+        'title' => 'Slides',
+        'button_title' => '+ Add Slide',
+        'dependency' => array('section_template', '==', 'banner-section'),
+        'fields' => array(
+                array('id' => 'image', 'type' => 'media', 'library' => 'image', 'title' => 'Background Image'),
+                array('id' => 'subtitle', 'type' => 'text', 'title' => 'Subtitle'),
+                array('id' => 'title', 'type' => 'text', 'title' => 'Title (H1)'),
+                array('id' => 'align', 'type' => 'select', 'title' => 'Alignment', 'options' => array('left' => 'Left', 'right' => 'Right'), 'default' => 'left'),
+                array('id' => 'btn1_text', 'type' => 'text', 'title' => 'Button 1 Text', 'default' => 'Read More'),
+                array('id' => 'btn1_link', 'type' => 'text', 'title' => 'Button 1 Link', 'default' => '#'),
+                array('id' => 'btn2_text', 'type' => 'text', 'title' => 'Button 2 Text', 'default' => 'Contact Us'),
+                array('id' => 'btn2_link', 'type' => 'text', 'title' => 'Button 2 Link', 'default' => '#'),
+        ),
+    );
+
 
     // ──────────────────────────────────────────────────────────────────
     // Page Banner

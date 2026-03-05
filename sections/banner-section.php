@@ -1,23 +1,26 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 
 // $section_data is set by mthan_include_section_items() — per-instance options
-// Build slides from instance fields (banner_slide_1_*, _2_*, _3_*)
+// banner_slides is a CSF group repeater: array of slide items
+$raw_slides = !empty($section_data['banner_slides']) ? $section_data['banner_slides'] : array();
+
 $slides = array();
-for ($i = 1; $i <= 3; $i++) {
-    $img = !empty($section_data["banner_slide_{$i}_image"]['url'])
-        ? $section_data["banner_slide_{$i}_image"]['url']
-        : '';
-    $subtitle = isset($section_data["banner_slide_{$i}_subtitle"]) ? $section_data["banner_slide_{$i}_subtitle"] : '';
-    $title = isset($section_data["banner_slide_{$i}_title"]) ? $section_data["banner_slide_{$i}_title"] : '';
-    $align = isset($section_data["banner_slide_{$i}_align"]) ? $section_data["banner_slide_{$i}_align"] : 'left';
-    $btn1_text = isset($section_data["banner_slide_{$i}_btn1_text"]) ? $section_data["banner_slide_{$i}_btn1_text"] : '';
-    $btn1_link = isset($section_data["banner_slide_{$i}_btn1_link"]) ? $section_data["banner_slide_{$i}_btn1_link"] : '#';
-    $btn2_text = isset($section_data["banner_slide_{$i}_btn2_text"]) ? $section_data["banner_slide_{$i}_btn2_text"] : '';
-    $btn2_link = isset($section_data["banner_slide_{$i}_btn2_link"]) ? $section_data["banner_slide_{$i}_btn2_link"] : '#';
-    // Only add slide if it has an image or title configured
-    if ($img || $title) {
-        $slides[] = compact('img', 'subtitle', 'title', 'align', 'btn1_text', 'btn1_link', 'btn2_text', 'btn2_link');
+foreach ($raw_slides as $s) {
+    $img = !empty($s['image']['url']) ? $s['image']['url'] : '';
+    $title = !empty($s['title']) ? $s['title'] : '';
+    if (!$img && !$title) {
+        continue;
     }
+    $slides[] = array(
+        'img' => $img,
+        'subtitle' => !empty($s['subtitle']) ? $s['subtitle'] : '',
+        'title' => $title,
+        'align' => !empty($s['align']) ? $s['align'] : 'left',
+        'btn1_text' => !empty($s['btn1_text']) ? $s['btn1_text'] : '',
+        'btn1_link' => !empty($s['btn1_link']) ? $s['btn1_link'] : '#',
+        'btn2_text' => !empty($s['btn2_text']) ? $s['btn2_text'] : '',
+        'btn2_link' => !empty($s['btn2_link']) ? $s['btn2_link'] : '#',
+    );
 }
 
 // Fallback to default slides if none configured
