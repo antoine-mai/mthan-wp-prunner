@@ -72,9 +72,9 @@ function mthan_section_banner_section_html($section_data)
     if (empty($slides)) {
         $base   = get_template_directory_uri() . '/assets/images/main-slider/';
         $slides = array(
-            array('img' => $base . '4.jpg', 'subtitle' => 'High Quality &amp; Affordable Price', 'title' => 'Unique Designs', 'align' => 'left',  'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Contact Us', 'btn2_link' => '#'),
-            array('img' => $base . '5.jpg', 'subtitle' => 'Adding Perfection to Your Lawn',      'title' => 'Lawn Stylist',   'align' => 'right', 'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services',   'btn2_link' => '#'),
-            array('img' => $base . '3.jpg', 'subtitle' => 'Solutions for Your Green Edge',       'title' => 'Build and Care', 'align' => 'left',  'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services',   'btn2_link' => '#'),
+            array('img' => $base . '0.jpg', 'subtitle' => 'High Quality &amp; Affordable Price', 'title' => 'Unique Designs', 'align' => 'left',  'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Contact Us', 'btn2_link' => '#'),
+            array('img' => $base . '0.jpg', 'subtitle' => 'Adding Perfection to Your Lawn',      'title' => 'Lawn Stylist',   'align' => 'right', 'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services',   'btn2_link' => '#'),
+            array('img' => $base . '0.jpg', 'subtitle' => 'Solutions for Your Green Edge',       'title' => 'Build and Care', 'align' => 'left',  'btn1_text' => 'Read More', 'btn1_link' => '#', 'btn2_text' => 'Services',   'btn2_link' => '#'),
         );
     }
     ?>
