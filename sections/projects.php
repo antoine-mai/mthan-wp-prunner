@@ -104,7 +104,6 @@ function mthan_section_projects_options()
             ),
             'default' => array(
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/resource/featured-image-2.jpg'),
                     'cat_label'      => 'Garden Care',
                     'title'          => 'Communal Garden',
                     'link'           => '#',
@@ -112,7 +111,6 @@ function mthan_section_projects_options()
                     'is_large'       => true,
                 ),
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/gallery/2.jpg'),
                     'cat_label'      => 'Landscape',
                     'title'          => 'Outdoor Living',
                     'link'           => '#',
@@ -120,7 +118,6 @@ function mthan_section_projects_options()
                     'is_large'       => false,
                 ),
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/gallery/3.jpg'),
                     'cat_label'      => 'Garden Care',
                     'title'          => 'Outdoor Living',
                     'link'           => '#',
@@ -128,7 +125,6 @@ function mthan_section_projects_options()
                     'is_large'       => false,
                 ),
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/gallery/4.jpg'),
                     'cat_label'      => 'Landscape',
                     'title'          => 'Outdoor Living',
                     'link'           => '#',
@@ -136,7 +132,6 @@ function mthan_section_projects_options()
                     'is_large'       => false,
                 ),
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/gallery/5.jpg'),
                     'cat_label'      => 'Garden Care',
                     'title'          => 'Outdoor Living',
                     'link'           => '#',
@@ -144,7 +139,6 @@ function mthan_section_projects_options()
                     'is_large'       => false,
                 ),
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/gallery/6.jpg'),
                     'cat_label'      => 'Garden Care',
                     'title'          => 'Outdoor Living',
                     'link'           => '#',
@@ -152,7 +146,6 @@ function mthan_section_projects_options()
                     'is_large'       => false,
                 ),
                 array(
-                    'image'          => array('url' => get_template_directory_uri() . '/assets/images/gallery/7.jpg'),
                     'cat_label'      => 'Garden Care',
                     'title'          => 'Outdoor Living',
                     'link'           => '#',
