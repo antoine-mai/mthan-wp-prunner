@@ -237,6 +237,12 @@ function mthan_section_about_config_options()
             'title'   => 'Default Title',
             'default' => 'Professional Gardener',
         ),
+        array(
+            'id'      => 'about_global_icon',
+            'type'    => 'upload',
+            'title'   => 'Default Icon',
+            'default' => get_template_directory_uri() . '/assets/images/icons/leaf-two.png',
+        ),
     );
 }
 
