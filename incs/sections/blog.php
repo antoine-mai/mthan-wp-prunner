@@ -27,18 +27,8 @@ function mthan_section_blog_options()
             'title'   => 'Title',
             'default' => 'Latest From Blog',
         ),
-        array(
-            'id'      => 'blog_btn_text',
-            'type'    => 'text',
-            'title'   => 'Button Text',
-            'default' => 'View More Blog',
-        ),
-        array(
-            'id'      => 'blog_btn_link',
-            'type'    => 'text',
-            'title'   => 'Button Link',
-            'default' => '#',
-        ),
+        mthan_btn_text_field('View More Blog'),
+        mthan_btn_link_field(''),
         array(
             'id'      => 'blog_count',
             'type'    => 'number',
@@ -73,7 +63,7 @@ function mthan_section_blog_html($section_data)
     $sec_sub_icon = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
     $sec_title    = mthan_get_section_val($slug, $section_data, 'sec_title', 'Latest From Blog');
     $btn_text     = mthan_get_section_val($slug, $section_data, 'btn_text', 'View More Blog');
-    $btn_link     = mthan_get_section_val($slug, $section_data, 'btn_link', '#');
+    $btn_link     = mthan_sec_link($slug, $section_data, 'btn_link', '#');
     $count        = (int)mthan_get_section_val($slug, $section_data, 'count', 3);
     $cat          = mthan_get_section_val($slug, $section_data, 'category', '');
     $paged        = (get_query_var('paged')) ? get_query_var('paged') : 1;

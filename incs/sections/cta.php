@@ -24,14 +24,8 @@ function mthan_section_cta_options()
             'default' => 'Do you need tree care for your home?',
             'dependency' => array('section_style', '==', '1'),
         ),
-        array(
-            'id'    => 'cta_btn_text',
-            'type'  => 'text',
-            'title' => 'Button Text',
-            'default' => 'Send Message',
-            'dependency' => array('section_style', '==', '1'),
-        ),
-        mthan_page_select_field('cta_btn_link', 'Button Link', array('dependency' => array('section_style', '==', '1'))),
+        array_merge(mthan_btn_text_field('Send Message', 'Button Text', 'btn_text'), ['dependency' => array('section_style', '==', '1')]),
+        array_merge(mthan_btn_link_field('', 'Button Link', 'btn_link'), ['dependency' => array('section_style', '==', '1')]),
         array(
             'id'    => 'cta_phone',
             'type'  => 'text',
@@ -54,22 +48,10 @@ function mthan_section_cta_options()
             'default' => 'In Need of  Gardening & Landscaping <br>Maintenence Service?',
             'dependency' => array('section_style', '==', '2'),
         ),
-        array(
-            'id'    => 'cta_btn1_text_2',
-            'type'  => 'text',
-            'title' => 'Button 1 Text',
-            'default' => 'Commercial',
-            'dependency' => array('section_style', '==', '2'),
-        ),
-        mthan_page_select_field('cta_btn1_link_2', 'Button 1 Link', array('dependency' => array('section_style', '==', '2'))),
-        array(
-            'id'    => 'cta_btn2_text_2',
-            'type'  => 'text',
-            'title' => 'Button 2 Text',
-            'default' => 'Residential',
-            'dependency' => array('section_style', '==', '2'),
-        ),
-        mthan_page_select_field('cta_btn2_link_2', 'Button 2 Link', array('dependency' => array('section_style', '==', '2'))),
+        array_merge(mthan_btn_text_field('Commercial', 'Button 1 Text', 'btn1_text_2'), ['dependency' => array('section_style', '==', '2')]),
+        array_merge(mthan_btn_link_field('', 'Button 1 Link', 'btn1_link_2'), ['dependency' => array('section_style', '==', '2')]),
+        array_merge(mthan_btn_text_field('Residential', 'Button 2 Text', 'btn2_text_2'), ['dependency' => array('section_style', '==', '2')]),
+        array_merge(mthan_btn_link_field('', 'Button 2 Link', 'btn2_link_2'), ['dependency' => array('section_style', '==', '2')]),
     );
 }
 
@@ -89,8 +71,7 @@ function mthan_section_cta_html($section_data) {
 
     $heading  = mthan_get_section_val($slug, $section_data, 'heading', 'Do you need tree care for your home?');
     $btn_text = mthan_get_section_val($slug, $section_data, 'btn_text', 'Send Message');
-    $btn_link_id = mthan_get_section_val($slug, $section_data, 'btn_link', '#');
-    $btn_link = is_numeric($btn_link_id) ? get_permalink($btn_link_id) : $btn_link_id;
+    $btn_link = mthan_sec_link($slug, $section_data, 'btn_link', '#');
     $phone    = mthan_get_section_val($slug, $section_data, 'phone', '+31 65 792 63 11');
 ?>
 <section class="call-to-action">
@@ -125,11 +106,9 @@ function mthan_section_cta_html_2($section_data) {
     $bg_image  = mthan_sec_img($slug, $section_data, 'bg_2', get_template_directory_uri() . '/assets/images/background/call-to-bg.jpg');
     $heading   = mthan_get_section_val($slug, $section_data, 'heading_2', 'In Need of  Gardening & Landscaping <br>Maintenence Service?');
     $btn1_text = mthan_get_section_val($slug, $section_data, 'btn1_text_2', 'Commercial');
-    $btn1_link_id = mthan_get_section_val($slug, $section_data, 'btn1_link_2', '#');
-    $btn1_link = is_numeric($btn1_link_id) ? get_permalink($btn1_link_id) : $btn1_link_id;
+    $btn1_link = mthan_sec_link($slug, $section_data, 'btn1_link_2', '#');
     $btn2_text = mthan_get_section_val($slug, $section_data, 'btn2_text_2', 'Residential');
-    $btn2_link_id = mthan_get_section_val($slug, $section_data, 'btn2_link_2', '#');
-    $btn2_link = is_numeric($btn2_link_id) ? get_permalink($btn2_link_id) : $btn2_link_id;
+    $btn2_link = mthan_sec_link($slug, $section_data, 'btn2_link_2', '#');
 ?>
 <section class="call-to-two">
     <div class="image-layer" style="background-image: url(<?php echo esc_url($bg_image); ?>);"></div>

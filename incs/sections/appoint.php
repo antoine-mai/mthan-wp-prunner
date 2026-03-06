@@ -6,30 +6,10 @@
 function mthan_section_appoint_options()
 {
     return array(
-        array(
-            'id' => 'appoint_subtitle',
-            'type' => 'text',
-            'title' => 'Subtitle',
-            'default' => 'About Us', // Note: This was "About Us" in HTML, though it seems weird.
-        ),
-        array(
-            'id' => 'appoint_title',
-            'type' => 'text',
-            'title' => 'Section Title',
-            'default' => 'Request Job Estimate',
-        ),
-        array(
-            'id' => 'appoint_btn_text',
-            'type' => 'text',
-            'title' => 'Button Text',
-            'default' => 'Request Job Estimate',
-        ),
-        array(
-            'id' => 'appoint_btn_link',
-            'type' => 'text',
-            'title' => 'Button Link',
-            'default' => '#',
-        ),
+        mthan_subtitle_field('About Us'),
+        mthan_title_field('Request Job Estimate'),
+        mthan_btn_text_field('Request Job Estimate'),
+        mthan_btn_link_field(''),
         array(
             'id' => 'appoint_form_title',
             'type' => 'text',
@@ -67,7 +47,7 @@ function mthan_section_appoint_html($section_data) {
     $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'Request Job Estimate');
     $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'About Us');
     $btn_text     = mthan_get_section_val($slug, $section_data, 'btn_text', 'Request Job Estimate');
-    $btn_link     = mthan_get_section_val($slug, $section_data, 'btn_link', '#');
+    $btn_link     = mthan_sec_link($slug, $section_data, 'btn_link', '#');
     $form_title   = mthan_get_section_val($slug, $section_data, 'form_title', 'Create Appointment');
     $form_text    = mthan_get_section_val($slug, $section_data, 'form_text', 'Fill out the form below and then Set a Day and Time that works best for you!.');
     $success_msg  = mthan_get_section_val($slug, $section_data, 'success_msg', 'Thank you for make an appoitnment!.');

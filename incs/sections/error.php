@@ -35,18 +35,8 @@ function mthan_section_error_options()
             'title' => 'Description',
             'default' => 'It looks like nothing was found at this location. Maybe try one of the links below or a search?',
         ),
-        array(
-            'id'    => 'error_btn_text',
-            'type'  => 'text',
-            'title' => 'Button Text',
-            'default' => 'Back to Home',
-        ),
-        array(
-            'id'    => 'error_btn_link',
-            'type'  => 'text',
-            'title' => 'Button URL',
-            'default' => '#',
-        ),
+        mthan_btn_text_field('Back to Home'),
+        mthan_btn_link_field(''),
     );
 }
 
@@ -54,12 +44,13 @@ function mthan_section_error_options()
  * Render the error section.
  */
 function mthan_section_error_html($section_data) { 
+    $slug = 'error';
     $bg   = !empty($section_data['error_bg']['url']) ? $section_data['error_bg']['url'] : get_template_directory_uri() . '/assets/images/background/bg-404.jpg';
     $img  = !empty($section_data['error_title_img']['url']) ? $section_data['error_title_img']['url'] : get_template_directory_uri() . '/assets/images/resource/404-image.png';
     $hd   = !empty($section_data['error_heading']) ? $section_data['error_heading'] : 'Oops! Page Not Found.';
     $txt  = !empty($section_data['error_text']) ? $section_data['error_text'] : 'It looks like nothing was found at this location. Maybe try one of the links below or a search?';
-    $btn_txt = !empty($section_data['error_btn_text']) ? $section_data['error_btn_text'] : 'Back to Home';
-    $btn_url = !empty($section_data['error_btn_link']) ? $section_data['error_btn_link'] : '#';
+    $btn_txt = mthan_get_section_val($slug, $section_data, 'btn_text', 'Back to Home');
+    $btn_url = mthan_sec_link($slug, $section_data, 'btn_link', '#');
 ?>
 <section class="error-section">
         <div class="image-layer" style="background-image: url(<?php echo esc_url($bg); ?>);"></div>

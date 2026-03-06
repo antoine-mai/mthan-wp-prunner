@@ -13,24 +13,14 @@ function mthan_section_myaccount_options()
             'title' => 'Login Form Title',
             'default' => 'Login',
         ),
-        array(
-            'id'    => 'login_btn_text',
-            'type'  => 'text',
-            'title' => 'Login Button Text',
-            'default' => 'Login Now',
-        ),
+        mthan_btn_text_field('Login Now', 'Login Button Text', 'login_btn_text'),
         array(
             'id'    => 'register_title',
             'type'  => 'text',
             'title' => 'Register Form Title',
             'default' => 'Register',
         ),
-        array(
-            'id'    => 'register_btn_text',
-            'type'  => 'text',
-            'title' => 'Register Button Text',
-            'default' => 'Register Here',
-        ),
+        mthan_btn_text_field('Register Here', 'Register Button Text', 'register_btn_text'),
         array(
             'id'    => 'register_footer_text',
             'type'  => 'text',
@@ -44,11 +34,12 @@ function mthan_section_myaccount_options()
  * Render the myaccount section.
  */
 function mthan_section_myaccount_html($section_data) {
-    $l_title = !empty($section_data['login_title']) ? $section_data['login_title'] : 'Login';
-    $l_btn   = !empty($section_data['login_btn_text']) ? $section_data['login_btn_text'] : 'Login Now';
-    $r_title = !empty($section_data['register_title']) ? $section_data['register_title'] : 'Register';
-    $r_btn   = !empty($section_data['register_btn_text']) ? $section_data['register_btn_text'] : 'Register Here';
-    $r_foot  = !empty($section_data['register_footer_text']) ? $section_data['register_footer_text'] : '* You must be a free registered user.';
+    $slug = 'myaccount';
+    $l_title = mthan_get_section_val($slug, $section_data, 'login_title', 'Login');
+    $l_btn   = mthan_get_section_val($slug, $section_data, 'login_btn_text', 'Login Now');
+    $r_title = mthan_get_section_val($slug, $section_data, 'register_title', 'Register');
+    $r_btn   = mthan_get_section_val($slug, $section_data, 'register_btn_text', 'Register Here');
+    $r_foot  = mthan_get_section_val($slug, $section_data, 'register_footer_text', '* You must be a free registered user.');
 ?>
 <section class="myaccount-section">
         <div class="auto-container">

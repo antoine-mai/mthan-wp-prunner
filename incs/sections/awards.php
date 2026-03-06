@@ -24,18 +24,8 @@ function mthan_section_awards_options()
             'title' => 'Description',
             'default' => 'It is a long established fact that a reader will distracted by the readable content.',
         ),
-        array(
-            'id'    => 'awards_btn_text',
-            'type'  => 'text',
-            'title' => 'Button Text',
-            'default' => 'All Our Awards',
-        ),
-        array(
-            'id'    => 'awards_btn_link',
-            'type'  => 'text',
-            'title' => 'Button URL',
-            'default' => '#',
-        ),
+        mthan_btn_text_field('All Our Awards'),
+        mthan_btn_link_field(''),
         array(
             'id'    => 'awards_bg_image',
             'type'  => 'media',
@@ -101,7 +91,7 @@ function mthan_section_awards_html($section_data) {
     $title    = mthan_get_section_val($slug, $section_data, 'title', 'Most Awards Won <br>By a Company in <br>USA - <span class="theme_color">Pruners&CO</span>');
     $text     = mthan_get_section_val($slug, $section_data, 'text', 'It is a long established fact that a reader will distracted by the readable content.');
     $btn_text = mthan_get_section_val($slug, $section_data, 'btn_text', 'All Our Awards');
-    $btn_link = mthan_get_section_val($slug, $section_data, 'btn_link', '#');
+    $btn_link = mthan_sec_link($slug, $section_data, 'btn_link', '#');
     $bg_image = mthan_sec_img($slug, $section_data, 'bg_image', get_template_directory_uri() . '/assets/images/background/awards-bg.jpg');
     $awards   = mthan_get_section_val($slug, $section_data, 'carousel', array());
 ?>

@@ -16,43 +16,17 @@ function mthan_section_team_options()
             ),
             'default' => 'style-1',
         ),
-            array(
-            'id' => 'team_sec_subtitle',
-            'type' => 'text',
-            'title' => 'Subtitle',
-            'default' => 'Our Gardeners',
-        ),
-            array(
-            'id' => 'team_sec_title',
-            'type' => 'text',
-            'title' => 'Title',
-            'default' => 'Professional Team',
-        ),
-            array(
-            'id' => 'btn_text',
-            'type' => 'text',
-            'title' => 'Button Text (Style 1)',
-            'default' => 'All Members',
-            'dependency' => array('team_style', '==', 'style-1'),
-        ),
-            array(
-            'id' => 'btn_link',
-            'type' => 'text',
-            'title' => 'Button Link (Style 1)',
-            'default' => '#',
-            'dependency' => array('team_style', '==', 'style-1'),
-        ),
+        mthan_subtitle_field('Our Gardeners'),
+        mthan_title_field('Professional Team'),
+        array_merge(mthan_btn_text_field('All Members', 'Button Text (Style 1)'), ['dependency' => array('team_style', '==', 'style-1')]),
+        array_merge(mthan_btn_link_field('#', 'Button Link (Style 1)'), ['dependency' => array('team_style', '==', 'style-1')]),
             array(
             'id' => 'team_repeater',
             'type' => 'group',
             'title' => 'Team Members',
             'max' => 3,
             'fields' => array(
-                    array(
-                    'id' => 'name',
-                    'type' => 'text',
-                    'title' => 'Name',
-                ),
+                    mthan_name_field(),
                     array(
                     'id' => 'image',
                     'type' => 'media',
@@ -125,10 +99,10 @@ function mthan_section_team_html($section_data)
 {
     $slug = 'team';
     $style = mthan_get_section_val($slug, $section_data, 'style', 'style-1');
-    $sec_title = mthan_get_section_val($slug, $section_data, 'sec_title', 'Professional Team');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'Our Gardeners');
+    $sec_title = mthan_get_section_val($slug, $section_data, 'title', 'Professional Team');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Our Gardeners');
     $btn_text = mthan_get_section_val($slug, $section_data, 'btn_text', 'All Members');
-    $btn_link = mthan_get_section_val($slug, $section_data, 'btn_link', '#');
+    $btn_link = mthan_sec_link($slug, $section_data, 'btn_link', '#');
     $team_repeater = mthan_get_section_val($slug, $section_data, 'repeater', array());
 
     if ($style === 'style-2') {
@@ -246,8 +220,8 @@ function mthan_section_team_html($section_data)
 function mthan_section_team_html_2($section_data)
 {
     $slug = 'team';
-    $sec_title = mthan_get_section_val($slug, $section_data, 'sec_title', 'Professional Team');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'Our Gardeners');
+    $sec_title = mthan_get_section_val($slug, $section_data, 'title', 'Professional Team');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Our Gardeners');
     $team_repeater = mthan_get_section_val($slug, $section_data, 'repeater', array());
 
     $fallback_imgs = array(

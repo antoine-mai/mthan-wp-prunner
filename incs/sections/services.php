@@ -7,12 +7,7 @@
 function mthan_section_services_options()
 {
     return array(
-        array(
-            'id' => 'services_subtitle',
-            'type' => 'text',
-            'title' => 'Subtitle',
-            'default' => 'Our Services',
-        ),
+        mthan_subtitle_field('Our Services'),
         array(
             'id' => 'services_subtitle_icon',
             'type' => 'media',
@@ -21,34 +16,20 @@ function mthan_section_services_options()
             'title' => 'Subtitle Icon',
             'default' => array('url' => get_template_directory_uri() . '/assets/images/icons/leaf-center.png')
         ),
-        array(
-            'id' => 'services_title',
-            'type' => 'text',
-            'title' => 'Title',
-            'default' => 'What We Offer',
-        ),
+        mthan_title_field('What We Offer'),
         array(
             'id' => 'main_services_list',
             'type' => 'group',
             'title' => 'Services List',
             'fields' => array(
-                    array(
-                    'id' => 'services_title',
-                    'type' => 'text',
-                    'title' => 'Title',
-                ),
+                    mthan_name_field(),
                     array(
                     'id' => 'services_image',
                     'type' => 'upload',
                     'preview' => false,
                     'title' => 'Image',
                 ),
-                    array(
-                    'id' => 'services_icon',
-                    'type' => 'upload',
-                    'preview' => false,
-                    'title' => 'Icon Upload',
-                ),
+                    mthan_icon_field(),
                     array(
                     'id' => 'services_text',
                     'type' => 'textarea',
@@ -58,19 +39,19 @@ function mthan_section_services_options()
             ),
             'default' => array(
                     array(
-                    'services_title' => 'Spring Cleanup',
+                    'name' => 'Spring Cleanup',
                     'services_text' => 'Indignation and dislike men who are so beguiled demoralized ...',
-                    'services_icon' => 'flaticon-hedge',
+                    'icon' => 'flaticon-hedge',
                 ),
                     array(
-                    'services_title' => 'Garden Care',
+                    'name' => 'Garden Care',
                     'services_text' => 'Frequently occur that pleasures have to berepudiated & accepted ...',
-                    'services_icon' => 'flaticon-wheelbarrow',
+                    'icon' => 'flaticon-wheelbarrow',
                 ),
                     array(
-                    'services_title' => 'Water Fountain',
+                    'name' => 'Water Fountain',
                     'services_text' => 'Duty through weakness of will which is the same as saying through ...',
-                    'services_icon' => 'flaticon-sprinkler',
+                    'icon' => 'flaticon-sprinkler',
                 ),
             ),
         ),
@@ -103,8 +84,8 @@ function mthan_section_services_html($section_data)
         <div class="row clearfix">
             <?php if (is_array($services_repeater)) : foreach ($services_repeater as $service):
         $img = !empty($service['services_image']['url']) ? $service['services_image']['url'] : '';
-        $icon = !empty($service['services_icon']) ? $service['services_icon'] : '';
-        $title = !empty($service['services_title']) ? $service['services_title'] : 'Service Title';
+        $icon = !empty($service['icon']) ? $service['icon'] : '';
+        $title = !empty($service['name']) ? $service['name'] : 'Service Title';
         $text = !empty($service['services_text']) ? $service['services_text'] : 'Service text description here ...';
         $link = !empty($service['services_link']) ? get_permalink($service['services_link']) : '#';
 ?>

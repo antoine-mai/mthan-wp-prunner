@@ -16,18 +16,8 @@ function mthan_section_testimonials_options()
             ),
             'default' => 'style-1',
         ),
-        array(
-            'id'      => 'testi_sec_subtitle',
-            'type'    => 'text',
-            'title'   => 'Subtitle',
-            'default' => 'Our Testimonials',
-        ),
-        array(
-            'id'      => 'testi_sec_title',
-            'type'    => 'text',
-            'title'   => 'Title',
-            'default' => 'What Our Clients Say',
-        ),
+        mthan_subtitle_field('Our Testimonials'),
+        mthan_title_field('What Our Clients Say'),
         array(
             'id'         => 'sec_desc',
             'type'       => 'textarea',
@@ -40,11 +30,7 @@ function mthan_section_testimonials_options()
             'type'    => 'group',
             'title'   => 'Testimonials List',
             'fields'  => array(
-                array(
-                    'id'    => 'name',
-                    'type'  => 'text',
-                    'title' => 'Name',
-                ),
+                mthan_name_field(),
                 array(
                     'id'      => 'image',
                     'type'    => 'media',
@@ -118,6 +104,7 @@ function mthan_section_testimonials_options()
             'title'      => 'Decorative Thumbs (Style 2)',
             'max'        => 4,
             'fields'     => array(
+                mthan_name_field(),
                 array(
                     'id'      => 'image',
                     'type'    => 'media',
@@ -146,8 +133,8 @@ function mthan_section_testimonials_html($section_data)
         return;
     }
 
-    $sec_title    = mthan_get_section_val($slug, $section_data, 'testi_sec_title', 'Guarantee Success');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'testi_sec_subtitle', 'Testimonials');
+    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'Guarantee Success');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Testimonials');
     $sec_desc     = mthan_get_section_val($slug, $section_data, 'sec_desc', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
     $testimonials = mthan_get_section_val($slug, $section_data, 'repeater', array());
 
@@ -225,8 +212,8 @@ function mthan_section_testimonials_html($section_data)
 function mthan_section_testimonials_html_2($section_data)
 {
     $slug = 'testimonials';
-    $sec_title    = mthan_get_section_val($slug, $section_data, 'testi_sec_title', 'What Our Clients Say');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'testi_sec_subtitle', 'Our Testimonials');
+    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'What Our Clients Say');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Our Testimonials');
     $testimonials = mthan_get_section_val($slug, $section_data, 'repeater', array());
     $decorative   = mthan_get_section_val($slug, $section_data, 'decorative_thumbs', array());
 

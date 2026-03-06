@@ -250,6 +250,18 @@ function mthan_sec_img($slug, $instance_data, $field, $default_url = '')
 }
 
 /**
+ * Helper to get a permalink from a page/post ID or return the direct URL.
+ */
+function mthan_sec_link($slug, $instance_data, $field, $default_url = '#')
+{
+    $val = mthan_get_section_val($slug, $instance_data, $field, $default_url);
+    if (is_numeric($val)) {
+        return get_permalink($val);
+    }
+    return !empty($val) ? $val : $default_url;
+}
+
+/**
  * Helper to read a per-instance field value from the current section.
  * In templates: mthan_get_sec_val_legacy('subtitle', 'Default Text')
  */
@@ -272,15 +284,15 @@ function mthan_get_sec_val_legacy($field, $default = '')
  */
 function mthan_page_select_field($id, $title, $args = array(), $multiple = false)
 {
-    return array_merge(array(
-        'id'       => $id,
+    return array_merge([
+        'multiple' => $multiple,
         'type'     => 'select',
-        'title'    => $title,
         'options'  => 'pages',
-        'multiple'=> $multiple,
+        'title'    => $title,
         'chosen'   => true,
         'ajax'     => true,
-    ), $args);
+        'id'       => $id,
+    ], $args);
 }
 
 // ──────────────────────────────────────────────────────────────────
@@ -348,8 +360,94 @@ function mthan_render_page_sections($position = 'before')
     $group_prefix = is_page() ? 'page' : 'post';
     $group_key    = $group_prefix . '_' . $position . '_content';
 
-    $items     = !empty($post_meta[$group_key]) && is_array($post_meta[$group_key])
+    $items = !empty($post_meta[$group_key]) 
+        && is_array($post_meta[$group_key])
         ? $post_meta[$group_key]
         : array();
     mthan_include_section_items($items);
+}
+
+/**
+ * Returns a standardized first field for groups/repeaters (Name/Title).
+ *
+ * @return array
+ */
+function mthan_name_field()
+{
+    return [
+        'title' => 'Name / Title',
+        'id'    => 'name',
+        'type'  => 'text'
+    ];
+}
+/**
+ * Returns a standardized icon upload field.
+ *
+ * @return array
+ */
+function mthan_icon_field($title = 'Icon Upload')
+{
+    return [
+        'type'    => 'upload',
+        'title'   => $title,
+        'id'      => 'icon',
+        'preview' => false
+    ];
+}
+
+/**
+ * Returns a standardized section title field.
+ *
+ * @return array
+ */
+function mthan_title_field($default = '')
+{
+    return [
+        'title'   => 'Section Title',
+        'default' => $default,
+        'id'      => 'title',
+        'type'    => 'text'
+    ];
+}
+
+/**
+ * Returns a standardized section subtitle field.
+ *
+ * @return array
+ */
+function mthan_subtitle_field($default = '')
+{
+    return [
+        'title'   => 'Section Subtitle',
+        'id'      => 'subtitle',
+        'default' => $default,
+        'type'    => 'text'
+    ];
+}
+
+/**
+ * Returns a standardized button text field.
+ *
+ * @return array
+ */
+function mthan_btn_text_field($default = 'Read More', $title = 'Button Text', $id = 'btn_text')
+{
+    return [
+        'default' => $default,
+        'title'   => $title,
+        'type'    => 'text',
+        'id'      => $id
+    ];
+}
+
+/**
+ * Returns a standardized button link field.
+ *
+ * @return array
+ */
+function mthan_btn_link_field($default = '', $title = 'Button Link', $id = 'btn_link')
+{
+    return mthan_page_select_field($id, $title, [
+        'default' => $default,
+    ]);
 }

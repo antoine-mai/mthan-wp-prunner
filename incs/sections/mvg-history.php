@@ -101,17 +101,8 @@ function mthan_section_mvg_history_options()
                 ),
             ),
         ),
-        array(
-            'id'    => 'history_btn_text',
-            'type'  => 'text',
-            'title' => 'See All Button Text',
-            'default' => 'View Full History',
-        ),
-        array(
-            'id'    => 'history_btn_link',
-            'type'  => 'link',
-            'title' => 'See All Button Link',
-        ),
+        mthan_btn_text_field('View Full History'),
+        mthan_btn_link_field(''),
     );
 }
 
@@ -126,8 +117,8 @@ function mthan_section_mvg_history_html($section_data) {
     $mvg_blocks   = mthan_get_section_val($slug, $section_data, 'mvg_blocks', array());
     $desc_blocks  = mthan_get_section_val($slug, $section_data, 'desc_carousel', array());
     $history      = mthan_get_section_val($slug, $section_data, 'history_repeater', array());
-    $btn_text     = mthan_get_section_val($slug, $section_data, 'history_btn_text', 'View Full History');
-    $btn_link     = mthan_get_section_val($slug, $section_data, 'history_btn_link', array());
+    $btn_text     = mthan_get_section_val($slug, $section_data, 'btn_text', 'View Full History');
+    $btn_link     = mthan_sec_link($slug, $section_data, 'btn_link', '');
 ?>
 <section class="mvg-history">
     <div class="mvg">
@@ -213,8 +204,8 @@ function mthan_section_mvg_history_html($section_data) {
                     <?php endforeach; ?>
                 </div>
             </div>
-            <?php if(!empty($btn_link['url'])): ?>
-            <div class="see-all"><a href="<?php echo esc_url($btn_link['url']); ?>" class="theme-btn"><?php echo esc_html($btn_text); ?> <i class="arrow flaticon-play-button-1"></i></a></div>
+            <?php if(!empty($btn_link)): ?>
+            <div class="see-all"><a href="<?php echo esc_url($btn_link); ?>" class="theme-btn"><?php echo esc_html($btn_text); ?> <i class="arrow flaticon-play-button-1"></i></a></div>
             <?php endif; ?>
         </div>
     </div>

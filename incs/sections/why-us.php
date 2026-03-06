@@ -18,12 +18,7 @@ function mthan_section_why_us_options()
             ),
             'default' => '1',
         ),
-        array(
-            'id'    => 'sec_subtitle',
-            'type'  => 'text',
-            'title' => 'Subtitle',
-            'default' => 'why choose us',
-        ),
+        mthan_subtitle_field('why choose us'),
         array(
             'id'    => 'sec_subtitle_icon',
             'type'  => 'media',
@@ -32,12 +27,7 @@ function mthan_section_why_us_options()
             'title' => 'Subtitle Icon',
             'default' => array('url' => get_template_directory_uri() . '/assets/images/icons/leaf-four.png')
         ),
-        array(
-            'id'    => 'sec_title',
-            'type'  => 'text',
-            'title' => 'Title',
-            'default' => 'The Number One Choice For Landscaping',
-        ),
+        mthan_title_field('The Number One Choice For Landscaping'),
         array(
             'id'    => 'header_text',
             'type'  => 'textarea',
@@ -90,20 +80,8 @@ function mthan_section_why_us_options()
             'default' => "Clean, Branded Vehicles\nProfessional, Uniformed Personnel\nTimely Response Guarantee\nReliable Equipment Maintained Daily",
             'dependency' => array('section_style', '==', '2'),
         ),
-        array(
-            'id'    => 'btn_text',
-            'type'  => 'text',
-            'title' => 'Button Text',
-            'default' => 'How We Work',
-            'dependency' => array('section_style', '==', '2'),
-        ),
-        array(
-            'id'    => 'btn_link',
-            'type'  => 'text',
-            'title' => 'Button Link',
-            'default' => '#',
-            'dependency' => array('section_style', '==', '2'),
-        ),
+        array_merge(mthan_btn_text_field('How We Work'), ['dependency' => array('section_style', '==', '2')]),
+        array_merge(mthan_btn_link_field('#'), ['dependency' => array('section_style', '==', '2')]),
         // Repeater for blocks
         array(
             'id'     => 'why_repeater',
@@ -111,17 +89,8 @@ function mthan_section_why_us_options()
             'title'  => 'Why Us Blocks',
             'max'    => 8,
             'fields' => array(
-                array(
-                    'id'    => 'title',
-                    'type'  => 'text',
-                    'title' => 'Title',
-                ),
-                array(
-                    'id'    => 'icon',
-                    'type'  => 'upload',
-                    'preview' => false,
-                    'title' => 'Icon Upload',
-                ),
+                mthan_name_field(),
+                mthan_icon_field(),
                 array(
                     'id'    => 'text',
                     'type'  => 'textarea',
@@ -135,49 +104,49 @@ function mthan_section_why_us_options()
             ),
             'default' => array(
                 array(
-                    'title' => 'Experienced',
+                    'name' => 'Experienced',
                     'icon' => 'flaticon-null',
                     'text' => 'Indignation and dislike mens who are so beguiled & the demoralized.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => 'Upfront Pricing',
+                    'name' => 'Upfront Pricing',
                     'icon' => 'flaticon-insurance',
                     'text' => 'Take trivial example which of ever undertakes laborious physical exercise.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => 'Fully Insured',
+                    'name' => 'Fully Insured',
                     'icon' => 'flaticon-offer',
                     'text' => 'Readable content page when looking at its layout making look like readable.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => 'Quality Products',
+                    'name' => 'Quality Products',
                     'icon' => 'flaticon-shovel',
                     'text' => 'How all this mistaken idea of denouncing pleasure and praising complete.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => 'Pet & Kid Safe',
+                    'name' => 'Pet & Kid Safe',
                     'icon' => 'flaticon-dog-2',
                     'text' => 'How all this mistaken idea of denouncing pleasure and praising complete.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => 'Expert Staff',
+                    'name' => 'Expert Staff',
                     'icon' => 'flaticon-gardener-1',
                     'text' => 'Take trivial example which of ever undertakes laborious physical exercise.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => '100% Guarantee',
+                    'name' => '100% Guarantee',
                     'icon' => 'flaticon-medal-1',
                     'text' => 'Indignation and dislike mens who are so beguiled & the demoralized.',
                     'link' => '#'
                 ),
                 array(
-                    'title' => 'Ontime Delivery',
+                    'name' => 'Ontime Delivery',
                     'icon' => 'flaticon-on-time',
                     'text' => 'Readable content page when looking at its layout making look like readable.',
                     'link' => '#'
@@ -208,8 +177,8 @@ function mthan_section_why_us_html($section_data) {
  */
 function mthan_section_why_us_html_1($section_data) {
     $slug = 'why-us';
-    $sec_title    = mthan_get_section_val($slug, $section_data, 'sec_title', 'The Number One Choice For Landscaping');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'why choose us');
+    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'The Number One Choice For Landscaping');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'why choose us');
     $sec_sub_icon = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-four.png');
     $header_text  = mthan_get_section_val($slug, $section_data, 'header_text', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
     $repeater     = mthan_get_section_val($slug, $section_data, 'why_repeater', array());
@@ -235,7 +204,7 @@ function mthan_section_why_us_html_1($section_data) {
 
             <div class="row clearfix">
                 <?php foreach($repeater as $item): 
-                    $title = !empty($item['title']) ? $item['title'] : '';
+                    $title = !empty($item['name']) ? $item['name'] : '';
                     $icon  = !empty($item['icon']) ? $item['icon'] : '';
                     $text  = !empty($item['text']) ? $item['text'] : '';
                     $link  = !empty($item['link']) ? $item['link'] : '';
@@ -264,8 +233,8 @@ function mthan_section_why_us_html_1($section_data) {
  */
 function mthan_section_why_us_html_2($section_data) {
     $slug = 'why-us';
-    $sec_title    = mthan_get_section_val($slug, $section_data, 'sec_title', 'The Number One Choice For Landscaping');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'why choose us');
+    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'The Number One Choice For Landscaping');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'why choose us');
     $sec_sub_icon = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-five.png');
     $bg_image     = mthan_sec_img($slug, $section_data, 'left_bg_image', get_template_directory_uri() . '/assets/images/background/why-us-bg.jpg');
     $r_val        = mthan_get_section_val($slug, $section_data, 'rating_value', '4.9');
@@ -273,7 +242,7 @@ function mthan_section_why_us_html_2($section_data) {
     $f_text       = mthan_get_section_val($slug, $section_data, 'floated_text', 'Since 2008');
     $c_text       = mthan_get_section_val($slug, $section_data, 'content_text', 'It is a long established fact that a reader will distracted by the readable content.');
     $btn_text     = mthan_get_section_val($slug, $section_data, 'btn_text', 'How We Work');
-    $btn_link     = mthan_get_section_val($slug, $section_data, 'btn_link', '#');
+    $btn_link     = mthan_sec_link($slug, $section_data, 'btn_link', '#');
     $list_items   = explode("\n", str_replace("\r", "", mthan_get_section_val($slug, $section_data, 'list_items', "Clean, Branded Vehicles\nProfessional, Uniformed Personnel\nTimely Response Guarantee\nReliable Equipment Maintained Daily")));
     $repeater     = mthan_get_section_val($slug, $section_data, 'why_repeater', array());
 ?>
@@ -325,7 +294,7 @@ function mthan_section_why_us_html_2($section_data) {
                 <div class="inner clearfix">
                     <div class="row clearfix">
                         <?php foreach($repeater as $item): 
-                            $title = !empty($item['title']) ? $item['title'] : '';
+                            $title = !empty($item['name']) ? $item['name'] : '';
                             $icon  = !empty($item['icon']) ? $item['icon'] : '';
                             $text  = !empty($item['text']) ? $item['text'] : '';
                             $link  = !empty($item['link']) ? $item['link'] : '';
@@ -355,8 +324,8 @@ function mthan_section_why_us_html_2($section_data) {
  */
 function mthan_section_why_us_html_3($section_data) {
     $slug = 'why-us';
-    $sec_title    = mthan_get_section_val($slug, $section_data, 'sec_title', 'The Number One Choice For Landscaping');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'why choose us');
+    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'The Number One Choice For Landscaping');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'why choose us');
     $sec_sub_icon = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-eight.png');
     $header_text  = mthan_get_section_val($slug, $section_data, 'header_text', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
     $repeater     = mthan_get_section_val($slug, $section_data, 'why_repeater', array());
@@ -381,7 +350,7 @@ function mthan_section_why_us_html_3($section_data) {
             <div class="why-box">
                 <div class="row clearfix">
                     <?php foreach($repeater as $item): 
-                        $title = !empty($item['title']) ? $item['title'] : '';
+                        $title = !empty($item['name']) ? $item['name'] : '';
                         $icon  = !empty($item['icon']) ? $item['icon'] : '';
                         $text  = !empty($item['text']) ? $item['text'] : '';
                     ?>

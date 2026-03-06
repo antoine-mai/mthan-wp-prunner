@@ -6,12 +6,7 @@
 function mthan_section_what_we_do_options()
 {
     return array(
-            array(
-            'id' => 'wwd_subtitle',
-            'type' => 'text',
-            'title' => 'Subtitle',
-            'default' => 'What We Do',
-        ),
+        mthan_subtitle_field('What We Do'),
         array(
             'id' => 'wwd_subtitle_icon',
             'type' => 'media',
@@ -20,29 +15,15 @@ function mthan_section_what_we_do_options()
             'title' => 'Subtitle Icon',
             'default' => array('url' => get_template_directory_uri() . '/assets/images/icons/leaf-two.png')
         ),
-            array(
-            'id' => 'wwd_title',
-            'type' => 'text',
-            'title' => 'Title',
-            'default' => 'Special Services For You',
-        ),
+        mthan_title_field('Special Services For You'),
             array(
             'id' => 'tabs_repeater',
             'type' => 'group',
             'title' => 'Services Tabs',
             'max' => 5,
             'fields' => array(
-                    array(
-                    'id' => 'nav_title',
-                    'type' => 'text',
-                    'title' => 'Nav Tab Title',
-                ),
-                    array(
-                    'id' => 'nav_icon',
-                    'type' => 'upload',
-                    'preview' => false,
-                    'title' => 'Icon Upload',
-                ),
+                    mthan_name_field(),
+                    mthan_icon_field(),
                     array(
                     'id' => 'bg_image',
                     'type' => 'media',
@@ -62,18 +43,8 @@ function mthan_section_what_we_do_options()
                     'title' => 'Project Box Text',
                     'default' => 'Make an appointment & Start your project today.',
                 ),
-                    array(
-                    'id' => 'box_btn_text',
-                    'type' => 'text',
-                    'title' => 'Project Box Button Text',
-                    'default' => 'Appointment',
-                ),
-                    array(
-                    'id' => 'box_btn_link',
-                    'type' => 'text',
-                    'title' => 'Project Box Button Link',
-                    'default' => '#',
-                ),
+                    mthan_btn_text_field('Appointment', 'Project Box Button Text', 'box_btn_text'),
+                    mthan_btn_link_field('', 'Project Box Button Link', 'box_btn_link'),
                     array(
                     'id' => 'content_subtitle',
                     'type' => 'text',
@@ -130,8 +101,8 @@ function mthan_section_what_we_do_options()
             ),
             'default' => array(
                     array(
-                    'nav_title' => 'Spring Cleanup',
-                    'nav_icon' => 'flaticon-hedge',
+                    'name' => 'Spring Cleanup',
+                    'icon' => 'flaticon-hedge',
                     'bg_image' => array('url' => get_template_directory_uri() . '/assets/images/background/image-1.jpg'),
                     'box_title' => "Let's <br>Start Your Project",
                     'box_text' => 'Make an appointment & Start your project today.',
@@ -148,8 +119,8 @@ function mthan_section_what_we_do_options()
                     'more_link_url' => '#',
                 ),
                     array(
-                    'nav_title' => 'Plants Plantintg',
-                    'nav_icon' => 'flaticon-digging-1',
+                    'name' => 'Plants Plantintg',
+                    'icon' => 'flaticon-digging-1',
                     'bg_image' => array('url' => get_template_directory_uri() . '/assets/images/background/image-2.jpg'),
                     'box_title' => "Let's <br>Start Your Project",
                     'box_text' => 'Make an appointment & Start your project today.',
@@ -166,8 +137,8 @@ function mthan_section_what_we_do_options()
                     'more_link_url' => '#',
                 ),
                     array(
-                    'nav_title' => 'Water Fountain',
-                    'nav_icon' => 'flaticon-sprinkler',
+                    'name' => 'Water Fountain',
+                    'icon' => 'flaticon-sprinkler',
                     'bg_image' => array('url' => get_template_directory_uri() . '/assets/images/background/image-3.jpg'),
                     'box_title' => "Let's <br>Start Your Project",
                     'box_text' => 'Make an appointment & Start your project today.',
@@ -184,8 +155,8 @@ function mthan_section_what_we_do_options()
                     'more_link_url' => '#',
                 ),
                     array(
-                    'nav_title' => 'Hard Scaping',
-                    'nav_icon' => 'flaticon-painting',
+                    'name' => 'Hard Scaping',
+                    'icon' => 'flaticon-painting',
                     'bg_image' => array('url' => get_template_directory_uri() . '/assets/images/background/image-4.jpg'),
                     'box_title' => "Let's <br>Start Your Project",
                     'box_text' => 'Make an appointment & Start your project today.',
@@ -202,8 +173,8 @@ function mthan_section_what_we_do_options()
                     'more_link_url' => '#',
                 ),
                     array(
-                    'nav_title' => 'Garden Care',
-                    'nav_icon' => 'flaticon-wheelbarrow',
+                    'name' => 'Garden Care',
+                    'icon' => 'flaticon-wheelbarrow',
                     'bg_image' => array('url' => get_template_directory_uri() . '/assets/images/background/image-5.jpg'),
                     'box_title' => "Let's <br>Start Your Project",
                     'box_text' => 'Make an appointment & Start your project today.',
@@ -232,8 +203,8 @@ function mthan_section_what_we_do_options()
 function mthan_section_what_we_do_html($section_data)
 {
     $slug = 'what-we-do';
-    $sec_title = mthan_get_section_val($slug, $section_data, 'wwd_title', 'Special Services For You');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'wwd_subtitle', 'What We Do');
+    $sec_title = mthan_get_section_val($slug, $section_data, 'title', 'Special Services For You');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'What We Do');
     $sec_sub_icon = mthan_sec_img($slug, $section_data, 'wwd_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
     $tabs = mthan_get_section_val($slug, $section_data, 'tabs_repeater', array());
 ?>
@@ -259,8 +230,8 @@ function mthan_section_what_we_do_html($section_data)
                 <div class="buttons">
                     <ul class="tab-buttons row clearfix">
                         <?php foreach ($tabs as $index => $tab):
-        $nav_title = !empty($tab['nav_title']) ? $tab['nav_title'] : '';
-        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : '';
+        $nav_title = !empty($tab['name']) ? $tab['name'] : '';
+        $nav_icon = !empty($tab['icon']) ? $tab['icon'] : '';
 ?>
                         <li class="tab-btn <?php echo ($index === 0) ? 'active-btn' : ''; ?> col"
                             data-tab="#tab-<?php echo esc_attr($index); ?>">
@@ -284,12 +255,13 @@ function mthan_section_what_we_do_html($section_data)
 
         <div class="tabs-content">
             <?php foreach ($tabs as $index => $tab):
-        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : '';
+        $nav_icon = !empty($tab['icon']) ? $tab['icon'] : '';
         $bg_image = !empty($tab['bg_image']['url']) ? $tab['bg_image']['url'] : get_template_directory_uri() . '/assets/images/resource/tab-image-1.jpg';
         $box_title = !empty($tab['box_title']) ? $tab['box_title'] : "Let's Start Your Project";
         $box_text = !empty($tab['box_text']) ? $tab['box_text'] : '';
         $box_btn = !empty($tab['box_btn_text']) ? $tab['box_btn_text'] : 'Appointment';
-        $box_link = !empty($tab['box_btn_link']) ? $tab['box_btn_link'] : '#';
+        $box_link_id = !empty($tab['box_btn_link']) ? $tab['box_btn_link'] : '#';
+        $box_link = is_numeric($box_link_id) ? get_permalink($box_link_id) : $box_link_id;
         $c_subtitle = !empty($tab['content_subtitle']) ? $tab['content_subtitle'] : 'know About';
         $c_title = !empty($tab['content_title']) ? $tab['content_title'] : '';
         $c_text = !empty($tab['content_text']) ? $tab['content_text'] : '';

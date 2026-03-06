@@ -52,11 +52,7 @@ function mthan_section_facts_options()
                     'type'  => 'text',
                     'title' => 'Subtext (Style 2 only)',
                 ),
-                array(
-                    'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon Class',
-                ),
+                mthan_icon_field(),
             ),
             'default' => array(
                 array('icon' => 'flaticon-park', 'count' => '2.5', 'suffix' => 'k', 'title' => 'Completed Projects', 'sub_text' => 'Professional Designers'),
