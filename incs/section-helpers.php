@@ -10,6 +10,11 @@
  */
 function mthan_get_section_style_map()
 {
+    /**
+     * Key = base section slug
+     * Value = array of internal identifiers or separate file slugs.
+     * If all values match the key, it's considered internal switching.
+     */
     return array(
         'about'           => array('about', 'about', 'about'),
         'cta'             => array('cta', 'cta'),
@@ -31,7 +36,10 @@ function mthan_get_section_variant_slugs()
     $variants = array();
     foreach (mthan_get_section_style_map() as $base => $styles) {
         foreach (array_slice($styles, 1) as $variant) {
-            $variants[] = $variant;
+            // Only consider it a variant to hide if it's a DIFFERENT file
+            if ($variant !== $base) {
+                $variants[] = $variant;
+            }
         }
     }
     return $variants;
