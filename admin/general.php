@@ -33,13 +33,13 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
             'id' => 'contact_email',
             'type' => 'text',
             'title' => 'Email Address',
-            'default' => 'service@pruners.com',
+            'default' => 'maithanhan@gmail.com',
         ],
         [
             'id' => 'contact_address',
             'type' => 'text',
             'title' => 'Address',
-            'default' => '53 Garden Street LA, USA',
+            'default' => '1A Hoang Bat Dat St, Tan Son Ward, Ho Chi Minh City',
         ],
         [
             'id' => 'contact_hours',
