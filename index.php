@@ -1,7 +1,7 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 
 // ── Check for Front Page Custom Sections ───────────────────────────
-if (is_front_page()) {
+if (is_front_page() || is_home()) {
     $options = get_option(MTHAN_THEME_OPTIONS);
     $homepage_sections = !empty($options['homepage_sections']) ? $options['homepage_sections'] : array();
 
