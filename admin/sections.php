@@ -26,7 +26,7 @@ $global_settings_fields = [
 
 $toggle_fields = [];
 $config_accordion_items = [];
-$sections_path = get_template_directory() . '/sections/';
+$sections_path = get_template_directory() . '/incs/sections/';
 
 if (is_dir($sections_path)) {
     $files = glob($sections_path . '*.php');
@@ -107,7 +107,7 @@ if (is_dir($sections_path)) {
 if (empty($toggle_fields)) {
     $toggle_fields[] = [
         'type'    => 'content',
-        'content' => 'No sections found in the /sections/ directory.',
+        'content' => 'No sections found in the /incs/sections/ directory.',
     ];
 }
 

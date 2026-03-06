@@ -6,33 +6,10 @@
 function mthan_get_section_instance_fields()
 {
     $fields = [];
-    $sections_path = get_template_directory() . '/sections/';
-    
-    // ──────────────────────────────────────────────────────────────────
-    // 1. Style Selectors (Dynamic)
-    // ──────────────────────────────────────────────────────────────────
+    $sections_path = get_template_directory() . '/incs/sections/';
     $style_map = mthan_get_section_style_map();
-    foreach ($style_map as $base_slug => $style_files) {
-        $style_count = count($style_files);
-        if ($style_count > 1) {
-            $options = [];
-            for ($s = 1; $s <= $style_count; $s++) {
-                $options[$s] = "Style {$s}";
-            }
-            $fields[] = [
-                'id' => 'section_style',
-                'type' => 'select',
-                'title' => 'Style Variant',
-                'options' => $options,
-                'default' => '1',
-                'dependency' => ['section_template', '==', $base_slug],
-            ];
-        }
-    }
+    $global_options = get_option(MTHAN_THEME_OPTIONS, []);
 
-    // ──────────────────────────────────────────────────────────────────
-    // 2. Content Overrides (Dynamic from sections/*.php)
-    // ──────────────────────────────────────────────────────────────────
     if (is_dir($sections_path)) {
         $files = glob($sections_path . '*.php');
         if ($files) {
@@ -43,25 +20,59 @@ function mthan_get_section_instance_fields()
                 if (function_exists($options_func)) {
                     $content_fields = $options_func();
                     $overrides = [];
-                    $global_options = get_option(MTHAN_THEME_OPTIONS, []);
+                    
+                    // 1. Add Section-Specific Style Selector if in map AND not provided by the section itself
+                    if (isset($style_map[$slug]) && count($style_map[$slug]) > 1) {
+                        $has_internal_style = false;
+                        foreach($content_fields as $f) {
+                            if (isset($f['id']) && ($f['id'] === 'style' || $f['id'] === 'section_style')) {
+                                $has_internal_style = true;
+                                break;
+                            }
+                        }
 
+                        if (!$has_internal_style) {
+                            $style_options = [];
+                            for ($s = 1; $s <= count($style_map[$slug]); $s++) {
+                                $style_options[$s] = "Style {$s}";
+                            }
+                            $overrides[] = [
+                                'id'         => 'section_style',
+                                'type'       => 'select',
+                                'title'      => 'Style Variant',
+                                'options'    => $style_options,
+                                'default'    => '1',
+                                'dependency' => ['section_template', '==', $slug],
+                            ];
+                        }
+                    }
+
+                    // 2. Process Section Content Fields
                     foreach($content_fields as $cf) {
+                        $original_id = isset($cf['id']) ? $cf['id'] : '';
+                        
                         // Populate default from global configuration if available
-                        if (isset($cf['id'])) {
-                            $field_id = str_replace($slug . '_', '', $cf['id']);
-                            $global_key = 'g_' . $slug . '_' . $field_id;
+                        if ($original_id) {
+                            $global_key = 'g_' . $slug . '_' . str_replace($slug . '_', '', $original_id);
                             if (isset($global_options[$global_key])) {
                                 $cf['default'] = $global_options[$global_key];
                             }
                         }
                         
-                        // Prefix Title for clarity
+                        // Prefix Title
                         if (isset($cf['title'])) {
                             $cf['title'] = 'Override ' . $cf['title'];
                         }
 
-                        // Handle internal dependencies
+                        // Prefix IDs (except universal ones)
+                        if ($original_id && $original_id !== 'section_style' && $original_id !== 'section_template') {
+                             $cf['id'] = $slug . '_' . str_replace($slug . '_', '', $cf['id']);
+                        }
+
+                        // Recursively fix dependencies
                         if (isset($cf['dependency'])) {
+                            $cf['dependency'] = mthan_prefix_dependency_ids($cf['dependency'], $slug);
+                            // Also wrap in section_template dependency
                             $cf['dependency'] = [
                                 ['section_template', '==', $slug],
                                 $cf['dependency']
@@ -70,14 +81,10 @@ function mthan_get_section_instance_fields()
                             $cf['dependency'] = ['section_template', '==', $slug];
                         }
 
-                        // Ensure the ID matches the mthan_get_section_val expectation: slug_field
-                        if (isset($cf['id'])) {
-                            $cf['id'] = $slug . '_' . str_replace($slug . '_', '', $cf['id']);
-                        }
-
                         $overrides[] = $cf;
                     }
 
+                    // 3. Add Background & Padding Overrides
                     $bg_id = $slug . '_background';
                     $overrides[] = [
                         'id'         => $bg_id,
@@ -113,9 +120,6 @@ function mthan_get_section_instance_fields()
         }
     }
 
-    // ──────────────────────────────────────────────────────────────────
-    // 3. Universal Attributes (Only ID should be universal)
-    // ──────────────────────────────────────────────────────────────────
     $fields[] = [
         'id'      => 'section_id',
         'type'    => 'text',
@@ -124,4 +128,32 @@ function mthan_get_section_instance_fields()
     ];
 
     return $fields;
+}
+
+/**
+ * Helper to recursively prefix IDs in CSF dependency arrays
+ */
+function mthan_prefix_dependency_ids($dependency, $slug)
+{
+    if (!is_array($dependency)) {
+        return $dependency;
+    }
+
+    // Check if it's a simple condition array e.g. ['field', '==', 'val']
+    if (count($dependency) === 3 && is_string($dependency[0]) && is_string($dependency[1])) {
+        $id = $dependency[0];
+        if ($id !== 'section_style' && $id !== 'section_template' && strpos($id, $slug . '_') !== 0) {
+            $dependency[0] = $slug . '_' . $id;
+        }
+        return $dependency;
+    }
+
+    // Otherwise recurse through nested dependencies
+    foreach ($dependency as $key => $value) {
+        if (is_array($value)) {
+            $dependency[$key] = mthan_prefix_dependency_ids($value, $slug);
+        }
+    }
+
+    return $dependency;
 }

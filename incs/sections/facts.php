@@ -8,7 +8,7 @@ function mthan_section_facts_options()
 {
     return array(
         array(
-            'id'      => 'style',
+            'id'      => 'section_style',
             'type'    => 'select',
             'title'   => 'Style',
             'options' => array(
@@ -23,7 +23,7 @@ function mthan_section_facts_options()
             'library' => 'image',
             'preview' => false,
             'title'   => 'Background Image',
-            'dependency' => array('style', '==', '1'),
+            'dependency' => array('section_style', '==', '1'),
             'default' => array('url' => get_template_directory_uri() . '/assets/images/background/image-6.jpg')
         ),
         array(
@@ -73,7 +73,7 @@ function mthan_section_facts_options()
  */
 function mthan_section_facts_html($section_data) {
     $slug = 'facts';
-    $style = mthan_get_section_val($slug, $section_data, 'style', '1');
+    $style = isset($section_data['section_style']) ? $section_data['section_style'] : '1';
     
     if ($style === '2') {
         mthan_section_facts_html_2($section_data);

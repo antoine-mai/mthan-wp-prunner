@@ -19,7 +19,7 @@ require_once get_template_directory() . '/incs/custom-post-type.php';
 // ── Section files (all function-based, safe to require early) ──────
 // Must load before theme-options.php so mthan_section_*_options()
 // functions exist when section-instance-fields.php runs.
-foreach (glob(get_template_directory() . '/sections/*.php') as $file) {
+foreach (glob(get_template_directory() . '/incs/sections/*.php') as $file) {
     require_once $file;
 }
 

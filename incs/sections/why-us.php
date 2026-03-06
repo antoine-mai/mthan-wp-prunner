@@ -8,7 +8,7 @@ function mthan_section_why_us_options()
 {
     return array(
         array(
-            'id'      => 'style',
+            'id'      => 'section_style',
             'type'    => 'select',
             'title'   => 'Style',
             'options' => array(
@@ -43,7 +43,7 @@ function mthan_section_why_us_options()
             'type'  => 'textarea',
             'title' => 'Header Description',
             'default' => 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.',
-            'dependency' => array('style', 'any', '1,3'),
+            'dependency' => array('section_style', 'any', '1,3'),
         ),
         // Style 2 specific fields
         array(
@@ -52,7 +52,7 @@ function mthan_section_why_us_options()
             'library' => 'image',
             'preview' => false,
             'title' => 'Left Column BG Image',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
             'default' => array('url' => get_template_directory_uri() . '/assets/images/background/why-us-bg.jpg')
         ),
         array(
@@ -60,49 +60,49 @@ function mthan_section_why_us_options()
             'type'  => 'text',
             'title' => 'Rating Value',
             'default' => '4.9',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'rating_text',
             'type'  => 'text',
             'title' => 'Rating Text',
             'default' => 'Customer Rating',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'floated_text',
             'type'  => 'text',
             'title' => 'Floated Text',
             'default' => 'Since 2008',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'content_text',
             'type'  => 'textarea',
             'title' => 'Content Text',
             'default' => 'It is a long established fact that a reader will distracted by the readable content.',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'list_items',
             'type'  => 'textarea',
             'title' => 'List Items (one per line)',
             'default' => "Clean, Branded Vehicles\nProfessional, Uniformed Personnel\nTimely Response Guarantee\nReliable Equipment Maintained Daily",
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'btn_text',
             'type'  => 'text',
             'title' => 'Button Text',
             'default' => 'How We Work',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'btn_link',
             'type'  => 'text',
             'title' => 'Button Link',
             'default' => '#',
-            'dependency' => array('style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         // Repeater for blocks
         array(
@@ -192,7 +192,7 @@ function mthan_section_why_us_options()
  */
 function mthan_section_why_us_html($section_data) {
     $slug = 'why-us';
-    $style = mthan_get_section_val($slug, $section_data, 'style', '1');
+    $style = isset($section_data['section_style']) ? $section_data['section_style'] : '1';
     
     if ($style === '2') {
         mthan_section_why_us_html_2($section_data);

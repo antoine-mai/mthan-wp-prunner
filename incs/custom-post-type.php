@@ -45,12 +45,44 @@ function mthan_register_cpt_page() {
         'show_in_admin_bar'     => true,
         'show_in_nav_menus'     => true,
         'can_export'            => true,
-        'has_archive'           => true,
+        'has_archive'           => false,
         'exclude_from_search'   => false,
         'publicly_queryable'    => true,
         'capability_type'       => 'page',
         'show_in_rest'          => true,
+        'rewrite'               => array(
+            'slug'       => '/',
+            'with_front' => false
+        ),
     ];
     register_post_type('mthan_page', $args);
 }
-add_action('init', 'mthan_register_cpt_page', 0);
+add_action('init', 'mthan_register_cpt_page');
+
+/**
+ * Update permalinks for mthan_page to remove the post type slug from URL.
+ */
+function mthan_page_permalink($post_link, $post) {
+    if ('mthan_page' !== $post->post_type || 'publish' !== $post->post_status) {
+        return $post_link;
+    }
+    
+    // Remove the mthan_page slug if it's there
+    $post_link = str_replace('/mthan_page/', '/', $post_link);
+    return $post_link;
+}
+add_filter('post_type_link', 'mthan_page_permalink', 10, 2);
+
+/**
+ * Handle custom permalink resolution at the root level.
+ */
+function mthan_parse_request_mthan_page($query) {
+    if (!$query->is_main_query() || count($query->query) != 2 || !isset($query->query['page'])) {
+        return;
+    }
+    
+    if (!empty($query->query['name'])) {
+        $query->set('post_type', array('post', 'page', 'mthan_page'));
+    }
+}
+add_action('pre_get_posts', 'mthan_parse_request_mthan_page');

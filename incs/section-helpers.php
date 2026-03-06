@@ -11,15 +11,15 @@
 function mthan_get_section_style_map()
 {
     return array(
-        'about'           => array('about', 'about_html_2', 'about_html_3'),
-        'call-to-action'  => array('call-to-action', 'call-to-two'),
-        'contact-section' => array('contact-section', 'contact-two', 'contact-three'),
-        'facts-section'   => array('facts-section', 'facts-two'),
-        'projects-section'=> array('projects-section', 'projects-two'),
-        'team-section'    => array('team-section', 'team-two'),
-        'testimonials-one'=> array('testimonials-one', 'testimonials-two'),
-        'why-us'          => array('why-us', 'why-us-two', 'why-us-three'),
-        'work-process'    => array('work-process', 'work-process-two'),
+        'about'           => array('about', 'about', 'about'),
+        'cta'             => array('cta', 'cta'),
+        'contact'         => array('contact', 'contact', 'contact'),
+        'facts'           => array('facts', 'facts'),
+        'projects'        => array('projects', 'projects'),
+        'team'            => array('team', 'team'),
+        'testimonials'    => array('testimonials', 'testimonials'),
+        'why-us'          => array('why-us', 'why-us', 'why-us'),
+        'process'         => array('process', 'process'),
     );
 }
 
@@ -43,7 +43,7 @@ function mthan_get_section_variant_slugs()
 function mthan_get_available_base_sections()
 {
     $theme_options = get_option('mthan_theme_options');
-    $sections_path = get_template_directory() . '/sections/';
+    $sections_path = get_template_directory() . '/incs/sections/';
     $variant_slugs = mthan_get_section_variant_slugs();
     $result = array('' => '— Select Section —');
 
@@ -117,7 +117,7 @@ function mthan_get_section_bg_css($section_data)
  */
 function mthan_include_section_items($items)
 {
-    $sections_dir = get_template_directory() . '/sections/';
+    $sections_dir = get_template_directory() . '/incs/sections/';
     $style_map    = mthan_get_section_style_map();
 
     foreach ((array)$items as $item) {

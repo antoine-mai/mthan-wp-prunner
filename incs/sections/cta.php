@@ -7,7 +7,7 @@ function mthan_section_cta_options()
 {
     return array(
         array(
-            'id'      => 'cta_style',
+            'id'      => 'section_style',
             'type'    => 'select',
             'title'   => 'Style',
             'options' => array(
@@ -22,22 +22,22 @@ function mthan_section_cta_options()
             'type'  => 'text',
             'title' => 'Heading',
             'default' => 'Do you need tree care for your home?',
-            'dependency' => array('cta_style', '==', '1'),
+            'dependency' => array('section_style', '==', '1'),
         ),
         array(
             'id'    => 'cta_btn_text',
             'type'  => 'text',
             'title' => 'Button Text',
             'default' => 'Send Message',
-            'dependency' => array('cta_style', '==', '1'),
+            'dependency' => array('section_style', '==', '1'),
         ),
-        mthan_page_select_field('cta_btn_link', 'Button Link', array('dependency' => array('cta_style', '==', '1'))),
+        mthan_page_select_field('cta_btn_link', 'Button Link', array('dependency' => array('section_style', '==', '1'))),
         array(
             'id'    => 'cta_phone',
             'type'  => 'text',
             'title' => 'Phone',
             'default' => '+31 65 792 63 11',
-            'dependency' => array('cta_style', '==', '1'),
+            'dependency' => array('section_style', '==', '1'),
         ),
         // Style 2 Fields
         array(
@@ -45,31 +45,31 @@ function mthan_section_cta_options()
             'type'  => 'media',
             'title' => 'Background Image',
             'library' => 'image',
-            'dependency' => array('cta_style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'cta_heading_2',
             'type'  => 'textarea',
             'title' => 'Heading (HTML supported)',
             'default' => 'In Need of  Gardening & Landscaping <br>Maintenence Service?',
-            'dependency' => array('cta_style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
         array(
             'id'    => 'cta_btn1_text_2',
             'type'  => 'text',
             'title' => 'Button 1 Text',
             'default' => 'Commercial',
-            'dependency' => array('cta_style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
-        mthan_page_select_field('cta_btn1_link_2', 'Button 1 Link', array('dependency' => array('cta_style', '==', '2'))),
+        mthan_page_select_field('cta_btn1_link_2', 'Button 1 Link', array('dependency' => array('section_style', '==', '2'))),
         array(
             'id'    => 'cta_btn2_text_2',
             'type'  => 'text',
             'title' => 'Button 2 Text',
             'default' => 'Residential',
-            'dependency' => array('cta_style', '==', '2'),
+            'dependency' => array('section_style', '==', '2'),
         ),
-        mthan_page_select_field('cta_btn2_link_2', 'Button 2 Link', array('dependency' => array('cta_style', '==', '2'))),
+        mthan_page_select_field('cta_btn2_link_2', 'Button 2 Link', array('dependency' => array('section_style', '==', '2'))),
     );
 }
 
@@ -80,7 +80,7 @@ function mthan_section_cta_options()
  **/
 function mthan_section_cta_html($section_data) { 
     $slug = 'cta';
-    $style = mthan_get_section_val($slug, $section_data, 'style', '1');
+    $style = isset($section_data['section_style']) ? $section_data['section_style'] : '1';
     
     if ($style === '2') {
         mthan_section_cta_html_2($section_data);

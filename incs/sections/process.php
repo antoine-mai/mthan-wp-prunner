@@ -8,12 +8,13 @@ function mthan_section_process_options()
 {
     return array(
         array(
-            'id'      => 'style',
+            'id'      => 'section_style',
             'type'    => 'select',
             'title'   => 'Style',
             'options' => array(
                 '1' => 'Style 1 (Image Blocks)',
                 '2' => 'Style 2 (Icon Blocks)',
+                '3' => 'Style 3 (Flap)', // Standardizing with why-us if applicable, else keeping 1&2
             ),
             'default' => '1',
         ),
@@ -63,7 +64,7 @@ function mthan_section_process_options()
                     'library'    => 'image',
                     'preview'    => false,
                     'title'      => 'Featured Image',
-                    'dependency' => array('style', '==', '1'),
+                    'dependency' => array('section_style', '==', '1'),
                 ),
                 array(
                     'id'    => 'text',
@@ -106,7 +107,7 @@ function mthan_section_process_options()
  */
 function mthan_section_process_html($section_data) {
     $slug = 'process';
-    $style = mthan_get_section_val($slug, $section_data, 'style', '1');
+    $style = isset($section_data['section_style']) ? $section_data['section_style'] : '1';
     
     if ($style === '2') {
         mthan_section_process_html_2($section_data);

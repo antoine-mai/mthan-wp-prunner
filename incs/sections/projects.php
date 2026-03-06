@@ -8,7 +8,7 @@ function mthan_section_projects_options()
 {
     return array(
         array(
-            'id'      => 'style',
+            'id'      => 'section_style',
             'type'    => 'select',
             'title'   => 'Style',
             'options' => array(
@@ -43,14 +43,14 @@ function mthan_section_projects_options()
             'type'  => 'textarea',
             'title' => 'Description (Style 3 only)',
             'default' => 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.',
-            'dependency' => array('style', '==', '3'),
+            'dependency' => array('section_style', '==', '3'),
         ),
         // Filters for Style 3
         array(
             'id'     => 'filters_repeater',
             'type'   => 'group',
             'title'  => 'Filter Tabs (Style 3 only)',
-            'dependency' => array('style', '==', '3'),
+            'dependency' => array('section_style', '==', '3'),
             'fields' => array(
                 array(
                     'id'    => 'label',
@@ -167,7 +167,7 @@ function mthan_section_projects_options()
             'type'  => 'textarea',
             'title' => 'Lower Text (Style 1 only)',
             'default' => 'We give guarantee for healthy landscapes, You should never compromise with quality.',
-            'dependency' => array('style', '==', '1'),
+            'dependency' => array('section_style', '==', '1'),
         ),
         array(
             'id'    => 'view_all_link',
@@ -183,7 +183,7 @@ function mthan_section_projects_options()
  */
 function mthan_section_projects_html($section_data) {
     $slug = 'projects';
-    $style = mthan_get_section_val($slug, $section_data, 'style', '1');
+    $style = isset($section_data['section_style']) ? $section_data['section_style'] : '1';
     
     if ($style === '2') {
         mthan_section_projects_html_2($section_data);
