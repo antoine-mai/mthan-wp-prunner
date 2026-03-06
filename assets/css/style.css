@@ -5760,6 +5760,11 @@ img.lazy-image.loaded {
 	position: relative;
 }
 
+.call-to-action .info-col ul {
+	position: relative;
+	margin-bottom: -10px;
+}
+
 .call-to-action .info-col ul li {
 	position: relative;
 	float: left;
