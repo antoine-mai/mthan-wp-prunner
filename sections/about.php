@@ -223,7 +223,19 @@ function mthan_section_about_config_options()
                 '3' => 'Style 3 (Experience)',
             ),
             'default' => '1',
-            'help'    => 'This will be the default style when adding a new About section.',
+            'help'    => 'Default style when adding a new About section.',
+        ),
+        array(
+            'id'      => 'about_global_subtitle',
+            'type'    => 'text',
+            'title'   => 'Default Subtitle',
+            'default' => 'About Us',
+        ),
+        array(
+            'id'      => 'about_global_title',
+            'type'    => 'text',
+            'title'   => 'Default Title',
+            'default' => 'Professional Gardener',
         ),
     );
 }
