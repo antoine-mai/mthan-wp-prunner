@@ -6,17 +6,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
     'title'  => 'Update',
     'icon'   => 'fas fa-sync-alt',
     'fields' => [
-        [
-            'type'    => 'notice',
-            'style'   => 'info',
-            'content' => 'Please enter your purchase code to verify your license and enable automatic theme updates.',
-        ],
-        [
-            'id'      => 'purchase_code',
-            'type'    => 'text',
-            'title'   => 'Purchase Code',
-            'desc'    => 'Enter your item purchase code here.',
-        ],
+
         [
             'type'    => 'content',
             'content' => '<div style="margin-top:20px; padding:20px; border:1px solid #ccc; background:#f9f9f9;">
