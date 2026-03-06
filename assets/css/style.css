@@ -12623,6 +12623,7 @@ img.lazy-image.loaded{
 .post-controls .prev-post{
 	position: relative;
 	float: left;
+	width: 50%;
 	text-align: left;
 }
 
@@ -12686,6 +12687,7 @@ img.lazy-image.loaded{
 .post-controls .next-post{
 	position: relative;
 	float: right;
+	width: 50%;
 	text-align: right;
 }
 

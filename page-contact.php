@@ -6,6 +6,10 @@ defined('ABSPATH') || exit;
 
 get_header();
 
+$layout_type = mthan_get_layout_type();
+mthan_render_global_sections('before', $layout_type);
+mthan_render_page_sections('before');
+
 // 1. Page Banner
 if (function_exists('mthan_section_page_banner_html')) {
     mthan_section_page_banner_html(array(
@@ -13,6 +17,13 @@ if (function_exists('mthan_section_page_banner_html')) {
         'page_banner_breadcrumb_title' => 'Contact'
     ));
 }
+
+if (have_posts()) :
+    while (have_posts()) :
+        the_post();
+        the_content();
+    endwhile;
+endif;
 
 // 2. Contact Section Style 3
 if (function_exists('mthan_section_contact_html_3')) {
@@ -42,5 +53,8 @@ if (function_exists('mthan_section_cta_html')) {
         'cta_phone' => '+31 65 792 63 11'
     ));
 }
+
+mthan_render_page_sections('after');
+mthan_render_global_sections('after', $layout_type);
 
 get_footer();
