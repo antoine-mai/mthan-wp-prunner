@@ -1,4 +1,20 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
+
+// ── Check for Front Page Custom Sections ───────────────────────────
+if (is_front_page()) {
+    $options = get_option(MTHAN_THEME_OPTIONS);
+    $homepage_sections = !empty($options['homepage_sections']) ? $options['homepage_sections'] : array();
+
+    if (!empty($homepage_sections)) {
+        get_header();
+        mthan_render_global_sections('before', 'main');
+        mthan_include_section_items($homepage_sections);
+        mthan_render_global_sections('after', 'main');
+        get_footer();
+        exit;
+    }
+}
+
 get_header();
 mthan_render_global_sections('before', 'blog');
 mthan_render_page_sections('before');
