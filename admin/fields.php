@@ -79,18 +79,9 @@ function mthan_get_section_instance_fields()
                     }
                     
                     if (!empty($overrides)) {
-                         $fields[] = [
-                            'id'         => $slug . '_overrides_accordion',
-                            'type'       => 'accordion',
-                            'dependency' => ['section_template', '==', $slug],
-                            'accordions' => [
-                                [
-                                    'title'  => 'Content Overrides (Optional)',
-                                    'icon'   => 'fas fa-edit',
-                                    'fields' => $overrides,
-                                ]
-                            ]
-                        ];
+                        foreach($overrides as $override_field) {
+                            $fields[] = $override_field;
+                        }
                     }
                 }
             }
