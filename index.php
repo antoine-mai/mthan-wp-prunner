@@ -5,14 +5,19 @@ if (is_front_page()) {
     $options = get_option(MTHAN_THEME_OPTIONS);
     $homepage_sections = !empty($options['homepage_sections']) ? $options['homepage_sections'] : array();
 
+    get_header();
     if (!empty($homepage_sections)) {
-        get_header();
         mthan_render_global_sections('before', 'main');
         mthan_include_section_items($homepage_sections);
         mthan_render_global_sections('after', 'main');
-        get_footer();
-        exit;
+    } else {
+        echo '<div class="no-sections-found" style="padding: 100px 0; text-align: center;">';
+        echo '<h2>No Home Page sections configured.</h2>';
+        echo '<p>Please go to <strong>MTHAN > Home Page</strong> to add sections.</p>';
+        echo '</div>';
     }
+    get_footer();
+    exit;
 }
 
 get_header();
