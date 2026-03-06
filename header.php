@@ -19,10 +19,16 @@ if (!empty($theme_options['favicon']['url'])) {
     <?php wp_body_open(); ?>
 
     <div class="page-wrapper">
+        <?php
+        $theme_options = get_option('mthan_theme_options');
+        $enable_preloader = isset($theme_options['preloader']) ? $theme_options['preloader'] : true;
+        if ($enable_preloader) :
+        ?>
         <!-- Preloader -->
         <div class="preloader">
             <div class="icon"></div>
         </div>
+        <?php endif; ?>
 
         <?php
 $theme_options = get_option('mthan_theme_options');
