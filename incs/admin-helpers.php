@@ -50,43 +50,98 @@ function mthan_ajax_git_update()
         wp_send_json_error(['message' => 'Permission denied']);
     }
 
+    $disabled_functions = explode(',', ini_get('disable_functions'));
+    $disabled_functions = array_map('trim', $disabled_functions);
+    $can_exec = !in_array('exec', $disabled_functions) && function_exists('exec');
+
+    $update_log = "── Starting Update ────────────────\n";
+
+    // Method 1: Try Fast Git Update (git pull)
+    if ($can_exec) {
+        $update_log .= "Method: Fast Git Update (git pull)\n";
+        
+        // Check if it is a git repo
+        $is_git_repo = false;
+        exec('git rev-parse --is-inside-work-tree 2>&1', $output, $return_var);
+        if ($return_var === 0 && trim($output[0]) === 'true') {
+            $is_git_repo = true;
+        }
+
+        if ($is_git_repo) {
+            $update_log .= "1. Detected local Git repository.\n";
+            $output = null;
+            $return_var = null;
+            exec('git pull 2>&1', $output, $return_var);
+
+            if ($return_var === 0) {
+                $update_log .= "2. Pulling latest commits...\n" . implode("\n", $output) . "\n";
+                $update_log .= "3. Done! Theme updated via Git Pull.";
+                wp_send_json_success([
+                    'message' => 'Theme updated successfully via Git Pull.',
+                    'log'     => $update_log
+                ]);
+            } else {
+                $update_log .= "2. [FAILED] Git pull error: " . implode("\n", $output) . "\n";
+                $update_log .= "   Switched to Fallback Method...\n\n";
+            }
+        } else {
+            $update_log .= "1. [NOTICE] Not a Git repository, skipping git pull.\n";
+            $update_log .= "   Proceeding to Fallback Method...\n\n";
+        }
+    } else {
+        $update_log .= "Method: Fallback (Remote ZIP Download)\n";
+        $update_log .= "[INFO] exec/shell_exec disabled on server.\n\n";
+    }
+
+    // Method 2: Fallback (ZIP Download & Extract)
     require_once ABSPATH . 'wp-admin/includes/file.php';
     WP_Filesystem();
     global $wp_filesystem;
 
-    $zip_url = 'https://github.com/antoine-mai/mthan-wp-prunner/archive/refs/heads/main.zip';
+    $repo_url = 'https://github.com/antoine-mai/mthan-wp-theme';
+    $zip_url = $repo_url . '/archive/refs/heads/main.zip';
+    $update_log .= "1. Downloading latest ZIP from: " . $zip_url . "\n";
+    
     $temp_zip = download_url($zip_url, 300);
 
     if (is_wp_error($temp_zip)) {
-        wp_send_json_error(['message' => 'Download failed: ' . $temp_zip->get_error_message()]);
+        $update_log .= "[FATAL ERROR] Download failed: " . $temp_zip->get_error_message();
+        wp_send_json_error(['message' => 'Update failed.', 'log' => $update_log]);
     }
 
     $extract_to = get_theme_root() . '/mthan_temp_update_dir/';
     $wp_filesystem->delete($extract_to, true);
-
+    
+    $update_log .= "2. Extracting package...\n";
     $unzip_result = unzip_file($temp_zip, $extract_to);
     unlink($temp_zip);
 
     if (is_wp_error($unzip_result)) {
-        wp_send_json_error(['message' => 'Unzip failed: ' . $unzip_result->get_error_message()]);
-    }
-
-    $source_dir = $extract_to . 'mthan-wp-prunner-main/';
-    if (!is_dir($source_dir)) {
+        $update_log .= "[FATAL ERROR] Unzip failed: " . $unzip_result->get_error_message();
         $wp_filesystem->delete($extract_to, true);
-        wp_send_json_error(['message' => 'Extraction failed to locate the downloaded repository folder.']);
+        wp_send_json_error(['message' => 'Update failed.', 'log' => $update_log]);
     }
 
+    $source_dir = $extract_to . 'mthan-wp-theme-main/';
+    if (!is_dir($source_dir)) {
+        $update_log .= "[FATAL ERROR] Extraction failed to locate source folder.";
+        $wp_filesystem->delete($extract_to, true);
+        wp_send_json_error(['message' => 'Update failed.', 'log' => $update_log]);
+    }
+
+    $update_log .= "3. Copying updated files to theme root...\n";
     $copy_result = copy_dir($source_dir, get_template_directory());
     $wp_filesystem->delete($extract_to, true);
 
     if (is_wp_error($copy_result)) {
-        wp_send_json_error(['message' => 'Failed to copy updated files: ' . $copy_result->get_error_message()]);
+        $update_log .= "[FATAL ERROR] Copy failed: " . $copy_result->get_error_message();
+        wp_send_json_error(['message' => 'Update failed.', 'log' => $update_log]);
     }
 
+    $update_log .= "4. Done! Theme updated via Download & Extract.";
     wp_send_json_success([
         'message' => 'Theme updated successfully via Remote ZIP Download.',
-        'log'     => "1. Downloaded latest ZIP from GitHub main branch.\n2. Extracted files securely into server.\n3. Copied new files to theme directory successfully."
+        'log'     => $update_log
     ]);
 }
 
