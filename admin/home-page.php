@@ -2,11 +2,10 @@
 /**
  * Default Pages Settings
 **/
-global $mthan_options_id;
 
 $available_sections = mthan_get_available_base_sections();
 
-CSF::createSection($mthan_options_id, [
+CSF::createSection(MTHAN_THEME_OPTIONS, [
     'id'     => 'home_page_settings',
     'title'  => 'Home Page',
     'icon'   => 'fas fa-home',

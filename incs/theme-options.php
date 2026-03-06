@@ -18,70 +18,65 @@ add_action('admin_bar_menu', function($wp_admin_bar) {
     if (!current_user_can('manage_options')) {
         return;
     }
+    $logo_url = get_template_directory_uri() . '/assets/images/mthan-logo.png';
+    $title = '<img src="' . esc_url($logo_url) . '" style="width:18px; height:18px; vertical-align:middle; margin-top:-3px; margin-right:6px; border-radius:2px;"> MTHAN';
+    
     $wp_admin_bar->add_node(array(
         'id'    => 'mthan-admin',
-        'title' => 'MTHAN',
+        'title' => $title,
         'href'  => admin_url('admin.php?page=mthan-admin'),
     ));
-}, 1); // Low priority to ensure it's added early if needed by others
+}, 41); // Priority 41 places it right after 'Customize' (priority 40)
 
 if (class_exists('CSF')) {
 
     $admin_dir = get_template_directory() . '/admin/';
     require_once $admin_dir . 'fields.php'; // Load section fields helper
 
-    // Each of these will be a separate menu item under MTHAN
-    $admin_sections = [
-        'general.php'      => ['title' => 'General'],
-        'typography.php'   => ['title' => 'Typography'],
-        'layouts.php'      => ['title' => 'Layouts'],
-        'header.php'       => ['title' => 'Header'],
-        'home-page.php'    => ['title' => 'Home Page'],
-        'search-page.php'  => ['title' => 'Search Page'],
-        'footer.php'       => ['title' => 'Footer'],
-        'mobile-bar.php'   => ['title' => 'Mobile Bar'],
-        'scripts.php'      => ['title' => 'Scripts'],
-        'sections.php'     => ['title' => 'Sections'],
+    // ── Create Single Options Instance ─────────────────────────────────────
+    CSF::createOptions(MTHAN_THEME_OPTIONS, [
+        'menu_title'         => 'Theme Options',
+        'menu_slug'          => 'mthan-admin', // Same as parent to be the default landing
+        'menu_type'          => 'submenu',
+        'menu_parent'        => 'mthan-admin',
+        'framework_title'    => 'MTHAN <small>Management</small>',
+        'theme'              => 'dark',
+        'database'           => 'option',
+        'option_name'        => MTHAN_THEME_OPTIONS,
+        'show_all_options'   => true,
+        'show_search'        => true,
+        'show_reset_all'     => true,
+        'show_reset_section' => true,
+        'nav'                => 'normal', // Left-side tabs
+    ]);
+
+    // ── Load All Sections ──────────────────────────────────────────────────
+    $admin_files = [
+        'general.php',
+        'social.php',
+        'typography.php',
+        'layouts.php',
+        'header.php',
+        'blog.php',
+        'services.php',
+        'contact.php',
+        'home-page.php',
+        'search-page.php',
+        'footer.php',
+        'mobile-bar.php',
+        'scripts.php',
+        'sections.php',
+        'update.php',
     ];
 
-    global $mthan_options_id;
-
-    foreach ($admin_sections as $file => $config) {
-        $slug = basename($file, '.php');
-        $mthan_options_id = 'mthan_options_' . str_replace('-', '_', $slug);
-        
-        // Define the options page
-        CSF::createOptions($mthan_options_id, [
-            'menu_title'      => $config['title'],
-            'menu_slug'       => 'mthan-' . $slug,
-            'menu_type'       => 'submenu',
-            'menu_parent'     => 'mthan-admin',
-            'framework_title' => $config['title'],
-            'theme'           => 'dark',
-            'database'        => 'option',
-            'option_name'     => MTHAN_THEME_OPTIONS, // Always save to the same option name
-        ]);
-
+    foreach ($admin_files as $file) {
         if (file_exists($admin_dir . $file)) {
             require_once $admin_dir . $file;
         }
     }
 
-    // Update section
-    if (file_exists($admin_dir . 'update.php')) {
-        $mthan_options_id = 'mthan_options_update';
-        CSF::createOptions($mthan_options_id, [
-            'menu_title'      => 'Update',
-            'menu_slug'       => 'mthan-update',
-            'menu_type'       => 'submenu',
-            'menu_parent'     => 'mthan-admin',
-            'framework_title' => 'Theme Update',
-            'theme'           => 'dark',
-            'database'        => 'option',
-            'option_name'     => MTHAN_THEME_OPTIONS, // Keep persistent
-        ]);
-        require_once $admin_dir . 'update.php';
-    }
+    // Metaboxes
+    $metabox_dir = get_template_directory() . '/admin/metabox/';
 
     // Metaboxes
     $metabox_dir = get_template_directory() . '/admin/metabox/';

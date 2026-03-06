@@ -2,8 +2,7 @@
 /**
  * 
 **/
-global $mthan_options_id;
-CSF::createSection($mthan_options_id, [
+CSF::createSection(MTHAN_THEME_OPTIONS, [
     'id' => 'typography_settings',
     'title' => 'Typography',
     'icon' => 'fas fa-font',

@@ -2,8 +2,7 @@
 /**
  * 
 **/
-global $mthan_options_id;
-CSF::createSection($mthan_options_id, [
+CSF::createSection(MTHAN_THEME_OPTIONS, [
     'id' => 'general_settings',
     'title' => 'General',
     'icon' => 'fas fa-cogs',

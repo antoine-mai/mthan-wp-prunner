@@ -45,25 +45,25 @@ function mthan_get_section_instance_fields()
         $fields[] = [
             'type' => 'subheading',
             'content' => $label . ' Options',
-            'dependency' => array('section_template', '==', $slug)
+            'dependency' => ['section_template', '==', $slug]
         ];
         $fields[] = [
             'id' => "{$slug}_subtitle",
             'type' => 'text',
             'title' => 'Subtitle (small label)',
-            'dependency' => array('section_template', '==', $slug)
+            'dependency' => ['section_template', '==', $slug]
         ];
         $fields[] = [
             'id' => "{$slug}_title",
             'type' => 'text',
             'title' => 'Section Title (H2)',
-            'dependency' => array('section_template', '==', $slug)
+            'dependency' => ['section_template', '==', $slug]
         ];
         $fields[] = [
             'id' => "{$slug}_text",
             'type' => 'textarea',
             'title' => 'Description',
-            'dependency' => array('section_template', '==', $slug)
+            'dependency' => ['section_template', '==', $slug]
         ];
     }
 
@@ -71,7 +71,7 @@ function mthan_get_section_instance_fields()
     // Banner Section — delegates to mthan_section_banners_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_banners_options() as $banner_field) {
-        $banner_field['dependency'] = array('section_template', '==', 'banners');
+        $banner_field['dependency'] = ['section_template', '==', 'banners'];
         $fields[] = $banner_field;
     }
 
@@ -87,13 +87,13 @@ function mthan_get_section_instance_fields()
             // Already has a dependency (like style == 1), we make it an AND dependency
             // But CSF 'dependency' format is ('id', '==', 'val')
             // Multiple dependencies: array( array('id1','==','val1'), array('id2','==','val2') )
-            $about_field['dependency'] = array(
-                    array('section_template', '==', 'about'),
+            $about_field['dependency'] = [
+                ['section_template', '==', 'about'],
                 $about_field['dependency']
-            );
+            ];
         }
         else {
-            $about_field['dependency'] = array('section_template', '==', 'about');
+            $about_field['dependency'] = ['section_template', '==', 'about'];
         }
         $fields[] = $about_field;
     }
@@ -102,7 +102,7 @@ function mthan_get_section_instance_fields()
     // Appointment Section — delegates to mthan_section_appoint_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_appoint_options() as $appoint_field) {
-        $appoint_field['dependency'] = array('section_template', '==', 'appoint');
+        $appoint_field['dependency'] = ['section_template', '==', 'appoint'];
         $fields[] = $appoint_field;
     }
 
@@ -110,7 +110,7 @@ function mthan_get_section_instance_fields()
     // Areas Section — delegates to mthan_section_areas_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_areas_options() as $areas_field) {
-        $areas_field['dependency'] = array('section_template', '==', 'areas');
+        $areas_field['dependency'] = ['section_template', '==', 'areas'];
         $fields[] = $areas_field;
     }
 
@@ -118,7 +118,7 @@ function mthan_get_section_instance_fields()
     // Awards Section — delegates to mthan_section_awards_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_awards_options() as $awards_field) {
-        $awards_field['dependency'] = array('section_template', '==', 'awards');
+        $awards_field['dependency'] = ['section_template', '==', 'awards'];
         $fields[] = $awards_field;
     }
 
@@ -126,7 +126,7 @@ function mthan_get_section_instance_fields()
     // Blog Section — delegates to mthan_section_blog_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_blog_options() as $blog_field) {
-        $blog_field['dependency'] = array('section_template', '==', 'blog');
+        $blog_field['dependency'] = ['section_template', '==', 'blog'];
         $fields[] = $blog_field;
     }
 
@@ -134,7 +134,7 @@ function mthan_get_section_instance_fields()
     // CTA Section — delegates to mthan_section_cta_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_cta_options() as $cta_field) {
-        $cta_field['dependency'] = array('section_template', '==', 'cta');
+        $cta_field['dependency'] = ['section_template', '==', 'cta'];
         $fields[] = $cta_field;
     }
 
@@ -142,7 +142,7 @@ function mthan_get_section_instance_fields()
     // Cart Section — delegates to mthan_section_cart_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_cart_options() as $cart_field) {
-        $cart_field['dependency'] = array('section_template', '==', 'cart');
+        $cart_field['dependency'] = ['section_template', '==', 'cart'];
         $fields[] = $cart_field;
     }
 
@@ -150,7 +150,7 @@ function mthan_get_section_instance_fields()
     // Checkout Section — delegates to mthan_section_checkout_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_checkout_options() as $checkout_field) {
-        $checkout_field['dependency'] = array('section_template', '==', 'checkout');
+        $checkout_field['dependency'] = ['section_template', '==', 'checkout'];
         $fields[] = $checkout_field;
     }
 
@@ -158,7 +158,7 @@ function mthan_get_section_instance_fields()
     // Contact Section — delegates to mthan_section_contact_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_contact_options() as $contact_field) {
-        $contact_field['dependency'] = array('section_template', '==', 'contact');
+        $contact_field['dependency'] = ['section_template', '==', 'contact'];
         $fields[] = $contact_field;
     }
 
@@ -166,7 +166,7 @@ function mthan_get_section_instance_fields()
     // FAQs Section — delegates to mthan_section_faqs_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_faqs_options() as $faqs_field) {
-        $faqs_field['dependency'] = array('section_template', '==', 'faqs');
+        $faqs_field['dependency'] = ['section_template', '==', 'faqs'];
         $fields[] = $faqs_field;
     }
 
@@ -176,7 +176,7 @@ function mthan_get_section_instance_fields()
     // Services Section — delegates to mthan_section_services_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_services_options() as $services_field) {
-        $services_field['dependency'] = array('section_template', '==', 'services');
+        $services_field['dependency'] = ['section_template', '==', 'services'];
         $fields[] = $services_field;
     }
 
@@ -184,7 +184,7 @@ function mthan_get_section_instance_fields()
     // Pricing Section — delegates to mthan_section_pricing_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_pricing_options() as $pricing_field) {
-        $pricing_field['dependency'] = array('section_template', '==', 'pricing');
+        $pricing_field['dependency'] = ['section_template', '==', 'pricing'];
         $fields[] = $pricing_field;
     }
 
@@ -192,7 +192,7 @@ function mthan_get_section_instance_fields()
     // Projects Section — delegates to mthan_section_projects_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_projects_options() as $projects_field) {
-        $projects_field['dependency'] = array('section_template', '==', 'projects');
+        $projects_field['dependency'] = ['section_template', '==', 'projects'];
         $fields[] = $projects_field;
     }
 
@@ -200,7 +200,7 @@ function mthan_get_section_instance_fields()
     // Reviews Section — delegates to mthan_section_reviews_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_reviews_options() as $reviews_field) {
-        $reviews_field['dependency'] = array('section_template', '==', 'reviews');
+        $reviews_field['dependency'] = ['section_template', '==', 'reviews'];
         $fields[] = $reviews_field;
     }
 
@@ -208,7 +208,7 @@ function mthan_get_section_instance_fields()
     // Request Section — delegates to mthan_section_request_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_request_options() as $request_field) {
-        $request_field['dependency'] = array('section_template', '==', 'request');
+        $request_field['dependency'] = ['section_template', '==', 'request'];
         $fields[] = $request_field;
     }
 
@@ -216,7 +216,7 @@ function mthan_get_section_instance_fields()
     // Sponsors Section — delegates to mthan_section_sponsors_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_sponsors_options() as $sponsors_field) {
-        $sponsors_field['dependency'] = array('section_template', '==', 'sponsors');
+        $sponsors_field['dependency'] = ['section_template', '==', 'sponsors'];
         $fields[] = $sponsors_field;
     }
 
@@ -224,7 +224,7 @@ function mthan_get_section_instance_fields()
     // Team Section — delegates to mthan_section_team_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_team_options() as $team_field) {
-        $team_field['dependency'] = array('section_template', '==', 'team');
+        $team_field['dependency'] = ['section_template', '==', 'team'];
         $fields[] = $team_field;
     }
 
@@ -232,7 +232,7 @@ function mthan_get_section_instance_fields()
     // Testimonials Section — delegates to mthan_section_testimonials_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_testimonials_options() as $testimonials_field) {
-        $testimonials_field['dependency'] = array('section_template', '==', 'testimonials');
+        $testimonials_field['dependency'] = ['section_template', '==', 'testimonials'];
         $fields[] = $testimonials_field;
     }
 
@@ -240,7 +240,7 @@ function mthan_get_section_instance_fields()
     // What We Do Section — delegates to mthan_section_what_we_do_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_what_we_do_options() as $wwd_field) {
-        $wwd_field['dependency'] = array('section_template', '==', 'what-we-do');
+        $wwd_field['dependency'] = ['section_template', '==', 'what-we-do'];
         $fields[] = $wwd_field;
     }
 
@@ -248,7 +248,7 @@ function mthan_get_section_instance_fields()
     // Why Us Section — delegates to mthan_section_why_us_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_why_us_options() as $why_us_field) {
-        $why_us_field['dependency'] = array('section_template', '==', 'why-us');
+        $why_us_field['dependency'] = ['section_template', '==', 'why-us'];
         $fields[] = $why_us_field;
     }
 
@@ -256,7 +256,7 @@ function mthan_get_section_instance_fields()
     // Process Section — delegates to mthan_section_process_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_process_options() as $process_field) {
-        $process_field['dependency'] = array('section_template', '==', 'process');
+        $process_field['dependency'] = ['section_template', '==', 'process'];
         $fields[] = $process_field;
     }
 
@@ -264,7 +264,7 @@ function mthan_get_section_instance_fields()
     // Contact Section — delegates to mthan_section_contact_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_contact_options() as $contact_field) {
-        $contact_field['dependency'] = array('section_template', '==', 'contact');
+        $contact_field['dependency'] = ['section_template', '==', 'contact'];
         $fields[] = $contact_field;
     }
 
@@ -272,7 +272,7 @@ function mthan_get_section_instance_fields()
     // FAQs Section — delegates to mthan_section_faqs_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_faqs_options() as $faq_field) {
-        $faq_field['dependency'] = array('section_template', '==', 'faqs');
+        $faq_field['dependency'] = ['section_template', '==', 'faqs'];
         $fields[] = $faq_field;
     }
 
@@ -280,7 +280,7 @@ function mthan_get_section_instance_fields()
     // Facts Section — delegates to mthan_section_facts_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_facts_options() as $facts_field) {
-        $facts_field['dependency'] = array('section_template', '==', 'facts');
+        $facts_field['dependency'] = ['section_template', '==', 'facts'];
         $fields[] = $facts_field;
     }
 
@@ -288,7 +288,7 @@ function mthan_get_section_instance_fields()
     // MVG History Section — delegates to mthan_section_mvg_history_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_mvg_history_options() as $mvg_field) {
-        $mvg_field['dependency'] = array('section_template', '==', 'mvg-history');
+        $mvg_field['dependency'] = ['section_template', '==', 'mvg-history'];
         $fields[] = $mvg_field;
     }
 
@@ -296,7 +296,7 @@ function mthan_get_section_instance_fields()
     // Product Details — delegates to mthan_section_product_details_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_product_details_options() as $product_details_field) {
-        $product_details_field['dependency'] = array('section_template', '==', 'product-details');
+        $product_details_field['dependency'] = ['section_template', '==', 'product-details'];
         $fields[] = $product_details_field;
     }
 
@@ -304,7 +304,7 @@ function mthan_get_section_instance_fields()
     // Projects Section — delegates to mthan_section_projects_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_projects_options() as $projects_field) {
-        $projects_field['dependency'] = array('section_template', '==', 'projects');
+        $projects_field['dependency'] = ['section_template', '==', 'projects'];
         $fields[] = $projects_field;
     }
 
@@ -312,7 +312,7 @@ function mthan_get_section_instance_fields()
     // Project Details — delegates to mthan_section_project_details_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_project_details_options() as $project_details_field) {
-        $project_details_field['dependency'] = array('section_template', '==', 'project-details');
+        $project_details_field['dependency'] = ['section_template', '==', 'project-details'];
         $fields[] = $project_details_field;
     }
 
@@ -320,7 +320,7 @@ function mthan_get_section_instance_fields()
     // Project Feedback — delegates to mthan_section_project_feedback_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_project_feedback_options() as $project_feedback_field) {
-        $project_feedback_field['dependency'] = array('section_template', '==', 'project-feedback');
+        $project_feedback_field['dependency'] = ['section_template', '==', 'project-feedback'];
         $fields[] = $project_feedback_field;
     }
 
@@ -328,7 +328,7 @@ function mthan_get_section_instance_fields()
     // Project Outline — delegates to mthan_section_project_outline_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_project_outline_options() as $project_outline_field) {
-        $project_outline_field['dependency'] = array('section_template', '==', 'project-outline');
+        $project_outline_field['dependency'] = ['section_template', '==', 'project-outline'];
         $fields[] = $project_outline_field;
     }
 
@@ -336,7 +336,7 @@ function mthan_get_section_instance_fields()
     // Related Project — delegates to mthan_section_related_project_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_related_project_options() as $related_project_field) {
-        $related_project_field['dependency'] = array('section_template', '==', 'related-project');
+        $related_project_field['dependency'] = ['section_template', '==', 'related-project'];
         $fields[] = $related_project_field;
     }
 
@@ -344,24 +344,52 @@ function mthan_get_section_instance_fields()
     // Page Banner
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_page_banner_options() as $pb_field) {
-        $pb_field['dependency'] = array('section_template', '==', 'page-banner');
+        $pb_field['dependency'] = ['section_template', '==', 'page-banner'];
         $fields[] = $pb_field;
     }
 
     // ──────────────────────────────────────────────────────────────────
     // Call To Action
     // ──────────────────────────────────────────────────────────────────
-    $fields[] = array('type' => 'subheading', 'content' => 'Call To Action Options', 'dependency' => array('section_template', '==', 'call-to-action'));
-    $fields[] = array('id' => 'cta_heading', 'type' => 'text', 'title' => 'Heading', 'default' => 'Do you need tree care for your home?', 'dependency' => array('section_template', '==', 'call-to-action'));
-    $fields[] = array('id' => 'cta_btn_text', 'type' => 'text', 'title' => 'Button Text', 'default' => 'Send Message', 'dependency' => array('section_template', '==', 'call-to-action'));
-    $fields[] = array('id' => 'cta_btn_link', 'type' => 'text', 'title' => 'Button Link', 'default' => '#', 'dependency' => array('section_template', '==', 'call-to-action'));
-    $fields[] = array('id' => 'cta_phone', 'type' => 'text', 'title' => 'Phone Number', 'default' => '+31 65 792 63 11', 'dependency' => array('section_template', '==', 'call-to-action'));
+    $fields[] = [
+        'type' => 'subheading',
+        'content' => 'Call To Action Options',
+        'dependency' => ['section_template', '==', 'call-to-action']
+    ];
+    $fields[] = [
+        'id' => 'cta_heading',
+        'type' => 'text',
+        'title' => 'Heading',
+        'default' => 'Do you need tree care for your home?',
+        'dependency' => ['section_template', '==', 'call-to-action']
+    ];
+    $fields[] = [
+        'id' => 'cta_btn_text',
+        'type' => 'text',
+        'title' => 'Button Text',
+        'default' => 'Send Message',
+        'dependency' => ['section_template', '==', 'call-to-action']
+    ];
+    $fields[] = [
+        'id' => 'cta_btn_link',
+        'type' => 'text',
+        'title' => 'Button Link',
+        'default' => '#',
+        'dependency' => ['section_template', '==', 'call-to-action']
+    ];
+    $fields[] = [
+        'id' => 'cta_phone',
+        'type' => 'text',
+        'title' => 'Phone Number',
+        'default' => '+31 65 792 63 11',
+        'dependency' => ['section_template', '==', 'call-to-action']
+    ];
 
     // ──────────────────────────────────────────────────────────────────
     // Map Section — delegates to mthan_section_map_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_map_options() as $map_field) {
-        $map_field['dependency'] = array('section_template', '==', 'map');
+        $map_field['dependency'] = ['section_template', '==', 'map'];
         $fields[] = $map_field;
     }
 
@@ -369,7 +397,7 @@ function mthan_get_section_instance_fields()
     // Error Section — delegates to mthan_section_error_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_error_options() as $error_field) {
-        $error_field['dependency'] = array('section_template', '==', 'error');
+        $error_field['dependency'] = ['section_template', '==', 'error'];
         $fields[] = $error_field;
     }
 
@@ -377,7 +405,7 @@ function mthan_get_section_instance_fields()
     // Coming Soon — delegates to mthan_section_coming_soon_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_coming_soon_options() as $cs_field) {
-        $cs_field['dependency'] = array('section_template', '==', 'coming-soon');
+        $cs_field['dependency'] = ['section_template', '==', 'coming-soon'];
         $fields[] = $cs_field;
     }
 
@@ -385,7 +413,7 @@ function mthan_get_section_instance_fields()
     // My Account — delegates to mthan_section_myaccount_options()
     // ──────────────────────────────────────────────────────────────────
     foreach (mthan_section_myaccount_options() as $myaccount_field) {
-        $myaccount_field['dependency'] = array('section_template', '==', 'myaccount');
+        $myaccount_field['dependency'] = ['section_template', '==', 'myaccount'];
         $fields[] = $myaccount_field;
     }
 

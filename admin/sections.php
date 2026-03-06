@@ -82,8 +82,7 @@ if (!empty($config_accordion_items)) {
     ];
 }
 
-global $mthan_options_id;
-CSF::createSection($mthan_options_id, [
+CSF::createSection(MTHAN_THEME_OPTIONS, [
     'id'     => 'sections_settings',
     'title'  => 'Sections',
     'icon'   => 'fas fa-layer-group',

@@ -2,9 +2,8 @@
 /**
  * Search Page Settings
 **/
-global $mthan_options_id;
 
-CSF::createSection($mthan_options_id, [
+CSF::createSection(MTHAN_THEME_OPTIONS, [
     'id'     => 'search_page_settings',
     'title'  => 'Search Page',
     'icon'   => 'fas fa-search',
