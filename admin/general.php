@@ -1,19 +1,21 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 // General Settings
-CSF::createSection($prefix, array(
+CSF::createSection($prefix, [
     'id' => 'general_settings',
     'title' => 'General',
     'icon' => 'fas fa-cogs',
-    'fields' => array(
-            array(
+    'fields' => [
+        [
             'id' => 'logo',
-            'type' => 'media',
-            'title' => 'Site Logo',
-        ),
-            array(
+            'type' => 'upload',
+            'title' => 'Logo',
+            'preview' => false  
+        ],
+        [
             'id' => 'favicon',
-            'type' => 'media',
+            'type' => 'upload',
             'title' => 'Favicon',
-        ),
-    )
-));
+            'preview' => false
+        ]
+    ]
+]);
