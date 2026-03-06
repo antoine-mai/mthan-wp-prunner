@@ -16,6 +16,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
             'id' => 'favicon',
             'type' => 'upload',
             'title' => 'Favicon',
+            'default' => 'https://team3t.com/wp-content/themes/mthan-wp-prunner/assets/images/favicon.png',
             'preview' => false
         ],
         [
