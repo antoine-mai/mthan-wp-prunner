@@ -12,6 +12,16 @@ CSF::createSection($prefix, array(
             'content' => 'Layout Settings',
         ),
             array(
+            'id' => 'header_layout',
+            'type' => 'select',
+            'title' => 'Header Layout',
+            'options' => array(
+                'style-1' => 'Style 1',
+                'style-2' => 'Style 2',
+            ),
+            'default' => 'style-1',
+        ),
+            array(
             'id' => 'header_logo',
             'type' => 'media',
             'title' => 'Header Logo',

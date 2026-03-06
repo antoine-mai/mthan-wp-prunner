@@ -5,6 +5,16 @@ CSF::createSection($prefix, array(
     'title' => 'Footer Settings',
     'icon' => 'fas fa-arrow-down',
     'fields' => array(
+            array(
+            'id' => 'footer_layout',
+            'type' => 'select',
+            'title' => 'Footer Layout',
+            'options' => array(
+                'style-1' => 'Style 1',
+                'style-2' => 'Style 2',
+            ),
+            'default' => 'style-1',
+        ),
         // Style 1 specifics
             array(
             'type' => 'heading',
