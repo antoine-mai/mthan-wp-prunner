@@ -28,13 +28,14 @@ if (!empty($theme_options['enable_mobile_bar']) && !empty($theme_options['mobile
         <?php foreach ($theme_options['mobile_bar_items'] as $item) : 
             $title = !empty($item['title']) ? $item['title'] : '';
             $url = !empty($item['url']) ? $item['url'] : '#';
-            $icon = !empty($item['icon']) ? $item['icon'] : 'fas fa-link';
+            $icon_url = !empty($item['icon']) ? $item['icon'] : '';
             $text_color = !empty($item['text_color']) ? "color: {$item['text_color']};" : '';
-            $icon_color = !empty($item['icon_color']) ? "color: {$item['icon_color']};" : '';
         ?>
         <li>
             <a href="<?php echo esc_url($url); ?>">
-                <span class="icon <?php echo esc_attr($icon); ?>" style="<?php echo esc_attr($icon_color); ?>"></span>
+                <?php if ($icon_url): ?>
+                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($title); ?>" class="icon" style="height: 20px; width: auto; display: block; margin: 0 auto 2px auto;">
+                <?php endif; ?>
                 <span class="text" style="<?php echo esc_attr($text_color); ?>"><?php echo esc_html($title); ?></span>
             </a>
         </li>
