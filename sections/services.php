@@ -78,22 +78,6 @@ function mthan_section_services_options()
 }
 
 /**
- * Returns the CSF field definitions for the services section global config.
- * @return array
- */
-function mthan_section_services_config_options()
-{
-    return [
-        [
-            'id' => 'services_section_id',
-            'type' => 'text',
-            'title' => 'Section ID',
-            'desc' => 'Optional ID for this section (useful for anchor links)',
-        ],
-    ];
-}
-
-/**
  * Render the services section.
  *
  * @param array $section_data Per-instance CSF field values.

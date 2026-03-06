@@ -179,22 +179,6 @@ function mthan_section_projects_options()
 }
 
 /**
- * Returns the CSF field definitions for the projects section global config.
- * @return array
- */
-function mthan_section_projects_config_options()
-{
-    return [
-        [
-            'id' => 'projects_section_id',
-            'type' => 'text',
-            'title' => 'Section ID',
-            'desc' => 'Optional ID for this section (useful for anchor links)',
-        ],
-    ];
-}
-
-/**
  * Render the projects section.
  */
 function mthan_section_projects_html($section_data) {

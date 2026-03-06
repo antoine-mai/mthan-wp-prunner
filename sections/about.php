@@ -290,22 +290,6 @@ function mthan_section_about_config_options()
 }
 
 /**
- * Returns the CSF field definitions for the about section global config.
- * @return array
- */
-function mthan_section_about_config_options()
-{
-    return [
-        [
-            'id' => 'about_section_id',
-            'type' => 'text',
-            'title' => 'Section ID',
-            'desc' => 'Optional ID for this section (useful for anchor links)',
-        ],
-    ];
-}
-
-/**
  * Render the about section.
  *
  * @param array $section_data Per-instance CSF field values.

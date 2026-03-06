@@ -62,22 +62,6 @@ function mthan_section_blog_options()
 }
 
 /**
- * Returns the CSF field definitions for the blog section global config.
- * @return array
- */
-function mthan_section_blog_config_options()
-{
-    return [
-        [
-            'id' => 'blog_section_id',
-            'type' => 'text',
-            'title' => 'Section ID',
-            'desc' => 'Optional ID for this section (useful for anchor links)',
-        ],
-    ];
-}
-
-/**
  * Render the blog section.
  *
  * @param array $section_data Per-instance CSF field values.

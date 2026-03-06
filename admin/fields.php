@@ -426,6 +426,13 @@ function mthan_get_section_instance_fields()
     ];
 
     $fields[] = [
+        'id'      => 'section_id',
+        'type'    => 'text',
+        'title'   => 'Section ID',
+        'desc'    => 'Optional ID for this section instance (useful for anchor links)',
+    ];
+
+    $fields[] = [
         'id'      => 'section_background',
         'type'    => 'background',
         'title'   => 'Background Settings',

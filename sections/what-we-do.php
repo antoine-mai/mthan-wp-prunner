@@ -225,22 +225,6 @@ function mthan_section_what_we_do_options()
 }
 
 /**
- * Returns the CSF field definitions for the what-we-do section global config.
- * @return array
- */
-function mthan_section_what_we_do_config_options()
-{
-    return [
-        [
-            'id' => 'wwd_section_id',
-            'type' => 'text',
-            'title' => 'Section ID',
-            'desc' => 'Optional ID for this section (useful for anchor links)',
-        ],
-    ];
-}
-
-/**
  * Render the what-we-do section.
  *
  * @param array $section_data Per-instance CSF field values.

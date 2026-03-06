@@ -188,22 +188,6 @@ function mthan_section_why_us_options()
 }
 
 /**
- * Returns the CSF field definitions for the why-us section global config.
- * @return array
- */
-function mthan_section_why_us_config_options()
-{
-    return [
-        [
-            'id' => 'why_section_id',
-            'type' => 'text',
-            'title' => 'Section ID',
-            'desc' => 'Optional ID for this section (useful for anchor links)',
-        ],
-    ];
-}
-
-/**
  * Render the why-us section.
  */
 function mthan_section_why_us_html($section_data) {

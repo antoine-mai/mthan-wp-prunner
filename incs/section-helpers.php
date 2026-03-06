@@ -147,8 +147,21 @@ function mthan_include_section_items($items)
         }
         $content = ob_get_clean();
 
-        // Auto-inject background style into the first <section> or <div> tag
+        // Auto-inject ID and background style into the first <section> or <div> tag
+        $sec_id = !empty($item['section_id']) ? $item['section_id'] : '';
         $bg_css = mthan_get_section_bg_css($item);
+
+        if ($sec_id) {
+            if (preg_match('/id=["\']/', $content)) {
+                // If it already has an ID, we might not want to overwrite it...
+                // but usually the user setting should win or we should allow it.
+                // Let's replace it if the user specified one.
+                $content = preg_replace('/id=(["\'])(.*?)\1/i', 'id=$1' . esc_attr($sec_id) . '$1', $content, 1);
+            } else {
+                $content = preg_replace('/(<(?:section|div)[^>]*)/i', '$1 id="' . esc_attr($sec_id) . '"', $content, 1);
+            }
+        }
+
         if ($bg_css) {
             if (preg_match('/style=["\']/', $content)) {
                 // Append to existing style attribute
