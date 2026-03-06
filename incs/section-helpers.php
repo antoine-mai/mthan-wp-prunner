@@ -73,10 +73,13 @@ function mthan_get_available_base_sections()
 function mthan_get_section_bg_css($section_data)
 {
     $styles = array();
-    
-    // Background
-    if (!empty($section_data['section_background'])) {
-        $bg = $section_data['section_background'];
+    $slug = !empty($section_data['section_template']) ? $section_data['section_template'] : '';
+    if (!$slug) return '';
+
+    // Background - use helper to handle Instance -> Global fallback
+    $bg = mthan_get_section_val($slug, $section_data, 'background', array());
+
+    if (!empty($bg) && is_array($bg)) {
         if (!empty($bg['background-color'])) {
             $styles[] = 'background-color: ' . $bg['background-color'] . ';';
         }
@@ -90,9 +93,10 @@ function mthan_get_section_bg_css($section_data)
         }
     }
 
-    // Padding
-    if (!empty($section_data['section_padding'])) {
-        $p = $section_data['section_padding'];
+    // Padding - use helper to handle Instance -> Global fallback
+    $p = mthan_get_section_val($slug, $section_data, 'padding', array());
+
+    if (!empty($p) && is_array($p)) {
         $unit = !empty($p['unit']) ? $p['unit'] : 'px';
         if (isset($p['top']) && $p['top'] !== '') {
             $styles[] = 'padding-top: ' . $p['top'] . $unit . ';';

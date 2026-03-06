@@ -65,6 +65,30 @@ if (is_dir($sections_path)) {
                 }
             }
 
+            // Add Background & Padding Settings to Global Config
+            $section_config_fields[] = [
+                'type'    => 'subheading',
+                'content' => 'Section Appearance (Global Default)',
+            ];
+            $section_config_fields[] = [
+                'id'      => 'g_' . $filename . '_background',
+                'type'    => 'background',
+                'title'   => 'Default Background Settings',
+            ];
+            $section_config_fields[] = [
+                'id'      => 'g_' . $filename . '_padding',
+                'type'    => 'spacing',
+                'title'   => 'Default Padding Settings',
+                'left'    => false,
+                'right'   => false,
+                'units'   => ['px', '%', 'em', 'rem'],
+                'default' => [
+                    'top'    => '120',
+                    'bottom' => '120',
+                    'unit'   => 'px',
+                ],
+            ];
+
             if (empty($section_config_fields)) {
                 $section_config_fields[] = [
                     'type'    => 'content',

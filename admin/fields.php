@@ -77,6 +77,39 @@ function mthan_get_section_instance_fields()
 
                         $overrides[] = $cf;
                     }
+
+                    // ────────── ADD BACKGROUND & PADDING OVERRIDES ──────────
+                    $overrides[] = [
+                        'type'    => 'subheading',
+                        'content' => 'Section Appearance',
+                        'dependency' => ['section_template', '==', $slug],
+                    ];
+
+                    $bg_id = $slug . '_background';
+                    $overrides[] = [
+                        'id'         => $bg_id,
+                        'type'       => 'background',
+                        'title'      => 'Override Background Settings',
+                        'dependency' => ['section_template', '==', $slug],
+                        'default'    => isset($global_options['g_' . $bg_id]) ? $global_options['g_' . $bg_id] : [],
+                    ];
+
+                    $pad_id = $slug . '_padding';
+                    $overrides[] = [
+                        'id'         => $pad_id,
+                        'type'       => 'spacing',
+                        'title'      => 'Override Padding Settings',
+                        'left'       => false,
+                        'right'      => false,
+                        'units'      => ['px', '%', 'em', 'rem'],
+                        'dependency' => ['section_template', '==', $slug],
+                        'default'    => isset($global_options['g_' . $pad_id]) ? $global_options['g_' . $pad_id] : [
+                            'top'    => '120',
+                            'bottom' => '120',
+                            'unit'   => 'px',
+                        ],
+                    ];
+                    // ──────────────────────────────────────────────────────
                     
                     if (!empty($overrides)) {
                         foreach($overrides as $override_field) {
@@ -89,38 +122,13 @@ function mthan_get_section_instance_fields()
     }
 
     // ──────────────────────────────────────────────────────────────────
-    // 3. Universal Appearance — applies to all sections
+    // 3. Universal Attributes (Only ID should be universal)
     // ──────────────────────────────────────────────────────────────────
-    $fields[] = [
-        'type'    => 'subheading',
-        'content' => 'Section Appearance',
-    ];
-
     $fields[] = [
         'id'      => 'section_id',
         'type'    => 'text',
         'title'   => 'Section ID',
         'desc'    => 'Optional ID for this section instance (useful for anchor links)',
-    ];
-
-    $fields[] = [
-        'id'      => 'section_background',
-        'type'    => 'background',
-        'title'   => 'Background Settings',
-    ];
-
-    $fields[] = [
-        'id'      => 'section_padding',
-        'type'    => 'spacing',
-        'title'   => 'Padding Settings',
-        'left'    => false,
-        'right'   => false,
-        'units'   => ['px', '%', 'em', 'rem'],
-        'default' => [
-            'top'    => '120',
-            'bottom' => '120',
-            'unit'   => 'px',
-        ],
     ];
 
     return $fields;
