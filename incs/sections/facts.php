@@ -69,7 +69,7 @@ function mthan_section_facts_options()
  */
 function mthan_section_facts_html($section_data) {
     $slug = 'facts';
-    $style = isset($section_data['section_style']) ? $section_data['section_style'] : '1';
+    $style = mthan_get_section_val($slug, $section_data, 'section_style', '1');
     
     if ($style === '2') {
         mthan_section_facts_html_2($section_data);
@@ -95,10 +95,19 @@ function mthan_section_facts_html_1($section_data) {
                 $count  = isset($item['count']) ? $item['count'] : '';
                 $suffix = isset($item['suffix']) ? $item['suffix'] : '';
                 $title  = isset($item['title']) ? $item['title'] : '';
+                $is_img_icon = strpos($icon, 'http') !== false || strpos($icon, '/') !== false || strpos($icon, '.') !== false;
             ?>
             <div class="fact-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner">
-                    <?php if($icon): ?><div class="icon-box"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
+                    <?php if($icon): ?>
+                        <div class="icon-box">
+                            <?php if ($is_img_icon): ?>
+                                <img src="<?php echo esc_url($icon); ?>" alt="icon">
+                            <?php else: ?>
+                                <span class="<?php echo esc_attr($icon); ?>"></span>
+                            <?php endif; ?>
+                        </div>
+                    <?php endif; ?>
                     <div class="fact-count">
                         <div class="count-box">
                             <span class="count-text" data-stop="<?php echo esc_attr($count); ?>" data-speed="2000">0</span>
@@ -131,10 +140,19 @@ function mthan_section_facts_html_2($section_data) {
                     $suffix   = isset($item['suffix']) ? $item['suffix'] : '';
                     $title    = isset($item['title']) ? $item['title'] : '';
                     $sub_text = isset($item['sub_text']) ? $item['sub_text'] : '';
+                    $is_img_icon = strpos($icon, 'http') !== false || strpos($icon, '/') !== false || strpos($icon, '.') !== false;
                 ?>
                 <div class="fact-block col-lg-3 col-md-6 col-sm-12">
                     <div class="inner">
-                        <?php if($icon): ?><div class="icon-box"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
+                        <?php if($icon): ?>
+                            <div class="icon-box">
+                                <?php if ($is_img_icon): ?>
+                                    <img src="<?php echo esc_url($icon); ?>" alt="icon">
+                                <?php else: ?>
+                                    <span class="<?php echo esc_attr($icon); ?>"></span>
+                                <?php endif; ?>
+                            </div>
+                        <?php endif; ?>
                         <div class="fact-count"><div class="count-box"><span class="count-text" data-stop="<?php echo esc_attr($count); ?>" data-speed="3000">0</span><?php echo esc_html($suffix); ?><span class="title"><?php echo esc_html($title); ?></span></div></div>
                         <div class="sub-text"><?php echo esc_html($sub_text); ?></div>
                     </div>
