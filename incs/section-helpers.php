@@ -193,7 +193,17 @@ function mthan_get_section_val($slug, $instance_data, $field, $default = '')
     $val = isset($instance_data[$key]) ? $instance_data[$key] : '';
 
     $is_empty = empty($val);
-    if (is_array($val) && isset($val['url']) && empty($val['url'])) $is_empty = true;
+
+    // Deep check for empty arrays (Spacing, Background, Media)
+    if (!$is_empty && is_array($val)) {
+        if (isset($val['url']) && empty($val['url'])) {
+            $is_empty = true;
+        } elseif (isset($val['top']) && $val['top'] === '' && isset($val['bottom']) && $val['bottom'] === '') {
+            $is_empty = true;
+        } elseif (isset($val['background-color']) && empty($val['background-color']) && empty($val['background-image']['url'])) {
+            $is_empty = true;
+        }
+    }
 
     if (!$is_empty) {
         return $val;
@@ -205,7 +215,15 @@ function mthan_get_section_val($slug, $instance_data, $field, $default = '')
     $global_val = isset($to[$global_key]) ? $to[$global_key] : '';
 
     $global_empty = empty($global_val);
-    if (is_array($global_val) && isset($global_val['url']) && empty($global_val['url'])) $global_empty = true;
+    if (!$global_empty && is_array($global_val)) {
+        if (isset($global_val['url']) && empty($global_val['url'])) {
+            $global_empty = true;
+        } elseif (isset($global_val['top']) && $global_val['top'] === '' && isset($global_val['bottom']) && $global_val['bottom'] === '') {
+            $global_empty = true;
+        } elseif (isset($global_val['background-color']) && empty($global_val['background-color']) && empty($global_val['background-image']['url'])) {
+            $global_empty = true;
+        }
+    }
 
     if (!$global_empty) {
         return $global_val;

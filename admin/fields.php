@@ -78,13 +78,6 @@ function mthan_get_section_instance_fields()
                         $overrides[] = $cf;
                     }
 
-                    // ────────── ADD BACKGROUND & PADDING OVERRIDES ──────────
-                    $overrides[] = [
-                        'type'    => 'subheading',
-                        'content' => 'Section Appearance',
-                        'dependency' => ['section_template', '==', $slug],
-                    ];
-
                     $bg_id = $slug . '_background';
                     $overrides[] = [
                         'id'         => $bg_id,
@@ -109,7 +102,6 @@ function mthan_get_section_instance_fields()
                             'unit'   => 'px',
                         ],
                     ];
-                    // ──────────────────────────────────────────────────────
                     
                     if (!empty($overrides)) {
                         foreach($overrides as $override_field) {
