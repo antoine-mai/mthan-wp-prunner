@@ -53,7 +53,7 @@ if (class_exists('CSF')) {
 
     // Include all metabox files
     $metabox_dir = get_template_directory() . '/admin/metabox/';
-    foreach (['page-metabox.php', 'post-metabox.php'] as $metabox) {
+    foreach (['mthan-page-metabox.php'] as $metabox) {
         if (file_exists($metabox_dir . $metabox)) {
             require_once $metabox_dir . $metabox;
         }
