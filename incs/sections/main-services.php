@@ -4,7 +4,7 @@
  * Returns the CSF field definitions for the services section instance.
  * @return array
  */
-function mthan_section_services_options()
+function mthan_section_main_services_options()
 {
     return array(
         mthan_subtitle_field('Our Services'),
@@ -63,9 +63,9 @@ function mthan_section_services_options()
  *
  * @param array $section_data Per-instance CSF field values.
  **/
-function mthan_section_services_html($section_data)
+function mthan_section_main_services_html($section_data)
 {
-    $slug = 'services';
+    $slug = 'main_services';
     $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Our Services');
     $sec_title = mthan_get_section_val($slug, $section_data, 'title', 'What We Offer');
     $sec_sub_icon = mthan_sec_img($slug, $section_data, 'subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-center.png');
@@ -83,11 +83,13 @@ function mthan_section_services_html($section_data)
 
         <div class="row clearfix">
             <?php if (is_array($services_repeater)) : foreach ($services_repeater as $service):
-        $img = !empty($service['services_image']['url']) ? $service['services_image']['url'] : '';
+        // Services Image is an 'upload' field, which just returns a string:
+        $img = !empty($service['services_image']) ? (is_array($service['services_image']) ? $service['services_image']['url'] : $service['services_image']) : '';
         $icon = !empty($service['icon']) ? $service['icon'] : '';
         $title = !empty($service['name']) ? $service['name'] : 'Service Title';
         $text = !empty($service['services_text']) ? $service['services_text'] : 'Service text description here ...';
         $link = !empty($service['services_link']) ? get_permalink($service['services_link']) : '#';
+        $is_img_icon = strpos($icon, 'http') !== false || strpos($icon, '/') !== false || strpos($icon, '.') !== false;
 ?>
             <!--Service block-->
             <div class="service-block col-lg-4 col-md-6 col-sm-12">
@@ -97,10 +99,22 @@ function mthan_section_services_html($section_data)
                             <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>"
                                 title="<?php echo esc_attr($title); ?>">
                         </div>
-                        <div class="hvr-icon"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                        <div class="hvr-icon">
+                            <?php if ($is_img_icon): ?>
+                                <img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($title); ?>" style="max-height: 48px; width: auto;" />
+                            <?php else: ?>
+                                <span class="<?php echo esc_attr($icon); ?>"></span>
+                            <?php endif; ?>
+                        </div>
                     </div>
                     <div class="lower">
-                        <div class="icon-right"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                        <div class="icon-right">
+                            <?php if ($is_img_icon): ?>
+                                <img src="<?php echo esc_url($icon); ?>" alt="<?php echo esc_attr($title); ?>" style="max-height: 48px; width: auto;" />
+                            <?php else: ?>
+                                <span class="<?php echo esc_attr($icon); ?>"></span>
+                            <?php endif; ?>
+                        </div>
                         <h5><a href="<?php echo esc_url($link); ?>">
                                 <?php echo esc_html($title); ?>
                             </a></h5>

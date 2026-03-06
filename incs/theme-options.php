@@ -58,7 +58,7 @@ if (class_exists('CSF')) {
         'layouts.php',
         'header.php',
         'blog.php',
-        'services.php',
+        'main-services.php',
         'contact.php',
         'home-page.php',
         'search-page.php',
