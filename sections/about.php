@@ -6,204 +6,216 @@
  */
 function mthan_section_about_options()
 {
-    return array(
-            array(
+    return [
+        [
             'id' => 'section_style',
             'type' => 'select',
             'title' => 'Section Style',
-            'options' => array(
+            'options' => [
                 '1' => 'Style 1 (Standard)',
                 '2' => 'Style 2 (Insurance)',
                 '3' => 'Style 3 (Experience)',
-            ),
+            ],
             'default' => '1',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_subtitle',
             'type' => 'text',
             'title' => 'Subtitle (small label)',
             'default' => 'About Us',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_title',
             'type' => 'text',
             'title' => 'Section Title (H2)',
             'default' => 'Professional Gardener',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_text',
             'type' => 'textarea',
             'title' => 'Description Paragraph 1',
             'default' => 'Leader in landscaping, lawn care, and irrigation services in Los Angeles since 2004.',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_text_2',
             'type' => 'textarea',
             'title' => 'Description Paragraph 2',
             'default' => 'Must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and we will give you a complete account of the system, and expound the actualy teachings.',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_btn_text',
             'type' => 'text',
             'title' => 'Button Text',
             'default' => 'Read More',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_btn_link',
             'type' => 'text',
             'title' => 'Button Link',
             'default' => 'about.html',
-        ),
-            array(
+        ],
+        [
             'id' => 'about_video_link',
             'type' => 'text',
             'title' => 'Video Link',
             'default' => 'https://www.youtube.com/watch?v=CB_rXABU8DI',
-        ),
+        ],
 
         // Shared Image/Media fields
-            array(
+        [
             'id' => 'about_featured_image',
             'type' => 'media',
             'library' => 'image',
             'preview' => false,
             'title' => 'Featured Image',
-            'dependency' => array('section_style', 'any', '1,3'),
-            'default' => array('url' => get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '1,3'],
+            'default' => [
+                'url' => get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg'
+            ],
+        ],
+        [
             'id' => 'about_anim_image',
             'type' => 'media',
             'library' => 'image',
             'preview' => false,
             'title' => 'Animated Image',
-            'dependency' => array('section_style', 'any', '1,2'),
-            'default' => array('url' => get_template_directory_uri() . '/assets/images/resource/anim-image-1.png'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '1,2'],
+            'default' => [
+                'url' => get_template_directory_uri() . '/assets/images/resource/anim-image-1.png'
+            ],
+        ],
+        [
             'id' => 'about_vid_thumb',
             'type' => 'media',
             'library' => 'image',
             'preview' => false,
             'title' => 'Video Thumbnail',
-            'dependency' => array('section_style', 'any', '2,3'),
-            'default' => array('url' => get_template_directory_uri() . '/assets/images/resource/vid-thumb-1.jpg'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '2,3'],
+            'default' => [
+                'url' => get_template_directory_uri() . '/assets/images/resource/vid-thumb-1.jpg'
+            ],
+        ],
+        [
             'id' => 'about_signature',
             'type' => 'media',
             'library' => 'image',
             'preview' => false,
             'title' => 'Signature Image',
-            'dependency' => array('section_style', 'any', '1,3'),
-            'default' => array('url' => get_template_directory_uri() . '/assets/images/resource/signature-1.png'),
-        ),
+            'dependency' => ['section_style', 'any', '1,3'],
+            'default' => [
+                'url' => get_template_directory_uri() . '/assets/images/resource/signature-1.png'
+            ],
+        ],
 
         // Shared Quote fields
-            array(
+        [
             'id' => 'about_quote_text',
             'type' => 'textarea',
             'title' => 'Quote Text',
             'default' => '“Our Company has established a reputation as the leader in landscape design.”',
-            'dependency' => array('section_style', 'any', '1,3'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '1,3'],
+        ],
+        [
             'id' => 'about_quote_name',
             'type' => 'text',
             'title' => 'Quote Name',
             'default' => 'Chris Stanley,',
-            'dependency' => array('section_style', 'any', '1,3'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '1,3'],
+        ],
+        [
             'id' => 'about_quote_designation',
             'type' => 'text',
             'title' => 'Quote Designation',
             'default' => 'Founder of Pruners',
-            'dependency' => array('section_style', 'any', '1,3'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '1,3'],
+        ],
+        [
             'id' => 'about_quote_thumb',
             'type' => 'media',
             'library' => 'image',
             'preview' => false,
             'title' => 'Quote Thumbnail',
-            'dependency' => array('section_style', '==', '1'),
-            'default' => array('url' => get_template_directory_uri() . '/assets/images/resource/quote-thumb.jpg'),
-        ),
+            'dependency' => ['section_style', '==', '1'],
+            'default' => [
+                'url' => get_template_directory_uri() . '/assets/images/resource/quote-thumb.jpg'
+            ],
+        ],
 
         // Shared Certification fields
-            array(
+        [
             'id' => 'about_cert_title',
             'type' => 'text',
             'title' => 'Certificate Title',
             'default' => 'Certified Company',
-            'dependency' => array('section_style', 'any', '2,3'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '2,3'],
+        ],
+        [
             'id' => 'about_cert_number',
             'type' => 'text',
             'title' => 'Certificate Number',
             'default' => 'ISO 9001:2015',
-            'dependency' => array('section_style', 'any', '2,3'),
-        ),
-            array(
+            'dependency' => ['section_style', 'any', '2,3'],
+        ],
+        [
             'id' => 'about_iso_icon',
             'type' => 'media',
             'library' => 'image',
             'preview' => false,
             'title' => 'ISO/Cert Icon',
-            'dependency' => array('section_style', 'any', '2,3'),
-            'default' => array('url' => get_template_directory_uri() . '/assets/images/icons/iso-icon.png'),
-        ),
+            'dependency' => ['section_style', 'any', '2,3'],
+            'default' => [
+                'url' => get_template_directory_uri() . '/assets/images/icons/iso-icon.png'
+            ],
+        ],
 
         // Style 1 specific
-            array(
+        [
             'id' => 'about_projects_count',
             'type' => 'text',
             'title' => 'Projects Count',
             'default' => '2k',
-            'dependency' => array('section_style', '==', '1'),
-        ),
-            array(
+            'dependency' => ['section_style', '==', '1'],
+        ],
+        [
             'id' => 'about_projects_text',
             'type' => 'text',
             'title' => 'Projects Text',
             'default' => 'Projects <br>were completed',
-            'dependency' => array('section_style', '==', '1'),
-        ),
+            'dependency' => ['section_style', '==', '1'],
+        ],
 
         // Style 2 specific
-            array(
+        [
             'id' => 'about_insured_title',
             'type' => 'text',
             'title' => 'Insured Title',
             'default' => 'Fully Insured',
-            'dependency' => array('section_style', '==', '2'),
-        ),
-            array(
+            'dependency' => ['section_style', '==', '2'],
+        ],
+        [
             'id' => 'about_insured_text',
             'type' => 'textarea',
             'title' => 'Insured Text',
             'default' => 'Indignation and dislike men who are so that our garden therefore always holds in these matters too this stone has beguiled and occur demoralized.',
-            'dependency' => array('section_style', '==', '2'),
-        ),
+            'dependency' => ['section_style', '==', '2'],
+        ],
 
         // Style 3 specific
-            array(
+        [
             'id' => 'about_exp_years',
             'type' => 'text',
             'title' => 'Experience Years',
             'default' => '16',
-            'dependency' => array('section_style', '==', '3'),
-        ),
-            array(
+            'dependency' => ['section_style', '==', '3'],
+        ],
+        [
             'id' => 'about_exp_text',
             'type' => 'text',
             'title' => 'Experience Text',
             'default' => 'Years <br>of Experience',
-            'dependency' => array('section_style', '==', '3'),
-        ),
-    );
+            'dependency' => ['section_style', '==', '3'],
+        ],
+    ];
 }
 
 /**

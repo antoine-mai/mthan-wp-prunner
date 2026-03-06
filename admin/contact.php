@@ -3,7 +3,7 @@
  * Contact Settings
 **/
 CSF::createSection(MTHAN_THEME_OPTIONS, [
-    'id'    => 'contact_form_settings',
+    'id'    => 'contact_settings',
     'title' => 'Contact Form',
     'icon'  => 'fas fa-envelope',
     'fields' => [

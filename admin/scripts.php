@@ -3,8 +3,8 @@
  * 
 **/
 CSF::createSection(MTHAN_THEME_OPTIONS, array(
-    'id' => 'custom_scripts_settings',
-    'title' => 'Custom Scripts',
+    'id' => 'scripts_settings',
+    'title' => 'Scripts',
     'icon' => 'fas fa-code',
     'fields' => array(
         array(
