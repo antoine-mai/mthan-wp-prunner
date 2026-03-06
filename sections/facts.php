@@ -102,7 +102,7 @@ function mthan_section_facts_html_1($section_data) {
             ?>
             <div class="fact-block col-lg-3 col-md-6 col-sm-12">
                 <div class="inner">
-                    <div class="icon-box"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                    <?php if($icon): ?><div class="icon-box"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
                     <div class="fact-count">
                         <div class="count-box">
                             <span class="count-text" data-stop="<?php echo esc_attr($count); ?>" data-speed="2000">0</span>
@@ -137,7 +137,7 @@ function mthan_section_facts_html_2($section_data) {
                 ?>
                 <div class="fact-block col-lg-3 col-md-6 col-sm-12">
                     <div class="inner">
-                        <div class="icon-box"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                        <?php if($icon): ?><div class="icon-box"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
                         <div class="fact-count"><div class="count-box"><span class="count-text" data-stop="<?php echo esc_attr($count); ?>" data-speed="3000">0</span><?php echo esc_html($suffix); ?><span class="title"><?php echo esc_html($title); ?></span></div></div>
                         <div class="sub-text"><?php echo esc_html($sub_text); ?></div>
                     </div>

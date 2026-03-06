@@ -53,8 +53,8 @@ function mthan_section_process_options()
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon (flaticon class)',
+                    'type'  => 'upload',
+                    'title' => 'Icon Upload',
                 ),
                 array(
                     'id'         => 'image',

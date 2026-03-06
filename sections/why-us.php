@@ -110,8 +110,8 @@ function mthan_section_why_us_options()
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon (flaticon class)',
+                    'type'  => 'upload',
+                    'title' => 'Icon Upload',
                 ),
                 array(
                     'id'    => 'text',
@@ -319,7 +319,7 @@ function mthan_section_why_us_html_2($section_data) {
                         <!--Why Block-->
                         <div class="why-block-two col-lg-6 col-md-6 col-sm-12">
                             <div class="inner-box">
-                                <div class="icon-box"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                                <?php if($icon): ?><div class="icon-box"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
                                 <h5><?php echo esc_html($title); ?></h5>
                                 <div class="text"><?php echo esc_html($text); ?></div>
                                 <?php if($link): ?><div class="link-box"><a href="<?php echo esc_url($link); ?>"><span class="flaticon-right-1"></span></a></div><?php endif; ?>

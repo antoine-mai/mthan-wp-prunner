@@ -25,7 +25,6 @@ function mthan_section_areas_options()
                     'id'    => 'icon',
                     'type'  => 'text',
                     'title' => 'Icon Class',
-                    'default' => 'flaticon-flower-shop',
                 ),
                 array(
                     'id'    => 'link',
@@ -74,7 +73,7 @@ function mthan_section_areas_html($section_data) {
                 <?php foreach ($blocks as $block) { 
                     $title = !empty($block['title']) ? $block['title'] : '';
                     $subtitle = !empty($block['subtitle']) ? $block['subtitle'] : '';
-                    $icon = !empty($block['icon']) ? $block['icon'] : 'flaticon-flower-shop';
+                    $icon = !empty($block['icon']) ? $block['icon'] : '';
                     $link = !empty($block['link']) ? $block['link'] : '#';
                 ?>
                 <!--Area Block-->

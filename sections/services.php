@@ -24,9 +24,8 @@ function mthan_section_services_options()
                 ),
                     array(
                     'id' => 'services_icon',
-                    'type' => 'text',
-                    'title' => 'Icon Class (Flaticon)',
-                    'default' => 'flaticon-hedge',
+                    'type' => 'upload',
+                    'title' => 'Icon Upload',
                 ),
                     array(
                     'id' => 'services_text',
@@ -71,7 +70,7 @@ function mthan_section_services_html($section_data)
         <div class="row clearfix">
             <?php if (is_array($services_repeater)) : foreach ($services_repeater as $service):
         $img = !empty($service['services_image']['url']) ? $service['services_image']['url'] : '';
-        $icon = !empty($service['services_icon']) ? $service['services_icon'] : 'flaticon-hedge';
+        $icon = !empty($service['services_icon']) ? $service['services_icon'] : '';
         $title = !empty($service['services_title']) ? $service['services_title'] : 'Service Title';
         $text = !empty($service['services_text']) ? $service['services_text'] : 'Service text description here ...';
         $link = !empty($service['services_link']) ? get_permalink($service['services_link']) : '#';

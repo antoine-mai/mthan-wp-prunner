@@ -31,8 +31,8 @@ function mthan_section_what_we_do_options()
                 ),
                     array(
                     'id' => 'nav_icon',
-                    'type' => 'text',
-                    'title' => 'Nav Tab Icon (flaticon class)',
+                    'type' => 'upload',
+                    'title' => 'Icon Upload',
                 ),
                     array(
                     'id' => 'bg_image',
@@ -249,7 +249,7 @@ function mthan_section_what_we_do_html($section_data)
                     <ul class="tab-buttons row clearfix">
                         <?php foreach ($tabs as $index => $tab):
         $nav_title = !empty($tab['nav_title']) ? $tab['nav_title'] : '';
-        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : 'flaticon-leaves-1';
+        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : '';
 ?>
                         <li class="tab-btn <?php echo ($index === 0) ? 'active-btn' : ''; ?> col"
                             data-tab="#tab-<?php echo esc_attr($index); ?>">
@@ -273,7 +273,7 @@ function mthan_section_what_we_do_html($section_data)
 
         <div class="tabs-content">
             <?php foreach ($tabs as $index => $tab):
-        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : 'flaticon-leaves-1';
+        $nav_icon = !empty($tab['nav_icon']) ? $tab['nav_icon'] : '';
         $bg_image = !empty($tab['bg_image']['url']) ? $tab['bg_image']['url'] : get_template_directory_uri() . '/assets/images/resource/tab-image-1.jpg';
         $box_title = !empty($tab['box_title']) ? $tab['box_title'] : "Let's Start Your Project";
         $box_text = !empty($tab['box_text']) ? $tab['box_text'] : '';
@@ -319,11 +319,11 @@ function mthan_section_what_we_do_html($section_data)
                     </div>
                     <!--Text Column-->
                     <div class="text-column col-lg-6 col-md-12 col-sm-12">
-                        <div class="big-icon"><span class="<?php echo esc_attr($nav_icon); ?>"></span></div>
+                        <div class="big-icon"><?php if($nav_icon): ?><img src="<?php echo esc_url($nav_icon); ?>" alt="icon"><?php endif; ?></div>
                         <div class="inner">
                             <div class="content">
                                 <div class="s-title">
-                                    <div class="icon"><span class="<?php echo esc_attr($nav_icon); ?>"></span></div>
+                                    <div class="icon"><?php if($nav_icon): ?><img src="<?php echo esc_url($nav_icon); ?>" alt="icon"><?php endif; ?></div>
                                     <div class="subtitle">
                                         <?php echo esc_html($c_subtitle); ?>
                                     </div>

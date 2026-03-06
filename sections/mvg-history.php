@@ -67,9 +67,8 @@ function mthan_section_mvg_history_options()
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon Class',
-                    'default' => 'flaticon-bullseye',
+                    'type' => 'upload',
+                    'title' => 'Icon Image',
                 ),
                 array(
                     'id'    => 'link',
@@ -167,13 +166,13 @@ function mthan_section_mvg_history_html($section_data) {
                                 <?php foreach($desc_blocks as $desc): 
                                     $title = !empty($desc['title']) ? $desc['title'] : '';
                                     $text  = !empty($desc['text']) ? $desc['text'] : '';
-                                    $icon  = !empty($desc['icon']) ? $desc['icon'] : 'flaticon-bullseye';
+                                    $icon  = !empty($desc['icon']) ? $desc['icon'] : '';
                                     $link  = !empty($desc['link']) ? $desc['link'] : array();
                                 ?>
                                 <div class="desc-block">
                                     <div class="inner">
-                                        <div class="fade-icon"><span class="<?php echo esc_attr($icon); ?>"></span></div>
-                                        <div class="icon-box"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                                        <?php if($icon): ?><div class="fade-icon"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
+                                        <?php if($icon): ?><div class="icon-box"><img src="<?php echo esc_url($icon); ?>" alt="icon"></div><?php endif; ?>
                                         <h5><?php echo esc_html($title); ?></h5>
                                         <div class="text"><?php echo esc_html($text); ?></div>
                                         <?php if(!empty($link['url'])): ?>
