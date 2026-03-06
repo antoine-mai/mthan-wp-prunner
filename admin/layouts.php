@@ -15,7 +15,7 @@ CSF::createSection($prefix, array(
             'type' => 'tabbed',
             'tabs' => array(
                     array(
-                    'title' => 'Main Layout',
+                    'title' => 'Default Layout',
                     'icon' => 'fas fa-home',
                     'fields' => array(
                         array(
