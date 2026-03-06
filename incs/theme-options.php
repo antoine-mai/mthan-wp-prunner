@@ -27,6 +27,7 @@ if (class_exists('CSF')) {
         'mobile-bar.php',
         'footer.php',
         'blog.php',
+        'services.php',
         'contact.php',
         'scripts.php',
         'sections.php',

@@ -15,10 +15,16 @@ CSF::createSection(MTHAN_THEME_OPTIONS, array(
             ),
             'default' => 'list'
         ),
-            array(
-            'id' => 'blog_sidebar',
-            'type' => 'switcher',
-            'title' => 'Enable Sidebar on Single Post',
+        array(
+            'id'      => 'blog_sidebar',
+            'type'    => 'switcher',
+            'title'   => 'Enable Sidebar on Blog List',
+            'default' => true,
+        ),
+        array(
+            'id'      => 'blog_single_sidebar',
+            'type'    => 'switcher',
+            'title'   => 'Enable Sidebar on Single Post',
             'default' => true,
         ),
     )
