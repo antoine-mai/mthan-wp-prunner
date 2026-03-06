@@ -13,6 +13,18 @@ add_action('admin_menu', function() {
     );
 });
 
+// ── Admin Bar Menu Hook ──────────────────────────────────────────────────
+add_action('admin_bar_menu', function($wp_admin_bar) {
+    if (!current_user_can('manage_options')) {
+        return;
+    }
+    $wp_admin_bar->add_node(array(
+        'id'    => 'mthan-admin',
+        'title' => 'MTHAN',
+        'href'  => admin_url('admin.php?page=mthan-admin'),
+    ));
+}, 1); // Low priority to ensure it's added early if needed by others
+
 if (class_exists('CSF')) {
 
     $admin_dir = get_template_directory() . '/admin/';

@@ -141,9 +141,10 @@ if ( ! class_exists( 'CSF_Options' ) ) {
         $menu_icon = ( ! empty( $this->args['admin_bar_menu_icon'] ) ) ? '<span class="csf-ab-icon ab-icon '. esc_attr( $this->args['admin_bar_menu_icon'] ) .'"></span>' : '';
 
         $wp_admin_bar->add_node( array(
-          'id'    => $menu_slug,
-          'title' => $menu_icon . esc_attr( $this->args['menu_title'] ),
-          'href'  => esc_url( ( is_network_admin() ) ? network_admin_url( 'admin.php?page='. $menu_slug ) : admin_url( 'admin.php?page='. $menu_slug ) ),
+          'parent' => ( $this->args['menu_type'] === 'submenu' ) ? $this->args['menu_parent'] : '',
+          'id'     => $menu_slug,
+          'title'  => $menu_icon . esc_attr( $this->args['menu_title'] ),
+          'href'   => esc_url( ( is_network_admin() ) ? network_admin_url( 'admin.php?page='. $menu_slug ) : admin_url( 'admin.php?page='. $menu_slug ) ),
         ) );
 
         if ( ! empty( $submenu[$menu_slug] ) ) {

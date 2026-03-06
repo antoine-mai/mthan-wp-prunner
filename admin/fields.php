@@ -9,11 +9,11 @@ function mthan_get_section_instance_fields()
     $style_map = mthan_get_section_style_map();
 
     // Base sections that have a standard subtitle/title/description header
-    $sections_with_header = array(
+    $sections_with_header = [
         'sponsors-section',
-    );
+    ];
 
-    $fields = array();
+    $fields = [];
 
     // ──────────────────────────────────────────────────────────────────
     // Style selector — only shown for sections that have variants
@@ -23,18 +23,18 @@ function mthan_get_section_instance_fields()
         if ($style_count <= 1) {
             continue;
         }
-        $options = array();
+        $options = [];
         for ($s = 1; $s <= $style_count; $s++) {
             $options[$s] = "Style {$s}";
         }
-        $fields[] = array(
+        $fields[] = [
             'id' => 'section_style',
             'type' => 'select',
             'title' => 'Style Variant',
             'options' => $options,
             'default' => '1',
             'dependency' => array('section_template', '==', $base_slug),
-        );
+        ];
     }
 
     // ──────────────────────────────────────────────────────────────────
@@ -42,10 +42,29 @@ function mthan_get_section_instance_fields()
     // ──────────────────────────────────────────────────────────────────
     foreach ($sections_with_header as $slug) {
         $label = ucwords(str_replace('-', ' ', $slug));
-        $fields[] = array('type' => 'subheading', 'content' => $label . ' Options', 'dependency' => array('section_template', '==', $slug));
-        $fields[] = array('id' => "{$slug}_subtitle", 'type' => 'text', 'title' => 'Subtitle (small label)', 'dependency' => array('section_template', '==', $slug));
-        $fields[] = array('id' => "{$slug}_title", 'type' => 'text', 'title' => 'Section Title (H2)', 'dependency' => array('section_template', '==', $slug));
-        $fields[] = array('id' => "{$slug}_text", 'type' => 'textarea', 'title' => 'Description', 'dependency' => array('section_template', '==', $slug));
+        $fields[] = [
+            'type' => 'subheading',
+            'content' => $label . ' Options',
+            'dependency' => array('section_template', '==', $slug)
+        ];
+        $fields[] = [
+            'id' => "{$slug}_subtitle",
+            'type' => 'text',
+            'title' => 'Subtitle (small label)',
+            'dependency' => array('section_template', '==', $slug)
+        ];
+        $fields[] = [
+            'id' => "{$slug}_title",
+            'type' => 'text',
+            'title' => 'Section Title (H2)',
+            'dependency' => array('section_template', '==', $slug)
+        ];
+        $fields[] = [
+            'id' => "{$slug}_text",
+            'type' => 'textarea',
+            'title' => 'Description',
+            'dependency' => array('section_template', '==', $slug)
+        ];
     }
 
     // ──────────────────────────────────────────────────────────────────
