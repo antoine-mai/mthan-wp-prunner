@@ -27,7 +27,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
             'id' => 'contact_phone',
             'type' => 'text',
             'title' => 'Phone Number',
-            'default' => '(+5) 678 90 12 345',
+            'default' => '(+84) 933 489 525',
         ],
         [
             'id' => 'contact_email',
