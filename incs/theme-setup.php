@@ -60,3 +60,27 @@ add_filter('nav_menu_css_class', function ($classes, $item) {
     }
     return $classes;
 }, 10, 2);
+
+// ──────────────────────────────────────────────────────────────────
+// Custom Scripts Output
+// ──────────────────────────────────────────────────────────────────
+add_action('wp_head', function () {
+    $options = get_option('mthan_theme_options');
+    if (!empty($options['header_scripts'])) {
+        echo $options['header_scripts'] . "\n";
+    }
+});
+
+add_action('wp_body_open', function () {
+    $options = get_option('mthan_theme_options');
+    if (!empty($options['body_scripts'])) {
+        echo $options['body_scripts'] . "\n";
+    }
+});
+
+add_action('wp_footer', function () {
+    $options = get_option('mthan_theme_options');
+    if (!empty($options['footer_scripts'])) {
+        echo $options['footer_scripts'] . "\n";
+    }
+}, 999);

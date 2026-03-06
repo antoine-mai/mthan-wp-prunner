@@ -29,6 +29,7 @@ if (class_exists('CSF')) {
         'blog.php',
         'social.php',
         'contact.php',
+        'scripts.php',
         'sections.php',
     );
 
