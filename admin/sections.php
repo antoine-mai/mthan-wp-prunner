@@ -42,14 +42,20 @@ if (is_dir($sections_path)) {
                 'default' => true,
             ];
 
+            $config_fields_func = 'mthan_section_' . str_replace('-', '_', $filename) . '_config_options';
+            $section_config_fields = [];
+            if (function_exists($config_fields_func)) {
+                $section_config_fields = $config_fields_func();
+            } else {
+                $section_config_fields[] = [
+                    'type'    => 'content',
+                    'content' => 'No special configurations for ' . $section_name . ' yet.',
+                ];
+            }
+
             $config_accordion_items[] = [
                 'title'  => $section_name,
-                'fields' => [
-                    [
-                        'type'    => 'content',
-                        'content' => 'Configurations for ' . $section_name . ' will be placed here.',
-                    ]
-                ]
+                'fields' => $section_config_fields,
             ];
         }
     }

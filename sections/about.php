@@ -207,6 +207,28 @@ function mthan_section_about_options()
 }
 
 /**
+ * Returns the CSF field definitions for the about section global config.
+ * @return array
+ */
+function mthan_section_about_config_options()
+{
+    return array(
+        array(
+            'id'      => 'about_global_style',
+            'type'    => 'select',
+            'title'   => 'Default Style',
+            'options' => array(
+                '1' => 'Style 1 (Standard)',
+                '2' => 'Style 2 (Insurance)',
+                '3' => 'Style 3 (Experience)',
+            ),
+            'default' => '1',
+            'help'    => 'This will be the default style when adding a new About section.',
+        ),
+    );
+}
+
+/**
  * Render the about section.
  *
  * @param array $section_data Per-instance CSF field values.
