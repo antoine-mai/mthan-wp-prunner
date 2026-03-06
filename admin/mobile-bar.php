@@ -17,7 +17,7 @@ CSF::createSection($prefix, array(
             'type' => 'group',
             'title' => 'Mobile Bar Items',
             'button_title' => 'Add New Item',
-            'accordion_title_auto' => false,
+            'accordion_title_auto' => true,
             'accordion_title_prefix' => 'Item: ',
             'accordion_title_number' => true,
             'dependency' => array('enable_mobile_bar', '==', true),
