@@ -68,9 +68,38 @@ function mthan_get_available_base_sections()
 // ──────────────────────────────────────────────────────────────────
 
 /**
+ * Compiles a string of CSS properties (without the style attribute) from the section_background field.
+ */
+function mthan_get_section_bg_css($section_data)
+{
+    if (empty($section_data['section_background'])) {
+        return '';
+    }
+    $bg     = $section_data['section_background'];
+    $styles = array();
+
+    if (!empty($bg['background-color'])) {
+        $styles[] = 'background-color: ' . $bg['background-color'] . ';';
+    }
+
+    if (!empty($bg['background-image']['url'])) {
+        $styles[] = 'background-image: url(\'' . esc_url($bg['background-image']['url']) . '\');';
+        
+        foreach (array('repeat', 'position', 'attachment', 'size') as $prop) {
+            if (!empty($bg['background-' . $prop])) {
+                $styles[] = 'background-' . $prop . ': ' . $bg['background-' . $prop] . ';';
+            }
+        }
+    }
+
+    return implode(' ', $styles);
+}
+
+/**
  * Include / call a list of section items.
  * Prefers function-based dispatch: mthan_section_{slug}_html($section_data).
  * Falls back to legacy file include if the function is not defined.
+ * Automatically injects background styles into the first <section> or <div> tag.
  */
 function mthan_include_section_items($items)
 {
@@ -78,7 +107,9 @@ function mthan_include_section_items($items)
     $style_map    = mthan_get_section_style_map();
 
     foreach ((array)$items as $item) {
-        if (!is_array($item) || empty($item['section_template'])) { continue; }
+        if (!is_array($item) || empty($item['section_template'])) {
+            continue;
+        }
 
         $base_slug = $item['section_template'];
         $style_num = !empty($item['section_style']) ? (int)$item['section_style'] : 1;
@@ -93,6 +124,8 @@ function mthan_include_section_items($items)
         $GLOBALS['_mthan_current_section'] = $item;
 
         $fn = 'mthan_section_' . str_replace('-', '_', $actual_slug) . '_html';
+        
+        ob_start();
         if (function_exists($fn)) {
             $fn($item);
         } else {
@@ -102,6 +135,21 @@ function mthan_include_section_items($items)
                 include $file;
             }
         }
+        $content = ob_get_clean();
+
+        // Auto-inject background style into the first <section> or <div> tag
+        $bg_css = mthan_get_section_bg_css($item);
+        if ($bg_css) {
+            if (preg_match('/style=["\']/', $content)) {
+                // Append to existing style attribute
+                $content = preg_replace('/style=(["\'])(.*?)\1/i', 'style=$1$2 ' . $bg_css . '$1', $content, 1);
+            } else {
+                // Add new style attribute
+                $content = preg_replace('/(<(?:section|div)[^>]*)/i', '$1 style="' . $bg_css . '"', $content, 1);
+            }
+        }
+
+        echo $content;
     }
 }
 

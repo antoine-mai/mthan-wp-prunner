@@ -35,7 +35,7 @@ if (class_exists('CSF')) {
 
     // ── Create Single Options Instance ─────────────────────────────────────
     CSF::createOptions(MTHAN_THEME_OPTIONS, [
-        'menu_title'         => 'Theme Options',
+        'menu_title'         => 'Options',
         'menu_slug'          => 'mthan-admin', // Same as parent to be the default landing
         'menu_type'          => 'submenu',
         'menu_parent'        => 'mthan-admin',

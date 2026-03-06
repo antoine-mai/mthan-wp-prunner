@@ -20,8 +20,21 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
             'accordion_title_number' => true,
             'fields'                 => array_merge(
                 [
-                    ['id' => 'name', 'type' => 'text', 'title' => 'Name', 'attributes' => ['data-section-name' => '1', 'placeholder' => 'Section name']],
-                    ['id' => 'section_template', 'type' => 'select', 'title' => 'Select Template', 'options' => empty($available_sections) ? array('' => 'No sections enabled') : $available_sections],
+                    [
+                        'id' => 'name', 
+                        'type' => 'text', 
+                        'title' => 'Name', 
+                        'attributes' => [
+                            'data-section-name' => '1', 
+                            'placeholder' => 'Section name'
+                        ]
+                    ],
+                    [
+                        'id' => 'section_template', 
+                        'type' => 'select', 
+                        'title' => 'Select Template', 
+                        'options' => empty($available_sections) ? ['' => 'No sections enabled'] : $available_sections
+                    ],
                 ],
                 mthan_get_section_instance_fields()
             )

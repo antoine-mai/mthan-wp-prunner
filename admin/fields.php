@@ -417,5 +417,20 @@ function mthan_get_section_instance_fields()
         $fields[] = $myaccount_field;
     }
 
+    // ──────────────────────────────────────────────────────────────────
+    // Universal Background — applies to all sections
+    // ──────────────────────────────────────────────────────────────────
+    $fields[] = [
+        'type'    => 'subheading',
+        'content' => 'Section Appearance',
+    ];
+
+    $fields[] = [
+        'id'      => 'section_background',
+        'type'    => 'background',
+        'title'   => 'Background Settings',
+        'output'  => '.section-instance-ID', // Note: actual application depends on rendering logic
+    ];
+
     return $fields;
 }
