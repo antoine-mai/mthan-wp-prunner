@@ -17,11 +17,11 @@ if (class_exists('CSF')) {
 
     // Create options
     CSF::createOptions(MTHAN_THEME_OPTIONS, [
-        'menu_title'      => 'Theme Options',
-        'menu_slug'       => 'mthan-theme-options',
+        'menu_title'      => 'Settings',
+        'menu_slug'       => 'mthan-settings',
         'menu_type'       => 'submenu',
         'menu_parent'     => 'mthan-admin',
-        'framework_title' => 'MTHAN Platform',
+        'framework_title' => 'Settings',
         'theme'           => 'dark',
     ]);
 
