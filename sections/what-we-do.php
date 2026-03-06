@@ -7,13 +7,13 @@ function mthan_section_what_we_do_options()
 {
     return array(
             array(
-            'id' => 'sec_subtitle',
+            'id' => 'what_we_do_subtitle',
             'type' => 'text',
             'title' => 'Subtitle',
             'default' => 'What We Do',
         ),
             array(
-            'id' => 'sec_title',
+            'id' => 'what_we_do_title',
             'type' => 'text',
             'title' => 'Title',
             'default' => 'Special Services For You',
@@ -222,8 +222,8 @@ function mthan_section_what_we_do_options()
  **/
 function mthan_section_what_we_do_html($section_data)
 {
-    $sec_title = !empty($section_data['sec_title']) ? $section_data['sec_title'] : 'Special Services For You';
-    $sec_subtitle = !empty($section_data['sec_subtitle']) ? $section_data['sec_subtitle'] : 'What We Do';
+    $sec_title = !empty($section_data['what_we_do_title']) ? $section_data['what_we_do_title'] : 'Special Services For You';
+    $sec_subtitle = !empty($section_data['what_we_do_subtitle']) ? $section_data['what_we_do_subtitle'] : 'What We Do';
     $tabs = !empty($section_data['tabs_repeater']) ? $section_data['tabs_repeater'] : array();
 ?>
 <section class="what-we-do">
