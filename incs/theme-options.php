@@ -20,11 +20,11 @@ if (class_exists('CSF')) {
 
     // Each of these will be a separate menu item under MTHAN
     $admin_sections = [
-        'general.php'       => ['title' => 'General'],
-        'default-pages.php' => ['title' => 'Default Pages'],
-        'typography.php'    => ['title' => 'Typography'],
+        'general.php'    => ['title' => 'General'],
+        'typography.php' => ['title' => 'Typography'],
         'layouts.php'    => ['title' => 'Layouts'],
         'header.php'     => ['title' => 'Header'],
+        'default-pages.php' => ['title' => 'Pages'],
         'footer.php'     => ['title' => 'Footer'],
         'mobile-bar.php' => ['title' => 'Mobile Bar'],
         'scripts.php'    => ['title' => 'Scripts'],
