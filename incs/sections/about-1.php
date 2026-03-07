@@ -4,7 +4,7 @@
  */
 function mthan_section_about_1_html($section_data) { ?>
 <?php
-    
+    $slug      = 'about-1';
     $q_des     = mthan_get_section_val($slug, $section_data, 'quote_designation');
     $sig_img   = mthan_get_section_val($slug, $section_data, 'signature_image');
     $content   = mthan_get_section_val($slug, $section_data, 'about_content');
@@ -20,7 +20,7 @@ function mthan_section_about_1_html($section_data) { ?>
     $title     = mthan_get_section_val($slug, $section_data, 'title');
     $image     = mthan_get_section_val($slug, $section_data, 'image');
     $btn_link  = mthan_sec_link($slug, $section_data, 'btn_link');
-    $slug      = 'about-1';
+    
 ?>
 <section class="about-section">
     <div class="auto-container">
