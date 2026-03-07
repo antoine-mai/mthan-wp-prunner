@@ -139,13 +139,16 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'id'      => 'header_1_btn_text',
                             'type'    => 'text',
                             'title'   => 'Button Text',
-                            'default' => 'Free Estimate',
+                            'default' => 'Contact',
                         ],
+                        mthan_page_select_field('header_1_btn_url', 'Button URL', [
+                            'default' => '#',
+                        ]),
                         [
-                            'id'      => 'header_1_btn_url',
-                            'type'    => 'text',
-                            'title'   => 'Button URL',
-                            'default' => 'contact.html',
+                            'id'      => 'header_1_btn_icon',
+                            'type'    => 'icon',
+                            'title'   => 'Button Icon',
+                            'default' => 'fas fa-phone-alt',
                         ],
                         [
                             'type'    => 'subheading',

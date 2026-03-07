@@ -176,15 +176,18 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
 
                 <div class="more-links clearfix">
                     <!-- <div class="cart-btn"><a href="#"><span class="flaticon-shopping-bag-2"></span></a></div> WooCommerce Cart optionally -->
-                    <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
+                    <?php if (!empty($header_tabs['header_1_btn_text'])) : ?>
                     <div class="estimate-btn">
-                        <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>">
-                            <span class="icon flaticon-business-1"></span>
+                        <?php 
+                        $btn_url = !empty($header_tabs['header_1_btn_url']) ? (is_numeric($header_tabs['header_1_btn_url']) ? get_permalink($header_tabs['header_1_btn_url']) : $header_tabs['header_1_btn_url']) : '#';
+                        ?>
+                        <a href="<?php echo esc_url($btn_url); ?>">
+                            <span class="icon <?php echo esc_attr($header_tabs['header_1_btn_icon'] ?? 'fas fa-phone-alt'); ?>"></span>
                             <?php echo esc_html($header_tabs['header_1_btn_text']); ?> 
                             <span class="arrow flaticon-play-button-1"></span>
                         </a>
                     </div>
-                    <?php } ?>
+                    <?php endif; ?>
                 </div>
             </div>
         </div>
