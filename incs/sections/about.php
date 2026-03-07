@@ -1,6 +1,4 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
-
-
 /**
  * Render the about section.
  *
@@ -25,33 +23,33 @@ function mthan_section_about_html($section_data)
 function mthan_get_about_common_data($section_data)
 {
     $slug = 'about';
-    return array(
+    return [
         'subtitle' => mthan_get_section_val($slug, $section_data, 'subtitle', 'About Us'),
         'title'    => mthan_get_section_val($slug, $section_data, 'title', 'Professional Gardener'),
         'text'     => mthan_get_section_val($slug, $section_data, 'text', ''),
         'text_2'   => mthan_get_section_val($slug, $section_data, 'text_2', ''),
         'btn_text' => mthan_get_section_val($slug, $section_data, 'btn_text', 'Read More'),
         'btn_link' => mthan_sec_link($slug, $section_data, 'btn_link', '#'),
-        'video_link' => mthan_sec_link($slug, $section_data, 'video_link', '#'),
-        'video_icon' => mthan_get_section_val($slug, $section_data, 'video_icon', 'flaticon-play-button-1'),
+        'video_link' => mthan_sec_link($slug, $section_data, 'about_video_link', '#'),
+        'video_icon' => mthan_get_section_val($slug, $section_data, 'about_video_icon', 'flaticon-play-button-1'),
 
-        'quote_text'  => mthan_get_section_val($slug, $section_data, 'quote_text', ''),
-        'quote_name'  => mthan_get_section_val($slug, $section_data, 'quote_name', ''),
-        'quote_desig' => mthan_get_section_val($slug, $section_data, 'quote_designation', ''),
+        'quote_text'  => mthan_get_section_val($slug, $section_data, 'about_quote_text', ''),
+        'quote_name'  => mthan_get_section_val($slug, $section_data, 'about_quote_name', ''),
+        'quote_desig' => mthan_get_section_val($slug, $section_data, 'about_quote_designation', ''),
 
-        'cert_title'  => mthan_get_section_val($slug, $section_data, 'cert_title', 'Certified Company'),
-        'cert_number' => mthan_get_section_val($slug, $section_data, 'cert_number', 'ISO 9001:2015'),
+        'cert_title'  => mthan_get_section_val($slug, $section_data, 'about_cert_title', 'Certified Company'),
+        'cert_number' => mthan_get_section_val($slug, $section_data, 'about_cert_number', 'ISO 9001:2015'),
 
-        'subtitle_icon' => mthan_sec_img($slug, $section_data, 'subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png'),
-        'signature'     => mthan_sec_img($slug, $section_data, 'signature', get_template_directory_uri() . '/assets/images/resource/signature-1.png'),
-        'feat_img'      => mthan_sec_img($slug, $section_data, 'featured_image', get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg'),
-        'anim_img'      => mthan_sec_img($slug, $section_data, 'anim_image', get_template_directory_uri() . '/assets/images/resource/anim-image-1.png'),
-        'vid_thumb'     => mthan_sec_img($slug, $section_data, 'vid_thumb', get_template_directory_uri() . '/assets/images/resource/vid-thumb-1.jpg'),
-        'iso_icon'      => mthan_sec_img($slug, $section_data, 'iso_icon', get_template_directory_uri() . '/assets/images/icons/iso-icon.png'),
+        'subtitle_icon' => mthan_sec_img($slug, $section_data, 'about_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png'),
+        'signature'     => mthan_sec_img($slug, $section_data, 'about_signature', get_template_directory_uri() . '/assets/images/resource/signature-1.png'),
+        'feat_img'      => mthan_sec_img($slug, $section_data, 'about_featured_image', get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg'),
+        'anim_img'      => mthan_sec_img($slug, $section_data, 'about_anim_image', get_template_directory_uri() . '/assets/images/resource/anim-image-1.png'),
+        'vid_thumb'     => mthan_sec_img($slug, $section_data, 'about_vid_thumb', get_template_directory_uri() . '/assets/images/resource/vid-thumb-1.jpg'),
+        'iso_icon'      => mthan_sec_img($slug, $section_data, 'about_iso_icon', get_template_directory_uri() . '/assets/images/icons/iso-icon.png'),
         
-        'experience_year' => mthan_get_section_val($slug, $section_data, 'exp_years', '16'),
-        'experience_text' => mthan_get_section_val($slug, $section_data, 'exp_text', 'Years <br>of Experience'),
-    );
+        'experience_year' => mthan_get_section_val($slug, $section_data, 'about_exp_years', '16'),
+        'experience_text' => mthan_get_section_val($slug, $section_data, 'about_exp_text', 'Years <br>of Experience'),
+    ];
 }
 
 /**
@@ -61,10 +59,10 @@ function mthan_section_about_html_1($section_data)
 {
     $slug = 'about';
     $common = mthan_get_about_common_data($section_data);
-    $projects_count = mthan_get_section_val($slug, $section_data, 'projects_count', '2k');
-    $projects_text  = mthan_get_section_val($slug, $section_data, 'projects_text', 'Projects <br>were completed');
-    $projects_icon  = mthan_get_section_val($slug, $section_data, 'projects_icon', 'flaticon-leaves');
-    $quote_thumb    = mthan_sec_img($slug, $section_data, 'quote_thumb', get_template_directory_uri() . '/assets/images/resource/quote-thumb.jpg');
+    $projects_count = mthan_get_section_val($slug, $section_data, 'about_projects_count', '2k');
+    $projects_text  = mthan_get_section_val($slug, $section_data, 'about_projects_text', 'Projects <br>were completed');
+    $projects_icon  = mthan_get_section_val($slug, $section_data, 'about_projects_icon', 'flaticon-leaves');
+    $quote_thumb    = mthan_sec_img($slug, $section_data, 'about_quote_thumb', get_template_directory_uri() . '/assets/images/resource/quote-thumb.jpg');
 ?>
 <section class="about-section">
     <div class="auto-container">
@@ -75,9 +73,7 @@ function mthan_section_about_html_1($section_data)
                     <div class="sec-title">
                         <div class="title-icon">
                             <span class="icon">
-                                <img src="<?php echo esc_url($common['subtitle_icon']); ?>"
-                                    alt="<?php echo esc_attr($common['subtitle']); ?>"
-                                    title="<?php echo esc_attr($common['subtitle']); ?>">
+                                <img src="<?php echo esc_url($common['subtitle_icon']); ?>" alt="<?php echo esc_attr($common['subtitle']); ?>" title="<?php echo esc_attr($common['subtitle']); ?>">
                             </span>
                         </div>
                         <div class="subtitle">
@@ -88,28 +84,28 @@ function mthan_section_about_html_1($section_data)
                         </h2>
                     </div>
                     <div class="text">
-                        <?php if ($common['text']): ?>
+                        <?php if ($common['text']) { ?>
                         <p class="bigger-text">
                             <?php echo esc_html($common['text']); ?>
                         </p>
-                        <?php
-    endif; ?>
-                        <?php if ($common['text_2']): ?>
+                        <?php } ?>
+                        <?php if ($common['text_2']) { ?>
                         <p>
                             <?php echo esc_html($common['text_2']); ?>
                         </p>
-                        <?php
-    endif; ?>
+                        <?php } ?>
                     </div>
                     <div class="quote-box">
                         <a href="<?php echo esc_url($common['video_link']); ?>" class="vid-link lightbox-image">
-                            <span class="image"><img src="<?php echo esc_url($quote_thumb); ?>"
-                                    alt="<?php echo esc_attr($common['quote_name']); ?>"
-                                    title="<?php echo esc_attr($common['quote_name']); ?>"></span>
+                            <span class="image">
+                                <img src="<?php echo esc_url($quote_thumb); ?>" alt="<?php echo esc_attr($common['quote_name']); ?>" title="<?php echo esc_attr($common['quote_name']); ?>" />
+                            </span>
                             <span class="icon <?php echo esc_attr($common['video_icon']); ?>"></span>
                         </a>
                         <div class="quote">
-                            <div class="quote-icon"><span></span></div>
+                            <div class="quote-icon">
+                                <span></span>
+                            </div>
                             <div class="quote-text">
                                 <?php echo esc_html($common['quote_text']); ?>
                             </div>
@@ -125,15 +121,15 @@ function mthan_section_about_html_1($section_data)
                     </div>
                     <div class="lower-box clearfix">
                         <div class="link-box">
-                            <a href="<?php echo esc_url($common['btn_link']); ?>" class="theme-btn btn-style-four"><span
-                                    class="btn-title">
-                                    <?php echo esc_html($common['btn_text']); ?> <i
-                                        class="arrow flaticon-play-button-1"></i>
-                                </span></a>
+                            <a href="<?php echo esc_url($common['btn_link']); ?>" class="theme-btn btn-style-four">
+                                <span class="btn-title">
+                                    <?php echo esc_html($common['btn_text']); ?>
+                                    <i class="arrow flaticon-play-button-1"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="signature">
-                            <img src="<?php echo esc_url($common['signature']); ?>"
-                                 alt="<?php echo esc_attr($common['quote_name']); ?> Signature">
+                            <img src="<?php echo esc_url($common['signature']); ?>" alt="<?php echo esc_attr($common['quote_name']); ?> Signature" />
                         </div>
                     </div>
                 </div>
@@ -142,12 +138,12 @@ function mthan_section_about_html_1($section_data)
             <div class="image-column col-lg-6 col-md-12 col-sm-12">
                 <div class="inner">
                     <div class="image-box clearfix">
-                        <figure class="image"><img src="<?php echo esc_url($common['feat_img']); ?>"
-                                alt="<?php echo esc_attr($common['title']); ?>"
-                                title="<?php echo esc_attr($common['title']); ?>"></figure>
-                        <div class="anim-image"><img src="<?php echo esc_url($common['anim_img']); ?>"
-                                alt="<?php echo esc_attr($common['title']); ?>"
-                                title="<?php echo esc_attr($common['title']); ?>"></div>
+                        <figure class="image">
+                            <img src="<?php echo esc_url($common['feat_img']); ?>" alt="<?php echo esc_attr($common['title']); ?>" title="<?php echo esc_attr($common['title']); ?>" />
+                        </figure>
+                        <div class="anim-image">
+                            <img src="<?php echo esc_url($common['anim_img']); ?>" alt="<?php echo esc_attr($common['title']); ?>" title="<?php echo esc_attr($common['title']); ?>" />
+                        </div>
                         <div class="caption">
                             <span class="icon <?php echo esc_attr($projects_icon); ?>"></span>
                             <span class="big-txt">
@@ -170,10 +166,10 @@ function mthan_section_about_html_1($section_data)
 {
     $slug = 'about';
     $common = mthan_get_about_common_data($section_data);
-    $insured_title = mthan_get_section_val($slug, $section_data, 'insured_title', 'Fully Insured');
-    $insured_text  = mthan_get_section_val($slug, $section_data, 'insured_text', '');
-    $insured_icon  = mthan_get_section_val($slug, $section_data, 'insured_icon', 'flaticon-insurance');
-    $anim_img_2    = mthan_sec_img($slug, $section_data, 'anim_image', get_template_directory_uri() . '/assets/images/resource/anim-image-3.png');
+    $insured_title = mthan_get_section_val($slug, $section_data, 'about_insured_title', 'Fully Insured');
+    $insured_text  = mthan_get_section_val($slug, $section_data, 'about_insured_text', '');
+    $insured_icon  = mthan_get_section_val($slug, $section_data, 'about_insured_icon', 'flaticon-insurance');
+    $anim_img_2    = mthan_sec_img($slug, $section_data, 'about_anim_image', get_template_directory_uri() . '/assets/images/resource/anim-image-3.png');
 ?>
 <section class="about-two">
     <div class="auto-container">
@@ -184,9 +180,7 @@ function mthan_section_about_html_1($section_data)
                     <div class="sec-title">
                         <div class="title-icon">
                             <span class="icon">
-                                <img src="<?php echo esc_url($common['subtitle_icon']); ?>"
-                                    alt="<?php echo esc_attr($common['subtitle']); ?>"
-                                    title="<?php echo esc_attr($common['subtitle']); ?>">
+                                <img src="<?php echo esc_url($common['subtitle_icon']); ?>" alt="<?php echo esc_attr($common['subtitle']); ?>" title="<?php echo esc_attr($common['subtitle']); ?>" />
                             </span>
                         </div>
                         <div class="subtitle">
@@ -197,21 +191,21 @@ function mthan_section_about_html_1($section_data)
                         </h2>
                     </div>
                     <div class="text">
-                        <?php if ($common['text']): ?>
+                        <?php if ($common['text']) { ?>
                         <p class="bigger-text">
                             <?php echo esc_html($common['text']); ?>
                         </p>
-                        <?php
-    endif; ?>
-                        <?php if ($common['text_2']): ?>
+                        <?php } ?>
+                        <?php if ($common['text_2']) { ?>
                         <p>
                             <?php echo esc_html($common['text_2']); ?>
                         </p>
-                        <?php
-    endif; ?>
+                        <?php } ?>
                     </div>
                     <div class="insured">
-                        <div class="icon"><span class="<?php echo esc_attr($insured_icon); ?>"></span></div>
+                        <div class="icon">
+                            <span class="<?php echo esc_attr($insured_icon); ?>"></span>
+                        </div>
                         <h5>
                             <?php echo esc_html($insured_title); ?>
                         </h5>
@@ -221,18 +215,17 @@ function mthan_section_about_html_1($section_data)
                     </div>
                     <div class="lower-box clearfix">
                         <div class="link-box">
-                            <a href="<?php echo esc_url($common['btn_link']); ?>"
-                                class="theme-btn btn-style-three alternate"><span class="btn-title">
-                                    <?php echo esc_html($common['btn_text']); ?> <i
-                                        class="arrow flaticon-play-button-1"></i>
-                                </span></a>
+                            <a href="<?php echo esc_url($common['btn_link']); ?>" class="theme-btn btn-style-three alternate">
+                                <span class="btn-title">
+                                    <?php echo esc_html($common['btn_text']); ?>
+                                    <i class="arrow flaticon-play-button-1"></i>
+                                </span>
+                            </a>
                         </div>
                         <div class="iso">
                             <div class="iso-icon">
                                 <span class="icon">
-                                    <img src="<?php echo esc_url($common['iso_icon']); ?>"
-                                        alt="<?php echo esc_attr($common['cert_title']); ?>"
-                                        title="<?php echo esc_attr($common['cert_title']); ?>">
+                                    <img src="<?php echo esc_url($common['iso_icon']); ?>" alt="<?php echo esc_attr($common['cert_title']); ?>" title="<?php echo esc_attr($common['cert_title']); ?>" />
                                 </span>
                             </div>
                             <div class="txt">
@@ -250,15 +243,11 @@ function mthan_section_about_html_1($section_data)
                 <div class="inner">
                     <div class="image-box">
                         <figure class="image">
-                            <img src="<?php echo esc_url($anim_img_2); ?>"
-                                alt="<?php echo esc_attr($common['title']); ?>"
-                                title="<?php echo esc_attr($common['title']); ?>">
+                            <img src="<?php echo esc_url($anim_img_2); ?>" alt="<?php echo esc_attr($common['title']); ?>" title="<?php echo esc_attr($common['title']); ?>" />
                         </figure>
                         <a href="<?php echo esc_url($common['video_link']); ?>" class="vid-link lightbox-image">
                             <span class="image">
-                                <img src="<?php echo esc_url($common['vid_thumb']); ?>"
-                                    alt="<?php echo esc_attr($common['title']); ?>"
-                                    title="<?php echo esc_attr($common['title']); ?>">
+                                <img src="<?php echo esc_url($common['vid_thumb']); ?>" alt="<?php echo esc_attr($common['title']); ?>" title="<?php echo esc_attr($common['title']); ?>" />
                             </span>
                             <span class="icon <?php echo esc_attr($common['video_icon']); ?>"></span>
                         </a>
@@ -275,8 +264,8 @@ function mthan_section_about_html_1($section_data)
 {
     $slug = 'about';
     $common = mthan_get_about_common_data($section_data);
-    $feat_img_3  = mthan_sec_img($slug, $section_data, 'featured_image', get_template_directory_uri() . '/assets/images/resource/featured-image-12.jpg');
-    $vid_thumb_3 = mthan_sec_img($slug, $section_data, 'vid_thumb', get_template_directory_uri() . '/assets/images/resource/vid-thumb-2.jpg');
+    $feat_img_3  = mthan_sec_img($slug, $section_data, 'about_featured_image', get_template_directory_uri() . '/assets/images/resource/featured-image-12.jpg');
+    $vid_thumb_3 = mthan_sec_img($slug, $section_data, 'about_vid_thumb', get_template_directory_uri() . '/assets/images/resource/vid-thumb-2.jpg');
 ?>
 <section class="about-three">
     <div class="auto-container">
@@ -287,9 +276,7 @@ function mthan_section_about_html_1($section_data)
                     <div class="sec-title">
                         <div class="title-icon">
                             <span class="icon">
-                                <img src="<?php echo esc_url($common['subtitle_icon']); ?>"
-                                    alt="<?php echo esc_attr($common['subtitle']); ?>"
-                                    title="<?php echo esc_attr($common['subtitle']); ?>">
+                                <img src="<?php echo esc_url($common['subtitle_icon']); ?>" alt="<?php echo esc_attr($common['subtitle']); ?>" title="<?php echo esc_attr($common['subtitle']); ?>" />
                             </span>
                         </div>
                         <div class="subtitle">
@@ -300,28 +287,28 @@ function mthan_section_about_html_1($section_data)
                         </h2>
                     </div>
                     <div class="text">
-                        <?php if ($common['text']): ?>
+                        <?php if ($common['text']) { ?>
                         <p class="bigger-text">
                             <?php echo esc_html($common['text']); ?>
                         </p>
-                        <?php
-    endif; ?>
-                        <?php if ($common['text_2']): ?>
+                        <?php } ?>
+                        <?php if ($common['text_2']) { ?>
                         <p>
                             <?php echo esc_html($common['text_2']); ?>
                         </p>
-                        <?php
-    endif; ?>
+                        <?php } ?>
                     </div>
                     <div class="quote-box">
                         <a href="<?php echo esc_url($common['video_link']); ?>" class="vid-link lightbox-image">
-                            <span class="image"><img src="<?php echo esc_url($vid_thumb_3); ?>"
-                                    alt="<?php echo esc_attr($common['title']); ?>"
-                                    title="<?php echo esc_attr($common['title']); ?>"></span>
+                            <span class="image">
+                                <img src="<?php echo esc_url($vid_thumb_3); ?>" alt="<?php echo esc_attr($common['title']); ?>" title="<?php echo esc_attr($common['title']); ?>" />
+                            </span>
                             <span class="icon <?php echo esc_attr($common['video_icon']); ?>"></span>
                         </a>
                         <div class="quote">
-                            <div class="quote-icon"><span></span></div>
+                            <div class="quote-icon">
+                                <span></span>
+                            </div>
                             <div class="quote-text">
                                 <?php echo esc_html($common['quote_text']); ?>
                             </div>
@@ -340,15 +327,12 @@ function mthan_section_about_html_1($section_data)
                     </div>
                     <div class="lower-box clearfix">
                         <div class="signature">
-                            <img src="<?php echo esc_url($common['signature']); ?>"
-                                 alt="<?php echo esc_attr($common['quote_name']); ?> Signature">
+                            <img src="<?php echo esc_url($common['signature']); ?>" alt="<?php echo esc_attr($common['quote_name']); ?> Signature">
                         </div>
                         <div class="iso">
                             <div class="iso-icon">
                                 <span class="icon">
-                                    <img src="<?php echo esc_url($common['iso_icon']); ?>"
-                                        alt="<?php echo esc_attr($common['cert_title']); ?>"
-                                        title="<?php echo esc_attr($common['cert_title']); ?>">
+                                    <img src="<?php echo esc_url($common['iso_icon']); ?>" alt="<?php echo esc_attr($common['cert_title']); ?>" title="<?php echo esc_attr($common['cert_title']); ?>">
                                 </span>
                             </div>
                             <div class="txt">
@@ -366,9 +350,7 @@ function mthan_section_about_html_1($section_data)
                 <div class="inner">
                     <div class="image-box clearfix">
                         <figure class="image">
-                            <img src="<?php echo esc_url($feat_img_3); ?>"
-                                alt="<?php echo esc_attr($common['title']); ?>"
-                                title="<?php echo esc_attr($common['title']); ?>">
+                            <img src="<?php echo esc_url($feat_img_3); ?>" alt="<?php echo esc_attr($common['title']); ?>" title="<?php echo esc_attr($common['title']); ?>">
                         </figure>
                         <div class="caption">
                             <span class="big-txt">

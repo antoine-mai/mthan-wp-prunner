@@ -1,5 +1,4 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
-
 /**
  * Render the appoint section.
  *
@@ -18,7 +17,6 @@ function mthan_section_appoint_html($section_data) {
 ?>
 <section class="appoint-section">
         <div class="auto-container">
-
             <div class="upper-box clearfix">
                 <div class="sec-title">
                     <div class="title-icon">
@@ -36,7 +34,8 @@ function mthan_section_appoint_html($section_data) {
                 <div class="link-box">
                     <a href="<?php echo esc_url($btn_link); ?>" class="theme-btn">
                         <span class="btn-title">
-                            <?php echo $btn_text; ?> <i class="arrow flaticon-play-button-1"></i>
+                            <?php echo $btn_text; ?>
+                            <i class="arrow flaticon-play-button-1"></i>
                         </span>
                     </a>
                 </div>
@@ -47,21 +46,21 @@ function mthan_section_appoint_html($section_data) {
                     <div class="inner">
                         <div class="sel-box">
                             <div class="check">
-                                <input type="radio" name="sel-group" value="" id="sel-1" checked="">
+                                <input type="radio" name="sel-group" value="" id="sel-1" checked="" />
                                 <label for="sel-1">
                                     <span class="round"></span>
                                     <span class="txt">Commercial</span>
                                 </label>
                             </div>
                             <div class="check">
-                                <input type="radio" name="sel-group" value="" id="sel-2">
+                                <input type="radio" name="sel-group" value="" id="sel-2" />
                                 <label for="sel-2">
                                     <span class="round"></span>
                                     <span class="txt">Residential</span>
                                 </label>
                             </div>
                             <div class="check">
-                                <input type="radio" name="sel-group" value="" id="sel-3">
+                                <input type="radio" name="sel-group" value="" id="sel-3" />
                                 <label for="sel-3">
                                     <span class="round"></span>
                                     <span class="txt">Industries</span>
@@ -85,18 +84,18 @@ function mthan_section_appoint_html($section_data) {
                                 <form method="post" action="contact.html">
                                     <div class="form-group">
                                         <div class="field-inner">
-                                            <input type="text" name="name" value="" placeholder="Your Name *" required>
+                                            <input type="text" name="name" value="" placeholder="Your Name *" required />
                                         </div>
                                     </div>
                                     <div class="row clearfix">
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <div class="field-inner">
-                                                <input type="text" name="phone" value="" placeholder="Phone" required>
+                                                <input type="text" name="phone" value="" placeholder="Phone" required />
                                             </div>
                                         </div>
                                         <div class="form-group col-lg-6 col-md-6 col-sm-12">
                                             <div class="field-inner">
-                                                <input type="email" name="email" value="" placeholder="Email *" required>
+                                                <input type="email" name="email" value="" placeholder="Email *" required />
                                             </div>
                                         </div>
                                     </div>
@@ -124,12 +123,12 @@ function mthan_section_appoint_html($section_data) {
                                     </div>
                                     <div class="form-group">
                                         <div class="field-inner">
-                                            <input type="text" name="name" value="" placeholder="Address Line 1 ( Flat, Floor, Suite No & Street )" required>
+                                            <input type="text" name="name" value="" placeholder="Address Line 1 ( Flat, Floor, Suite No & Street )" required />
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <div class="field-inner">
-                                            <input type="text" name="name" value="" placeholder="Address Line 2 (City & Zipcode)" required>
+                                            <input type="text" name="name" value="" placeholder="Address Line 2 (City & Zipcode)" required />
                                         </div>
                                     </div>
                                     <div class="row clearfix">
@@ -172,7 +171,6 @@ function mthan_section_appoint_html($section_data) {
                                             </button>
                                         </div>
                                     </div>
-
                                 </form>
                                 <div class="min-text">
                                     <?php echo $success_msg; ?>
