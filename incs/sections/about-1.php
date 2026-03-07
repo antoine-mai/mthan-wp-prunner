@@ -8,7 +8,7 @@ function mthan_section_about_1_html($section_data) {
     $sub_title = mthan_get_section_val($slug, $section_data, 'subtitle', 'About Us');
     $title     = mthan_get_section_val($slug, $section_data, 'title', 'Professional Gardener');
     $content   = mthan_get_section_val($slug, $section_data, 'about_content', '');
-    $image     = mthan_sec_img($slug, $section_data, 'image', get_template_directory_uri() . '/assets/images/resource/about-1.png');
+    $image     = mthan_sec_img($slug, $section_data, 'image', get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg');
     $sub_icon  = mthan_sec_img($slug, $section_data, 'subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
     $btn_text  = mthan_get_section_val($slug, $section_data, 'btn_text', 'Read More');
     $btn_link  = mthan_sec_link($slug, $section_data, 'btn_link', '#');
