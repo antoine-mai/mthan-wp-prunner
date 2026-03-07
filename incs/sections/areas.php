@@ -6,11 +6,19 @@
  */
 function mthan_section_areas_html($section_data) { 
     $slug = 'areas';
-    $blocks = mthan_get_section_val($slug, $section_data, 'areas_blocks', []);
+    $blocks = mthan_get_section_val($slug, $section_data, 'blocks', []);
+    $sec_title = mthan_get_section_val($slug, $section_data, 'title', '');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', '');
     if (empty($blocks)) return;
 ?>
 <section class="areas-section">
     <div class="auto-container">
+        <?php if($sec_title || $sec_subtitle): ?>
+        <div class="sec-title centered">
+            <div class="subtitle"><?php echo esc_html($sec_subtitle); ?></div>
+            <h2><?php echo esc_html($sec_title); ?></h2>
+        </div>
+        <?php endif; ?>
         <div class="inner-container">
             <div class="row clearfix">
                 <?php foreach ($blocks as $block) { 

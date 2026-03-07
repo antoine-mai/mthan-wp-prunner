@@ -6,6 +6,8 @@
 function mthan_section_areas_options()
 {
     return array(
+        mthan_subtitle_field(''),
+        mthan_title_field(''),
         array(
             'id'     => 'areas_blocks',
             'type'   => 'group',
