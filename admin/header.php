@@ -1,6 +1,6 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
- * Header Settings - Horizontal Tabs (Fixed)
+ * Header Settings - Horizontal Tabs
 **/
 
 CSF::createSection(MTHAN_THEME_OPTIONS, [
@@ -41,15 +41,77 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'desc'    => 'Default: assets/images/nav-logo.png',
                             'preview' => false
                         ],
+                    ]
+                ],
+                // 2. Menu Items
+                [
+                    'title'  => 'Menu Items',
+                    'icon'   => 'fas fa-list',
+                    'fields' => [
                         [
-                            'id'      => 'header_topbar',
-                            'type'    => 'switcher',
-                            'title'   => 'Enable Topbar',
-                            'default' => true,
+                            'id'              => 'menu_items',
+                            'type'            => 'group',
+                            'title'           => 'Navigation Menu',
+                            'button_title'    => 'Add New Item',
+                            'accordion_title_auto' => true,
+                            'accordion_title_prefix' => 'Item: ',
+                            'fields'          => [
+                                [
+                                    'id'    => 'title',
+                                    'type'  => 'text',
+                                    'title' => 'Title',
+                                ],
+                                [
+                                    'id'    => 'url',
+                                    'type'  => 'text',
+                                    'title' => 'URL',
+                                    'default' => '#',
+                                ],
+                                [
+                                    'id'    => 'target',
+                                    'type'  => 'select',
+                                    'title' => 'Target',
+                                    'options' => [
+                                        '_self'  => 'Same Window',
+                                        '_blank' => 'New Window',
+                                    ],
+                                    'default' => '_self',
+                                ],
+                                [
+                                    'id'    => 'submenu',
+                                    'type'  => 'group',
+                                    'title' => 'Submenu Items',
+                                    'button_title' => 'Add Submenu Item',
+                                    'accordion_title_auto' => true,
+                                    'fields' => [
+                                        [
+                                            'id'    => 'title',
+                                            'type'  => 'text',
+                                            'title' => 'Title',
+                                        ],
+                                        [
+                                            'id'    => 'url',
+                                            'type'  => 'text',
+                                            'title' => 'URL',
+                                            'default' => '#',
+                                        ],
+                                        [
+                                            'id'    => 'target',
+                                            'type'  => 'select',
+                                            'title' => 'Target',
+                                            'options' => [
+                                                '_self'  => 'Same Window',
+                                                '_blank' => 'New Window',
+                                            ],
+                                            'default' => '_self',
+                                        ],
+                                    ]
+                                ]
+                            ]
                         ],
                     ]
                 ],
-                // 2. Style 1
+                // 3. Style 1
                 [
                     'title'  => 'Style 1',
                     'icon'   => 'fas fa-paint-brush',
@@ -121,7 +183,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                         ],
                     ]
                 ],
-                // 3. Style 2
+                // 4. Style 2
                 [
                     'title'  => 'Style 2',
                     'icon'   => 'fas fa-paint-brush',
@@ -174,7 +236,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                         ],
                     ]
                 ],
-                // 4. Sticky Header
+                // 5. Sticky Header
                 [
                     'title'  => 'Sticky',
                     'icon'   => 'fas fa-thumbtack',

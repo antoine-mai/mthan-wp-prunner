@@ -32,7 +32,8 @@ if (!empty($theme_options['favicon']['url'])) {
 
         <?php
 $theme_options = get_option('mthan_theme_options');
-$header_layout = !empty($theme_options['header_layout']) ? $theme_options['header_layout'] : 'style-1';
+$header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
+$header_layout = !empty($header_tabs['header_layout']) ? $header_tabs['header_layout'] : 'style-1';
 
 if (is_singular()) {
     $meta_key = is_page() ? 'mthan_page_options' : 'mthan_post_options';

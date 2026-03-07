@@ -6,17 +6,17 @@
  * @since 1.0.0
 **/
 $theme_options = get_option('mthan_theme_options');
+$header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
 ?>
 <header class="main-header header-style-two">
-    <?php if (!empty($theme_options['header_topbar'])) { ?>
     <div class="header-top-two">
         <div class="auto-container">
             <div class="inner clearfix">
                 <div class="top-left">
-                    <?php if (!empty($theme_options['header_2_quote_text'])) { ?>
-                    <div class="quote-link"><?php echo esc_html($theme_options['header_2_quote_text']); ?> 
-                        <?php if (!empty($theme_options['header_2_quote_btn_text'])) { ?>
-                        <a href="<?php echo esc_url($theme_options['header_2_quote_btn_url'] ?? '#'); ?>"><?php echo esc_html($theme_options['header_2_quote_btn_text']); ?>
+                    <?php if (!empty($header_tabs['header_2_quote_text'])) { ?>
+                    <div class="quote-link"><?php echo esc_html($header_tabs['header_2_quote_text']); ?> 
+                        <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { ?>
+                        <a href="<?php echo esc_url($header_tabs['header_2_quote_btn_url'] ?? '#'); ?>"><?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?>
                             <span class="icon flaticon-play-button-1"></span>
                         </a>
                         <?php } ?>
@@ -52,7 +52,6 @@ $theme_options = get_option('mthan_theme_options');
             </div>
         </div>
     </div>
-    <?php } ?>
     <!-- Header Upper -->
     <div class="header-upper-two">
         <div class="auto-container">
@@ -61,7 +60,7 @@ $theme_options = get_option('mthan_theme_options');
                 <div class="logo-box">
                     <div class="logo">
                         <?php 
-                        $logo_url = mthan_get_img_url($theme_options['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
+                        $logo_url = mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
                         ?>
                         <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
                             <img src="<?php echo esc_url($logo_url); ?>" alt="<?php bloginfo('name'); ?>" />
@@ -73,16 +72,16 @@ $theme_options = get_option('mthan_theme_options');
                     <div class="iso-icon">
                         <span class="icon">
                             <?php 
-                            $iso_img_url = mthan_get_img_url($theme_options['header_2_iso_image'] ?? '', get_template_directory_uri() . '/assets/images/icons/iso-icon.png');
+                            $iso_img_url = mthan_get_img_url($header_tabs['header_2_iso_image'] ?? '', get_template_directory_uri() . '/assets/images/icons/iso-icon.png');
                             ?>
                             <img src="<?php echo esc_url($iso_img_url); ?>" alt="" />
                         </span>
                     </div>
                     <div class="number">
-                        <?php echo esc_html($theme_options['header_2_iso_title'] ?? 'ISO 9001:2015'); ?>
+                        <?php echo esc_html($header_tabs['header_2_iso_title'] ?? 'ISO 9001:2015'); ?>
                     </div>
                     <div class="txt">
-                        <?php echo esc_html($theme_options['header_2_iso_text'] ?? 'Certified Landscape Designer'); ?>
+                        <?php echo esc_html($header_tabs['header_2_iso_text'] ?? 'Certified Landscape Designer'); ?>
                     </div>
                 </div>
 
@@ -92,7 +91,7 @@ $theme_options = get_option('mthan_theme_options');
                             <span class="flaticon-headphones-2"></span>
                         </div>
                         <div class="txt">
-                            <?php echo esc_html($theme_options['header_2_help_text'] ?? 'Need Help?'); ?>
+                            <?php echo esc_html($header_tabs['header_2_help_text'] ?? 'Need Help?'); ?>
                         </div>
                         <div class="phone">
                             <a href="tel:<?php echo esc_attr($theme_options['contact_phone'] ?? ''); ?>">
@@ -119,7 +118,31 @@ $theme_options = get_option('mthan_theme_options');
                     <!-- Main Menu -->
                     <nav class="main-menu navbar-expand-md navbar-light">
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
-                            <!-- Custom Menu Placeholder -->
+                            <ul class="navigation clearfix">
+                                <?php 
+                                $menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : [];
+                                foreach ($menu_items as $item) :
+                                    $has_submenu = !empty($item['submenu']);
+                                    $li_class = $has_submenu ? 'dropdown' : '';
+                                ?>
+                                <li class="<?php echo esc_attr($li_class); ?>">
+                                    <a href="<?php echo esc_url($item['url'] ?? '#'); ?>" target="<?php echo esc_attr($item['target'] ?? '_self'); ?>">
+                                        <?php echo esc_html($item['title'] ?? ''); ?>
+                                    </a>
+                                    <?php if ($has_submenu) : ?>
+                                    <ul>
+                                        <?php foreach ($item['submenu'] as $sub) : ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($sub['url'] ?? '#'); ?>" target="<?php echo esc_attr($sub['target'] ?? '_self'); ?>">
+                                                <?php echo esc_html($sub['title'] ?? ''); ?>
+                                            </a>
+                                        </li>
+                                        <?php endforeach; ?>
+                                    </ul>
+                                    <?php endif; ?>
+                                </li>
+                                <?php endforeach; ?>
+                            </ul>
                         </div>
                     </nav>
                 </div>
@@ -176,14 +199,14 @@ $theme_options = get_option('mthan_theme_options');
     </div>
     <!--End Header Lower-->
 
-    <?php if (!empty($theme_options['header_sticky'])) { ?>
+    <?php if (!empty($header_tabs['header_sticky'])) { ?>
     <!-- Sticky Header  -->
     <div class="sticky-header">
         <div class="auto-container clearfix">
             <!--Logo-->
             <div class="logo pull-left">
                 <?php 
-                $sticky_logo_url = mthan_get_img_url($theme_options['header_sticky_logo'] ?? '', get_template_directory_uri() . '/assets/images/sticky-logo.png');
+                $sticky_logo_url = mthan_get_img_url($header_tabs['header_sticky_logo'] ?? '', get_template_directory_uri() . '/assets/images/sticky-logo.png');
                 ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
                     <img src="<?php echo esc_url($sticky_logo_url); ?>" alt="<?php bloginfo('name'); ?>">
@@ -196,12 +219,12 @@ $theme_options = get_option('mthan_theme_options');
                     <!--Keep This Empty / Menu will come through Javascript-->
                 </nav><!-- Main Menu End-->
 
-                <?php if (!empty($theme_options['header_2_quote_btn_text'])) { ?>
+                <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { ?>
                 <!--Contact Btn-->
                 <div class="contact-link">
-                    <a href="<?php echo esc_url($theme_options['header_2_quote_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three">
+                    <a href="<?php echo esc_url($header_tabs['header_2_quote_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three">
                         <span class="btn-title">
-                            <?php echo esc_html($theme_options['header_2_quote_btn_text']); ?> 
+                            <?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?> 
                             <i class="arrow flaticon-play-button-1"></i>
                         </span>
                     </a>
@@ -222,7 +245,7 @@ $theme_options = get_option('mthan_theme_options');
         <nav class="menu-box">
             <div class="nav-logo">
                 <?php 
-                $nav_logo_url = mthan_get_img_url($theme_options['header_nav_logo'] ?? '', get_template_directory_uri() . '/assets/images/nav-logo.png');
+                $nav_logo_url = mthan_get_img_url($header_tabs['header_nav_logo'] ?? '', get_template_directory_uri() . '/assets/images/nav-logo.png');
                 ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <img src="<?php echo esc_url($nav_logo_url); ?>" alt="" title="">

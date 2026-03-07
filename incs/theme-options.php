@@ -63,10 +63,8 @@ if (class_exists('CSF')) {
     }
 
     // Metaboxes
-    $metabox_dir = get_template_directory() . '/admin/metabox/';
-    foreach (['page-metabox.php'] as $metabox) {
-        if (file_exists($metabox_dir . $metabox)) {
-            require_once $metabox_dir . $metabox;
-        }
+    $incs_dir = get_template_directory() . '/incs/';
+    if (file_exists($incs_dir . 'page-options.php')) {
+        require_once $incs_dir . 'page-options.php';
     }
 }
