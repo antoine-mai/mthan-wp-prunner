@@ -1,25 +1,13 @@
 <?php defined('ABSPATH') || exit;
 
 /**
- * Team Section Options
+ * Team 2 Section Options
  */
-function mthan_section_Team_options() {
+function mthan_section_Team2_options() {
     $img_path = get_template_directory_uri() . '/assets/images/resource/';
     $icon_path = get_template_directory_uri() . '/assets/images/icons/';
 
     return array(
-        array(
-            'id'    => 'left_leaf',
-            'type'  => 'upload',
-            'title' => 'Left Leaf Image',
-            'default' => $img_path . 'leaf-2.png',
-        ),
-        array(
-            'id'    => 'right_leaf',
-            'type'  => 'upload',
-            'title' => 'Right Leaf Image',
-            'default' => $img_path . 'leaf-3.png',
-        ),
         array(
             'id'    => 'title_icon',
             'type'  => 'upload',
@@ -30,24 +18,13 @@ function mthan_section_Team_options() {
             'id'    => 'subtitle',
             'type'  => 'text',
             'title' => 'Subtitle',
-            'default' => 'Behind Pruners',
+            'default' => 'Behind Lander',
         ),
         array(
             'id'    => 'title',
             'type'  => 'text',
             'title' => 'Title',
-            'default' => 'Our Expert Specialists',
-        ),
-        array(
-            'id'    => 'btn_text',
-            'type'  => 'text',
-            'title' => 'Button Text',
-            'default' => 'All Members',
-        ),
-        array(
-            'id'    => 'btn_link',
-            'type'  => 'link',
-            'title' => 'Button Link',
+            'default' => 'Professional Team',
         ),
         array(
             'id'    => 'items',
@@ -58,19 +35,13 @@ function mthan_section_Team_options() {
                     'name'        => 'Isaac Freddie',
                     'designation' => 'Founder',
                     'phone'       => '+31 65 792 63 11',
-                    'image'       => $img_path . 'team-1.jpg',
+                    'image'       => $img_path . 'team-4.jpg',
                 ),
                 array(
                     'name'        => 'William Theo',
                     'designation' => 'Manager',
                     'phone'       => '+31 65 792 63 12',
-                    'image'       => $img_path . 'team-2.jpg',
-                ),
-                array(
-                    'name'        => 'Arlo Reuben',
-                    'designation' => 'Staff Specialist',
-                    'phone'       => '+31 65 792 63 13',
-                    'image'       => $img_path . 'team-3.jpg',
+                    'image'       => $img_path . 'team-5.jpg',
                 ),
             ),
             'fields' => array(
@@ -87,7 +58,13 @@ function mthan_section_Team_options() {
                 array(
                     'id'    => 'phone',
                     'type'  => 'text',
-                    'title' => 'Phone Number',
+                    'title' => 'Phone or Email',
+                ),
+                array(
+                    'id'    => 'phone_icon',
+                    'type'  => 'text',
+                    'title' => 'Phone/Email Icon Class',
+                    'default' => 'flaticon-headphones',
                 ),
                 array(
                     'id'    => 'image',
@@ -99,6 +76,23 @@ function mthan_section_Team_options() {
                     'id'    => 'link',
                     'type'  => 'link',
                     'title' => 'Member Link',
+                ),
+                array(
+                    'id'    => 'socials',
+                    'type'  => 'group',
+                    'title' => 'Social Links',
+                    'fields' => array(
+                        array(
+                            'id'    => 'icon',
+                            'type'  => 'text',
+                            'title' => 'Icon Class (e.g. fab fa-facebook-f)',
+                        ),
+                        array(
+                            'id'    => 'url',
+                            'type'  => 'text',
+                            'title' => 'URL',
+                        ),
+                    ),
                 ),
             ),
         ),
