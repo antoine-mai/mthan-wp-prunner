@@ -88,9 +88,9 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             'type'    => 'select',
             'title'   => 'Page Layout Mode',
             'options' => [
-                'main'    => 'Full Width (No Sidebar)',
-                'blog'    => 'Blog Layout (Sidebar Right)',
-                'service' => 'Service Layout (Sidebar Left)',
+                'main'    => 'Page Layout',
+                'blog'    => 'Blog Layout',
+                'service' => 'Service Layout',
             ],
             'default' => 'main',
         ],
