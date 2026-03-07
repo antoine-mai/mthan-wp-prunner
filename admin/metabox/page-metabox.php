@@ -84,6 +84,17 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
     'icon'   => 'fas fa-columns',
     'fields' => [
         [
+            'id'      => 'page_layout_type',
+            'type'    => 'select',
+            'title'   => 'Page Layout Mode',
+            'options' => [
+                'main'    => 'Full Width (No Sidebar)',
+                'blog'    => 'Blog Layout (Sidebar Right)',
+                'service' => 'Service Layout (Sidebar Left)',
+            ],
+            'default' => 'main',
+        ],
+        [
             'id'      => 'custom_header_layout',
             'type'    => 'select',
             'title'   => 'Header Style',

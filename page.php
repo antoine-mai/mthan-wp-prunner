@@ -4,7 +4,7 @@ $layout_type = mthan_get_layout_type();
 mthan_render_global_sections('before', $layout_type);
 mthan_render_page_sections('before');
 
-if ($layout_type == 'main') : 
+if ($layout_type == 'main' || $layout_type == 'page') : 
     // Default / Main Layout (No Sidebar)
     if (have_posts()) :
         while (have_posts()) :
