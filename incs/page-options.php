@@ -27,14 +27,17 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             'accordion_title_auto'   => true,
             'accordion_title_prefix' => 'Section: ',
             'accordion_title_number' => true,
-            'fields'                 => [
+            'fields'                 => array_merge(
                 [
-                    'id'    => 'template',
-                    'type'  => 'select',
-                    'title' => 'Select Template',
-                    'options' => $available_sections,
+                    [
+                        'id'    => 'template',
+                        'type'  => 'select',
+                        'title' => 'Select Template',
+                        'options' => $available_sections,
+                    ],
                 ],
-            ],
+                mthan_get_section_fields()
+            ),
         ],
     ],
 ]);
