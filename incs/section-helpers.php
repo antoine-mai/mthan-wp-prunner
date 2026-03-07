@@ -217,26 +217,6 @@ function mthan_get_section_val($slug, $instance_data, $field, $default = '')
         return $val;
     }
 
-    // Global Fallback
-    $to = get_option(MTHAN_THEME_OPTIONS, []);
-    $global_key = 'g_' . $slug . '_' . $field;
-    $global_val = isset($to[$global_key]) ? $to[$global_key] : '';
-
-    $global_empty = empty($global_val);
-    if (!$global_empty && is_array($global_val)) {
-        if (isset($global_val['url']) && empty($global_val['url'])) {
-            $global_empty = true;
-        } elseif (isset($global_val['top']) && $global_val['top'] === '' && isset($global_val['bottom']) && $global_val['bottom'] === '') {
-            $global_empty = true;
-        } elseif (isset($global_val['background-color']) && empty($global_val['background-color']) && empty($global_val['background-image']['url'])) {
-            $global_empty = true;
-        }
-    }
-
-    if (!$global_empty) {
-        return $global_val;
-    }
-
     return $default;
 }
 

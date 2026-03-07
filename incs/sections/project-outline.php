@@ -19,7 +19,8 @@ function mthan_section_project_outline_html($section_data) {
         <?php if (!empty($outlines)) : ?>
         <div class="row clearfix">
             <?php foreach ($outlines as $item) : 
-                $img = !empty($item['image']['url']) ? $item['image']['url'] : get_template_directory_uri() . '/assets/images/resource/featured-image-13.jpg';
+                $img_url = ( ! empty( $item['image'] ) && is_array( $item['image'] ) && ! empty( $item['image']['url'] ) ) ? $item['image']['url'] : '';
+                $img     = ! empty( $img_url ) ? $img_url : get_template_directory_uri() . '/assets/images/resource/featured-image-13.jpg';
                 $t   = !empty($item['title']) ? $item['title'] : 'Project Outline';
                 $txt = !empty($item['text']) ? $item['text'] : '';
                 $lnk = !empty($item['link']) ? $item['link'] : '#';

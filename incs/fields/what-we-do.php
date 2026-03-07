@@ -25,6 +25,11 @@ function mthan_section_what_we_do_options()
                     mthan_name_field(),
                     mthan_icon_field(),
                     array(
+                        'id'    => 'hover_icon',
+                        'type'  => 'text',
+                        'title' => 'Hover / Content Icon Class',
+                    ),
+                    array(
                     'id' => 'bg_image',
                     'type' => 'media',
                     'library' => 'image',
