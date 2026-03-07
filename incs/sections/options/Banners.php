@@ -4,11 +4,45 @@
  * Banners Section Options
  */
 function mthan_section_Banners_options() {
+    $img_path = get_template_directory_uri() . '/assets/images/main-slider/';
+
     return array(
         array(
             'id'    => 'slides',
             'type'  => 'group',
             'title' => 'Slides',
+            'default' => array(
+                array(
+                    'subtitle' => 'Welcome to Pruners',
+                    'title'    => 'Brilliant Hands <br>For Your Landscaping',
+                    'text'     => 'How to pursue pleasure rationally encounter consequences that are extremely painful nor again is there anyone.',
+                    'image'    => $img_path . '1.jpg',
+                    'btn1_text' => 'Read More',
+                    'btn1_link' => 'about.html',
+                    'btn2_text' => 'Contact Us',
+                    'btn2_link' => 'contact.html',
+                ),
+                array(
+                    'subtitle' => 'Form of Impression',
+                    'title'    => 'Complete Solution <br>for Your Landscaping',
+                    'text'     => 'When our power of choice is untrammelled and when nothing our being able to do what we like best.',
+                    'image'    => $img_path . '2.jpg',
+                    'btn1_text' => 'Read More',
+                    'btn1_link' => 'about.html',
+                    'btn2_text' => 'Services',
+                    'btn2_link' => 'services.html',
+                ),
+                array(
+                    'subtitle' => '100% Gurantee Works',
+                    'title'    => 'We Give Guarantee <br>for Healthy Landscapes',
+                    'text'     => 'How to pursue pleasure rationally encounter consequences that are extremely painful nor again is there anyone.',
+                    'image'    => $img_path . '3.jpg',
+                    'btn1_text' => 'Read More',
+                    'btn1_link' => 'about.html',
+                    'btn2_text' => 'Testimonials',
+                    'btn2_link' => 'reviews.html',
+                ),
+            ),
             'fields' => array(
                 array(
                     'id'    => 'title',

@@ -8,6 +8,7 @@
 function mthan_get_sections() {
     return [
         'Banners' => 'Banners',
+        'Areas'   => 'Areas',
         // Add more sections here...
     ];
 }
@@ -38,4 +39,39 @@ function mthan_get_section_fields() {
     }
 
     return $all_fields;
+}
+
+/**
+ * Get a value for a specific section field.
+ */
+function mthan_get_section_val($slug, $data, $key, $default = '') {
+    $field_id = $slug . '_' . $key;
+    return isset($data[$field_id]) ? $data[$field_id] : $default;
+}
+
+/**
+ * Helper to get a section image URL.
+ */
+function mthan_sec_img($val, $default = '') {
+    if (empty($val)) return $default;
+    if (is_array($val)) return !empty($val['url']) ? $val['url'] : $default;
+    return $val;
+}
+
+/**
+ * Render all sections for a post.
+ */
+function mthan_render_page_sections($position = 'before') {
+    $meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
+    $sections = isset($meta['page_sections']) ? $meta['page_sections'] : array();
+
+    foreach ($sections as $section) {
+        $template = isset($section['template']) ? $section['template'] : '';
+        if (empty($template)) continue;
+
+        $func = 'mthan_section_' . $template . '_html';
+        if (function_exists($func)) {
+            $func($section);
+        }
+    }
 }

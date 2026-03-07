@@ -21,9 +21,4 @@ function mthan_render_global_sections($position = 'before', $layout = 'main') {
     return;
 }
 
-/**
- * Stub for page-specific section rendering.
- */
-function mthan_render_page_sections($position = 'before') {
-    return;
-}
+
