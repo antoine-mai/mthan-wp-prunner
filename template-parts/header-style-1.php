@@ -184,7 +184,6 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                         <a href="<?php echo esc_url($btn_url); ?>">
                             <span class="icon <?php echo esc_attr($header_tabs['header_1_btn_icon'] ?? 'fas fa-phone-alt'); ?>"></span>
                             <?php echo esc_html($header_tabs['header_1_btn_text']); ?> 
-                            <span class="arrow flaticon-play-button-1"></span>
                         </a>
                     </div>
                     <?php endif; ?>
