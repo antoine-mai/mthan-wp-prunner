@@ -11,10 +11,10 @@ function mthan_section_about_1_html($section_data) { ?>
     $q_text    = mthan_get_section_val($slug, $section_data, 'quote_text');
     $vid_url   = mthan_get_section_val($slug, $section_data, 'video_url');
 
-    $sig_img   = mthan_sec_img($slug, $section_data, 'signature_image');
-    $sub_icon  = mthan_sec_img($slug, $section_data, 'subtitle_icon');
-    $anim_img  = mthan_sec_img($slug, $section_data, 'anim_image');
-    $q_thumb   = mthan_sec_img($slug, $section_data, 'quote_thumb');
+    $sig_img   = mthan_get_section_val($slug, $section_data, 'signature_image');
+    $sub_icon  = mthan_get_section_val($slug, $section_data, 'subtitle_icon');
+    $anim_img  = mthan_get_section_val($slug, $section_data, 'anim_image');
+    $q_thumb   = mthan_get_section_val($slug, $section_data, 'quote_thumb');
 
     $exp_count = mthan_get_section_val($slug, $section_data, 'exp_count');
     $sub_title = mthan_get_section_val($slug, $section_data, 'subtitle');
@@ -23,7 +23,7 @@ function mthan_section_about_1_html($section_data) { ?>
     $exp_icon  = mthan_get_section_val($slug, $section_data, 'exp_icon');
     $title     = mthan_get_section_val($slug, $section_data, 'title');
     
-    $image     = mthan_sec_img($slug, $section_data, 'image');
+    $image     = mthan_get_section_val($slug, $section_data, 'image');
 
     $btn_link  = mthan_sec_link($slug, $section_data, 'btn_link');
     
@@ -79,7 +79,8 @@ function mthan_section_about_1_html($section_data) { ?>
                     <div class="lower-box clearfix">
                         <div class="link-box">
                             <a href="<?php echo esc_url($btn_link); ?>" class="theme-btn btn-style-four">
-                                <span class="btn-title"><?php echo esc_html($btn_text); ?>
+                                <span class="btn-title">
+                                    <?php echo esc_html($btn_text); ?>
                                     <i class="arrow flaticon-play-button-1"></i>
                                 </span>
                             </a>

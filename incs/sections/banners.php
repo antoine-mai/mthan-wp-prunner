@@ -1,6 +1,4 @@
 <?php defined('ABSPATH') || exit;
-
-
 /**
  * Render the banner-section section.
  *

@@ -225,8 +225,11 @@ function mthan_get_section_val($slug, $instance_data, $field, $default = '')
  */
 function mthan_sec_img($slug, $instance_data, $field, $default_url = '')
 {
-    $val = mthan_get_section_val($slug, $instance_data, $field, ['url' => $default_url]);
-    return is_array($val) && !empty($val['url']) ? $val['url'] : $default_url;
+    $val = mthan_get_section_val($slug, $instance_data, $field, $default_url);
+    if (is_array($val) && !empty($val['url'])) {
+        return $val['url'];
+    }
+    return (!empty($val) && !is_array($val)) ? $val : $default_url;
 }
 
 /**
