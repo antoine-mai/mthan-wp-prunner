@@ -13,19 +13,19 @@ function mthan_section_Areas_options() {
                 array(
                     'title'    => 'Commercial Area',
                     'subtitle' => 'Land local open spaces',
-                    'icon'     => 'flaticon-flower-shop',
+                    'icon'     => '', // Use upload now
                     'link'     => '',
                 ),
                 array(
                     'title'    => 'Residential Area',
                     'subtitle' => 'Land surrounding a home',
-                    'icon'     => 'flaticon-house-1',
+                    'icon'     => '',
                     'link'     => '',
                 ),
                 array(
                     'title'    => 'Public Area',
                     'subtitle' => 'Land open to the Public',
-                    'icon'     => 'flaticon-park-3',
+                    'icon'     => '',
                     'link'     => '',
                 ),
             ),
@@ -42,8 +42,8 @@ function mthan_section_Areas_options() {
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon Class (e.g. flaticon-...)',
+                    'type'  => 'upload',
+                    'title' => 'Icon Image',
                 ),
                 mthan_page_select_field('link', 'Link'),
             ),
