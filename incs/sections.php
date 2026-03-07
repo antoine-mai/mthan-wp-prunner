@@ -9,6 +9,7 @@ function mthan_get_sections() {
     return [
         'Banners' => 'Banners',
         'Areas'   => 'Areas',
+        'About'   => 'About',
         // Add more sections here...
     ];
 }
