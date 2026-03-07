@@ -11,11 +11,11 @@ function mthan_section_about_options()
             'type'    => 'select',
             'title'   => 'Style',
             'options' => [
-                '1' => 'Style 1 (Signature)',
-                '2' => 'Style 2 (ISO/Video)',
-                '3' => 'Style 3',
+                'style-1' => 'Style 1 (Signature)',
+                'style-2' => 'Style 2 (ISO/Video)',
+                'style-3' => 'Style 3 (Mixed)',
             ],
-            'default' => '1',
+            'default' => 'style-1',
         ],
         mthan_subtitle_field('About Us'),
         [
@@ -39,27 +39,27 @@ function mthan_section_about_options()
             'type'       => 'textarea',
             'title'      => 'Quote Text',
             'default'    => 'Our Company has established a reputation as the leader in landscape design.',
-            'dependency' => ['section_style', '==', '1'],
+            'dependency' => ['section_style', 'any', 'style-1,style-3'],
         ],
         [
             'id'         => 'quote_author',
             'type'       => 'text',
             'title'      => 'Quote Author',
             'default'    => 'Chris Stanley,',
-            'dependency' => ['section_style', '==', '1'],
+            'dependency' => ['section_style', 'any', 'style-1,style-3'],
         ],
         [
             'id'         => 'quote_designation',
             'type'       => 'text',
             'title'      => 'Quote Designation',
             'default'    => 'Founder of Pruners',
-            'dependency' => ['section_style', '==', '1'],
+            'dependency' => ['section_style', 'any', 'style-1,style-3'],
         ],
         [
             'id'         => 'signature_image',
             'type'       => 'media',
             'title'      => 'Signature Image',
-            'dependency' => ['section_style', '==', '1'],
+            'dependency' => ['section_style', 'any', 'style-1,style-3'],
         ],
         // Style 2 Specifics
         [
@@ -67,21 +67,21 @@ function mthan_section_about_options()
             'type'       => 'text',
             'title'      => 'Insured Title',
             'default'    => 'Fully Insured',
-            'dependency' => ['section_style', '==', '2'],
+            'dependency' => ['section_style', '==', 'style-2'],
         ],
         [
             'id'         => 'insured_text',
             'type'       => 'textarea',
             'title'      => 'Insured Text',
             'default'    => 'Indignation and dislike men who are so that our garden therefore always holds in these matters too this stone has beguiled and occur demoralized.',
-            'dependency' => ['section_style', '==', '2'],
+            'dependency' => ['section_style', '==', 'style-2'],
         ],
         [
             'id'         => 'iso_number',
             'type'       => 'text',
             'title'      => 'ISO Number',
             'default'    => 'ISO 9001:2015',
-            'dependency' => ['section_style', '==', '2'],
+            'dependency' => ['section_style', 'any', 'style-2,style-3'],
         ],
         // Common
         [
