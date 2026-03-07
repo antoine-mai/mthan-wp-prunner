@@ -28,6 +28,50 @@ function mthan_get_section_style_map()
 }
 
 /**
+ * Returns the static list of allowed section slugs.
+ */
+function mthan_get_registered_sections()
+{
+    return array(
+        'banners',
+        'about-1',
+        'about-2',
+        'about-3',
+        'main-services',
+        'why-us',
+        'what-we-do',
+        'projects',
+        'facts',
+        'testimonials',
+        'team',
+        'process',
+        'cta',
+        'contact',
+        'blog',
+        'sponsors',
+        'appoint',
+        'pricing',
+        'faqs',
+        'areas',
+        'awards',
+        'reviews',
+        'map',
+        'page-banner',
+        'mvg-history',
+        'product-details',
+        'project-details',
+        'project-outline',
+        'project-feedback',
+        'related-project',
+        'coming-soon',
+        'error',
+        'cart',
+        'checkout',
+        'myaccount',
+    );
+}
+
+/**
  * Returns slugs that are STYLE VARIANTS (hidden from the section dropdown).
  */
 function mthan_get_section_variant_slugs()
@@ -50,22 +94,25 @@ function mthan_get_section_variant_slugs()
 function mthan_get_available_base_sections()
 {
     $theme_options = get_option('mthan_theme_options');
-    $sections_path = get_template_directory() . '/incs/sections/';
     $variant_slugs = mthan_get_section_variant_slugs();
-    $result = array('' => '— Select Section —');
+    $registered    = mthan_get_registered_sections();
+    $result        = array('' => '— Select Section —');
 
-    if (is_dir($sections_path)) {
-        foreach (glob($sections_path . '*.php') as $file) {
-            $slug = basename($file, '.php');
-            if (in_array($slug, $variant_slugs)) { continue; }
-            $toggle_key = 'enable_section_' . str_replace('-', '_', $slug);
-            if (isset($theme_options[$toggle_key]) && $theme_options[$toggle_key] === false) { continue; }
-            $style_map   = mthan_get_section_style_map();
-            $style_count = isset($style_map[$slug]) ? count($style_map[$slug]) : 1;
-            $label       = ucwords(str_replace('-', ' ', $slug));
-            if ($style_count > 1) { $label .= " ({$style_count} styles)"; }
-            $result[$slug] = $label;
+    foreach ($registered as $slug) {
+        if (in_array($slug, $variant_slugs)) {
+            continue;
         }
+        $toggle_key = 'enable_section_' . str_replace('-', '_', $slug);
+        if (isset($theme_options[$toggle_key]) && $theme_options[$toggle_key] === false) {
+            continue;
+        }
+        $style_map   = mthan_get_section_style_map();
+        $style_count = isset($style_map[$slug]) ? count($style_map[$slug]) : 1;
+        $label       = ucwords(str_replace('-', ' ', $slug));
+        if ($style_count > 1) {
+            $label .= " ({$style_count} styles)";
+        }
+        $result[$slug] = $label;
     }
     return $result;
 }

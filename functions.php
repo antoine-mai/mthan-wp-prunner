@@ -10,16 +10,41 @@ define('MTHAN_PAGE_OPTIONS', 'mthan_page_options');
 // ── Core framework ─────────────────────────────────────────────────
 require_once get_template_directory() . '/incs/codestar/autoload.php';
 
+// Load helper first to access the static section list
+require_once get_template_directory() . '/incs/section-helpers.php';
+
 // ── Autoload /incs/ directory ──────────────────────────────────────
 $mthan_autoload_incs = function($dir) use (&$mthan_autoload_incs) {
     if (!is_dir($dir)) return;
 
-    // Load all PHP files in the current directory
+    $dir_name   = basename($dir);
+    $registered = function_exists('mthan_get_registered_sections') ? mthan_get_registered_sections() : array();
+
+    if ($dir_name === 'sections' || $dir_name === 'fields') {
+        // 1. Load registered sections in exact order
+        foreach ($registered as $slug) {
+            $file = $dir . '/' . $slug . '.php';
+            if (file_exists($file)) {
+                require_once $file;
+            }
+        }
+        return; // Skip the glob loop for these folders
+    }
+
+    // Load all PHP files in the current directory for other folders
     foreach (glob($dir . '/*.php') as $file) {
-        // Skip theme-options.php, we need to load it last
-        if (basename($file) === 'theme-options.php' || basename($file) === 'page-options.php') {
+        $name = basename($file, '.php');
+
+        // Skip files that should be loaded manually or are already loaded
+        if (in_array($name, ['theme-options', 'page-options', 'section-helpers'])) {
             continue;
         }
+
+        // Section/Field Filtering: Only load if registered
+        if (($dir_name === 'sections' || $dir_name === 'fields') && !in_array($name, $registered)) {
+            continue;
+        }
+
         require_once $file;
     }
 
