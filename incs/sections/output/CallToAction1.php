@@ -5,9 +5,9 @@
  *
  * @param array $section_data CSF field values for this section instance.
  */
-function mthan_section_CTA1_html($section_data) { ?>
+function mthan_section_CallToAction1_html($section_data) { ?>
 <?php
-    $slug = 'CTA1';
+    $slug = 'CallToAction1';
     $title    = mthan_get_section_val($slug, $section_data, 'title');
     $btn_text = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));

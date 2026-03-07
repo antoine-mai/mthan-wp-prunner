@@ -3,7 +3,7 @@
 /**
  * Call To Action 1 Section Options
  */
-function mthan_section_CTA1_options() {
+function mthan_section_CallToAction1_options() {
     return array(
         array(
             'id'    => 'title',

@@ -3,7 +3,7 @@
 /**
  * Call To Action 2 Section Options
  */
-function mthan_section_CTA2_options() {
+function mthan_section_CallToAction2_options() {
     $bg_path = get_template_directory_uri() . '/assets/images/background/';
 
     return array(
