@@ -66,9 +66,9 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                 ],
                 [
                     'id' => 'icon',
-                    'type' => 'icon',
-                    'title' => 'Icon Class',
-                    'default' => 'fab fa-facebook',
+                    'type' => 'upload',
+                    'title' => 'Icon Image',
+                    'preview' => false,
                 ],
                 [
                     'id' => 'url',
