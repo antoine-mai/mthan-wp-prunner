@@ -18,7 +18,7 @@ function mthan_section_Areas_html($section_data)
         <div class="auto-container">
             <div class="inner-container">
                 <div class="row clearfix">
-                    <?php foreach ($items as $item) : 
+                    <?php foreach ($items as $item) { 
                         $title = isset($item['title']) ? $item['title'] : '';
                         $sub   = isset($item['subtitle']) ? $item['subtitle'] : '';
                         $icon  = isset($item['icon']) ? $item['icon'] : '';
@@ -37,7 +37,7 @@ function mthan_section_Areas_html($section_data)
                                 </div>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>

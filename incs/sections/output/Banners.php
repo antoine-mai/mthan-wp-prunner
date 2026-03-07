@@ -30,30 +30,30 @@ function mthan_section_Banners_html($section_data)
                         <div class="content-box">
                             <div class="content clearfix">
                                 <div class="inner">
-                                    <?php if ($subtitle) : ?>
+                                    <?php if ($subtitle) { ?>
                                         <div class="subtitle"><span class="icon"></span> <?php echo esc_html($subtitle); ?></div>
-                                    <?php endif; ?>
+                                    <?php } ?>
                                     
-                                    <?php if ($title) : ?>
+                                    <?php if ($title) { ?>
                                         <h1><?php echo wp_kses_post($title); ?></h1>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
-                                    <?php if ($text) : ?>
+                                    <?php if ($text) { ?>
                                         <div class="text"><?php echo esc_html($text); ?></div>
-                                    <?php endif; ?>
+                                    <?php } ?>
 
                                     <div class="link-box clearfix">
-                                        <?php if (!empty($slide['btn1_text'])) : ?>
+                                        <?php if (!empty($slide['btn1_text'])) { ?>
                                             <a href="<?php echo esc_url($btn1_link); ?>" class="theme-btn btn-style-one">
                                                 <span class="btn-title"><?php echo esc_html($slide['btn1_text']); ?> <i class="arrow flaticon-play-button-1"></i></span>
                                             </a>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                         
-                                        <?php if (!empty($slide['btn2_text'])) : ?>
+                                        <?php if (!empty($slide['btn2_text'])) { ?>
                                             <a href="<?php echo esc_url($btn2_link); ?>" class="theme-btn btn-style-two">
                                                 <span class="btn-title"><?php echo esc_html($slide['btn2_text']); ?> <i class="arrow flaticon-play-button-1"></i></span>
                                             </a>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
