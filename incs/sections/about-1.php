@@ -17,13 +17,15 @@ function mthan_section_about_1_html($section_data) {
     $q_auth    = mthan_get_section_val($slug, $section_data, 'quote_author', '');
     $q_des     = mthan_get_section_val($slug, $section_data, 'quote_designation', '');
     $sig_img   = mthan_sec_img($slug, $section_data, 'signature_image', '');
+    $exp_count = mthan_get_section_val($slug, $section_data, 'exp_count', '25');
+    $exp_text  = mthan_get_section_val($slug, $section_data, 'exp_text', 'Years of <br>Experience');
     ?>
     <section class="about-section">
         <div class="auto-container">
             <div class="row clearfix">
                 <!--Text Column-->
                 <div class="text-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner">
+                    <div class="inner-column">
                         <div class="sec-title">
                             <div class="title-icon"><span class="icon"><img src="<?php echo esc_url($sub_icon); ?>" alt="icon"></span></div>
                             <div class="subtitle"><?php echo esc_html($sub_title); ?></div>
@@ -56,14 +58,14 @@ function mthan_section_about_1_html($section_data) {
                 </div>
                 <!--Image Column-->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="inner">
+                    <div class="inner-column">
                         <div class="image-box">
                             <div class="image"><img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>"></div>
                             <div class="anim-image"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/anim-image-1.png" alt=""></div>
                             <div class="caption">
                                 <div class="icon"><span class="flaticon-null-1"></span></div>
-                                <div class="big-txt">25</div>
-                                <div class="txt">Years of <br>Experience</div>
+                                <div class="big-txt"><?php echo esc_html($exp_count); ?></div>
+                                <div class="txt"><?php echo wp_kses_post($exp_text); ?></div>
                             </div>
                         </div>
                     </div>

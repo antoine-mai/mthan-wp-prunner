@@ -56,5 +56,17 @@ function mthan_section_about_1_options() {
         ],
         mthan_btn_text_field('Read More'),
         mthan_btn_link_field('#'),
+        [
+            'id'      => 'exp_count',
+            'type'    => 'text',
+            'title'   => 'Experience Years (Number)',
+            'default' => '25',
+        ],
+        [
+            'id'      => 'exp_text',
+            'type'    => 'textarea',
+            'title'   => 'Experience Text',
+            'default' => 'Years of <br>Experience',
+        ],
     ];
 }
