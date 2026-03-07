@@ -6,21 +6,25 @@ function mthan_section_about_1_html($section_data) { ?>
 <?php
     $slug      = 'about-1';
     $q_des     = mthan_get_section_val($slug, $section_data, 'quote_designation');
-    $sig_img   = mthan_get_section_val($slug, $section_data, 'signature_image');
     $content   = mthan_get_section_val($slug, $section_data, 'about_content');
-    $sub_icon  = mthan_get_section_val($slug, $section_data, 'subtitle_icon');
     $q_auth    = mthan_get_section_val($slug, $section_data, 'quote_author');
     $q_text    = mthan_get_section_val($slug, $section_data, 'quote_text');
-    $anim_img  = mthan_get_section_val($slug, $section_data, 'anim_image');
     $vid_url   = mthan_get_section_val($slug, $section_data, 'video_url');
+
+    $sig_img   = mthan_get_section_val($slug, $section_data, 'signature_image');
+    $sub_icon  = mthan_get_section_val($slug, $section_data, 'subtitle_icon');
+    $anim_img  = mthan_get_section_val($slug, $section_data, 'anim_image');
     $q_thumb   = mthan_get_section_val($slug, $section_data, 'quote_thumb');
+
     $exp_count = mthan_get_section_val($slug, $section_data, 'exp_count');
     $sub_title = mthan_get_section_val($slug, $section_data, 'subtitle');
     $btn_text  = mthan_get_section_val($slug, $section_data, 'btn_text');
     $exp_text  = mthan_get_section_val($slug, $section_data, 'exp_text');
     $exp_icon  = mthan_get_section_val($slug, $section_data, 'exp_icon');
     $title     = mthan_get_section_val($slug, $section_data, 'title');
+    
     $image     = mthan_get_section_val($slug, $section_data, 'image');
+
     $btn_link  = mthan_sec_link($slug, $section_data, 'btn_link');
     
 ?>
