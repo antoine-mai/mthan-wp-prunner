@@ -70,6 +70,7 @@ function mthan_section_Projects2_options() {
                     'type'  => 'upload',
                     'title' => 'Image',
                     'default' => $defaults[$i]['image'],
+                    'help'    => ($i == 1 || $i == 6 ? 'Recommended size: 570x630px' : 'Recommended size: 270x300px'),
                 ),
                 mthan_page_select_field('link', 'Project Link'),
             ),

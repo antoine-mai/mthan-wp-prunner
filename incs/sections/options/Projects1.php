@@ -72,6 +72,7 @@ function mthan_section_Projects1_options() {
                     'id'    => 'image',
                     'type'  => 'upload',
                     'title' => 'Project Image',
+                    'help'  => 'Recommended size: 370x480px',
                 ),
                 array(
                     'id'    => 'category',
