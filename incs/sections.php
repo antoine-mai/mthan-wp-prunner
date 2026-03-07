@@ -13,6 +13,7 @@ function mthan_get_sections() {
         'About2'  => 'About 2',
         'About3'  => 'About 3',
         'History' => 'History',
+        'Services' => 'Services',
         'Facts1'  => 'Facts 1',
         'Facts2'  => 'Facts 2',
         'WhatWeDo1' => 'What We Do 1',
