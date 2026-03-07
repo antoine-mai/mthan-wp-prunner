@@ -35,6 +35,16 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
                         'title' => 'Select Template',
                         'options' => $available_sections,
                     ],
+                    [
+                        'id'      => 'position',
+                        'type'    => 'select',
+                        'title'   => 'Position',
+                        'options' => [
+                            'before' => 'Before Content',
+                            'after'  => 'After Content',
+                        ],
+                        'default' => 'before',
+                    ],
                 ],
                 mthan_get_section_fields()
             ),

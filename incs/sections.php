@@ -71,7 +71,11 @@ function mthan_render_page_sections($position = 'before') {
 
     foreach ($sections as $section) {
         $template = isset($section['template']) ? $section['template'] : '';
-        if (empty($template)) continue;
+        $sec_pos  = isset($section['position']) ? $section['position'] : 'before';
+
+        if (empty($template) || $sec_pos !== $position) {
+            continue;
+        }
 
         $func = 'mthan_section_' . $template . '_html';
         if (function_exists($func)) {

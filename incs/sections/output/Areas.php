@@ -33,7 +33,8 @@ function mthan_section_Areas_html($section_data)
                                     <div class="sub-text"><?php echo esc_html($sub); ?></div>
                                 </div>
                                 <div class="link-box">
-                                    <a href="<?php echo esc_url($link); ?>" class="theme-btn"><span class="flaticon-plus-1"></span></a>
+                                    <a href="<?php echo esc_url($link); ?>" class="theme-btn">
+                                        <span class="flaticon-plus-1"></span></a>
                                 </div>
                             </div>
                         </div>
