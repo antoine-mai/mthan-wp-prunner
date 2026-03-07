@@ -84,22 +84,24 @@ function mthan_section_about_1_html($section_data) {
                 </div>
                 <!--Image Column-->
                 <div class="image-column col-lg-6 col-md-12 col-sm-12">
-                    <div class="image-box">
-                        <div class="image">
-                            <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" />
-                        </div>
-                        <div class="anim-image">
-                            <img src="<?php echo esc_url($anim_img); ?>" alt="">
-                        </div>
-                        <div class="caption">
-                            <div class="icon">
-                                <span class="flaticon-null-1"></span>
-                            </div>
-                            <div class="big-txt">
-                                <?php echo esc_html($exp_count); ?>
-                            </div>
-                            <div class="txt">
-                                <?php echo wp_kses_post($exp_text); ?>
+                    <div class="inner">
+                        <div class="image-box">
+                            <figure class="image">
+                                <img src="<?php echo esc_url($image); ?>" alt="<?php echo esc_attr($title); ?>" />
+                            </figure>
+                            <figure class="anim-image">
+                                <img src="<?php echo esc_url($anim_img); ?>" alt="">
+                            </figure>
+                            <div class="caption">
+                                <div class="icon">
+                                    <span class="flaticon-null-1"></span>
+                                </div>
+                                <div class="big-txt">
+                                    <?php echo esc_html($exp_count); ?>
+                                </div>
+                                <div class="txt">
+                                    <?php echo wp_kses_post($exp_text); ?>
+                                </div>
                             </div>
                         </div>
                     </div>
