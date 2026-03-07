@@ -99,6 +99,9 @@ function mthan_sec_img($val, $default = '') {
  */
 function mthan_get_link($link) {
     if (empty($link)) return '#';
+    // If it's a CSF link field (array)
+    if (is_array($link)) return !empty($link['url']) ? $link['url'] : '#';
+    // If it's a numerical ID
     if (is_numeric($link)) return get_permalink((int) $link);
     return $link;
 }
