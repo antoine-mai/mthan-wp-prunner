@@ -16439,3 +16439,13 @@ img.lazy-image.loaded {
         width: 100% !important;
     }
 }
+
+/* Ensure Get Call Back link inherits color and removes decoration */
+.main-header .header-upper .upper-right .info-box .call a {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+.main-header .header-upper .upper-right .info-box .call a:hover {
+    color: #24a77e !important;
+}

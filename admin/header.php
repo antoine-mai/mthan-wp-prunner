@@ -200,6 +200,14 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'output'      => '.main-header .header-lower .more-links .estimate-btn a',
                             'output_mode' => 'color',
                         ],
+                        [
+                            'id'          => 'header_1_callback_color',
+                            'type'        => 'color',
+                            'title'       => 'Call Back Text Color',
+                            'default'     => '#161616',
+                            'output'      => '.main-header .header-upper .upper-right .info-box .call a',
+                            'output_mode' => 'color',
+                        ],
                     ]
                 ],
                 // 3. Style 2
