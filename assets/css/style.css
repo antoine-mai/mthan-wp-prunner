@@ -16431,7 +16431,7 @@ img.lazy-image.loaded {
 .main-menu .navigation > li.megamenu > ul > li {
     width: 25% !important;
     border: none !important;
-    padding: 10px !important;
+    padding: 0 !important;
 }
 
 @media only screen and (max-width: 991px) {
