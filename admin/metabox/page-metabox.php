@@ -78,11 +78,15 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
     ],
 ]);
 
-// Layout
+// Settings (formerly Layout)
 CSF::createSection(MTHAN_PAGE_OPTIONS, [
-    'title'  => 'Layout',
-    'icon'   => 'fas fa-columns',
+    'title'  => 'Settings',
+    'icon'   => 'fas fa-cogs',
     'fields' => [
+        [
+            'type'    => 'subheading',
+            'content' => 'Layout Settings',
+        ],
         [
             'id'      => 'page_layout_type',
             'type'    => 'select',
@@ -122,23 +126,20 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             'default' => false,
         ],
         [
+            'type'    => 'subheading',
+            'content' => 'Page Banner Settings',
+        ],
+        [
             'id'      => 'hide_page_banner',
             'type'    => 'switcher',
             'title'   => 'Hide Page Banner',
             'default' => false,
         ],
-    ],
-]);
-
-// Page Banner
-CSF::createSection(MTHAN_PAGE_OPTIONS, [
-    'title'  => 'Page Banner',
-    'icon'   => 'fas fa-image',
-    'fields' => [
         [
             'id'    => 'page_banner_title',
             'type'  => 'text',
             'title' => 'Banner Title',
+            'dependency' => ['hide_page_banner', '==', 'false'],
         ],
         [
             'id'      => 'page_banner_bg',
@@ -146,6 +147,7 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             'title'   => 'Background Image',
             'default' => get_template_directory_uri() . '/assets/images/background/banner-image-1.jpg',
             'preview' => false,
+            'dependency' => ['hide_page_banner', '==', 'false'],
         ],
     ],
 ]);
