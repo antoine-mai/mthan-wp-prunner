@@ -5,9 +5,12 @@
 
 CSF::createSection(MTHAN_THEME_OPTIONS, [
     'id'     => 'search_page_settings',
-    'title'  => 'Search Page',
+    'title'  => 'Search',
     'icon'   => 'fas fa-search',
     'fields' => [
+        mthan_page_select_field('search_page_id', 'Search Page', [
+            'desc' => 'Select a dedicated page for search functionality.',
+        ]),
         [
             'id'          => 'default_search_page',
             'type'        => 'select',
