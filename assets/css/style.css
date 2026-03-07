@@ -16401,3 +16401,27 @@ img.lazy-image.loaded {
 .mthan-mobile-bar .mobile-bar-inner li a:hover {
 	color: #24a77e;
 }
+/* Mega Menu Styles */
+.main-menu .navigation > li.megamenu {
+    position: static !important;
+}
+
+.main-menu .navigation > li.megamenu > ul {
+    width: 100% !important;
+    left: 0 !important;
+    right: 0 !important;
+    padding: 30px 20px !important;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main-menu .navigation > li.megamenu > ul > li {
+    width: 25% !important;
+    border: none !important;
+}
+
+@media only screen and (max-width: 991px) {
+    .main-menu .navigation > li.megamenu > ul > li {
+        width: 100% !important;
+    }
+}

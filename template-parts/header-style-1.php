@@ -142,6 +142,9 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                                 foreach ($menu_items as $item) :
                                     $has_submenu = !empty($item['submenu']);
                                     $li_class = $has_submenu ? 'dropdown' : '';
+                                    if (!empty($item['mega_menu'])) {
+                                        $li_class .= ' megamenu';
+                                    }
                                 ?>
                                 <li class="<?php echo esc_attr($li_class); ?>">
                                     <?php 

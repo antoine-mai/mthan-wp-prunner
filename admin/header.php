@@ -72,6 +72,12 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                                     'default' => '_self',
                                 ],
                                 [
+                                    'id'    => 'mega_menu',
+                                    'type'  => 'switcher',
+                                    'title' => 'Mega Menu',
+                                    'default' => false,
+                                ],
+                                [
                                     'id'    => 'submenu',
                                     'type'  => 'group',
                                     'title' => 'Submenu Items',
