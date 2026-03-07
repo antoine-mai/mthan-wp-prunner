@@ -21,7 +21,7 @@ function mthan_section_facts_html($section_data) {
 function mthan_section_facts_html_1($section_data) {
     $slug = 'facts';
     $bg_url = mthan_sec_img($slug, $section_data, 'bg_image', get_template_directory_uri() . '/assets/images/background/image-6.jpg');
-    $repeater = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $repeater = mthan_get_section_val($slug, $section_data, 'facts_repeater', array());
 ?>
 <section class="facts-section">
     <div class="image-layer" style="background-image: url(<?php echo esc_url($bg_url); ?>);"></div>
@@ -66,7 +66,7 @@ function mthan_section_facts_html_1($section_data) {
  */
 function mthan_section_facts_html_2($section_data) {
     $slug = 'facts';
-    $repeater = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $repeater = mthan_get_section_val($slug, $section_data, 'facts_repeater', array());
 ?>
 <section class="facts-two">
         <div class="outer-container">

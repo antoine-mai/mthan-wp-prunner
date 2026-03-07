@@ -23,7 +23,7 @@ function mthan_section_process_html_1($section_data) {
     $sec_title    = mthan_get_section_val($slug, $section_data, 'sec_title', 'Our Simple Step Working Process');
     $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'how we work');
     $header_text  = mthan_get_section_val($slug, $section_data, 'header_text', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
-    $repeater     = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $repeater     = mthan_get_section_val($slug, $section_data, 'process_repeater', array());
     $fallback_imgs = array(
         get_template_directory_uri() . '/assets/images/resource/featured-image-5.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-6.jpg',
@@ -95,7 +95,7 @@ function mthan_section_process_html_2($section_data) {
     $sec_title    = mthan_get_section_val($slug, $section_data, 'sec_title', 'Our Simple Step Working Process');
     $sec_subtitle = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'how we work');
     $header_text  = mthan_get_section_val($slug, $section_data, 'header_text', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
-    $repeater     = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $repeater     = mthan_get_section_val($slug, $section_data, 'process_repeater', array());
 ?>
 <section class="work-process-two">
         <div class="auto-container">

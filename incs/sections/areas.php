@@ -1,5 +1,4 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
-
 /**
  * Render the areas section.
  *
@@ -7,7 +6,7 @@
  */
 function mthan_section_areas_html($section_data) { 
     $slug = 'areas';
-    $blocks = mthan_get_section_val($slug, $section_data, 'blocks', array());
+    $blocks = mthan_get_section_val($slug, $section_data, 'areas_blocks', []);
     if (empty($blocks)) return;
 ?>
 <section class="areas-section">
@@ -28,9 +27,13 @@ function mthan_section_areas_html($section_data) {
                                 <span class="<?php echo esc_attr($icon); ?>"></span>
                             </div>
                             <h5>
-                                <a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a>
+                                <a href="<?php echo esc_url($link); ?>">
+                                    <?php echo esc_html($title); ?>
+                                </a>
                             </h5>
-                            <div class="sub-text"><?php echo esc_html($subtitle); ?></div>
+                            <div class="sub-text">
+                                <?php echo esc_html($subtitle); ?>
+                            </div>
                         </div>
                         <div class="link-box">
                             <a href="<?php echo esc_url($link); ?>" class="theme-btn">

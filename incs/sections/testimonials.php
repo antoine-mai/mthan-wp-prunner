@@ -8,17 +8,16 @@
 function mthan_section_testimonials_html($section_data)
 {
     $slug = 'testimonials';
-    $style = mthan_get_section_val($slug, $section_data, 'style', 'style-1');
+    $style = mthan_get_section_val($slug, $section_data, 'testimonials_style', 'style-1');
+    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'Guarantee Success');
+    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Testimonials');
+    $sec_desc     = mthan_get_section_val($slug, $section_data, 'sec_desc', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
+    $testimonials = mthan_get_section_val($slug, $section_data, 'testimonials_repeater', array());
 
     if ($style === 'style-2') {
         mthan_section_testimonials_html_2($section_data);
         return;
     }
-
-    $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'Guarantee Success');
-    $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Testimonials');
-    $sec_desc     = mthan_get_section_val($slug, $section_data, 'sec_desc', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
-    $testimonials = mthan_get_section_val($slug, $section_data, 'repeater', array());
 
     $fallback_imgs = array(
         get_template_directory_uri() . '/assets/images/resource/testi-thumb-1.jpg',
@@ -96,7 +95,7 @@ function mthan_section_testimonials_html_2($section_data)
     $slug = 'testimonials';
     $sec_title    = mthan_get_section_val($slug, $section_data, 'title', 'What Our Clients Say');
     $sec_subtitle = mthan_get_section_val($slug, $section_data, 'subtitle', 'Our Testimonials');
-    $testimonials = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $testimonials = mthan_get_section_val($slug, $section_data, 'testimonials_repeater', array());
     $decorative   = mthan_get_section_val($slug, $section_data, 'decorative_thumbs', array());
 
     $fallback_imgs = array(

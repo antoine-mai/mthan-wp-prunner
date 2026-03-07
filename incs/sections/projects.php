@@ -25,7 +25,7 @@ function mthan_section_projects_html_1($section_data) {
     $sec_title     = mthan_get_section_val($slug, $section_data, 'sec_title', 'Recent Gallery');
     $sec_subtitle  = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'Our Projects');
     $sec_sub_icon  = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
-    $repeater      = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $repeater      = mthan_get_section_val($slug, $section_data, 'projects_repeater', array());
     $lower         = mthan_get_section_val($slug, $section_data, 'lower_text', 'We give guarantee for healthy landscapes, You should never compromise with quality.');
     $all_link      = mthan_get_section_val($slug, $section_data, 'view_all_link', '#');
     $fallback_imgs = array(
@@ -86,7 +86,7 @@ function mthan_section_projects_html_2($section_data) {
     $sec_title     = mthan_get_section_val($slug, $section_data, 'sec_title', 'Recent Gallery');
     $sec_subtitle  = mthan_get_section_val($slug, $section_data, 'sec_subtitle', 'Our Projects');
     $sec_sub_icon  = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
-    $repeater      = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $repeater      = mthan_get_section_val($slug, $section_data, 'projects_repeater', array());
     $all_link      = mthan_get_section_val($slug, $section_data, 'view_all_link', '#');
     $fallback_imgs = array(
         get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg',
@@ -153,7 +153,7 @@ function mthan_section_projects_html_3($section_data) {
     $sec_sub_icon     = mthan_sec_img($slug, $section_data, 'sec_subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-four.png');
     $sec_text         = mthan_get_section_val($slug, $section_data, 'sec_text', 'How to pursue pleasure rationally encounter consequences that painful again is there anyone who loves.');
     $filters_repeater = mthan_get_section_val($slug, $section_data, 'filters_repeater', array());
-    $gallery_repeater = mthan_get_section_val($slug, $section_data, 'repeater', array());
+    $gallery_repeater = mthan_get_section_val($slug, $section_data, 'projects_repeater', array());
     $fallback_imgs    = array(
         get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg',
         get_template_directory_uri() . '/assets/images/resource/featured-image-2.jpg',
