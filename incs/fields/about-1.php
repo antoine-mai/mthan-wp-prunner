@@ -6,8 +6,15 @@
 function mthan_section_about_1_options() {
     return [
         mthan_subtitle_field('About Us'),
+        [
+            'id'      => 'subtitle_icon',
+            'type'    => 'media',
+            'library' => 'image',
+            'preview' => false,
+            'title'   => 'Subtitle Icon',
+            'default' => ['url' => get_template_directory_uri() . '/assets/images/icons/leaf-two.png']
+        ],
         mthan_title_field('Professional Gardener'),
-        mthan_icon_field('Section Icon', get_template_directory_uri() . '/assets/images/resource/section-icon-1.png'),
         [
             'id'      => 'about_content',
             'type'    => 'wp_editor',
@@ -18,7 +25,7 @@ function mthan_section_about_1_options() {
             'id'         => 'quote_text',
             'type'       => 'textarea',
             'title'      => 'Quote Text',
-            'default'    => 'Our Company has established a reputation as the leader in landscape design.',
+            'default'    => '“Our Company has established a reputation as the leader in landscape design.”',
         ],
         [
             'id'         => 'quote_author',
@@ -39,22 +46,21 @@ function mthan_section_about_1_options() {
         ],
         [
             'id'    => 'image',
-            'type'  => 'upload',
+            'type'  => 'media',
             'title' => 'Main Image',
-            'preview' => false,
-            'default' => get_template_directory_uri() . '/assets/images/resource/about-1.png',
+            'default' => ['url' => get_template_directory_uri() . '/assets/images/resource/featured-image-1.jpg'],
         ],
         [
             'id'    => 'anim_image',
-            'type'  => 'upload',
-            'preview' => false,
+            'type'  => 'media',
             'title' => 'Animated Image (Small)',
-            'default' => get_template_directory_uri() . '/assets/images/resource/anim-image-1.png',
+            'default' => ['url' => get_template_directory_uri() . '/assets/images/resource/anim-image-1.png'],
         ],
         [
             'id'    => 'video_url',
             'type'  => 'text',
             'title' => 'Video URL',
+            'default' => 'https://www.youtube.com/watch?v=CB_rXABU8DI',
         ],
         mthan_btn_text_field('Read More'),
         mthan_btn_link_field('#'),
@@ -62,13 +68,13 @@ function mthan_section_about_1_options() {
             'id'      => 'exp_count',
             'type'    => 'text',
             'title'   => 'Experience Years (Number)',
-            'default' => '25',
+            'default' => '2k',
         ],
         [
             'id'      => 'exp_text',
             'type'    => 'textarea',
             'title'   => 'Experience Text',
-            'default' => 'Years of <br>Experience',
+            'default' => 'Projects <br>were completed',
         ],
     ];
 }
