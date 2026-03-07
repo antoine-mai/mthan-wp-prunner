@@ -7,7 +7,12 @@
 /**
  * Callback function used by CSF to render the field container.
  */
-function mthan_render_ajax_section_fields_container($field, $value, $unique) {
+function mthan_render_ajax_section_fields_container() {
+    $args = func_get_args();
+    // In CSF callback field, the first argument is normally whatever is in 'args' key of field config
+    $field_args = isset($args[0]) ? $args[0] : [];
+    $unique = isset($field_args['unique']) ? $field_args['unique'] : '';
+    
     echo '<div class="mthan-section-ajax-container" data-unique="' . esc_attr($unique) . '">';
     // Fields will be injected here via JS
     echo '</div>';
