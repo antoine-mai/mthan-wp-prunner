@@ -13,10 +13,12 @@ function mthan_section_about_1_html($section_data) { ?>
     $q_text    = mthan_get_section_val($slug, $section_data, 'quote_text');
     $anim_img  = mthan_get_section_val($slug, $section_data, 'anim_image');
     $vid_url   = mthan_get_section_val($slug, $section_data, 'video_url');
+    $q_thumb   = mthan_get_section_val($slug, $section_data, 'quote_thumb');
     $exp_count = mthan_get_section_val($slug, $section_data, 'exp_count');
     $sub_title = mthan_get_section_val($slug, $section_data, 'subtitle');
     $btn_text  = mthan_get_section_val($slug, $section_data, 'btn_text');
     $exp_text  = mthan_get_section_val($slug, $section_data, 'exp_text');
+    $exp_icon  = mthan_get_section_val($slug, $section_data, 'exp_icon');
     $title     = mthan_get_section_val($slug, $section_data, 'title');
     $image     = mthan_get_section_val($slug, $section_data, 'image');
     $btn_link  = mthan_sec_link($slug, $section_data, 'btn_link');
@@ -48,7 +50,7 @@ function mthan_section_about_1_html($section_data) { ?>
                         <?php if($vid_url) { ?>
                         <a href="<?php echo esc_url($vid_url); ?>" class="vid-link lightbox-image">
                             <span class="image">
-                                <img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/quote-thumb.jpg" alt="" />
+                                <img src="<?php echo esc_url($q_thumb); ?>" alt="" />
                             </span>
                             <span class="icon flaticon-play-button-1"></span>
                         </a>
@@ -97,7 +99,7 @@ function mthan_section_about_1_html($section_data) { ?>
                             <img src="<?php echo esc_url($anim_img); ?>" alt="">
                         </div>
                         <div class="caption">
-                            <span class="icon flaticon-leaves"></span> 
+                            <span class="icon <?php echo esc_attr($exp_icon); ?>"></span> 
                             <span class="big-txt">
                                 <?php echo esc_html($exp_count); ?>
                             </span> 

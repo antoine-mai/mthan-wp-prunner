@@ -73,6 +73,13 @@ function mthan_section_about_1_options() {
             'type'  => 'text',
             'title' => 'Video URL',
         ],
+        [
+            'id'      => 'quote_thumb',
+            'type'    => 'upload',
+            'preview' => false,
+            'title'   => 'Video Thumbnail Image',
+            'default' => get_template_directory_uri() . '/assets/images/resource/quote-thumb.jpg',
+        ],
         mthan_btn_text_field('Read More'),
         mthan_btn_link_field('#'),
         [
@@ -86,6 +93,12 @@ function mthan_section_about_1_options() {
             'type'    => 'textarea',
             'title'   => 'Experience Text',
             'default' => 'Years of <br>Experience',
+        ],
+        [
+            'id'      => 'exp_icon',
+            'type'    => 'text',
+            'title'   => 'Experience Icon Class',
+            'default' => 'flaticon-leaves',
         ],
     ];
 }

@@ -8,11 +8,10 @@ function mthan_section_about_2_options() {
         mthan_subtitle_field('About Us'),
         [
             'id'      => 'subtitle_icon',
-            'type'    => 'media',
-            'library' => 'image',
+            'type'    => 'upload',
             'preview' => false,
             'title'   => 'Subtitle Icon',
-            'default' => ['url' => get_template_directory_uri() . '/assets/images/icons/leaf-two.png']
+            'default' => get_template_directory_uri() . '/assets/images/icons/leaf-two.png'
         ],
         mthan_title_field('Professional Gardener'),
         [
@@ -41,7 +40,8 @@ function mthan_section_about_2_options() {
         ],
         [
             'id'    => 'image',
-            'type'  => 'media',
+            'type'  => 'upload',
+            'preview' => false,
             'title' => 'Main Image',
         ],
         [

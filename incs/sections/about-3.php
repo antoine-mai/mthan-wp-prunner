@@ -8,12 +8,12 @@ function mthan_section_about_3_html($section_data) {
     $sub_title = mthan_get_section_val($slug, $section_data, 'subtitle', 'About Us');
     $title     = mthan_get_section_val($slug, $section_data, 'title', 'Professional Gardener');
     $content   = mthan_get_section_val($slug, $section_data, 'about_content', '');
-    $image     = mthan_sec_img($slug, $section_data, 'image', get_template_directory_uri() . '/assets/images/resource/about-1.png');
-    $sub_icon  = mthan_sec_img($slug, $section_data, 'subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
+    $image     = mthan_get_section_val($slug, $section_data, 'image', get_template_directory_uri() . '/assets/images/resource/about-1.png');
+    $sub_icon  = mthan_get_section_val($slug, $section_data, 'subtitle_icon', get_template_directory_uri() . '/assets/images/icons/leaf-two.png');
     $q_text    = mthan_get_section_val($slug, $section_data, 'quote_text', '');
     $q_auth    = mthan_get_section_val($slug, $section_data, 'quote_author', '');
     $q_des     = mthan_get_section_val($slug, $section_data, 'quote_designation', '');
-    $sig_img   = mthan_sec_img($slug, $section_data, 'signature_image', '');
+    $sig_img   = mthan_get_section_val($slug, $section_data, 'signature_image', '');
     $iso_num   = mthan_get_section_val($slug, $section_data, 'iso_number', 'ISO 9001:2015');
     ?>
     <section class="about-three">
