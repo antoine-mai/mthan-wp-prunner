@@ -14,12 +14,13 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
             <div class="inner clearfix">
                 <div class="top-left">
                     <?php if (!empty($header_tabs['header_2_quote_text'])) { ?>
-                    <div class="quote-link"><?php echo esc_html($header_tabs['header_2_quote_text']); ?> 
-                        <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { ?>
-                        <?php 
-                        $quote_btn_url = !empty($header_tabs['header_2_quote_btn_url']) ? (is_numeric($header_tabs['header_2_quote_btn_url']) ? get_permalink($header_tabs['header_2_quote_btn_url']) : $header_tabs['header_2_quote_btn_url']) : '/contact';
+                    <div class="quote-link">
+                        <?php echo esc_html($header_tabs['header_2_quote_text']); ?> 
+                        <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { 
+                             $quote_btn_url = !empty($header_tabs['header_2_quote_btn_url']) ? (is_numeric($header_tabs['header_2_quote_btn_url']) ? get_permalink($header_tabs['header_2_quote_btn_url']) : $header_tabs['header_2_quote_btn_url']) : '#';
                         ?>
-                        <a href="<?php echo esc_url($quote_btn_url); ?>"><?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?>
+                        <a href="<?php echo esc_url($quote_btn_url); ?>">
+                            <?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?>
                             <span class="icon flaticon-play-button-1"></span>
                         </a>
                         <?php } ?>
@@ -55,6 +56,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
             </div>
         </div>
     </div>
+
     <!-- Header Upper -->
     <div class="header-upper-two">
         <div class="auto-container">
@@ -66,7 +68,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                         $logo_url = mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
                         ?>
                         <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
-                            <img src="<?php echo esc_url($logo_url); ?>" alt="<?php bloginfo('name'); ?>" />
+                            <img src="<?php echo esc_url($logo_url); ?>" alt="<?php bloginfo('name'); ?>">
                         </a>
                     </div>
                 </div>
@@ -77,7 +79,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                             <?php 
                             $iso_img_url = mthan_get_img_url($header_tabs['header_2_iso_image'] ?? '', get_template_directory_uri() . '/assets/images/icons/iso-icon.png');
                             ?>
-                            <img src="<?php echo esc_url($iso_img_url); ?>" alt="" />
+                            <img src="<?php echo esc_url($iso_img_url); ?>" alt="">
                         </span>
                     </div>
                     <div class="number">
@@ -235,7 +237,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 <!--Contact Btn-->
                 <div class="contact-link">
                     <?php 
-                    $quote_btn_url = !empty($header_tabs['header_2_quote_btn_url']) ? (is_numeric($header_tabs['header_2_quote_btn_url']) ? get_permalink($header_tabs['header_2_quote_btn_url']) : $header_tabs['header_2_quote_btn_url']) : '/contact';
+                    $quote_btn_url = !empty($header_tabs['header_2_quote_btn_url']) ? (is_numeric($header_tabs['header_2_quote_btn_url']) ? get_permalink($header_tabs['header_2_quote_btn_url']) : $header_tabs['header_2_quote_btn_url']) : '#';
                     ?>
                     <a href="<?php echo esc_url($quote_btn_url); ?>" class="theme-btn btn-style-three">
                         <span class="btn-title">

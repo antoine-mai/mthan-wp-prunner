@@ -255,6 +255,64 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'title'   => 'ISO Image',
                             'preview' => false,
                         ],
+                        [
+                            'type'    => 'subheading',
+                            'content' => 'Color Settings',
+                        ],
+                        [
+                            'id'          => 'header_2_topbar_bg',
+                            'type'        => 'color',
+                            'title'       => 'Topbar Background',
+                            'default'     => '#f4f7f7',
+                            'output'      => '.main-header.header-style-two .header-top-two',
+                            'output_mode' => 'background-color',
+                        ],
+                        [
+                            'id'          => 'header_2_topbar_color',
+                            'type'        => 'color',
+                            'title'       => 'Topbar Text Color',
+                            'default'     => '#132728',
+                            'output'      => [
+                                '.main-header.header-style-two .header-top-two .inner .top-left .quote-link',
+                                '.main-header.header-style-two .header-top-two .inner .top-right .top-links li'
+                            ],
+                            'output_mode' => 'color',
+                        ],
+                        [
+                            'id'          => 'header_2_upper_bg',
+                            'type'        => 'color',
+                            'title'       => 'Header Upper Background',
+                            'default'     => '#ffffff',
+                            'output'      => '.main-header.header-style-two .header-upper-two',
+                            'output_mode' => 'background-color',
+                        ],
+                        [
+                            'id'          => 'header_2_menu_bg',
+                            'type'        => 'color',
+                            'title'       => 'Menu Bar Background',
+                            'default'     => '#132728',
+                            'output'      => '.main-header.header-style-two .header-lower',
+                            'output_mode' => 'background-color',
+                        ],
+                        [
+                            'id'          => 'header_2_menu_color',
+                            'type'        => 'color',
+                            'title'       => 'Menu Text Color',
+                            'default'     => '#ffffff',
+                            'output'      => '.main-header.header-style-two .main-menu .navigation > li > a',
+                            'output_mode' => 'color',
+                        ],
+                        [
+                            'id'          => 'header_2_menu_hover_color',
+                            'type'        => 'color',
+                            'title'       => 'Menu Hover/Active Color',
+                            'default'     => '#24a77e',
+                            'output'      => [
+                                '.main-header.header-style-two .main-menu .navigation > li:hover > a',
+                                '.main-header.header-style-two .main-menu .navigation > li.current > a'
+                            ],
+                            'output_mode' => 'color',
+                        ],
                     ]
                 ],
                 // 4. Sticky Header
