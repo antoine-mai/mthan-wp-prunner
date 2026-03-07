@@ -23,7 +23,7 @@ function mthan_section_about_1_html($section_data) { ?>
     $exp_icon  = mthan_get_section_val($slug, $section_data, 'exp_icon');
     $title     = mthan_get_section_val($slug, $section_data, 'title');
     
-    $image     = mthan_get_section_val($slug, $section_data, 'image');
+    $image     = mthan_sec_img($slug, $section_data, 'image');
 
     $btn_link  = mthan_sec_link($slug, $section_data, 'btn_link');
     
