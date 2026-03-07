@@ -11,7 +11,74 @@ CSF::createMetabox(MTHAN_PAGE_OPTIONS, [
     'priority'     => 'high',
 ]);
 
-// General
+// Sections
+$available_sections = mthan_get_available_base_sections();
+CSF::createSection(MTHAN_PAGE_OPTIONS, [
+    'title'  => 'Sections',
+    'icon'   => 'fas fa-layer-group',
+    'fields' => [
+        [
+            'type'    => 'subheading',
+            'content' => 'Before Content',
+        ],
+        [
+            'id'                    => 'page_before_content',
+            'type'                  => 'group',
+            'button_title'          => 'Add Section',
+            'accordion_title_auto'  => true,
+            'accordion_title_prefix'=> 'Section: ',
+            'accordion_title_number'=> true,
+            'fields'                => array_merge(
+                [
+                    [
+                        'id'         => 'name',
+                        'type'       => 'text',
+                        'title'      => 'Name',
+                        'attributes' => ['data-section-name' => '1', 'placeholder' => 'Section name'],
+                    ],
+                    [
+                        'id'      => 'section_template',
+                        'type'    => 'select',
+                        'title'   => 'Select Template',
+                        'options' => empty($available_sections) ? ['' => 'No sections enabled'] : $available_sections,
+                    ],
+                ],
+                mthan_get_section_instance_fields()
+            ),
+        ],
+        [
+            'type'    => 'subheading',
+            'content' => 'After Content',
+        ],
+        [
+            'id'                    => 'page_after_content',
+            'type'                  => 'group',
+            'button_title'          => 'Add Section',
+            'accordion_title_auto'  => true,
+            'accordion_title_prefix'=> 'Section: ',
+            'accordion_title_number'=> true,
+            'fields'                => array_merge(
+                [
+                    [
+                        'id'         => 'name',
+                        'type'       => 'text',
+                        'title'      => 'Name',
+                        'attributes' => ['data-section-name' => '1', 'placeholder' => 'Section name'],
+                    ],
+                    [
+                        'id'      => 'section_template',
+                        'type'    => 'select',
+                        'title'   => 'Select Template',
+                        'options' => empty($available_sections) ? ['' => 'No sections enabled'] : $available_sections,
+                    ],
+                ],
+                mthan_get_section_instance_fields()
+            ),
+        ],
+    ],
+]);
+
+// Layout
 CSF::createSection(MTHAN_PAGE_OPTIONS, [
     'title'  => 'Layout',
     'icon'   => 'fas fa-columns',
