@@ -4,7 +4,7 @@
 **/
 CSF::createMetabox(MTHAN_PAGE_OPTIONS, [
     'title'        => 'Page Options',
-    'post_type'    => 'mthan_page',
+    'post_type'    => 'page',
     'show_restore' => true,
     'tabs'         => 'horizontal',
 ]);

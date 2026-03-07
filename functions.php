@@ -38,3 +38,20 @@ $mthan_autoload_incs(get_template_directory() . '/incs');
 
 // ── Theme Options (loads admin/layouts.php → section-instance-fields.php) ──
 require_once get_template_directory() . '/incs/theme-options.php';
+
+// ──────────────────────────────────────────────────────────────────
+// Core Hook Bindings
+// ──────────────────────────────────────────────────────────────────
+
+// From incs/admin-helpers.php
+add_action('admin_footer', 'mthan_admin_section_autofill_js');
+add_action('wp_ajax_mthan_git_update', 'mthan_ajax_git_update');
+add_action('admin_footer', 'mthan_admin_git_update_js');
+
+// From incs/theme-setup.php
+add_action('after_setup_theme', 'mthan_setup');
+add_action('wp_enqueue_scripts', 'mthan_enqueue_assets');
+add_filter('nav_menu_css_class', 'mthan_nav_menu_css_class', 10, 2);
+add_action('wp_head', 'mthan_wp_head_scripts');
+add_action('wp_body_open', 'mthan_wp_body_open_scripts');
+add_action('wp_footer', 'mthan_wp_footer_scripts', 999);

@@ -13,7 +13,6 @@ if (!function_exists('mthan_setup')) {
         load_theme_textdomain('mthan-wp', get_template_directory() . '/languages');
     }
 }
-add_action('after_setup_theme', 'mthan_setup');
 
 // ──────────────────────────────────────────────────────────────────
 // Enqueue Styles & Scripts
@@ -45,40 +44,39 @@ function mthan_enqueue_assets()
     // Theme Script
     wp_enqueue_script('mthan-script', get_template_directory_uri() . '/assets/js/main.js', array('jquery', 'mthan-custom-script'), '1.0', true);
 }
-add_action('wp_enqueue_scripts', 'mthan_enqueue_assets');
 
 // ──────────────────────────────────────────────────────────────────
 // Nav Menu: add 'dropdown' class to items with children
 // The theme JS (custom-script.js) looks for li.dropdown to inject
 // the angle-right icon.
 // ──────────────────────────────────────────────────────────────────
-add_filter('nav_menu_css_class', function ($classes, $item) {
+function mthan_nav_menu_css_class($classes, $item) {
     if (in_array('menu-item-has-children', $classes, true)) {
         $classes[] = 'dropdown';
     }
     return $classes;
-}, 10, 2);
+}
 
 // ──────────────────────────────────────────────────────────────────
 // Custom Scripts Output
 // ──────────────────────────────────────────────────────────────────
-add_action('wp_head', function () {
+function mthan_wp_head_scripts() {
     $options = get_option('mthan_theme_options');
     if (!empty($options['header_scripts'])) {
         echo $options['header_scripts'] . "\n";
     }
-});
+}
 
-add_action('wp_body_open', function () {
+function mthan_wp_body_open_scripts() {
     $options = get_option('mthan_theme_options');
     if (!empty($options['body_scripts'])) {
         echo $options['body_scripts'] . "\n";
     }
-});
+}
 
-add_action('wp_footer', function () {
+function mthan_wp_footer_scripts() {
     $options = get_option('mthan_theme_options');
     if (!empty($options['footer_scripts'])) {
         echo $options['footer_scripts'] . "\n";
     }
-}, 999);
+}
