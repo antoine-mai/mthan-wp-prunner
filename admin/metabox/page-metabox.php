@@ -11,6 +11,18 @@ CSF::createMetabox(MTHAN_PAGE_OPTIONS, [
     'priority'     => 'high',
 ]);
 
+// Theme Options data for inheritance
+$theme_options = get_option('mthan_theme_options', []);
+$layouts_tabs  = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : [];
+
+// Banner Default Background
+$default_banner_bg = !empty($layouts_tabs['global_page_banner_bg']['url']) 
+    ? $layouts_tabs['global_page_banner_bg']['url'] 
+    : get_template_directory_uri() . '/assets/images/background/banner-image-1.jpg';
+
+// Banner Default Visibility (If global is off, default local should probably be hide?)
+$global_banner_enabled = isset($layouts_tabs['global_page_banner_enable']) ? $layouts_tabs['global_page_banner_enable'] : true;
+
 // Sections
 $available_sections = mthan_get_available_base_sections();
 CSF::createSection(MTHAN_PAGE_OPTIONS, [
@@ -78,7 +90,7 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
     ],
 ]);
 
-// Settings (formerly Layout)
+// Settings
 CSF::createSection(MTHAN_PAGE_OPTIONS, [
     'title'  => 'Settings',
     'icon'   => 'fas fa-cogs',
@@ -133,19 +145,20 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             'id'      => 'hide_page_banner',
             'type'    => 'switcher',
             'title'   => 'Hide Page Banner',
-            'default' => false,
+            'default' => !$global_banner_enabled,
         ],
         [
             'id'    => 'page_banner_title',
             'type'  => 'text',
             'title' => 'Banner Title',
+            'placeholder' => get_the_title(),
             'dependency' => ['hide_page_banner', '==', 'false'],
         ],
         [
             'id'      => 'page_banner_bg',
             'type'    => 'upload',
             'title'   => 'Background Image',
-            'default' => get_template_directory_uri() . '/assets/images/background/banner-image-1.jpg',
+            'default' => $default_banner_bg,
             'preview' => false,
             'dependency' => ['hide_page_banner', '==', 'false'],
         ],
