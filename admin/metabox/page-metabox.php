@@ -7,6 +7,8 @@ CSF::createMetabox(MTHAN_PAGE_OPTIONS, [
     'post_type'    => 'page',
     'show_restore' => true,
     'tabs'         => 'horizontal',
+    'context'      => 'normal',
+    'priority'     => 'high',
 ]);
 
 // General
