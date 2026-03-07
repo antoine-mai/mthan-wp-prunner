@@ -65,6 +65,10 @@ function mthan_render_page_sections($position = 'before') {
     $meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
     $sections = isset($meta['page_sections']) ? $meta['page_sections'] : array();
 
+    if (!is_array($sections)) {
+        return;
+    }
+
     foreach ($sections as $section) {
         $template = isset($section['template']) ? $section['template'] : '';
         if (empty($template)) continue;
