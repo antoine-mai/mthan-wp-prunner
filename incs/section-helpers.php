@@ -127,7 +127,8 @@ function mthan_include_section_items($items)
     $sections_dir = get_template_directory() . '/incs/sections/';
     $style_map    = mthan_get_section_style_map();
 
-    foreach ((array)$items as $item) {
+    foreach ((array)$items as $item)
+    {
         if (!is_array($item) || empty($item['section_template'])) {
             continue;
         }
