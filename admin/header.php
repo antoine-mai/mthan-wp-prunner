@@ -123,12 +123,9 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'title'   => 'Topbar Tip Text',
                             'default' => 'Lawn Maintenance Tips',
                         ],
-                        [
-                            'id'      => 'header_1_tip_link',
-                            'type'    => 'text',
-                            'title'   => 'Topbar Tip Link',
-                            'default' => '#',
-                        ],
+                        mthan_page_select_field('header_1_tip_link', 'Topbar Tip Link', [
+                            'default' => '/contact',
+                        ]),
                         [
                             'id'      => 'header_1_callback_text',
                             'type'    => 'text',
@@ -229,14 +226,11 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'id'      => 'header_2_quote_btn_text',
                             'type'    => 'text',
                             'title'   => 'Topbar Button Text',
-                            'default' => 'Get a Quote',
+                            'default' => 'Contact Us',
                         ],
-                        [
-                            'id'      => 'header_2_quote_btn_url',
-                            'type'    => 'text',
-                            'title'   => 'Topbar Button URL',
-                            'default' => '#',
-                        ],
+                        mthan_page_select_field('header_2_quote_btn_url', 'Topbar Button URL', [
+                            'default' => '/contact',
+                        ]),
                         [
                             'id'      => 'header_2_help_text',
                             'type'    => 'text',

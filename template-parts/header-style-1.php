@@ -9,7 +9,10 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 <div class="top-left">
                     <?php if (!empty($header_tabs['header_1_tip_text'])) { ?>
                     <div class="tip-link">
-                        <a href="<?php echo esc_url($header_tabs['header_1_tip_link'] ?? '#'); ?>">
+                        <?php 
+                        $tip_link = !empty($header_tabs['header_1_tip_link']) ? (is_numeric($header_tabs['header_1_tip_link']) ? get_permalink($header_tabs['header_1_tip_link']) : $header_tabs['header_1_tip_link']) : '/contact';
+                        ?>
+                        <a href="<?php echo esc_url($tip_link); ?>">
                             <span class="icon flaticon-play-button-1"></span> 
                             <?php echo esc_html($header_tabs['header_1_tip_text']); ?>
                         </a>

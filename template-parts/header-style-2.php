@@ -16,7 +16,10 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                     <?php if (!empty($header_tabs['header_2_quote_text'])) { ?>
                     <div class="quote-link"><?php echo esc_html($header_tabs['header_2_quote_text']); ?> 
                         <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { ?>
-                        <a href="<?php echo esc_url($header_tabs['header_2_quote_btn_url'] ?? '#'); ?>"><?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?>
+                        <?php 
+                        $quote_btn_url = !empty($header_tabs['header_2_quote_btn_url']) ? (is_numeric($header_tabs['header_2_quote_btn_url']) ? get_permalink($header_tabs['header_2_quote_btn_url']) : $header_tabs['header_2_quote_btn_url']) : '/contact';
+                        ?>
+                        <a href="<?php echo esc_url($quote_btn_url); ?>"><?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?>
                             <span class="icon flaticon-play-button-1"></span>
                         </a>
                         <?php } ?>
@@ -231,7 +234,10 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { ?>
                 <!--Contact Btn-->
                 <div class="contact-link">
-                    <a href="<?php echo esc_url($header_tabs['header_2_quote_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three">
+                    <?php 
+                    $quote_btn_url = !empty($header_tabs['header_2_quote_btn_url']) ? (is_numeric($header_tabs['header_2_quote_btn_url']) ? get_permalink($header_tabs['header_2_quote_btn_url']) : $header_tabs['header_2_quote_btn_url']) : '/contact';
+                    ?>
+                    <a href="<?php echo esc_url($quote_btn_url); ?>" class="theme-btn btn-style-three">
                         <span class="btn-title">
                             <?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?> 
                             <i class="arrow flaticon-play-button-1"></i>

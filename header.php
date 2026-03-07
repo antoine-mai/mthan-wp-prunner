@@ -1,16 +1,18 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
+/**
+ * 
+**/
+$theme_options = get_option('mthan_theme_options');
+?>
 <!doctype html>
 <html <?php language_attributes(); ?>>
 
 <head>
     <meta charset="<?php bloginfo('charset'); ?>">
-    <?php
-$theme_options = get_option('mthan_theme_options');
-if (!empty($theme_options['favicon']['url'])) {
-    echo '<link rel="shortcut icon" href="' . esc_url($theme_options['favicon']['url']) . '" type="image/x-icon">';
-    echo '<link rel="icon" href="' . esc_url($theme_options['favicon']['url']) . '" type="image/x-icon">';
-}
-?>
+    <?php if (!empty($theme_options['favicon']['url'])) { ?>
+    <link rel="shortcut icon" href="<?php echo esc_url($theme_options['favicon']['url']); ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo esc_url($theme_options['favicon']['url']); ?>" type="image/x-icon">
+    <?php } ?>
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
     <?php wp_head(); ?>
 </head>
@@ -20,9 +22,11 @@ if (!empty($theme_options['favicon']['url'])) {
 
     <div class="page-wrapper">
         <?php
-        $theme_options = get_option('mthan_theme_options');
         $layouts_tabs  = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : [];
-        $enable_preloader = isset($layouts_tabs['preloader']) ? $layouts_tabs['preloader'] : true;
+        $enable_preloader = true;
+        if (isset($layouts_tabs['preloader'])) {
+            $enable_preloader = (bool)$layouts_tabs['preloader'];
+        }
         
         if ($enable_preloader) :
         ?>
