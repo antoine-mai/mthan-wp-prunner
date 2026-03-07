@@ -1,33 +1,5 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 
-// ── Register MTHAN Parent Menu ─────────────────────────────────────────
-add_action('admin_menu', function() {
-    add_menu_page(
-        'MTHAN Management',
-        'MTHAN',
-        'manage_options',
-        'mthan-admin',
-        '', // Callback empty because we use submenus
-        get_template_directory_uri() . '/assets/images/mthan-logo.png',
-        2
-    );
-});
-
-// ── Admin Bar Menu Hook ──────────────────────────────────────────────────
-add_action('admin_bar_menu', function($wp_admin_bar) {
-    if (!current_user_can('manage_options')) {
-        return;
-    }
-    $logo_url = get_template_directory_uri() . '/assets/images/mthan-logo.png';
-    $title = '<img src="' . esc_url($logo_url) . '" style="width:18px; height:18px; vertical-align:middle; margin-top:-3px; margin-right:6px; border-radius:2px;"> MTHAN';
-    
-    $wp_admin_bar->add_node(array(
-        'id'    => 'mthan-admin',
-        'title' => $title,
-        'href'  => admin_url('admin.php?page=mthan-admin'),
-    ));
-}, 41); // Priority 41 places it right after 'Customize' (priority 40)
-
 if (class_exists('CSF')) {
 
     $admin_dir = get_template_directory() . '/admin/';
@@ -35,10 +7,13 @@ if (class_exists('CSF')) {
 
     // ── Create Single Options Instance ─────────────────────────────────────
     CSF::createOptions(MTHAN_THEME_OPTIONS, [
-        'menu_title'         => 'Options',
-        'menu_slug'          => 'mthan-admin', // Same as parent to be the default landing
-        'menu_type'          => 'submenu',
-        'menu_parent'        => 'mthan-admin',
+        'menu_title'         => 'MTHAN',
+        'menu_slug'          => 'mthan-admin',
+        'menu_type'          => 'menu',
+        'menu_position'      => 2,
+        'menu_icon'          => get_template_directory_uri() . '/assets/images/mthan-logo.png',
+        'show_sub_menu'      => true,
+        'show_bar_menu'      => true,
         'framework_title'    => 'MTHAN <small>Management</small>',
         'theme'              => 'dark',
         'database'           => 'option',
@@ -50,29 +25,10 @@ if (class_exists('CSF')) {
         'nav'                => 'normal', // Left-side tabs
     ]);
 
-    // ── Load All Sections ──────────────────────────────────────────────────
-    $admin_files = [
-        'general.php',
-        'social.php',
-        'typography.php',
-        'layouts.php',
-        'header.php',
-        'blog.php',
-        'main-services.php',
-        'contact.php',
-        'home-page.php',
-        'search.php',
-        'footer.php',
-        'mobile-bar.php',
-        'scripts.php',
-        'sections.php',
-        'update.php',
-    ];
-
-    foreach ($admin_files as $file) {
-        if (file_exists($admin_dir . $file)) {
-            require_once $admin_dir . $file;
-        }
+    // ── Load All Sections dynamically ────────────────────────────────────────
+    foreach (glob($admin_dir . '*.php') as $file) {
+        if (basename($file) === 'fields.php') continue;
+        require_once $file;
     }
 
     // Metaboxes

@@ -12,18 +12,29 @@ define('MTHAN_MENU_OPTIONS', 'mthan_menu_options');
 // ── Core framework ─────────────────────────────────────────────────
 require_once get_template_directory() . '/incs/codestar/autoload.php';
 
-// ── Theme helpers ──────────────────────────────────────────────────
-require_once get_template_directory() . '/incs/section-helpers.php';
-require_once get_template_directory() . '/incs/theme-setup.php';
-require_once get_template_directory() . '/incs/admin-helpers.php';
-require_once get_template_directory() . '/incs/custom-post-type.php';
+// ── Autoload /incs/ directory ──────────────────────────────────────
+$mthan_autoload_incs = function($dir) use (&$mthan_autoload_incs) {
+    if (!is_dir($dir)) return;
 
-// ── Section files (all function-based, safe to require early) ──────
-// Must load before theme-options.php so mthan_section_*_options()
-// functions exist when section-instance-fields.php runs.
-foreach (glob(get_template_directory() . '/incs/sections/*.php') as $file) {
-    require_once $file;
-}
+    // Load all PHP files in the current directory
+    foreach (glob($dir . '/*.php') as $file) {
+        // Skip theme-options.php, we need to load it last
+        if (basename($file) === 'theme-options.php') {
+            continue;
+        }
+        require_once $file;
+    }
+
+    // Recursively load subdirectories (except codestar framework)
+    foreach (glob($dir . '/*', GLOB_ONLYDIR) as $subdir) {
+        if (basename($subdir) === 'codestar') {
+            continue;
+        }
+        $mthan_autoload_incs($subdir);
+    }
+};
+
+$mthan_autoload_incs(get_template_directory() . '/incs');
 
 // ── Theme Options (loads admin/layouts.php → section-instance-fields.php) ──
 require_once get_template_directory() . '/incs/theme-options.php';
