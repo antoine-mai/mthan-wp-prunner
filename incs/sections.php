@@ -30,6 +30,8 @@ function mthan_get_sections() {
         'CallToAction2' => 'Call To Action 2',
         'Contact1'      => 'Contact 1',
         'Contact2'      => 'Contact 2',
+        'Awards'        => 'Awards',
+        'Sponsors'      => 'Sponsors',
         // Add more sections here...
     ];
 }
