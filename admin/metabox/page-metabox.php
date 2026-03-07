@@ -115,6 +115,13 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             ],
         ],
         [
+            'id'      => 'hide_global_sections',
+            'type'    => 'switcher',
+            'title'   => 'Disable Global Sections',
+            'desc'    => 'If enabled, global sections from Theme Options > Layouts will not be rendered on this page.',
+            'default' => false,
+        ],
+        [
             'id'      => 'hide_page_banner',
             'type'    => 'switcher',
             'title'   => 'Hide Page Banner',

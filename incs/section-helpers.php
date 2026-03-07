@@ -314,6 +314,14 @@ function mthan_render_global_sections($position = 'before', $page_type = 'page')
     if ($page_type !== 'page' && $page_type !== 'main') {
         $disable_global = !empty($layouts_tabs['disable_page_layout_' . $page_type]) ? $layouts_tabs['disable_page_layout_' . $page_type] : false;
     }
+
+    // Per-page override: Hide all global sections
+    if (is_singular('page')) {
+        $page_meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
+        if (!empty($page_meta['hide_global_sections'])) {
+            return; // Completely stop rendering global sections for this page
+        }
+    }
     
     if (!$disable_global) {
         // Fallback checks 'main_layout_' for legacy data, but defaults to 'page_layout_'
