@@ -28,13 +28,22 @@ function mthan_section_Areas_html($section_data)
                         <div class="area-block col-lg-4 col-md-12 col-sm-12">
                             <div class="inner">
                                 <div class="content">
-                                    <div class="icon"><span class="<?php echo esc_attr($icon); ?>"></span></div>
-                                    <h5><a href="<?php echo esc_url($link); ?>"><?php echo esc_html($title); ?></a></h5>
-                                    <div class="sub-text"><?php echo esc_html($sub); ?></div>
+                                    <div class="icon">
+                                        <span class="<?php echo esc_attr($icon); ?>"></span>
+                                    </div>
+                                    <h5>
+                                        <a href="<?php echo esc_url($link); ?>">
+                                            <?php echo esc_html($title); ?>
+                                        </a>
+                                    </h5>
+                                    <div class="sub-text">
+                                        <?php echo esc_html($sub); ?>
+                                    </div>
                                 </div>
                                 <div class="link-box">
                                     <a href="<?php echo esc_url($link); ?>" class="theme-btn">
-                                        <span class="flaticon-plus-1"></span></a>
+                                        <span class="flaticon-plus-1"></span>
+                                    </a>
                                 </div>
                             </div>
                         </div>
