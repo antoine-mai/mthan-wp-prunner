@@ -129,10 +129,26 @@ $bottom_links      = $footer_tabs['footer_bottom_links'] ?? [];
                                 <div class="follow">
                                     <ul class="clearfix">
                                         <li><?php echo esc_html($social_label); ?></li>
-                                        <?php if (!empty($theme_options['social_facebook'])) : ?><li><a href="<?php echo esc_url($theme_options['social_facebook']); ?>"><span class="fab fa-facebook-f"></span></a></li><?php endif; ?>
-                                        <?php if (!empty($theme_options['social_twitter'])) : ?><li><a href="<?php echo esc_url($theme_options['social_twitter']); ?>"><span class="fab fa-twitter"></span></a></li><?php endif; ?>
-                                        <?php if (!empty($theme_options['social_linkedin'])) : ?><li><a href="<?php echo esc_url($theme_options['social_linkedin']); ?>"><span class="fab fa-linkedin-in"></span></a></li><?php endif; ?>
-                                        <?php if (!empty($theme_options['social_instagram'])) : ?><li><a href="<?php echo esc_url($theme_options['social_instagram']); ?>"><span class="fab fa-instagram"></span></a></li><?php endif; ?>
+                                        <?php 
+                                        if (!empty($theme_options['social_links'])) :
+                                            foreach ($theme_options['social_links'] as $social) :
+                                                $s_url   = !empty($social['url']) ? $social['url'] : '#';
+                                                $s_title = !empty($social['title']) ? $social['title'] : '';
+                                                $s_icon  = !empty($social['icon']) ? mthan_get_img_url($social['icon']) : '';
+                                        ?>
+                                        <li>
+                                            <a href="<?php echo esc_url($s_url); ?>">
+                                                <?php if ($s_icon) : ?>
+                                                    <img src="<?php echo esc_url($s_icon); ?>" alt="<?php echo esc_attr($s_title); ?>" style="width: 16px; height: auto; vertical-align: middle;">
+                                                <?php else : ?>
+                                                    <span class="fab fa-<?php echo strtolower(esc_attr($s_title)); ?>"></span>
+                                                <?php endif; ?>
+                                            </a>
+                                        </li>
+                                        <?php 
+                                            endforeach;
+                                        endif; 
+                                        ?>
                                     </ul>
                                 </div>
                             </div>

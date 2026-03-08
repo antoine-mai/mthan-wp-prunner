@@ -16620,6 +16620,9 @@ img.lazy-image.loaded {
 	}
 
 	/* Footer Widgets Center on Mobile */
+	.main-footer {
+		padding-bottom: 70px !important; /* Space for Mobile Bar */
+	}
 	.main-footer .footer-widget,
 	.main-footer .footer-widget .widget-title,
 	.main-footer .footer-widget .widget-content,
