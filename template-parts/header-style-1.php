@@ -2,7 +2,7 @@
 $theme_options = get_option('mthan_theme_options');
 $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
 ?>
-<header class="main-header inner-header">
+<header class="main-header header-style-one inner-header">
     <div class="header-top">
         <div class="auto-container">
             <div class="inner clearfix">
