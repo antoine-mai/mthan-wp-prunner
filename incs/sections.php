@@ -59,6 +59,14 @@ function mthan_get_section_fields() {
         if (function_exists($func)) {
             $fields = $func();
             foreach ($fields as $field) {
+                // Add dependency to each field
+                $field['dependency'] = array('template', '==', $slug);
+                
+                // Prefix ID to avoid collisions (e.g. Banners_slides)
+                if (isset($field['id'])) {
+                    $field['id'] = $slug . '_' . $field['id'];
+                }
+                
                 $all_fields[] = $field;
             }
 
