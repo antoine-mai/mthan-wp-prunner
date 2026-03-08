@@ -167,16 +167,6 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                     </nav>
                 </div>
 
-                <!-- mobile logo (Style 1 mobile bar) -->
-                <div class="mobile-logo-box">
-                    <a href="<?php echo esc_url(home_url('/')); ?>">
-                        <?php 
-                        $nav_logo_url = mthan_get_img_url($header_tabs['header_nav_logo'] ?? '', get_template_directory_uri() . '/assets/images/nav-logo.png');
-                        ?>
-                        <img src="<?php echo esc_url($nav_logo_url); ?>" alt="<?php bloginfo('name'); ?>">
-                    </a>
-                </div>
-
                 <div class="more-links clearfix">
                     <!-- <div class="cart-btn"><a href="#"><span class="flaticon-shopping-bag-2"></span></a></div> WooCommerce Cart optionally -->
                     <?php if (!empty($header_tabs['header_1_btn_text'])) : ?>
@@ -242,7 +232,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
         <nav class="menu-box">
             <div class="nav-logo">
                 <?php 
-                $nav_logo_url = mthan_get_img_url($header_tabs['header_nav_logo'] ?? '', get_template_directory_uri() . '/assets/images/nav-logo.png');
+                $nav_logo_url = mthan_get_img_url($header_tabs['header_nav_logo'] ?? '', mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/nav-logo.png'));
                 ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <img src="<?php echo esc_url($nav_logo_url); ?>" alt="" title="" />
