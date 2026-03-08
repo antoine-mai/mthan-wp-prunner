@@ -72,9 +72,9 @@ function mthan_section_Services_html($section_data) { ?>
         </div>
 
         <?php if ($query->max_num_pages > 1) : ?>
-        <div class="styled-pagination text-center">
+        <div class="pagination-box text-center">
             <?php
-            echo paginate_links(array(
+            $links = paginate_links(array(
                 'base'         => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
                 'format'       => '?paged=%#%',
                 'current'      => max(1, $paged),
@@ -83,6 +83,17 @@ function mthan_section_Services_html($section_data) { ?>
                 'next_text'    => '<span class="fa fa-angle-right"></span>',
                 'type'         => 'list',
             ));
+            
+            // Fix for theme style: 
+            // 1. Replace default list class
+            $links = str_replace('page-numbers', 'styled-pagination', $links);
+            // 2. Wrap current page span with active anchor
+            $links = preg_replace('/<span aria-current=["\']page["\'] class=["\']styled-pagination current["\']>([0-9]+)<\/span>/', '<a href="#" class="active">$1</a>', $links);
+            // 3. Mark prev/next with 'control' class if needed (based on CSS)
+            $links = str_replace('prev styled-pagination', 'prev styled-pagination control', $links);
+            $links = str_replace('next styled-pagination', 'next styled-pagination control', $links);
+            
+            echo $links;
             ?>
         </div>
         <?php endif; wp_reset_postdata(); ?>
