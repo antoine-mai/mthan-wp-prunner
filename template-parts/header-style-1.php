@@ -193,7 +193,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
             <!--Logo-->
             <div class="logo pull-left">
                 <?php 
-                $sticky_logo_url = mthan_get_img_url($header_tabs['header_sticky_logo'] ?? '', get_template_directory_uri() . '/assets/images/sticky-logo.png');
+                $sticky_logo_url = mthan_get_img_url($header_tabs['header_sticky_logo'] ?? '', mthan_get_img_url($theme_options['logo'] ?? '', ''));
                 ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
                     <img src="<?php echo esc_url($sticky_logo_url); ?>" alt="<?php bloginfo('name'); ?>" />
@@ -238,10 +238,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                         $header_tabs['header_nav_logo'] ?? '', 
                         mthan_get_img_url(
                             $header_tabs['header_logo'] ?? '', 
-                            mthan_get_img_url(
-                                $theme_options['logo'] ?? '', 
-                                get_template_directory_uri() . '/assets/images/nav-logo.png'
-                            )
+                            mthan_get_img_url($theme_options['logo'] ?? '', '')
                         )
                     )
                 );

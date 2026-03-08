@@ -38,7 +38,6 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'id'      => 'header_nav_logo',
                             'type'    => 'upload',
                             'title'   => 'Mobile/Nav Logo',
-                            'desc'    => 'Default: assets/images/nav-logo.png',
                             'preview' => false
                         ],
                         [
