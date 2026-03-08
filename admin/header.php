@@ -371,6 +371,49 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                         ],
                     ]
                 ],
+                // 5. Mobile Header
+                [
+                    'title'  => 'Mobile',
+                    'icon'   => 'fas fa-mobile-alt',
+                    'fields' => [
+                        [
+                            'type'    => 'subheading',
+                            'content' => 'Mobile Header Stylings',
+                        ],
+                        [
+                            'id'          => 'mobile_header_bg',
+                            'type'        => 'color',
+                            'title'       => 'Mobile Bar Background',
+                            'default'     => '#132728',
+                            'output'      => '.main-header.header-style-one .header-lower .inner',
+                            'output_mode' => 'background-color',
+                        ],
+                        [
+                            'id'          => 'mobile_menu_icon_color',
+                            'type'        => 'color',
+                            'title'       => 'Mobile Menu Icon Color',
+                            'default'     => '#ffffff',
+                            'output'      => '.main-header.header-style-one .nav-outer .mobile-nav-toggler',
+                            'output_mode' => 'color',
+                        ],
+                        [
+                            'id'          => 'mobile_btn_bg',
+                            'type'        => 'color',
+                            'title'       => 'Mobile Button Background',
+                            'default'     => '#24a77e',
+                            'output'      => '.main-header.header-style-one .header-lower .more-links .quote-btn a',
+                            'output_mode' => 'background-color',
+                        ],
+                        [
+                            'id'          => 'mobile_btn_color',
+                            'type'        => 'color',
+                            'title'       => 'Mobile Button Text Color',
+                            'default'     => '#ffffff',
+                            'output'      => '.main-header.header-style-one .header-lower .more-links .quote-btn a',
+                            'output_mode' => 'color',
+                        ],
+                    ]
+                ],
             ]
         ]
     ]
