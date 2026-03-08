@@ -44,36 +44,30 @@ $mthan_gen_section_group = function($id) use ($available_sections, $section_fiel
 
 // ── Project Layout Sections ────────────────────────────────────────
 CSF::createSection(MTHAN_PROJECT_OPTIONS, [
-    'title'  => 'Before Content',
-    'icon'   => 'fas fa-arrow-up',
-    'fields' => $mthan_gen_section_group('project_before_sections'),
-]);
-
-CSF::createSection(MTHAN_PROJECT_OPTIONS, [
-    'title'  => 'After Content',
-    'icon'   => 'fas fa-arrow-down',
-    'fields' => $mthan_gen_section_group('project_after_sections'),
-]);
-
-// ── Settings ──────────────────────────────────────────────────────
-CSF::createSection(MTHAN_PROJECT_OPTIONS, [
-    'title'  => 'Settings',
-    'icon'   => 'fas fa-cogs',
-    'fields' => [
+    'title'  => 'Sections',
+    'icon'   => 'fas fa-layer-group',
+    'fields' => array_merge(
         [
-            'id'    => 'project_client',
-            'type'  => 'text',
-            'title' => 'Client Name',
+            [
+                'id'    => 'project_client',
+                'type'  => 'text',
+                'title' => 'Client Name',
+            ],
+            [
+                'id'    => 'project_category',
+                'type'  => 'text',
+                'title' => 'Category',
+            ],
+            [
+                'id'    => 'project_hide_title',
+                'type'  => 'switcher',
+                'title' => 'Hide Title',
+            ],
+            [
+                'type'    => 'subheading',
+                'content' => 'Layout Sections',
+            ],
         ],
-        [
-            'id'    => 'project_category',
-            'type'  => 'text',
-            'title' => 'Category',
-        ],
-        [
-            'id'    => 'project_hide_title',
-            'type'  => 'switcher',
-            'title' => 'Hide Title',
-        ],
-    ],
+        $mthan_gen_section_group('project_sections')
+    ),
 ]);

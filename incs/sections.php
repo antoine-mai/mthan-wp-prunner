@@ -146,12 +146,43 @@ function mthan_get_icon_html($val, $attr = '') {
 }
 
 /**
- * Render all sections for a post.
+ * Render all sections for a post (Page, Service, Project).
  */
-function mthan_render_page_sections($position = 'before') {
-    $meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
-    $key  = ($position === 'after') ? 'page_after_sections' : 'page_before_sections';
-    $sections = isset($meta[$key]) ? $meta[$key] : array();
+function mthan_render_post_sections($position = 'before') {
+    $post_type = get_post_type();
+    $meta_key  = '';
+    $data_key  = '';
+
+    switch ($post_type) {
+        case 'page':
+            $meta_key = MTHAN_PAGE_OPTIONS;
+            $data_key = ($position === 'after') ? 'page_after_sections' : 'page_before_sections';
+            break;
+        case 'mthan_service':
+            $meta_key = MTHAN_SERVICE_OPTIONS;
+            $data_key = 'service_sections'; // Consolidated to just 1 group
+            break;
+        case 'mthan_project':
+            $meta_key = MTHAN_PROJECT_OPTIONS;
+            $data_key = 'project_sections'; // Consolidated to just 1 group
+            break;
+    }
+
+    if (empty($meta_key) || empty($data_key)) {
+        return;
+    }
+
+    // For service/project, they only have 1 group. If position is 'after', we might want to skip or handle differently.
+    // However, usually these consolidated sections are treated as "the" content.
+    // If user says "only 1 section", they probably mean they will manage the whole layout there.
+    
+    // For Service/Project, let's only render if position is 'before' (or just once).
+    if (($post_type === 'mthan_service' || $post_type === 'mthan_project') && $position === 'after') {
+        return;
+    }
+
+    $meta = get_post_meta(get_the_ID(), $meta_key, true);
+    $sections = isset($meta[$data_key]) ? $meta[$data_key] : array();
 
     if (!is_array($sections)) {
         return;
@@ -168,4 +199,11 @@ function mthan_render_page_sections($position = 'before') {
             $func($section);
         }
     }
+}
+
+/**
+ * Legacy wrapper for page sections.
+ */
+function mthan_render_page_sections($position = 'before') {
+    mthan_render_post_sections($position);
 }

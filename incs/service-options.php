@@ -44,31 +44,25 @@ $mthan_gen_section_group = function($id) use ($available_sections, $section_fiel
 
 // ── Service Layout Sections ────────────────────────────────────────
 CSF::createSection(MTHAN_SERVICE_OPTIONS, [
-    'title'  => 'Before Content',
-    'icon'   => 'fas fa-arrow-up',
-    'fields' => $mthan_gen_section_group('service_before_sections'),
-]);
-
-CSF::createSection(MTHAN_SERVICE_OPTIONS, [
-    'title'  => 'After Content',
-    'icon'   => 'fas fa-arrow-down',
-    'fields' => $mthan_gen_section_group('service_after_sections'),
-]);
-
-// ── Settings ──────────────────────────────────────────────────────
-CSF::createSection(MTHAN_SERVICE_OPTIONS, [
-    'title'  => 'Settings',
-    'icon'   => 'fas fa-cogs',
-    'fields' => [
+    'title'  => 'Sections',
+    'icon'   => 'fas fa-layer-group',
+    'fields' => array_merge(
         [
-            'id'    => 'service_icon',
-            'type'  => 'icon',
-            'title' => 'Service Icon',
+            [
+                'id'    => 'service_icon',
+                'type'  => 'icon',
+                'title' => 'Service Icon',
+            ],
+            [
+                'id'    => 'service_hide_title',
+                'type'  => 'switcher',
+                'title' => 'Hide Title',
+            ],
+            [
+                'type'    => 'subheading',
+                'content' => 'Layout Sections',
+            ],
         ],
-        [
-            'id'    => 'service_hide_title',
-            'type'  => 'switcher',
-            'title' => 'Hide Title',
-        ],
-    ],
+        $mthan_gen_section_group('service_sections')
+    ),
 ]);
