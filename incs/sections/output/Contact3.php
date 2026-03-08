@@ -18,7 +18,7 @@ function mthan_section_Contact3_html($section_data) { ?>
     $address_title  = mthan_get_section_val($slug, $section_data, 'address_title');
     $address_text   = mthan_get_section_val($slug, $section_data, 'address_text');
     $map_link_text  = mthan_get_section_val($slug, $section_data, 'map_link_text');
-    $map_url        = mthan_get_section_val($slug, $section_data, 'map_url');
+    $map_url        = mthan_get_link(mthan_get_section_val($slug, $section_data, 'map_url'));
     
     $info_items     = mthan_get_section_val($slug, $section_data, 'info_items', array());
     

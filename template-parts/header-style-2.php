@@ -170,9 +170,10 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                             foreach ($social_links as $social) :
                                 if (empty($social['url']) || empty($social['icon'])) continue;
                                 $icon_url = mthan_get_img_url($social['icon']);
+                                $s_url = mthan_get_link($social['url']);
                             ?>
                                 <li>
-                                    <a href="<?php echo esc_url($social['url']); ?>">
+                                    <a href="<?php echo esc_url($s_url); ?>">
                                         <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($social['title'] ?? ''); ?>" style="width: 16px; height: 16px; object-fit: contain;">
                                         <span class="t-tip-box">
                                             <span class="t-t-text"><?php echo esc_html($social['title'] ?? ''); ?></span>
@@ -262,9 +263,10 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                     foreach ($social_links as $social) :
                         if (empty($social['url']) || empty($social['icon'])) continue;
                         $icon_url = mthan_get_img_url($social['icon']);
+                        $s_url = mthan_get_link($social['url']);
                     ?>
                         <li>
-                            <a href="<?php echo esc_url($social['url']); ?>">
+                            <a href="<?php echo esc_url($s_url); ?>">
                                 <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($social['title'] ?? ''); ?>" style="width: 16px; height: 16px; object-fit: contain;">
                             </a>
                         </li>

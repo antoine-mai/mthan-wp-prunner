@@ -68,7 +68,7 @@ function mthan_section_Team2_html($section_data) { ?>
                                     <div class="share-list">
                                         <ul class="clearfix">
                                             <?php foreach ($socials as $soc) { ?>
-                                            <li><a href="<?php echo esc_url($soc['url']); ?>"><?php echo mthan_get_icon_html($soc['icon']); ?></a></li>
+                                            <li><a href="<?php echo esc_url(mthan_get_link($soc['url'])); ?>"><?php echo mthan_get_icon_html($soc['icon']); ?></a></li>
                                             <?php } ?>
                                         </ul>
                                     </div>

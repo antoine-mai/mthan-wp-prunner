@@ -33,7 +33,7 @@ function mthan_section_About2_html($section_data) { ?>
     // Image Column
     $main_image     = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'main_image'));
     $vid_thumb      = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'vid_thumb'));
-    $vid_link       = mthan_get_section_val($slug, $section_data, 'vid_link');
+    $vid_link       = mthan_get_link(mthan_get_section_val($slug, $section_data, 'vid_link'));
     $styles = mthan_section_styles($slug, $section_data);
 ?>
 <section class="about-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>

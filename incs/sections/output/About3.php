@@ -16,7 +16,7 @@ function mthan_section_About3_html($section_data) { ?>
     
     // Quote Box
     $vid_thumb   = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'vid_thumb'));
-    $vid_link    = mthan_get_section_val($slug, $section_data, 'vid_link');
+    $vid_link    = mthan_get_link(mthan_get_section_val($slug, $section_data, 'vid_link'));
     $quote_text  = mthan_get_section_val($slug, $section_data, 'quote_text');
     $author_name = mthan_get_section_val($slug, $section_data, 'quote_author_name');
     $author_des  = mthan_get_section_val($slug, $section_data, 'quote_author_designation');

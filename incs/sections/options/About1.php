@@ -45,12 +45,11 @@ function mthan_section_About1_options() {
             'title' => 'Video/Quote Thumbnail',
             'default' => $img_path . 'quote-thumb.jpg',
         ),
-        array(
-            'id'    => 'video_link',
-            'type'  => 'text',
-            'title' => 'Video Link',
-            'default' => 'https://www.youtube.com/watch?v=CB_rXABU8DI',
-        ),
+        mthan_page_select_field('video_link', 'Video Link', [
+            'default' => [
+                'url' => 'https://www.youtube.com/watch?v=CB_rXABU8DI'
+            ]
+        ]),
         array(
             'id'    => 'quote_text',
             'type'  => 'textarea',

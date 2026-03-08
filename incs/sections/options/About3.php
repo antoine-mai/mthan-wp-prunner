@@ -46,12 +46,11 @@ function mthan_section_About3_options() {
             'default' => $img_path . 'vid-thumb-2.jpg',
             'help'    => 'Recommended size: 270x300px',
         ),
-        array(
-            'id'    => 'vid_link',
-            'type'  => 'text',
-            'title' => 'Video Link',
-            'default' => 'https://www.youtube.com/watch?v=CB_rXABU8DI',
-        ),
+        mthan_page_select_field('vid_link', 'Video Link', [
+            'default' => [
+                'url' => 'https://www.youtube.com/watch?v=CB_rXABU8DI'
+            ]
+        ]),
         array(
             'id'    => 'quote_text',
             'type'  => 'textarea',

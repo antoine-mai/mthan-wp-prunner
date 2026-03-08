@@ -99,11 +99,7 @@ function mthan_section_Team2_options() {
                             'type'  => 'upload',
                             'title' => 'Icon (e.g. fab fa-facebook-f)',
                         ),
-                        array(
-                            'id'    => 'url',
-                            'type'  => 'text',
-                            'title' => 'URL',
-                        ),
+                        mthan_page_select_field('url', 'URL'),
                     ),
                 ),
             ),
