@@ -5,19 +5,6 @@
  */
 function mthan_register_custom_post_types() {
     
-    // ── Mthan Page ─────────────────────────────────────────────────────
-    register_post_type('mthan_page', array(
-        'labels'      => array(
-            'name'          => 'Pages',
-            'singular_name' => 'Page',
-        ),
-        'public'      => true,
-        'has_archive' => true,
-        'hierarchical' => true,
-        'menu_icon'   => 'dashicons-welcome-widgets-menus',
-        'show_in_menu' => 'mthan-admin',
-        'supports'    => array('title', 'editor', 'thumbnail', 'page-attributes'),
-    ));
 
     // ── Mthan Service ──────────────────────────────────────────────────
     register_post_type('mthan_service', array(
