@@ -6,6 +6,8 @@
 // Prefixes
 define('MTHAN_THEME_OPTIONS', 'mthan_theme_options');
 define('MTHAN_PAGE_OPTIONS', 'mthan_page_options');
+define('MTHAN_SERVICE_OPTIONS', 'mthan_service_options');
+define('MTHAN_PROJECT_OPTIONS', 'mthan_project_options');
 
 // ── Core framework ─────────────────────────────────────────────────
 require_once get_template_directory() . '/incs/codestar/autoload.php';
@@ -26,7 +28,7 @@ $mthan_autoload_incs = function($dir) use (&$mthan_autoload_incs) {
         $name = basename($file, '.php');
 
         // Skip manually loaded or specific files
-        if (in_array($name, ['theme-options', 'page-options', 'sections'])) {
+        if (in_array($name, ['theme-options', 'page-options', 'service-options', 'project-options', 'sections'])) {
             continue;
         }
 

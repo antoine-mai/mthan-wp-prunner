@@ -1,0 +1,79 @@
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
+/**
+ * Project Options — Definining the layout of a single project.
+ */
+
+CSF::createMetabox(MTHAN_PROJECT_OPTIONS, [
+    'title'        => 'Project Options',
+    'post_type'    => 'mthan_project',
+    'show_restore' => true,
+    'tabs'         => 'horizontal',
+    'context'      => 'normal',
+    'priority'     => 'high',
+]);
+
+// ── Sections Data ───────────────────────────────────────────────────
+$available_sections = array_merge(['' => '— Select Template —'], mthan_get_sections());
+$section_fields     = mthan_get_section_fields();
+
+// ── Helper to create section group ──
+$mthan_gen_section_group = function($id) use ($available_sections, $section_fields) {
+    return [
+        [
+            'id'                     => $id,
+            'type'                   => 'group',
+            'button_title'           => 'Add Section',
+            'accordion_title_auto'   => true,
+            'accordion_title_prefix' => 'Section: ',
+            'accordion_title_number' => true,
+            'fields'                 => array_merge(
+                [
+                    [
+                        'id'    => 'template',
+                        'type'  => 'select',
+                        'title' => 'Select Template',
+                        'options' => $available_sections,
+                        'chosen'  => true,
+                    ],
+                ],
+                $section_fields
+            ),
+        ],
+    ];
+};
+
+// ── Project Layout Sections ────────────────────────────────────────
+CSF::createSection(MTHAN_PROJECT_OPTIONS, [
+    'title'  => 'Before Content',
+    'icon'   => 'fas fa-arrow-up',
+    'fields' => $mthan_gen_section_group('project_before_sections'),
+]);
+
+CSF::createSection(MTHAN_PROJECT_OPTIONS, [
+    'title'  => 'After Content',
+    'icon'   => 'fas fa-arrow-down',
+    'fields' => $mthan_gen_section_group('project_after_sections'),
+]);
+
+// ── Settings ──────────────────────────────────────────────────────
+CSF::createSection(MTHAN_PROJECT_OPTIONS, [
+    'title'  => 'Settings',
+    'icon'   => 'fas fa-cogs',
+    'fields' => [
+        [
+            'id'    => 'project_client',
+            'type'  => 'text',
+            'title' => 'Client Name',
+        ],
+        [
+            'id'    => 'project_category',
+            'type'  => 'text',
+            'title' => 'Category',
+        ],
+        [
+            'id'    => 'project_hide_title',
+            'type'  => 'switcher',
+            'title' => 'Hide Title',
+        ],
+    ],
+]);
