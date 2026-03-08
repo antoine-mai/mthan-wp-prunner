@@ -49,5 +49,12 @@ function mthan_section_Blog_options() {
             'options' => 'categories',
             'placeholder' => 'Select a category',
         ),
+        array(
+            'id'    => 'default_thumb',
+            'type'  => 'upload',
+            'title' => 'Default Thumbnail',
+            'default' => get_template_directory_uri() . '/assets/images/resource/news-image-1.jpg',
+            'desc' => 'This image will be used if a post doesn\'t have a featured image.',
+        ),
     );
 }

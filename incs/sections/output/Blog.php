@@ -15,6 +15,7 @@ function mthan_section_Blog_html($section_data) { ?>
     $btn_link   = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
     $count      = mthan_get_section_val($slug, $section_data, 'count', 3);
     $category   = mthan_get_section_val($slug, $section_data, 'category');
+    $default_thumb = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'default_thumb', get_template_directory_uri() . '/assets/images/resource/news-image-1.jpg'));
 
     $args = array(
         'post_type'      => 'post',
@@ -63,8 +64,8 @@ function mthan_section_Blog_html($section_data) { ?>
                             <div class="image-box">
                                 <?php if (has_post_thumbnail()) {
                                     the_post_thumbnail('full');
-                                } else {
-                                    echo '<img src="' . get_template_directory_uri() . '/assets/images/resource/news-image-1.jpg" alt="' . get_the_title() . '">';
+                                } elseif ($default_thumb) {
+                                    echo '<img src="' . esc_url($default_thumb) . '" alt="' . get_the_title() . '">';
                                 } ?>
                             </div>
                             <div class="info clearfix">
