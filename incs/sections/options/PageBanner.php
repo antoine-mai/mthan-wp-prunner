@@ -17,7 +17,6 @@ function mthan_section_PageBanner_options() {
             'id'    => 'title',
             'type'  => 'text',
             'title' => 'Page Title',
-            'default' => 'Contact',
             'help'    => 'If left empty, will use the current page title.',
         ),
         array(
@@ -31,7 +30,6 @@ function mthan_section_PageBanner_options() {
             'id'    => 'breadcrumb_title',
             'type'  => 'text',
             'title' => 'Breadcrumb Current Title',
-            'default' => 'Contact',
             'help'    => 'If left empty, will use the Page Title field above.',
         ),
     );
