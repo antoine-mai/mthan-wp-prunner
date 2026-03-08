@@ -14,9 +14,10 @@ function mthan_section_WhyUs1_html($section_data) { ?>
     $description = mthan_get_section_val($slug, $section_data, 'description');
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="why-us">
+<section class="why-us <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="pattern-layer"></div>
     <div class="right-leaf"></div>
     <div class="auto-container">

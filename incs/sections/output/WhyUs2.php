@@ -20,8 +20,9 @@ function mthan_section_WhyUs2_html($section_data) { ?>
     $btn_text     = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link     = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
     $items        = mthan_get_section_val($slug, $section_data, 'items', array());
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="why-us-two">
+<section class="why-us-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="outer-container">
         <div class="row clearfix">
             <!--Left Column-->

@@ -14,8 +14,9 @@ function mthan_section_Contact2_html($section_data) { ?>
     $form_title  = mthan_get_section_val($slug, $section_data, 'form_title');
     $form_text   = mthan_get_section_val($slug, $section_data, 'form_text');
     $cf7_short   = mthan_get_section_val($slug, $section_data, 'cf7_shortcode');
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="contact-two">
+<section class="contact-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="pattern-layer"></div>
     <div class="auto-container">
         <div class="row clearfix">

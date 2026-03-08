@@ -14,9 +14,10 @@ function mthan_section_WhatWeDo1_html($section_data) { ?>
     $interval   = mthan_get_section_val($slug, $section_data, 'auto_slide_interval', '5000');
     $tabs       = mthan_get_section_val($slug, $section_data, 'tabs', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($tabs)) return;
 ?>
-<section class="what-we-do">
+<section class="what-we-do <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="tabs-box service-tabs" data-interval="<?php echo esc_attr($interval); ?>">
         <div class="upper-box">
             <div class="pattern-layer"></div>

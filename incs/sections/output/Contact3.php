@@ -28,8 +28,9 @@ function mthan_section_Contact3_html($section_data) { ?>
     $form_subtitle  = mthan_get_section_val($slug, $section_data, 'form_subtitle');
     $form_title     = mthan_get_section_val($slug, $section_data, 'form_title');
     $form_shortcode = mthan_get_section_val($slug, $section_data, 'form_shortcode');
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="contact-three">
+<section class="contact-three <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="outer-container">
         <div class="row clearfix">
             

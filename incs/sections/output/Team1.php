@@ -17,9 +17,10 @@ function mthan_section_Team1_html($section_data) { ?>
     $btn_link    = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="team-section">
+<section class="team-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <?php if ($left_leaf) { ?>
     <div class="left-leaf"><img src="<?php echo esc_url($left_leaf); ?>" alt="leaf"></div>
     <?php } ?>

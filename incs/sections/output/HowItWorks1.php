@@ -14,9 +14,10 @@ function mthan_section_HowItWorks1_html($section_data) { ?>
     $description = mthan_get_section_val($slug, $section_data, 'description');
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="work-process">
+<section class="work-process <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="round-pattern-layer"></div>
     <div class="right-leaf"><img src="<?php echo get_template_directory_uri(); ?>/assets/images/resource/leaf-1.png" alt="leaf"></div>
     <div class="auto-container">

@@ -12,8 +12,9 @@ function mthan_section_CallToAction1_html($section_data) { ?>
     $btn_text = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
     $phone    = mthan_get_section_val($slug, $section_data, 'phone');
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="call-to-action">
+<section class="call-to-action <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="row clearfix">
             <div class="title-col col-xl-7 col-lg-12 col-md-12">

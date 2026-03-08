@@ -10,11 +10,12 @@ function mthan_section_Areas_html($section_data)
     $slug = 'Areas';
     $items = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) {
         return;
     }
     ?>
-    <section class="areas-section">
+    <section class="areas-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
         <div class="auto-container">
             <div class="inner-container">
                 <div class="row clearfix">

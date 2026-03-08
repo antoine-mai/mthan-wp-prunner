@@ -8,9 +8,10 @@ function mthan_section_Banners_html($section_data) { ?>
 <?php
     $slug = 'Banners';
     $slides = mthan_get_section_val($slug, $section_data, 'slides', array());
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($slides)) return;
 ?>
-<section class="banner-section banner-one">
+<section class="banner-section banner-one <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="banner-carousel owl-theme owl-carousel">
         <?php foreach ($slides as $slide) { ?>
         <?php 

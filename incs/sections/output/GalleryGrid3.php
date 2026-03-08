@@ -18,8 +18,9 @@ function mthan_section_GalleryGrid3_html($section_data) { ?>
     
     $btn_text    = mthan_get_section_val($slug, $section_data, 'footer_btn_text');
     $btn_link    = mthan_get_link(mthan_get_section_val($slug, $section_data, 'footer_btn_link'));
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="gallery-section">
+<section class="gallery-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <!-- Title Box -->
         <div class="title-box">

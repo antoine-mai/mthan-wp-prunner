@@ -14,9 +14,10 @@ function mthan_section_Testimonials2_html($section_data) { ?>
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
     $thumbs      = mthan_get_section_val($slug, $section_data, 'thumbs', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="testimonials-two">
+<section class="testimonials-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="pattern-layer"></div>
     <div class="auto-container">
 

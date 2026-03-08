@@ -36,8 +36,10 @@ function mthan_section_About1_html($section_data) { ?>
     $caption_icon   = mthan_get_section_val($slug, $section_data, 'caption_icon');
     $caption_big    = mthan_get_section_val($slug, $section_data, 'caption_big_text');
     $caption_txt    = mthan_get_section_val($slug, $section_data, 'caption_text');
+
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="about-section">
+<section class="about-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="row clearfix">
             <!--Text Column-->

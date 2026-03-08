@@ -19,9 +19,10 @@ function mthan_section_Awards_html($section_data) { ?>
     $btn_link    = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="awards-section">
+<section class="awards-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <?php if ($bottom_img) { ?>
     <div class="bottom-image"><img src="<?php echo esc_url($bottom_img); ?>" alt="anim image"></div>
     <?php } ?>

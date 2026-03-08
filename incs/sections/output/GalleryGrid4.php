@@ -17,8 +17,9 @@ function mthan_section_GalleryGrid4_html($section_data) { ?>
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
     
     $footer_type = mthan_get_section_val($slug, $section_data, 'footer_type', 'pagination');
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="gallery-section">
+<section class="gallery-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <!-- Title Box -->
         <div class="title-box">

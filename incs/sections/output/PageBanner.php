@@ -13,6 +13,7 @@ function mthan_section_PageBanner_html($section_data) { ?>
     $home_text  = mthan_get_section_val($slug, $section_data, 'home_text');
     $bc_title   = mthan_get_section_val($slug, $section_data, 'breadcrumb_title');
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($title)) {
         $title = get_the_title();
     }
@@ -20,7 +21,7 @@ function mthan_section_PageBanner_html($section_data) { ?>
         $bc_title = $title;
     }
 ?>
-<section class="page-banner">
+<section class="page-banner <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="image-layer" <?php if ($bg_img) { ?>style="background-image:url(<?php echo esc_url($bg_img); ?>);"<?php } ?>></div>
     <div class="banner-bottom-pattern"></div>
 

@@ -10,9 +10,10 @@ function mthan_section_Sponsors_html($section_data) { ?>
     $slug = 'Sponsors';
     $items = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="sponsors-section">
+<section class="sponsors-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="sponsors-outer">
         <!--Sponsors-->
         <div class="auto-container">

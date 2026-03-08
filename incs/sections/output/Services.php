@@ -27,9 +27,10 @@ function mthan_section_Services_html($section_data) { ?>
 
     $query = new WP_Query($args);
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (!$query->have_posts()) return;
 ?>
-<section class="main-services">
+<section class="main-services <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="row clearfix">
             <?php while ($query->have_posts()) { 

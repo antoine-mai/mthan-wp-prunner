@@ -59,15 +59,21 @@ function mthan_get_section_fields() {
         if (function_exists($func)) {
             $fields = $func();
             foreach ($fields as $field) {
+                $all_fields[] = $field;
+            }
+
+            // Inject common styling fields
+            $common_fields = mthan_get_common_section_fields();
+            foreach ($common_fields as $cf) {
                 // Add dependency to each field
-                $field['dependency'] = array('template', '==', $slug);
+                $cf['dependency'] = array('template', '==', $slug);
                 
-                // Prefix ID to avoid collisions (e.g. Banners_slides)
-                if (isset($field['id'])) {
-                    $field['id'] = $slug . '_' . $field['id'];
+                // Prefix ID to avoid collisions
+                if (isset($cf['id'])) {
+                    $cf['id'] = $slug . '_' . $cf['id'];
                 }
                 
-                $all_fields[] = $field;
+                $all_fields[] = $cf;
             }
         }
     }
@@ -144,6 +150,96 @@ function mthan_get_icon_html($val, $attr = '') {
     
     // Otherwise it's likely a flaticon/fa class
     return '<span class="' . esc_attr($val) . '" ' . $attr . '></span>';
+}
+
+/**
+ * Common fields for all sections (Spacing, Background).
+ */
+function mthan_get_common_section_fields() {
+    return array(
+        array(
+            'type'    => 'subheading',
+            'content' => 'Section Styling & Background',
+        ),
+        array(
+            'id'    => 'section_bg_color',
+            'type'  => 'color',
+            'title' => 'Background Color',
+        ),
+        array(
+            'id'    => 'section_bg_image',
+            'type'  => 'upload',
+            'title' => 'Background Image',
+        ),
+        array(
+            'id'    => 'section_padding',
+            'type'  => 'spacing',
+            'title' => 'Padding',
+            'default' => array(
+                'unit' => 'px',
+            ),
+        ),
+        array(
+            'id'    => 'section_margin',
+            'type'  => 'spacing',
+            'title' => 'Margin',
+            'default' => array(
+                'unit' => 'px',
+            ),
+        ),
+        array(
+            'id'    => 'section_extra_class',
+            'type'  => 'text',
+            'title' => 'Extra CSS Class',
+        ),
+    );
+}
+
+/**
+ * Generate style and classes for a section based on common fields.
+ */
+function mthan_section_styles($slug, $section_data) {
+    $bg_color    = mthan_get_section_val($slug, $section_data, 'section_bg_color');
+    $bg_image    = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'section_bg_image'));
+    $padding     = mthan_get_section_val($slug, $section_data, 'section_padding');
+    $margin      = mthan_get_section_val($slug, $section_data, 'section_margin');
+    
+    $styles = array();
+    
+    if ($bg_color) {
+        $styles[] = "background-color: " . $bg_color . ";";
+    }
+    
+    if ($bg_image) {
+        $styles[] = "background-image: url(" . esc_url($bg_image) . ");";
+        $styles[] = "background-repeat: no-repeat;";
+        $styles[] = "background-size: cover;";
+        $styles[] = "background-position: center;";
+    }
+    
+    if ($padding && is_array($padding)) {
+        $unit = !empty($padding['unit']) ? $padding['unit'] : 'px';
+        if (isset($padding['top']) && $padding['top'] !== '')    $styles[] = "padding-top: " . $padding['top'] . $unit . ";";
+        if (isset($padding['bottom']) && $padding['bottom'] !== '') $styles[] = "padding-bottom: " . $padding['bottom'] . $unit . ";";
+        if (isset($padding['left']) && $padding['left'] !== '')   $styles[] = "padding-left: " . $padding['left'] . $unit . ";";
+        if (isset($padding['right']) && $padding['right'] !== '')  $styles[] = "padding-right: " . $padding['right'] . $unit . ";";
+    }
+    
+    if ($margin && is_array($margin)) {
+        $unit = !empty($margin['unit']) ? $margin['unit'] : 'px';
+        if (isset($margin['top']) && $margin['top'] !== '')    $styles[] = "margin-top: " . $margin['top'] . $unit . ";";
+        if (isset($margin['bottom']) && $margin['bottom'] !== '') $styles[] = "margin-bottom: " . $margin['bottom'] . $unit . ";";
+        if (isset($margin['left']) && $margin['left'] !== '')   $styles[] = "margin-left: " . $margin['left'] . $unit . ";";
+        if (isset($margin['right']) && $margin['right'] !== '')  $styles[] = "margin-right: " . $margin['right'] . $unit . ";";
+    }
+    
+    $style_attr = !empty($styles) ? ' style="' . implode(' ', $styles) . '"' : '';
+    $extra_class = mthan_get_section_val($slug, $section_data, 'section_extra_class');
+    
+    return array(
+        'style' => $style_attr,
+        'class' => $extra_class
+    );
 }
 
 /**

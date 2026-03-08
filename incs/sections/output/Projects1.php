@@ -25,9 +25,10 @@ function mthan_section_Projects1_html($section_data) { ?>
 
     $query = new WP_Query($args);
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (!$query->have_posts()) return;
 ?>
-<section class="projects-section">
+<section class="projects-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="sec-title">
             <?php if ($title_icon) { ?>

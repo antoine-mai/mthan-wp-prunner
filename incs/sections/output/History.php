@@ -19,8 +19,9 @@ function mthan_section_History_html($section_data) { ?>
     // Bottom Link
     $btn_text       = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link       = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="mvg-history">
+<section class="mvg-history <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <!-- MVG Box -->
     <div class="mvg">
         <div class="auto-container">

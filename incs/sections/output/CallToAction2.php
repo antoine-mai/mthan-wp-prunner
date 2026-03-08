@@ -14,8 +14,9 @@ function mthan_section_CallToAction2_html($section_data) { ?>
     $btn1_link = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn1_link'));
     $btn2_text = mthan_get_section_val($slug, $section_data, 'btn2_text');
     $btn2_link = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn2_link'));
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="call-to-two">
+<section class="call-to-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <?php if ($bg_image) { ?>
     <div class="image-layer" style="background-image: url(<?php echo esc_url($bg_image); ?>);"></div>
     <?php } ?>

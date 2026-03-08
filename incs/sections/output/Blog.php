@@ -28,8 +28,9 @@ function mthan_section_Blog_html($section_data) { ?>
     }
 
     $query = new WP_Query($args);
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="blog-section">
+<section class="blog-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="upper-box clearfix">
             <div class="sec-title">

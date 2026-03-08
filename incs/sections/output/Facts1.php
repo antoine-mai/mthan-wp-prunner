@@ -11,9 +11,10 @@ function mthan_section_Facts1_html($section_data) { ?>
     $bg_image = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'bg_image'));
     $items    = mthan_get_section_val($slug, $section_data, 'items', array());
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="facts-section">
+<section class="facts-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <?php if ($bg_image) { ?>
     <div class="image-layer" style="background-image: url(<?php echo esc_url($bg_image); ?>);"></div>
     <?php } ?>

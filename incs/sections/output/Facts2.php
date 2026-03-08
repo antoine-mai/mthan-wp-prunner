@@ -11,9 +11,10 @@ function mthan_section_Facts2_html($section_data) { ?>
     $items = mthan_get_section_val($slug, $section_data, 'items', array());
     $global_speed = mthan_get_section_val($slug, $section_data, 'speed', '1000');
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($items)) return;
 ?>
-<section class="facts-two">
+<section class="facts-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="outer-container">
         <div class="row clearfix">
             <?php foreach ($items as $item) { ?>

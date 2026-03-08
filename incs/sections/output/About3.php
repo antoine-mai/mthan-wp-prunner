@@ -32,8 +32,9 @@ function mthan_section_About3_html($section_data) { ?>
     $main_image  = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'main_image'));
     $exp_num     = mthan_get_section_val($slug, $section_data, 'experience_number');
     $exp_txt     = mthan_get_section_val($slug, $section_data, 'experience_text');
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="about-three">
+<section class="about-three <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="row clearfix">
             <!--Text Column-->

@@ -10,6 +10,7 @@ function mthan_section_Map_html($section_data) { ?>
     $map_content = mthan_get_section_val($slug, $section_data, 'map_iframe');
     $map_height  = mthan_get_section_val($slug, $section_data, 'map_height', '500px');
 
+    $styles = mthan_section_styles($slug, $section_data);
     if (empty($map_content)) return;
 
     // Check if it's a full iframe tag or just a URL
@@ -19,7 +20,7 @@ function mthan_section_Map_html($section_data) { ?>
         $map_html = '<iframe src="' . esc_url($map_content) . '" allowfullscreen="" aria-hidden="false" tabindex="0" style="border:0; width:100%; height:' . esc_attr($map_height) . ';"></iframe>';
     }
 ?>
-<section class="map-section">
+<section class="map-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="map-outer">
         <div class="map-box">
             <?php echo $map_html; ?>

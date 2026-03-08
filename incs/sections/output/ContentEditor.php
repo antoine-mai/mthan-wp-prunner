@@ -8,13 +8,13 @@
 function mthan_section_ContentEditor_html($section_data) {
     $slug = 'ContentEditor';
     $content = mthan_get_section_val($slug, $section_data, 'content');
-    $extra_class = mthan_get_section_val($slug, $section_data, 'extra_class');
+    $styles = mthan_section_styles($slug, $section_data);
 
     if (empty($content)) {
         return;
     }
     ?>
-    <section class="content-editor-section <?php echo esc_attr($extra_class); ?>">
+    <section class="content-editor-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
         <div class="auto-container">
             <div class="text">
                 <?php echo do_shortcode(wpautop($content)); ?>

@@ -13,8 +13,9 @@ function mthan_section_WhyUs3_html($section_data) { ?>
     $title       = mthan_get_section_val($slug, $section_data, 'title');
     $description = mthan_get_section_val($slug, $section_data, 'description');
     $items       = mthan_get_section_val($slug, $section_data, 'items', array());
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="why-us-three">
+<section class="why-us-three <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
         <div class="title-box">
             <div class="row clearfix">

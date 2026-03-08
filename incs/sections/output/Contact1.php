@@ -15,8 +15,9 @@ function mthan_section_Contact1_html($section_data) { ?>
     $discount    = mthan_get_section_val($slug, $section_data, 'discount');
     $cf7_short   = mthan_get_section_val($slug, $section_data, 'cf7_shortcode');
     $side_img    = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'side_image'));
+    $styles = mthan_section_styles($slug, $section_data);
 ?>
-<section class="contact-section">
+<section class="contact-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="pattern-layer"></div>
     <div class="auto-container">
         <div class="row clearfix">
