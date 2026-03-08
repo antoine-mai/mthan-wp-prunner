@@ -38,7 +38,7 @@ $bottom_links      = $footer_tabs['footer_bottom_links'] ?? [];
                         <div class="footer-widget about">
                             <div class="logo">
                                 <a href="<?php echo esc_url(home_url('/')); ?>">
-                                    <img src="<?php echo esc_url($footer_logo_url); ?>" alt="<?php bloginfo('name'); ?>">
+                                    <img src="<?php echo esc_url($footer_logo_url); ?>" alt="<?php bloginfo('name'); ?>" />
                                 </a>
                             </div>
                             <div class="text-box">
@@ -74,23 +74,31 @@ $bottom_links      = $footer_tabs['footer_bottom_links'] ?? [];
                             </div>
                             <div class="widget-content">
                                 <div class="row clearfix">
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <?php if (!empty($links_items_1)) : ?>
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                                        <?php if (!empty($links_items_1)) { ?>
                                         <ul class="links">
-                                            <?php foreach ($links_items_1 as $li) : ?>
-                                            <li><a href="<?php echo esc_url($li['url'] ?? '#'); ?>"><?php echo esc_html($li['title'] ?? ''); ?></a></li>
-                                            <?php endforeach; ?>
+                                            <?php foreach ($links_items_1 as $li) { ?>
+                                            <li>
+                                                <a href="<?php echo esc_url($li['url'] ?? '#'); ?>">
+                                                    <?php echo esc_html($li['title'] ?? ''); ?>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
                                         </ul>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </div>
-                                    <div class="col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                                        <?php if (!empty($links_items_2)) : ?>
+                                    <div class="col-xl-6 col-lg-6 col-md-12 col-12">
+                                        <?php if (!empty($links_items_2)) { ?>
                                         <ul class="links">
-                                            <?php foreach ($links_items_2 as $li) : ?>
-                                            <li><a href="<?php echo esc_url($li['url'] ?? '#'); ?>"><?php echo esc_html($li['title'] ?? ''); ?></a></li>
-                                            <?php endforeach; ?>
+                                            <?php foreach ($links_items_2 as $li) { ?>
+                                            <li>
+                                                <a href="<?php echo esc_url($li['url'] ?? '#'); ?>">
+                                                    <?php echo esc_html($li['title'] ?? ''); ?>
+                                                </a>
+                                            </li>
+                                            <?php } ?>
                                         </ul>
-                                        <?php endif; ?>
+                                        <?php } ?>
                                     </div>
                                 </div>
                             </div>
