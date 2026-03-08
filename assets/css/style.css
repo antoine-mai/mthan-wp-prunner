@@ -16459,7 +16459,6 @@ img.lazy-image.loaded {
      .main-header.header-style-one .header-lower .inner {
          display: flex !important;
          align-items: center !important;
-         justify-content: space-between !important;
          height: 70px !important;
          min-height: 70px !important;
          padding: 0 15px !important;
@@ -16488,17 +16487,25 @@ img.lazy-image.loaded {
          display: none !important;
      }
      
-     .main-header.header-style-one .header-lower .nav-outer,
-     .main-header.header-style-one .header-lower .more-links {
+     .main-header.header-style-one .header-lower .nav-outer {
          float: none !important;
          margin: 0 !important;
          padding: 0 !important;
          width: auto !important;
-         min-width: 0 !important;
-         flex: 0 0 auto !important;
-         height: 100% !important;
          display: flex !important;
          align-items: center !important;
+         height: 100% !important;
+         z-index: 2 !important;
+     }
+ 
+     .main-header.header-style-one .header-lower .more-links {
+         float: none !important;
+         margin: 0 0 0 auto !important; /* Forces to the far right */
+         padding: 0 !important;
+         width: auto !important;
+         display: flex !important;
+         align-items: center !important;
+         height: 100% !important;
          z-index: 2 !important;
          background: none !important;
      }
@@ -16508,7 +16515,6 @@ img.lazy-image.loaded {
          align-items: center !important;
          margin: 0 !important;
          padding: 0 !important;
-         background: none !important;
      }
      
      .main-header.header-style-one .header-lower .more-links .quote-btn a {
@@ -16524,7 +16530,7 @@ img.lazy-image.loaded {
          font-size: 13px !important;
          font-weight: 600 !important;
          text-transform: uppercase;
-         margin-right: 5px !important; /* Pushes button to right edge of dashed line (10+5=15px from edge) */
+         margin: 0 !important; /* Landing exactly 5px inside the dashed line */
          z-index: 3 !important;
      }
      
@@ -16536,15 +16542,14 @@ img.lazy-image.loaded {
          display: flex !important;
          align-items: center !important;
          justify-content: center !important;
-         margin: 0 0 0 5px !important; /* Distance from left dashed frame */
+         margin: 0 !important; /* Landing exactly 5px inside the dashed line */
          padding: 0 !important;
          font-size: 26px !important;
          color: #ffffff !important;
          line-height: 1 !important;
-         height: 26px !important; /* Cố định chiều cao icon để tránh bị kéo dãn hoặc lệch */
          cursor: pointer !important;
          z-index: 3 !important;
          position: relative !important;
-         background: none !important;
+         height: auto !important;
      }
  }
