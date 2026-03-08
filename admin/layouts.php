@@ -187,6 +187,18 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                         ],
                     ],
                 ],
+                [
+                    'title'  => 'Settings',
+                    'icon'   => 'fas fa-cog',
+                    'fields' => [
+                        [
+                            'id'      => 'disable_preloader',
+                            'type'    => 'switcher',
+                            'title'   => 'Disable Preloader',
+                            'default' => false,
+                        ],
+                    ],
+                ],
             ],
         ],
     ],

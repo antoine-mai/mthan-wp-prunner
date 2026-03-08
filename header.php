@@ -6,9 +6,7 @@ $theme_options = get_option('mthan_theme_options');
 $layouts_tabs  = !empty($theme_options['layouts_tabs']) 
     ? $theme_options['layouts_tabs'] 
     : [];
-$enable_preloader = isset($layouts_tabs['preloader']) 
-    ? (bool)$layouts_tabs['preloader'] 
-    : true;
+$enable_preloader = empty($layouts_tabs['disable_preloader']);
 $header_tabs = !empty($theme_options['header_tabs']) 
     ? $theme_options['header_tabs'] 
     : [];
