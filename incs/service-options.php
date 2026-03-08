@@ -53,6 +53,7 @@ CSF::createSection(MTHAN_SERVICE_OPTIONS, [
                 'type'  => 'upload',
                 'title' => 'Service Icon',
                 'help'  => 'Upload an icon image. If empty, the default font icon will be used.',
+                'default' => 'flaticon-hedge'
             ],
         ],
         $mthan_gen_section_group('service_sections')
