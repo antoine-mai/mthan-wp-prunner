@@ -26,10 +26,12 @@ function mthan_render_global_sections($position = 'before', $layout = 'main') {
     $key = '';
     
     // 1. Determine context (Page vs Post)
-    if (is_page()) {
+    if (is_page() || is_singular('mthan_page')) {
         $key = ($position === 'before') ? 'page_before_content' : 'page_after_content';
-    } elseif (is_singular('service')) {
+    } elseif (is_singular('mthan_service')) {
         $key = ($position === 'before') ? 'service_before_content' : 'service_after_content';
+    } elseif (is_singular('mthan_project')) {
+        $key = ($position === 'before') ? 'project_before_content' : 'project_after_content';
     } elseif (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout())) {
         $key = ($position === 'before') ? 'shop_before_content' : 'shop_after_content';
     } elseif (is_singular('post') || is_home() || is_archive() || is_search()) {

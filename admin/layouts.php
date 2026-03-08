@@ -238,6 +238,56 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                     ],
                 ],
                 [
+                    'title'  => 'Project Layout',
+                    'icon'   => 'fas fa-project-diagram',
+                    'fields' => [
+                        [
+                            'type'    => 'subheading',
+                            'content' => 'Project Settings',
+                        ],
+                        [
+                            'id'      => 'project_sidebar',
+                            'type'    => 'switcher',
+                            'title'   => 'Enable Sidebar on Projects',
+                            'default' => true,
+                        ],
+                        [
+                            'type'    => 'subheading',
+                            'content' => 'Content Sections',
+                        ],
+                        [
+                            'id'           => 'project_before_content',
+                            'type'         => 'group',
+                            'title'        => 'Before Project Content',
+                            'button_title' => 'Add Section',
+                            'fields'       => [
+                                [
+                                    'id'      => 'section',
+                                    'type'    => 'select',
+                                    'title'   => 'Select Section',
+                                    'options' => $sections_list,
+                                    'chosen'  => true,
+                                ],
+                            ],
+                        ],
+                        [
+                            'id'           => 'project_after_content',
+                            'type'         => 'group',
+                            'title'        => 'After Project Content',
+                            'button_title' => 'Add Section',
+                            'fields'       => [
+                                [
+                                    'id'      => 'section',
+                                    'type'    => 'select',
+                                    'title'   => 'Select Section',
+                                    'options' => $sections_list,
+                                    'chosen'  => true,
+                                ],
+                            ],
+                        ],
+                    ],
+                ],
+                [
                     'title'  => 'Settings',
                     'icon'   => 'fas fa-cog',
                     'fields' => [
