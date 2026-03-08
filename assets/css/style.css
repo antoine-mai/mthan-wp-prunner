@@ -1953,7 +1953,6 @@ img {
 .inner-header .header-lower .more-links .quote-btn a {
 	position: relative;
 	display: flex;
-	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	width: 120px;
@@ -1961,7 +1960,7 @@ img {
 	padding: 0;
 	border: none;
 	color: #ffffff;
-	font-size: 14px;
+	font-size: 20px;
 	font-weight: 700;
 	letter-spacing: 0.01em;
 	text-transform: capitalize;
@@ -1991,7 +1990,9 @@ img {
 	top: -1px;
 	vertical-align: middle;
 	padding-left: 7px;
-	font-size: 10px;
+	font-size: 20px;
+	margin-right: 12px;
+	margin-bottom: 0;
 }
 
 .inner-header .other-links .search-box .search-btn {
