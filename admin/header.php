@@ -381,6 +381,12 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'content' => 'Mobile Header Stylings',
                         ],
                         [
+                            'id'      => 'mobile_menu_logo',
+                            'type'    => 'upload',
+                            'title'   => 'Mobile Menu Logo',
+                            'desc'    => 'Upload a logo specifically for the slide-out mobile menu.',
+                        ],
+                        [
                             'id'          => 'mobile_header_bg',
                             'type'        => 'color',
                             'title'       => 'Mobile Bar Background',
