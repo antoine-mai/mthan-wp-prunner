@@ -2,7 +2,8 @@
 $theme_options = get_option('mthan_theme_options');
 $footer_tabs   = $theme_options['footer_tabs'] ?? [];
 
-$footer_logo_url   = mthan_get_img_url($footer_tabs['footer_logo'] ?? '', get_template_directory_uri() . '/assets/images/footer-logo-two.png');
+$general_logo      = $theme_options['logo'] ?? '';
+$footer_logo_url   = mthan_get_img_url($footer_tabs['footer_logo'] ?? '', mthan_get_img_url($general_logo, get_template_directory_uri() . '/assets/images/footer-logo-two.png'));
 $about_text        = $footer_tabs['footer_about_text'] ?? '';
 $about_btn_text    = $footer_tabs['footer_about_btn_text'] ?? '';
 $about_btn_url     = $footer_tabs['footer_about_btn_url'] ?? '#';
