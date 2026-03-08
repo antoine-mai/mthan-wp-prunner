@@ -30,47 +30,54 @@ if (!empty($spacing)) {
         $prev_service = get_previous_post();
         $next_service = get_next_post();
     ?>
-    <?php if ($prev_service || $next_service) : ?>
-        <div class="post-controls" style="margin-bottom: 40px; border-bottom: none; padding-bottom: 0;">
-            <div class="inner clearfix">
-                <?php if ($prev_service) : ?>
-                    <div class="prev-post">
-                        <a href="<?php echo esc_url(get_permalink($prev_service->ID)); ?>">
-                            <?php if (has_post_thumbnail($prev_service->ID)) {
-                                echo get_the_post_thumbnail($prev_service->ID, 'thumbnail');
-                            } ?>
-                            <div class="upper-title"><span class="icon fa fa-caret-left"></span>&ensp; <?php esc_html_e('Prev Service', 'mthan'); ?></div>
-                            <span class="txt"><?php echo esc_html(get_the_title($prev_service->ID)); ?></span>
-                        </a>
-                    </div>
-                <?php endif; ?>
-                <?php if ($next_service) : ?>
-                    <div class="next-post">
-                        <a href="<?php echo esc_url(get_permalink($next_service->ID)); ?>">
-                            <?php if (has_post_thumbnail($next_service->ID)) {
-                                echo get_the_post_thumbnail($next_service->ID, 'thumbnail');
-                            } ?>
-                            <div class="upper-title"><?php esc_html_e('Next Service', 'mthan'); ?> &ensp;<span class="icon fa fa-caret-right"></span></div>
-                            <span class="txt"><?php echo esc_html(get_the_title($next_service->ID)); ?></span>
-                        </a>
-                    </div>
-                <?php endif; ?>
+    <?php if ($prev_service || $next_service) { ?>
+    <section>
+        <div class="auto-container">
+            <div class="post-controls" style="margin-bottom: 40px; border-bottom: none; padding-bottom: 0;">
+                <div class="inner clearfix">
+                    <?php if ($prev_service) : ?>
+                        <div class="prev-post">
+                            <a href="<?php echo esc_url(get_permalink($prev_service->ID)); ?>">
+                                <?php if (has_post_thumbnail($prev_service->ID)) {
+                                    echo get_the_post_thumbnail($prev_service->ID, 'thumbnail');
+                                } ?>
+                                <div class="upper-title"><span class="icon fa fa-caret-left"></span>&ensp; <?php esc_html_e('Prev Service', 'mthan'); ?></div>
+                                <span class="txt"><?php echo esc_html(get_the_title($prev_service->ID)); ?></span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                    <?php if ($next_service) : ?>
+                        <div class="next-post">
+                            <a href="<?php echo esc_url(get_permalink($next_service->ID)); ?>">
+                                <?php if (has_post_thumbnail($next_service->ID)) {
+                                    echo get_the_post_thumbnail($next_service->ID, 'thumbnail');
+                                } ?>
+                                <div class="upper-title"><?php esc_html_e('Next Service', 'mthan'); ?> &ensp;<span class="icon fa fa-caret-right"></span></div>
+                                <span class="txt"><?php echo esc_html(get_the_title($next_service->ID)); ?></span>
+                            </a>
+                        </div>
+                    <?php endif; ?>
+                </div>
             </div>
         </div>
-    <?php endif; ?>
+    </section>
+    
+    <?php } ?>
     <section>
-        <div class="sec-title">
-            <div class="title-icon">
-                <span class="icon">
-                    <?php echo mthan_get_icon_html($icon); ?>
-                </span>
+        <div class="auto-container">
+            <div class="sec-title">
+                <div class="title-icon">
+                    <span class="icon">
+                        <?php echo mthan_get_icon_html($icon); ?>
+                    </span>
+                </div>
+                <div class="subtitle">
+                    <?php esc_html_e('Service Details', 'mthan'); ?>
+                </div>
+                <h2>
+                    <?php the_title(); ?>
+                </h2>
             </div>
-            <div class="subtitle">
-                <?php esc_html_e('Service Details', 'mthan'); ?>
-            </div>
-            <h2>
-                <?php the_title(); ?>
-            </h2>
         </div>
     </section>   
     <?php
