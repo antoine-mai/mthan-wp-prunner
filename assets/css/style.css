@@ -1945,20 +1945,20 @@ img {
 	float: left;
 	display: block;
 	height: 80px;
-    display: flex;
-    align-items: center;
-    padding: 0;
+	display: flex;
+	align-items: center;
+	padding: 0;
 }
 
 .inner-header .header-lower .more-links .quote-btn a {
 	position: relative;
 	display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 120px;
-    height: 100%;
-    padding: 0;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 120px;
+	height: 100%;
+	padding: 0;
 	border: none;
 	color: #ffffff;
 	font-size: 14px;
@@ -1966,23 +1966,24 @@ img {
 	letter-spacing: 0.01em;
 	text-transform: capitalize;
 	text-align: center;
-    line-height: 1;
-    text-decoration: none;
-    transition: all 300ms ease;
+	line-height: 1;
+	text-decoration: none;
+	transition: all 300ms ease;
+	white-space: nowrap;
 }
 
 .inner-header .header-lower .more-links .quote-btn a img {
-    height: 24px;
-    width: auto;
-    margin-bottom: 5px;
-    display: block;
+	height: 24px;
+	width: auto;
+	margin-bottom: 5px;
+	display: block;
 }
 
 .inner-header .header-lower .more-links .quote-btn a i,
 .inner-header .header-lower .more-links .quote-btn a span.icon-fallback {
-    font-size: 24px;
-    margin-bottom: 5px;
-    display: block;
+	font-size: 24px;
+	margin-bottom: 5px;
+	display: block;
 }
 
 .inner-header .header-lower .more-links .quote-btn a i {
@@ -1999,32 +2000,32 @@ img {
 }
 
 .sticky-header .contact-link {
-    display: flex;
-    align-items: center;
-    padding: 10px 0;
-    margin-left: 30px;
-    float: left;
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
+	margin-left: 30px;
+	float: left;
 }
 
 .sticky-header .contact-link a {
-    display: flex;
-    align-items: center;
-    padding: 10px 20px;
-    border-radius: 4px;
-    text-transform: capitalize;
-    font-weight: 700;
+	display: flex;
+	align-items: center;
+	padding: 10px 20px;
+	border-radius: 4px;
+	text-transform: capitalize;
+	font-weight: 700;
 }
 
 .sticky-header .contact-link a img {
-    height: 18px;
-    width: auto;
-    margin-right: 10px;
+	height: 18px;
+	width: auto;
+	margin-right: 10px;
 }
 
 .sticky-header .contact-link a span.icon-fallback,
 .sticky-header .contact-link a i {
-    font-size: 18px;
-    margin-right: 10px;
+	font-size: 18px;
+	margin-right: 10px;
 }
 
 /*** 
@@ -16501,115 +16502,118 @@ img.lazy-image.loaded {
 .main-header .header-upper .upper-right .info-box .call a:hover {
 	color: #24a77e !important;
 }
- 
- /* --- Header Style 1 Alignment Fix --- */
- .main-header.header-style-one .header-lower .inner {
-     padding-right: 25px !important; /* Reset 215px padding intended for absolute button */
- }
- 
- 
- @media only screen and (max-width: 991px) {
-     .main-header.header-style-one .header-lower .inner {
-         display: flex !important;
-         align-items: center !important;
-         height: 70px !important;
-         min-height: 70px !important;
-         padding: 0 15px !important;
-         position: relative !important;
-         background: #132728 !important;
-         overflow: visible;
-         width: 100% !important;
-     }
-     
-     /* Dashed frame centered at 10px offset */
-     .main-header.header-style-one .header-lower .inner:before {
-         content: '' !important;
-         position: absolute !important;
-         left: 10px !important;
-         right: 10px !important;
-         top: 10px !important;
-         bottom: 10px !important;
-         border: 1px dashed rgba(255, 255, 255, 0.25) !important;
-         z-index: 0 !important;
-         display: block !important;
-         pointer-events: none !important;
-         background: none !important; 
-     }
-     
-     .main-header.header-style-one .header-lower .more-links:before {
-         display: none !important;
-     }
-     
-     .main-header.header-style-one .header-lower .nav-outer {
-         float: none !important;
-         margin: 0 0 0 16px !important;
-         padding: 0 !important;
-         width: auto !important;
-         display: flex !important;
-         align-items: center !important;
-         height: 100% !important;
-         z-index: 2 !important;
-     }
- 
-     .main-header.header-style-one .header-lower .more-links {
-         float: none !important;
-         margin: 0 0 0 auto !important;
-         padding: 0 !important;
-         width: auto !important;
-         display: flex !important;
-         align-items: center !important;
-         height: 100% !important;
-         z-index: 2 !important;
-         background: none !important;
-     }
-     
-     .main-header.header-style-one .header-lower .more-links .quote-btn {
-         display: flex !important;
-         align-items: center !important;
-         margin: 0 !important;
-         padding: 0 !important;
-     }
-     
-     .main-header.header-style-one .header-lower .more-links .quote-btn a {
-         background: #24a77e !important;
-         color: #ffffff !important;
-         height: 40px !important; 
-         padding: 0 15px !important;
-         line-height: 40px !important;
-         display: flex !important;
-         align-items: center !important;
-         justify-content: center !important;
-         border-radius: 4px !important;
-         font-size: 10px !important;
-         font-weight: 600 !important;
-         text-transform: uppercase;
-         margin: 0 !important; /* Landing exactly 5px inside the dashed line */
-         z-index: 3 !important;
-     }
-     
-     .main-header.header-style-one .more-links .quote-btn a i {
-         display: none !important;
-     }
-     
-     .main-header.header-style-one .nav-outer .mobile-nav-toggler {
-         display: flex !important;
-         align-items: center !important;
-         justify-content: center !important;
-         margin: 0 !important; /* Landing exactly 5px inside the dashed line */
-         padding: 0 !important;
-         font-size: 32px !important;
-         color: #ffffff !important;
-         line-height: 1 !important;
-         cursor: pointer !important;
-         z-index: 3 !important;
-         position: relative !important;
-         height: auto !important;
-     }
 
-     /* Facts Two 2 items per row on mobile */
-     .facts-two .fact-block {
-         width: 50% !important;
-         flex: 0 0 50% !important;
-         max-width: 50% !important;
-     }
- }
+/* --- Header Style 1 Alignment Fix --- */
+.main-header.header-style-one .header-lower .inner {
+	padding-right: 25px !important;
+	/* Reset 215px padding intended for absolute button */
+}
+
+
+@media only screen and (max-width: 991px) {
+	.main-header.header-style-one .header-lower .inner {
+		display: flex !important;
+		align-items: center !important;
+		height: 70px !important;
+		min-height: 70px !important;
+		padding: 0 15px !important;
+		position: relative !important;
+		background: #132728 !important;
+		overflow: visible;
+		width: 100% !important;
+	}
+
+	/* Dashed frame centered at 10px offset */
+	.main-header.header-style-one .header-lower .inner:before {
+		content: '' !important;
+		position: absolute !important;
+		left: 10px !important;
+		right: 10px !important;
+		top: 10px !important;
+		bottom: 10px !important;
+		border: 1px dashed rgba(255, 255, 255, 0.25) !important;
+		z-index: 0 !important;
+		display: block !important;
+		pointer-events: none !important;
+		background: none !important;
+	}
+
+	.main-header.header-style-one .header-lower .more-links:before {
+		display: none !important;
+	}
+
+	.main-header.header-style-one .header-lower .nav-outer {
+		float: none !important;
+		margin: 0 0 0 16px !important;
+		padding: 0 !important;
+		width: auto !important;
+		display: flex !important;
+		align-items: center !important;
+		height: 100% !important;
+		z-index: 2 !important;
+	}
+
+	.main-header.header-style-one .header-lower .more-links {
+		float: none !important;
+		margin: 0 0 0 auto !important;
+		padding: 0 !important;
+		width: auto !important;
+		display: flex !important;
+		align-items: center !important;
+		height: 100% !important;
+		z-index: 2 !important;
+		background: none !important;
+	}
+
+	.main-header.header-style-one .header-lower .more-links .quote-btn {
+		display: flex !important;
+		align-items: center !important;
+		margin: 0 !important;
+		padding: 0 !important;
+	}
+
+	.main-header.header-style-one .header-lower .more-links .quote-btn a {
+		background: #24a77e !important;
+		color: #ffffff !important;
+		height: 40px !important;
+		padding: 0 15px !important;
+		line-height: 40px !important;
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		border-radius: 4px !important;
+		font-size: 10px !important;
+		font-weight: 600 !important;
+		text-transform: uppercase;
+		margin: 0 !important;
+		/* Landing exactly 5px inside the dashed line */
+		z-index: 3 !important;
+	}
+
+	.main-header.header-style-one .more-links .quote-btn a i {
+		display: none !important;
+	}
+
+	.main-header.header-style-one .nav-outer .mobile-nav-toggler {
+		display: flex !important;
+		align-items: center !important;
+		justify-content: center !important;
+		margin: 0 !important;
+		/* Landing exactly 5px inside the dashed line */
+		padding: 0 !important;
+		font-size: 32px !important;
+		color: #ffffff !important;
+		line-height: 1 !important;
+		cursor: pointer !important;
+		z-index: 3 !important;
+		position: relative !important;
+		height: auto !important;
+	}
+
+	/* Facts Two 2 items per row on mobile */
+	.facts-two .fact-block {
+		width: 50% !important;
+		flex: 0 0 50% !important;
+		max-width: 50% !important;
+	}
+}
