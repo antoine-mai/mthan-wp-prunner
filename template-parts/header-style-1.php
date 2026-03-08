@@ -9,9 +9,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 <div class="top-left">
                     <?php if (!empty($header_tabs['header_1_tip_text'])) { ?>
                     <div class="tip-link">
-                        <?php 
-                        $tip_link = !empty($header_tabs['header_1_tip_link']) ? (is_numeric($header_tabs['header_1_tip_link']) ? get_permalink($header_tabs['header_1_tip_link']) : $header_tabs['header_1_tip_link']) : '/contact';
-                        ?>
+                        <?php $tip_link = !empty($header_tabs['header_1_tip_link']) ? (is_numeric($header_tabs['header_1_tip_link']) ? get_permalink($header_tabs['header_1_tip_link']) : $header_tabs['header_1_tip_link']) : '/contact'; ?>
                         <a href="<?php echo esc_url($tip_link); ?>">
                             <span class="icon flaticon-play-button-1"></span> 
                             <?php echo esc_html($header_tabs['header_1_tip_text']); ?>
@@ -169,20 +167,28 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
 
                 <div class="more-links clearfix">
                     <!-- <div class="cart-btn"><a href="#"><span class="flaticon-shopping-bag-2"></span></a></div> WooCommerce Cart optionally -->
-                    <?php if (!empty($header_tabs['header_1_btn_text'])) : ?>
-                    <div class="quote-btn" style="padding: 10px 0;">
+                    <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
+                    <div class="quote-btn" style="height: 80px; display: flex; align-items: center; padding: 0;">
                         <?php 
-                        $btn_url = !empty($header_tabs['header_1_btn_url']) ? (is_numeric($header_tabs['header_1_btn_url']) ? get_permalink($header_tabs['header_1_btn_url']) : $header_tabs['header_1_btn_url']) : '#';
-                        $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) ? mthan_get_img_url($header_tabs['header_1_btn_icon']) : '';
+                            $btn_url = !empty($header_tabs['header_1_btn_url']) 
+                                ? (is_numeric($header_tabs['header_1_btn_url']) ? get_permalink($header_tabs['header_1_btn_url']) : $header_tabs['header_1_btn_url']) 
+                                : '#';
+                            $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) 
+                                ? mthan_get_img_url($header_tabs['header_1_btn_icon']) 
+                                : '';
                         ?>
-                        <a href="<?php echo esc_url($btn_url); ?>" style="display: block; text-align: center; line-height: 1; padding: 0 20px; color: #fff;">
+                        <a href="<?php echo esc_url($btn_url); ?>" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 120px; height: 100%; color: #fff; text-decoration: none; transition: all 300ms ease;">
                             <?php if ($btn_icon_url) : ?>
-                            <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 24px; width: auto; margin: 0 auto 5px auto; display: block;">
+                                <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 24px; width: auto; margin-bottom: 5px;">
+                            <?php else : ?>
+                                <span class="flaticon-smartphone" style="font-size: 24px; margin-bottom: 5px; display: block;"></span>
                             <?php endif; ?>
-                            <span class="btn-text" style="font-size: 14px; font-weight: 700; text-transform: capitalize; display: block;"><?php echo esc_html($header_tabs['header_1_btn_text']); ?></span> 
+                            <span class="btn-text" style="font-size: 14px; font-weight: 700; text-transform: capitalize; line-height: 1;">
+                                <?php echo esc_html($header_tabs['header_1_btn_text']); ?>
+                            </span> 
                         </a>
                     </div>
-                    <?php endif; ?>
+                    <?php } ?>
                 </div>
             </div>
         </div>
@@ -211,15 +217,17 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
 
                 <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
                 <!--Contact Btn-->
-                <div class="contact-link">
+                <div class="contact-link" style="display: flex; align-items: center; padding: 10px 0;">
                     <?php 
                     $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) ? mthan_get_img_url($header_tabs['header_1_btn_icon']) : '';
                     ?>
-                    <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three" style="display: flex; align-items: center; padding: 10px 20px;">
+                    <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three" style="display: flex; align-items: center; padding: 10px 20px; border-radius: 4px;">
                         <?php if ($btn_icon_url) : ?>
-                        <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 18px; width: auto; margin-right: 10px;">
+                            <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 18px; width: auto; margin-right: 10px;">
+                        <?php else : ?>
+                            <span class="flaticon-smartphone" style="font-size: 18px; margin-right: 10px;"></span>
                         <?php endif; ?>
-                        <span class="btn-title" style="padding: 0; margin: 0;">
+                        <span class="btn-title" style="padding: 0; margin: 0; text-transform: capitalize; font-weight: 700;">
                             <?php echo esc_html($header_tabs['header_1_btn_text']); ?> 
                         </span>
                     </a>
