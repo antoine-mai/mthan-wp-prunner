@@ -8,8 +8,8 @@ function mthan_register_custom_post_types() {
     // ── Mthan Page ─────────────────────────────────────────────────────
     register_post_type('mthan_page', array(
         'labels'      => array(
-            'name'          => 'Mthan Pages',
-            'singular_name' => 'Mthan Page',
+            'name'          => 'Pages',
+            'singular_name' => 'Page',
         ),
         'public'      => true,
         'has_archive' => true,
@@ -22,8 +22,8 @@ function mthan_register_custom_post_types() {
     // ── Mthan Service ──────────────────────────────────────────────────
     register_post_type('mthan_service', array(
         'labels'      => array(
-            'name'          => 'Mthan Services',
-            'singular_name' => 'Mthan Service',
+            'name'          => 'Services',
+            'singular_name' => 'Service',
         ),
         'public'      => true,
         'has_archive' => true,
@@ -35,8 +35,8 @@ function mthan_register_custom_post_types() {
     // ── Mthan Project ──────────────────────────────────────────────────
     register_post_type('mthan_project', array(
         'labels'      => array(
-            'name'          => 'Mthan Projects',
-            'singular_name' => 'Mthan Project',
+            'name'          => 'Projects',
+            'singular_name' => 'Project',
         ),
         'public'      => true,
         'has_archive' => true,
