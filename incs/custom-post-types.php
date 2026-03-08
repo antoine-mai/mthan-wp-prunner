@@ -24,7 +24,7 @@ function mthan_register_custom_post_types() {
         'has_archive' => false,
         'menu_icon'   => 'dashicons-hammer',
         'show_in_menu' => 'mthan-admin',
-        'supports'    => array('title', 'thumbnail'),
+        'supports'    => array('title', 'thumbnail', 'excerpt'),
         'rewrite'     => array('slug' => 'dich-vu', 'with_front' => false),
     ));
 
@@ -46,7 +46,7 @@ function mthan_register_custom_post_types() {
         'has_archive' => false,
         'menu_icon'   => 'dashicons-portfolio',
         'show_in_menu' => 'mthan-admin',
-        'supports'    => array('title', 'thumbnail'),
+        'supports'    => array('title', 'thumbnail', 'excerpt'),
         'rewrite'     => array('slug' => 'du-an', 'with_front' => false),
     ));
 }
