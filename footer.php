@@ -30,7 +30,7 @@ if (!empty($theme_options['enable_mobile_bar']) && !empty($theme_options['mobile
         <?php foreach ($theme_options['mobile_bar_items'] as $item) : 
             $title = !empty($item['title']) ? $item['title'] : '';
             $url = !empty($item['url']) ? $item['url'] : '#';
-            $icon_url = !empty($item['icon']) ? $item['icon'] : '';
+            $icon_url = mthan_get_img_url($item['icon'] ?? '');
             $text_color = !empty($item['text_color']) ? "color: {$item['text_color']};" : '';
         ?>
         <li>

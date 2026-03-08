@@ -120,7 +120,7 @@ $menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : 
                         <form method="get" action="<?php echo esc_url($search_action_url); ?>">
                             <div class="form-group">
                                 <div class="field-box">
-                                    <input type="search" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr($search_placeholder); ?>" required="">
+                                    <input type="search" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr($search_placeholder); ?>" required="" />
                                 </div>
                                 <div class="btn-box"><button type="submit" class="search-btn"><span class="flaticon-search-1"></span></button></div>
                             </div>
@@ -185,16 +185,17 @@ $menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : 
                 <div class="more-links clearfix">
                     <!-- <div class="cart-btn"><a href="#"><span class="flaticon-shopping-bag-2"></span></a></div> WooCommerce Cart optionally -->
                     <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
-                    <div class="quote-btn" style="height: 80px; display: flex; align-items: center; padding: 0;">
-                        <a href="<?php echo esc_url($btn_url); ?>" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 120px; height: 100%; color: #fff; text-decoration: none; transition: all 300ms ease;">
-                            <?php if ($btn_icon_url) : ?>
-                                <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 24px; width: auto; margin-bottom: 5px;">
+                    <div class="quote-btn">
+                        <a href="<?php echo esc_url($btn_url); ?>">
+                            <?php 
+                            if ($btn_icon_url && (strpos($btn_icon_url, 'http') === 0 || strpos($btn_icon_url, '/') === 0)) : ?>
+                                <img src="<?php echo esc_url($btn_icon_url); ?>" alt="">
+                            <?php elseif ($btn_icon_url) : ?>
+                                <i class="<?php echo esc_attr($btn_icon_url); ?>"></i>
                             <?php else : ?>
-                                <span class="flaticon-smartphone" style="font-size: 24px; margin-bottom: 5px; display: block;"></span>
+                                <span class="flaticon-smartphone icon-fallback"></span>
                             <?php endif; ?>
-                            <span class="btn-text" style="font-size: 14px; font-weight: 700; text-transform: capitalize; line-height: 1;">
-                                <?php echo esc_html($header_tabs['header_1_btn_text']); ?>
-                            </span> 
+                            <span class="btn-text"><?php echo esc_html($header_tabs['header_1_btn_text']); ?></span> 
                         </a>
                     </div>
                     <?php } ?>
@@ -223,14 +224,17 @@ $menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : 
 
                 <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
                 <!--Contact Btn-->
-                <div class="contact-link" style="display: flex; align-items: center; padding: 10px 0;">
-                    <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three" style="display: flex; align-items: center; padding: 10px 20px; border-radius: 4px;">
-                        <?php if ($btn_icon_url) : ?>
-                            <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 18px; width: auto; margin-right: 10px;">
+                <div class="contact-link">
+                    <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three">
+                        <?php 
+                        if ($btn_icon_url && (strpos($btn_icon_url, 'http') === 0 || strpos($btn_icon_url, '/') === 0)) : ?>
+                            <img src="<?php echo esc_url($btn_icon_url); ?>" alt="">
+                        <?php elseif ($btn_icon_url) : ?>
+                            <i class="<?php echo esc_attr($btn_icon_url); ?>"></i>
                         <?php else : ?>
-                            <span class="flaticon-smartphone" style="font-size: 18px; margin-right: 10px;"></span>
+                            <span class="flaticon-smartphone icon-fallback"></span>
                         <?php endif; ?>
-                        <span class="btn-title" style="padding: 0; margin: 0; text-transform: capitalize; font-weight: 700;">
+                        <span class="btn-title">
                             <?php echo esc_html($header_tabs['header_1_btn_text']); ?> 
                         </span>
                     </a>

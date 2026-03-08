@@ -1944,22 +1944,45 @@ img {
 	position: relative;
 	float: left;
 	display: block;
-	padding: 13px 0px;
+	height: 80px;
+    display: flex;
+    align-items: center;
+    padding: 0;
 }
 
 .inner-header .header-lower .more-links .quote-btn a {
 	position: relative;
-	display: block;
-	line-height: 30px;
-	padding: 10px 25px;
+	display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 120px;
+    height: 100%;
+    padding: 0;
 	border: none;
 	color: #ffffff;
-	display: block;
-	font-size: 15px;
-	font-weight: 600;
+	font-size: 14px;
+	font-weight: 700;
 	letter-spacing: 0.01em;
-	text-transform: uppercase;
+	text-transform: capitalize;
 	text-align: center;
+    line-height: 1;
+    text-decoration: none;
+    transition: all 300ms ease;
+}
+
+.inner-header .header-lower .more-links .quote-btn a img {
+    height: 24px;
+    width: auto;
+    margin-bottom: 5px;
+    display: block;
+}
+
+.inner-header .header-lower .more-links .quote-btn a i,
+.inner-header .header-lower .more-links .quote-btn a span.icon-fallback {
+    font-size: 24px;
+    margin-bottom: 5px;
+    display: block;
 }
 
 .inner-header .header-lower .more-links .quote-btn a i {
@@ -1973,6 +1996,35 @@ img {
 .inner-header .other-links .search-box .search-btn {
 	background: #efefef;
 	color: #8b8b8b;
+}
+
+.sticky-header .contact-link {
+    display: flex;
+    align-items: center;
+    padding: 10px 0;
+    margin-left: 30px;
+    float: left;
+}
+
+.sticky-header .contact-link a {
+    display: flex;
+    align-items: center;
+    padding: 10px 20px;
+    border-radius: 4px;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.sticky-header .contact-link a img {
+    height: 18px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.sticky-header .contact-link a span.icon-fallback,
+.sticky-header .contact-link a i {
+    font-size: 18px;
+    margin-right: 10px;
 }
 
 /*** 
