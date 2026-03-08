@@ -8,6 +8,7 @@
 function mthan_get_sections() {
     return [
         'Banners' => 'Banners',
+        'PageBanner' => 'Page Banner',
         'Areas'   => 'Areas',
         'About1'  => 'About 1',
         'About2'  => 'About 2',
