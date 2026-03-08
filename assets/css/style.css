@@ -16455,10 +16455,15 @@ img.lazy-image.loaded {
      padding-right: 25px !important; /* Reset 215px padding intended for absolute button */
  }
  
+ .mobile-logo-box {
+     display: none;
+ }
+ 
  @media only screen and (max-width: 991px) {
      .main-header.header-style-one .header-lower .inner {
          display: flex !important;
          align-items: center !important;
+         justify-content: space-between !important;
          height: 70px !important;
          min-height: 70px !important;
          padding: 0 15px !important;
@@ -16500,7 +16505,7 @@ img.lazy-image.loaded {
  
      .main-header.header-style-one .header-lower .more-links {
          float: none !important;
-         margin: 0 0 0 auto !important; /* Forces to the far right */
+         margin: 0 !important;
          padding: 0 !important;
          width: auto !important;
          display: flex !important;
@@ -16508,6 +16513,24 @@ img.lazy-image.loaded {
          height: 100% !important;
          z-index: 2 !important;
          background: none !important;
+     }
+
+     /* Mobile Logo Centering */
+     .main-header.header-style-one .mobile-logo-box {
+         display: flex !important;
+         align-items: center !important;
+         justify-content: center !important;
+         position: absolute !important;
+         left: 50% !important;
+         transform: translateX(-50%) !important;
+         height: 100% !important;
+         z-index: 2 !important;
+     }
+
+     .main-header.header-style-one .mobile-logo-box img {
+         max-height: 40px !important;
+         width: auto !important;
+         display: block !important;
      }
      
      .main-header.header-style-one .header-lower .more-links .quote-btn {
