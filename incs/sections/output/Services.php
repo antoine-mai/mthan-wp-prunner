@@ -8,19 +8,36 @@
 function mthan_section_Services_html($section_data) { ?>
 <?php
     $slug = 'Services';
-    $items = mthan_get_section_val($slug, $section_data, 'items', array());
+    $count = mthan_get_section_val($slug, $section_data, 'count', 3);
 
-    if (empty($items)) return;
+    $args = array(
+        'post_type'      => 'mthan_service',
+        'posts_per_page' => $count,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) return;
 ?>
 <section class="main-services">
     <div class="auto-container">
         <div class="row clearfix">
-            <?php foreach ($items as $item) { 
-                $title = isset($item['title']) ? $item['title'] : '';
-                $icon  = isset($item['icon']) ? $item['icon'] : 'flaticon-hedge';
-                $img   = mthan_sec_img(isset($item['image']) ? $item['image'] : '');
-                $desc  = isset($item['description']) ? $item['description'] : '';
-                $lnk   = mthan_get_link(isset($item['link']) ? $item['link'] : '');
+            <?php while ($query->have_posts()) { 
+                $query->the_post();
+                $title = get_the_title();
+                $img   = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                $lnk   = get_permalink();
+                
+                // For now, these might be empty since editor/excerpt are disabled
+                // User might add custom fields later, or we use a fallback
+                $desc  = get_the_excerpt(); 
+                
+                // Icon handling: we could try to get it from meta if we decide to re-add it
+                // For now, use a default icon or check if a custom field exists
+                $icon  = get_post_meta(get_the_ID(), 'service_icon', true);
+                if (empty($icon)) $icon = 'flaticon-hedge';
             ?>
             <!--Service block-->
             <div class="service-block col-lg-4 col-md-6 col-sm-12">
@@ -49,7 +66,7 @@ function mthan_section_Services_html($section_data) { ?>
                     </div>
                 </div>
             </div>
-            <?php } ?>
+            <?php } wp_reset_postdata(); ?>
         </div>
     </div>
 </section>
