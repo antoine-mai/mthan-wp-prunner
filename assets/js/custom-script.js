@@ -417,40 +417,49 @@
 				$(target).addClass('active-tab');
 			}
 		});
-		
-		// Auto Slide for service-tabs (What We Do 1)
-		$('.tabs-box.service-tabs').each(function() {
-			var $tabsBox = $(this);
-			var $tabBtns = $tabsBox.find('.tab-buttons .tab-btn');
-			var timer;
-			var interval = 5000; // 5 seconds
 
-			function nextTab() {
-				var $activeBtn = $tabsBox.find('.tab-buttons .active-btn');
-				var index = $tabBtns.index($activeBtn);
-				var nextIndex = (index + 1) % $tabBtns.length;
-				$tabBtns.eq(nextIndex).trigger('click');
-			}
+		// Auto-slide for Service Tabs (What We Do 1)
+		if($('.service-tabs').length){
+			$('.service-tabs').each(function() {
+				var $tabsBox = $(this);
+				var $buttons = $tabsBox.find('.tab-btn');
+				var interval = 5000;
+				var timer;
 
-			function startTimer() {
-				timer = setInterval(nextTab, interval);
-			}
+				function autoPlay() {
+					timer = setInterval(function() {
+						var $activeBtn = $tabsBox.find('.tab-buttons .active-btn');
+						var currentIndex = $buttons.index($activeBtn);
+						var nextIndex = (currentIndex + 1) % $buttons.length;
+						
+						// Manually trigger the tab change logic
+						var $nextBtn = $buttons.eq(nextIndex);
+						var target = $($nextBtn.attr('data-tab'));
+						
+						$buttons.removeClass('active-btn');
+						$nextBtn.addClass('active-btn');
+						$tabsBox.find('.tabs-content .tab').fadeOut(0).removeClass('active-tab');
+						$(target).fadeIn(300).addClass('active-tab');
 
-			function stopTimer() {
-				clearInterval(timer);
-			}
+					}, interval);
+				}
 
-			startTimer();
+				function stopPlay() {
+					clearInterval(timer);
+				}
 
-			// Pause on Mouse Enter, Resume on Mouse Leave
-			$tabsBox.on('mouseenter', stopTimer).on('mouseleave', startTimer);
-			
-			// Reset timer on click
-			$tabBtns.on('click', function() {
-				stopTimer();
-				startTimer();
+				autoPlay();
+
+				// Pause on hover
+				$tabsBox.on('mouseenter', stopPlay).on('mouseleave', autoPlay);
+
+				// Reset timer on manual click
+				$buttons.on('click', function() {
+					stopPlay();
+					autoPlay();
+				});
 			});
-		});
+		}
 	}
 
 	//Accordion Box
