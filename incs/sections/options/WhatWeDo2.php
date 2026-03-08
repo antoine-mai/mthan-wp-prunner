@@ -77,7 +77,11 @@ function mthan_section_WhatWeDo2_options() {
                     'type'  => 'textarea',
                     'title' => 'Short Description',
                 ),
-                mthan_page_select_field('link', 'Service Link'),
+                mthan_page_select_field('link', 'Service Link', [
+                    'default' => [
+                        'url' => '#'
+                    ]
+                ]),
             ),
         ),
     );

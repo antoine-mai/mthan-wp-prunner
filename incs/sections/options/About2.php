@@ -64,7 +64,11 @@ function mthan_section_About2_options() {
             'title' => 'Button Text',
             'default' => 'Read More',
         ),
-        mthan_page_select_field('btn_link', 'Button Link'),
+        mthan_page_select_field('btn_link', 'Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
         // ISO Box
         array(
             'id'    => 'iso_icon',

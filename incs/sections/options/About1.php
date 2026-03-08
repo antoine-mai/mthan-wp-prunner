@@ -75,7 +75,11 @@ function mthan_section_About1_options() {
             'title' => 'Button Text',
             'default' => 'Read More',
         ),
-        mthan_page_select_field('btn_link', 'Button Link'),
+        mthan_page_select_field('btn_link', 'Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
         array(
             'id'    => 'signature',
             'type'  => 'upload',

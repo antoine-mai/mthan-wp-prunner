@@ -102,7 +102,11 @@ function mthan_section_History_options() {
                     'title' => 'Link Text',
                     'default' => 'Continue Reading',
                 ),
-                mthan_page_select_field('link_url', 'Link URL'),
+                mthan_page_select_field('link_url', 'Link URL', [
+                    'default' => [
+                        'url' => '#'
+                    ]
+                ]),
             ),
         ),
         // History Timeline Carousel
@@ -141,6 +145,10 @@ function mthan_section_History_options() {
             'title' => 'Bottom Button Text',
             'default' => 'View Full History',
         ),
-        mthan_page_select_field('btn_link', 'Bottom Button Link'),
+        mthan_page_select_field('btn_link', 'Bottom Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
     );
 }

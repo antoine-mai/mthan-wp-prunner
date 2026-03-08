@@ -156,7 +156,11 @@ function mthan_section_WhatWeDo1_options() {
                     'type'  => 'textarea',
                     'title' => 'Inner Box Text',
                 ),
-                mthan_page_select_field('appointment_link', 'Appointment Link'),
+                mthan_page_select_field('appointment_link', 'Appointment Link', [
+                    'default' => [
+                        'url' => '#'
+                    ]
+                ]),
                 array(
                     'id'    => 'service_subtitle',
                     'type'  => 'text',
@@ -187,13 +191,21 @@ function mthan_section_WhatWeDo1_options() {
                     'type'  => 'text',
                     'title' => 'Brochure Link Text',
                 ),
-                mthan_page_select_field('brochure_link_url', 'Brochure Link URL'),
+                mthan_page_select_field('brochure_link_url', 'Brochure Link URL', [
+                    'default' => [
+                        'url' => '#'
+                    ]
+                ]),
                 array(
                     'id'    => 'more_link_text',
                     'type'  => 'text',
                     'title' => 'More Link Text',
                 ),
-                mthan_page_select_field('more_link_url', 'More Link URL'),
+                mthan_page_select_field('more_link_url', 'More Link URL', [
+                    'default' => [
+                        'url' => '#'
+                    ]
+                ]),
             ),
         ),
     );

@@ -32,7 +32,11 @@ function mthan_section_Projects2_options() {
             'title' => 'Button Text',
             'default' => 'View More',
         ),
-        mthan_page_select_field('btn_link', 'Button Link'),
+        mthan_page_select_field('btn_link', 'Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
     );
 
     $options[] = array(

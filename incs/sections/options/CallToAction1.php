@@ -17,7 +17,11 @@ function mthan_section_CallToAction1_options() {
             'title' => 'Button Text',
             'default' => 'Send Message',
         ),
-        mthan_page_select_field('btn_link', 'Button Link'),
+        mthan_page_select_field('btn_link', 'Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
         array(
             'id'    => 'phone',
             'type'  => 'text',

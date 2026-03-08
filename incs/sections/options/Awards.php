@@ -57,7 +57,11 @@ function mthan_section_Awards_options() {
             'title' => 'Button Text',
             'default' => 'All Our Awards',
         ),
-        mthan_page_select_field('btn_link', 'Button Link'),
+        mthan_page_select_field('btn_link', 'Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
         array(
             'id'    => 'items',
             'type'  => 'group',

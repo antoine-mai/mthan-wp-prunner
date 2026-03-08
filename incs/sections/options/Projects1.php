@@ -44,6 +44,10 @@ function mthan_section_Projects1_options() {
             'title' => 'Button Text',
             'default' => 'View All Projects',
         ),
-        mthan_page_select_field('btn_link', 'Button Link'),
+        mthan_page_select_field('btn_link', 'Button Link', [
+            'default' => [
+                'url' => '#'
+            ]
+        ]),
     );
 }

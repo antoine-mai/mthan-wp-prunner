@@ -88,7 +88,11 @@ function mthan_section_Team2_options() {
                     'title' => 'Member Image',
                     'help'  => 'Recommended size: 270x300px',
                 ),
-                mthan_page_select_field('link', 'Member Link'),
+                mthan_page_select_field('link', 'Member Link', [
+                    'default' => [
+                        'url' => '#'
+                    ]
+                ]),
                 array(
                     'id'    => 'socials',
                     'type'  => 'group',
@@ -99,7 +103,11 @@ function mthan_section_Team2_options() {
                             'type'  => 'upload',
                             'title' => 'Icon (e.g. fab fa-facebook-f)',
                         ),
-                        mthan_page_select_field('url', 'URL'),
+                        mthan_page_select_field('url', 'URL', [
+                            'default' => [
+                                'url' => '#'
+                            ]
+                        ]),
                     ),
                 ),
             ),
