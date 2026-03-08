@@ -2,10 +2,34 @@
 /**
  * 
 **/
-$theme_options = get_option('mthan_theme_options');
-$header_tabs = !empty($theme_options['header_tabs']) 
-    ? $theme_options['header_tabs'] 
-    : [];
+$theme_options      = get_option('mthan_theme_options');
+$header_tabs        = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
+$social_links       = !empty($theme_options['social_links']) ? $theme_options['social_links'] : [];
+
+// 1. Data URLs & Text
+$tip_link           = !empty($header_tabs['header_1_tip_link']) ? (is_numeric($header_tabs['header_1_tip_link']) ? get_permalink($header_tabs['header_1_tip_link']) : $header_tabs['header_1_tip_link']) : '/contact';
+$callback_url       = !empty($header_tabs['header_1_callback_url']) ? (is_numeric($header_tabs['header_1_callback_url']) ? get_permalink($header_tabs['header_1_callback_url']) : $header_tabs['header_1_callback_url']) : '/contact';
+$btn_url            = !empty($header_tabs['header_1_btn_url']) ? (is_numeric($header_tabs['header_1_btn_url']) ? get_permalink($header_tabs['header_1_btn_url']) : $header_tabs['header_1_btn_url']) : '#';
+$btn_icon_url       = !empty($header_tabs['header_1_btn_icon']) ? mthan_get_img_url($header_tabs['header_1_btn_icon']) : '';
+$search_placeholder = !empty($theme_options['search_placeholder']) ? $theme_options['search_placeholder'] : 'Keyword ...';
+$search_action_url  = !empty($theme_options['default_search_page']) ? get_permalink($theme_options['default_search_page']) : home_url('/');
+
+// 2. Logo URLs
+$logo_url           = mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
+$sticky_logo_url    = mthan_get_img_url($header_tabs['header_sticky_logo'] ?? '', mthan_get_img_url($theme_options['logo'] ?? '', ''));
+$nav_logo_url       = mthan_get_img_url(
+    $header_tabs['mobile_menu_logo'] ?? '', 
+    mthan_get_img_url(
+        $header_tabs['header_nav_logo'] ?? '', 
+        mthan_get_img_url(
+            $header_tabs['header_logo'] ?? '', 
+            mthan_get_img_url($theme_options['logo'] ?? '', '')
+        )
+    )
+);
+
+// 3. Menus
+$menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : [];
 ?>
 <header class="main-header header-style-one inner-header">
     <div class="header-top">
@@ -14,7 +38,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
                 <div class="top-left">
                     <?php if (!empty($header_tabs['header_1_tip_text'])) { ?>
                     <div class="tip-link">
-                        <?php $tip_link = !empty($header_tabs['header_1_tip_link']) ? (is_numeric($header_tabs['header_1_tip_link']) ? get_permalink($header_tabs['header_1_tip_link']) : $header_tabs['header_1_tip_link']) : '/contact'; ?>
                         <a href="<?php echo esc_url($tip_link); ?>">
                             <span class="icon flaticon-play-button-1"></span> 
                             <?php echo esc_html($header_tabs['header_1_tip_text']); ?>
@@ -23,9 +46,7 @@ $header_tabs = !empty($theme_options['header_tabs'])
                     <?php } ?>
                     <div class="social-links">
                         <ul class="clearfix">
-                            <?php 
-                            $social_links = !empty($theme_options['social_links']) ? $theme_options['social_links'] : [];
-                            foreach ($social_links as $social) { if (empty($social['url']) || empty($social['icon'])) continue;
+                            <?php foreach ($social_links as $social) { if (empty($social['url']) || empty($social['icon'])) continue;
                                 $icon_url = mthan_get_img_url($social['icon']);
                             ?>
                             <li>
@@ -73,9 +94,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
                 <!--Logo-->
                 <div class="logo-box">
                     <div class="logo">
-                        <?php 
-                        $logo_url = mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
-                        ?>
                         <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
                             <img src="<?php echo esc_url($logo_url); ?>" alt="<?php bloginfo('name'); ?>">
                         </a>
@@ -92,9 +110,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
                             </a>
                         </div>
                         <div class="call">
-                            <?php 
-                            $callback_url = !empty($header_tabs['header_1_callback_url']) ? (is_numeric($header_tabs['header_1_callback_url']) ? get_permalink($header_tabs['header_1_callback_url']) : $header_tabs['header_1_callback_url']) : '/contact';
-                            ?>
                             <a href="<?php echo esc_url($callback_url); ?>">
                                 <?php echo esc_html($header_tabs['header_1_callback_text'] ?? 'Get Call Back'); ?> 
                                 <span class="icon flaticon-play-button-1"></span>
@@ -102,10 +117,9 @@ $header_tabs = !empty($theme_options['header_tabs'])
                         </div>
                     </div>
                     <div class="search-box">
-                        <form method="get" action="<?php echo esc_url(!empty($theme_options['default_search_page']) ? get_permalink($theme_options['default_search_page']) : home_url('/')); ?>">
+                        <form method="get" action="<?php echo esc_url($search_action_url); ?>">
                             <div class="form-group">
                                 <div class="field-box">
-                                    <?php $search_placeholder = !empty($theme_options['search_placeholder']) ? $theme_options['search_placeholder'] : 'Keyword ...'; ?>
                                     <input type="search" name="s" value="<?php echo get_search_query(); ?>" placeholder="<?php echo esc_attr($search_placeholder); ?>" required="">
                                 </div>
                                 <div class="btn-box"><button type="submit" class="search-btn"><span class="flaticon-search-1"></span></button></div>
@@ -133,7 +147,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
                         <div class="collapse navbar-collapse show clearfix" id="navbarSupportedContent">
                             <ul class="navigation clearfix">
                                 <?php 
-                                $menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : [];
                                 foreach ($menu_items as $item) :
                                     $has_submenu = !empty($item['submenu']);
                                     $li_class = $has_submenu ? 'dropdown' : '';
@@ -173,14 +186,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
                     <!-- <div class="cart-btn"><a href="#"><span class="flaticon-shopping-bag-2"></span></a></div> WooCommerce Cart optionally -->
                     <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
                     <div class="quote-btn" style="height: 80px; display: flex; align-items: center; padding: 0;">
-                        <?php 
-                            $btn_url = !empty($header_tabs['header_1_btn_url']) 
-                                ? (is_numeric($header_tabs['header_1_btn_url']) ? get_permalink($header_tabs['header_1_btn_url']) : $header_tabs['header_1_btn_url']) 
-                                : '#';
-                            $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) 
-                                ? mthan_get_img_url($header_tabs['header_1_btn_icon']) 
-                                : '';
-                        ?>
                         <a href="<?php echo esc_url($btn_url); ?>" style="display: flex; flex-direction: column; align-items: center; justify-content: center; width: 120px; height: 100%; color: #fff; text-decoration: none; transition: all 300ms ease;">
                             <?php if ($btn_icon_url) : ?>
                                 <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 24px; width: auto; margin-bottom: 5px;">
@@ -205,9 +210,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
         <div class="auto-container clearfix">
             <!--Logo-->
             <div class="logo pull-left">
-                <?php 
-                $sticky_logo_url = mthan_get_img_url($header_tabs['header_sticky_logo'] ?? '', mthan_get_img_url($theme_options['logo'] ?? '', ''));
-                ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
                     <img src="<?php echo esc_url($sticky_logo_url); ?>" alt="<?php bloginfo('name'); ?>" />
                 </a>
@@ -222,9 +224,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
                 <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
                 <!--Contact Btn-->
                 <div class="contact-link" style="display: flex; align-items: center; padding: 10px 0;">
-                    <?php 
-                    $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) ? mthan_get_img_url($header_tabs['header_1_btn_icon']) : '';
-                    ?>
                     <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three" style="display: flex; align-items: center; padding: 10px 20px; border-radius: 4px;">
                         <?php if ($btn_icon_url) : ?>
                             <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 18px; width: auto; margin-right: 10px;">
@@ -251,18 +250,6 @@ $header_tabs = !empty($theme_options['header_tabs'])
         
         <nav class="menu-box">
             <div class="nav-logo">
-                <?php 
-                $nav_logo_url = mthan_get_img_url(
-                    $header_tabs['mobile_menu_logo'] ?? '', 
-                    mthan_get_img_url(
-                        $header_tabs['header_nav_logo'] ?? '', 
-                        mthan_get_img_url(
-                            $header_tabs['header_logo'] ?? '', 
-                            mthan_get_img_url($theme_options['logo'] ?? '', '')
-                        )
-                    )
-                );
-                ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <img src="<?php echo esc_url($nav_logo_url); ?>" alt="" title="" />
                 </a>
