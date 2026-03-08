@@ -16527,7 +16527,7 @@ img.lazy-image.loaded {
          align-items: center !important;
          justify-content: center !important;
          border-radius: 4px !important;
-         font-size: 13px !important;
+         font-size: 10px !important;
          font-weight: 600 !important;
          text-transform: uppercase;
          margin: 0 !important; /* Landing exactly 5px inside the dashed line */
@@ -16544,12 +16544,19 @@ img.lazy-image.loaded {
          justify-content: center !important;
          margin: 0 !important; /* Landing exactly 5px inside the dashed line */
          padding: 0 !important;
-         font-size: 26px !important;
+         font-size: 32px !important;
          color: #ffffff !important;
          line-height: 1 !important;
          cursor: pointer !important;
          z-index: 3 !important;
          position: relative !important;
          height: auto !important;
+     }
+
+     /* Facts Two 2 items per row on mobile */
+     .facts-two .fact-block {
+         width: 50% !important;
+         flex: 0 0 50% !important;
+         max-width: 50% !important;
      }
  }
