@@ -8,11 +8,17 @@
 function mthan_section_Services_html($section_data) { ?>
 <?php
     $slug = 'Services';
+    $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+    if (is_front_page()) {
+        $paged = (get_query_var('page')) ? get_query_var('page') : 1;
+    }
+
     $count = mthan_get_section_val($slug, $section_data, 'count', -1);
 
     $args = array(
         'post_type'      => 'mthan_service',
         'posts_per_page' => $count,
+        'paged'          => $paged,
         'orderby'        => 'date',
         'order'          => 'DESC',
     );
@@ -30,12 +36,8 @@ function mthan_section_Services_html($section_data) { ?>
                 $img   = get_the_post_thumbnail_url(get_the_ID(), 'full');
                 $lnk   = get_permalink();
                 
-                // For now, these might be empty since editor/excerpt are disabled
-                // User might add custom fields later, or we use a fallback
                 $desc  = get_the_excerpt(); 
                 
-                // Icon handling: we could try to get it from meta if we decide to re-add it
-                // For now, use a default icon or check if a custom field exists
                 $icon  = get_post_meta(get_the_ID(), 'service_icon', true);
                 if (empty($icon)) $icon = 'flaticon-hedge';
             ?>
@@ -66,8 +68,24 @@ function mthan_section_Services_html($section_data) { ?>
                     </div>
                 </div>
             </div>
-            <?php } wp_reset_postdata(); ?>
+            <?php } ?>
         </div>
+
+        <?php if ($query->max_num_pages > 1) : ?>
+        <div class="styled-pagination text-center">
+            <?php
+            echo paginate_links(array(
+                'base'         => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
+                'format'       => '?paged=%#%',
+                'current'      => max(1, $paged),
+                'total'        => $query->max_num_pages,
+                'prev_text'    => '<span class="fa fa-angle-left"></span>',
+                'next_text'    => '<span class="fa fa-angle-right"></span>',
+                'type'         => 'list',
+            ));
+            ?>
+        </div>
+        <?php endif; wp_reset_postdata(); ?>
     </div>
 </section>
 <?php }
