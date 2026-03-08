@@ -232,7 +232,17 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
         <nav class="menu-box">
             <div class="nav-logo">
                 <?php 
-                $nav_logo_url = mthan_get_img_url($header_tabs['header_nav_logo'] ?? '', mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/nav-logo.png'));
+                // Fallback: 1. Header Nav Logo -> 2. Header Style 1 Logo -> 3. General Logo (Theme Options) -> 4. Hardcoded Default
+                $nav_logo_url = mthan_get_img_url(
+                    $header_tabs['header_nav_logo'] ?? '', 
+                    mthan_get_img_url(
+                        $header_tabs['header_logo'] ?? '', 
+                        mthan_get_img_url(
+                            $theme_options['logo'] ?? '', 
+                            get_template_directory_uri() . '/assets/images/nav-logo.png'
+                        )
+                    )
+                );
                 ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>">
                     <img src="<?php echo esc_url($nav_logo_url); ?>" alt="" title="" />
