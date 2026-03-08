@@ -42,17 +42,7 @@ do_action( 'woocommerce_before_main_content' );
 <?php
 if ( woocommerce_product_loop() ) {
 
-	/**
-	 * Hook: woocommerce_before_shop_loop.
-	 *
-	 * @hooked woocommerce_output_all_notices - 10
-	 * @hooked woocommerce_result_count - 20
-	 * @hooked woocommerce_catalog_ordering - 30
-	 */
-    // We already handled sort and result count above to match theme layout
-	// do_action( 'woocommerce_before_shop_loop' );
-
-	woocommerce_product_loop_start();
+    echo '<div class="row clearfix">';
 
 	if ( wc_get_loop_prop( 'total' ) ) {
 		while ( have_posts() ) {
@@ -103,7 +93,7 @@ if ( woocommerce_product_loop() ) {
 		}
 	}
 
-	woocommerce_product_loop_end();
+    echo '</div>';
 
 	/**
 	 * Hook: woocommerce_after_shop_loop.

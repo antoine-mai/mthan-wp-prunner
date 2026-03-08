@@ -97,29 +97,52 @@ add_filter('woocommerce_quantity_input_classes', function($classes) {
 // ── Overriding Content Wrapper ───────────────────────────────────────
 add_action('woocommerce_before_main_content', 'mthan_woocommerce_wrapper_start', 10);
 function mthan_woocommerce_wrapper_start() {
-    // If it's a single product, we don't want the default wrapper as we have our own in single-product.php
+    // Render Page Banner and other "before" global sections
+    mthan_render_global_sections('before');
+
     if (is_singular('product')) return;
 
     $options = get_option(MTHAN_THEME_OPTIONS);
     $sidebar_enabled = !empty($options['shop_sidebar']) ? $options['shop_sidebar'] : false;
 
     if ($sidebar_enabled) {
-        echo '<div class="sidebar-page-container"><div class="auto-container"><div class="row clearfix"><div class="content-side col-lg-8 col-md-12 col-sm-12"><div class="shop-content-wrapper">';
+        echo '<div class="sidebar-page-container shop-page"><div class="auto-container"><div class="row clearfix"><div class="content-side col-xl-9 col-lg-8 col-md-12 col-sm-12"><div class="our-shop">';
     } else {
-        echo '<div class="auto-container py-5"><div class="shop-content-wrapper">';
+        echo '<div class="auto-container py-5"><div class="our-shop">';
     }
 }
 
+// ── Pagination ──────────────────────────────────────────────────────
+
+add_filter('woocommerce_pagination_args', function($args) {
+    $args['prev_text'] = '<span class="fa fa-caret-left"></span>';
+    $args['next_text'] = '<span class="fa fa-caret-right"></span>';
+    $args['type']      = 'list';
+    return $args;
+});
+
+// Wrap pagination with theme class
+add_action('woocommerce_after_shop_loop', function() {
+    echo '<div class="pagination-box">';
+}, 9);
+
+add_action('woocommerce_after_shop_loop', function() {
+    echo '</div>';
+}, 11);
+
 add_action('woocommerce_after_main_content', 'mthan_woocommerce_wrapper_end', 10);
 function mthan_woocommerce_wrapper_end() {
-    if (is_singular('product')) return;
+    if (is_singular('product')) {
+        mthan_render_global_sections('after');
+        return;
+    }
 
     $options = get_option(MTHAN_THEME_OPTIONS);
     $sidebar_enabled = !empty($options['shop_sidebar']) ? $options['shop_sidebar'] : false;
 
     if ($sidebar_enabled) {
-        echo '</div></div>';
-        echo '<div class="sidebar-side col-lg-4 col-md-12 col-sm-12">';
+        echo '</div></div>'; // closes our-shop, content-side
+        echo '<div class="sidebar-side col-xl-3 col-lg-4 col-md-12 col-sm-12">';
         if ( is_active_sidebar( 'shop-sidebar' ) ) {
             echo '<aside class="sidebar shop-sidebar">';
             dynamic_sidebar('shop-sidebar');
@@ -127,12 +150,14 @@ function mthan_woocommerce_wrapper_end() {
         } else {
             get_template_part('template-parts/sidebar', 'blog');
         }
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
-        echo '</div>';
+        echo '</div>'; // closes sidebar-side
+        echo '</div>'; // closes row
+        echo '</div>'; // closes auto-container
+        echo '</div>'; // closes sidebar-page-container
     } else {
-        echo '</div>';
-        echo '</div>';
+        echo '</div>'; // closes our-shop
+        echo '</div>'; // closes auto-container
     }
+
+    mthan_render_global_sections('after');
 }
