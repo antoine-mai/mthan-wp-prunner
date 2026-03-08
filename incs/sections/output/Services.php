@@ -40,8 +40,8 @@ function mthan_section_Services_html($section_data) { ?>
                 
                 $desc  = get_the_excerpt(); 
                 
-                $icon  = get_post_meta(get_the_ID(), 'service_icon', true);
-                if (empty($icon)) $icon = 'flaticon-hedge';
+                $service_meta = get_post_meta(get_the_ID(), MTHAN_SERVICE_OPTIONS, true);
+                $icon         = !empty($service_meta['service_icon']) ? $service_meta['service_icon'] : 'flaticon-hedge';
             ?>
             <!--Service block-->
             <div class="service-block col-lg-4 col-md-6 col-sm-12">

@@ -26,13 +26,14 @@ if (!empty($spacing)) {
             <div class="content-side col-lg-12 col-md-12 col-sm-12">
                 <div class="service-details">
                     <?php if (have_posts()) : while (have_posts()) : the_post(); 
-                        $icon = get_post_meta(get_the_ID(), 'project_icon', true); // Check project_icon too
-                        if (empty($icon)) $icon = get_post_meta(get_the_ID(), 'service_icon', true);
+                        $service_meta = get_post_meta(get_the_ID(), MTHAN_SERVICE_OPTIONS, true);
+                        // The project_meta check is removed as per the instruction to simplify icon fetching
+                        // and directly apply fallback to service_meta.
+                        
+                        $icon = !empty($service_meta['service_icon']) ? $service_meta['service_icon'] : 'flaticon-hedge'; // Fallback
                     ?>
                         <div class="sec-title">
-                            <?php if ($icon) { ?>
                             <div class="title-icon"><span class="icon"><?php echo mthan_get_icon_html($icon); ?></span></div>
-                            <?php } ?>
                             <div class="subtitle"><?php esc_html_e('Service Details', 'mthan'); ?></div>
                             <h2><?php the_title(); ?></h2>
                         </div>
