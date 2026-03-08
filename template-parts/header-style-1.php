@@ -173,10 +173,13 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                     <div class="quote-btn">
                         <?php 
                         $btn_url = !empty($header_tabs['header_1_btn_url']) ? (is_numeric($header_tabs['header_1_btn_url']) ? get_permalink($header_tabs['header_1_btn_url']) : $header_tabs['header_1_btn_url']) : '#';
+                        $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) ? mthan_get_img_url($header_tabs['header_1_btn_icon']) : '';
                         ?>
-                        <a href="<?php echo esc_url($btn_url); ?>">
-                            <?php echo esc_html($header_tabs['header_1_btn_text']); ?> 
-                            <i class="arrow flaticon-play-button-1"></i>
+                        <a href="<?php echo esc_url($btn_url); ?>" style="display: flex; align-items: center; justify-content: center; flex-direction: column; line-height: 1.2; padding: 10px 15px;">
+                            <?php if ($btn_icon_url) : ?>
+                            <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 20px; width: auto; margin-bottom: 2px;">
+                            <?php endif; ?>
+                            <span class="btn-text" style="font-size: 13px; font-weight: 700; text-transform: uppercase;"><?php echo esc_html($header_tabs['header_1_btn_text']); ?></span> 
                         </a>
                     </div>
                     <?php endif; ?>
@@ -209,10 +212,15 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 <?php if (!empty($header_tabs['header_1_btn_text'])) { ?>
                 <!--Contact Btn-->
                 <div class="contact-link">
-                    <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three">
-                        <span class="btn-title">
+                    <?php 
+                    $btn_icon_url = !empty($header_tabs['header_1_btn_icon']) ? mthan_get_img_url($header_tabs['header_1_btn_icon']) : '';
+                    ?>
+                    <a href="<?php echo esc_url($header_tabs['header_1_btn_url'] ?? '#'); ?>" class="theme-btn btn-style-three" style="display: flex; align-items: center; padding: 10px 20px;">
+                        <?php if ($btn_icon_url) : ?>
+                        <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="height: 18px; width: auto; margin-right: 10px;">
+                        <?php endif; ?>
+                        <span class="btn-title" style="padding: 0; margin: 0;">
                             <?php echo esc_html($header_tabs['header_1_btn_text']); ?> 
-                            <i class="arrow flaticon-play-button-1"></i>
                         </span>
                     </a>
                 </div>

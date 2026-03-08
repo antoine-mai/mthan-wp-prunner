@@ -145,9 +145,9 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                         ]),
                         [
                             'id'      => 'header_1_btn_icon',
-                            'type'    => 'icon',
-                            'title'   => 'Button Icon',
-                            'default' => 'fas fa-phone-alt',
+                            'type'    => 'upload',
+                            'title'   => 'Button Icon (Upload)',
+                            'preview' => true,
                         ],
                         [
                             'type'    => 'subheading',
