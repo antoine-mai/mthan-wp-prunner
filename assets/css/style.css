@@ -16628,6 +16628,21 @@ img.lazy-image.loaded {
 		text-align: center !important;
 	}
 
+	.footer-two .widget-title {
+		padding-left: 0 !important;
+		display: flex !important;
+		justify-content: center !important;
+		align-items: center !important;
+	}
+
+	.footer-two .widget-title:before {
+		position: relative !important;
+		display: inline-block !important;
+		margin-right: 10px !important;
+		left: auto !important;
+		top: auto !important;
+	}
+
 	.main-footer .services-widget ul li a {
 		padding-left: 0 !important;
 	}
