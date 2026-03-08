@@ -73,7 +73,11 @@ function mthan_section_Services_html($section_data) { ?>
 
         <?php if ($query->max_num_pages > 1) : ?>
         <div class="pagination-box text-center">
-            <style>.styled-pagination { padding: 0 !important; }</style>
+            <style>
+                .styled-pagination { padding: 0 !important; }
+                .styled-pagination li { vertical-align: middle !important; }
+                .styled-pagination li a { display: flex !important; align-items: center; justify-content: center; line-height: 1 !important; }
+            </style>
             <?php
             $links = paginate_links(array(
                 'base'         => str_replace(999999999, '%#%', esc_url(get_pagenum_link(999999999))),
@@ -85,15 +89,27 @@ function mthan_section_Services_html($section_data) { ?>
                 'type'         => 'list',
             ));
             
-            // Fix for theme style: 
-            $links = str_replace('page-numbers', 'styled-pagination', $links);
-            // Robust replacement for current page span
-            $links = preg_replace('/<span[^>]*class=["\'][^"\']*current[^"\']*["\'][^>]*>([0-9]+)<\/span>/', '<a href="#" class="active">$1</a>', $links);
-            // Mark prev/next with 'control' class
-            $links = str_replace('class="prev styled-pagination"', 'class="prev styled-pagination control"', $links);
-            $links = str_replace('class="next styled-pagination"', 'class="next styled-pagination control"', $links);
-            
-            echo $links;
+            if ($links) {
+                // 1. Convert span current to active link
+                $links = preg_replace('/<span[^>]*class=["\']([^"\']*current[^"\']*)["\'][^>]*>([0-9]+)<\/span>/', '<a href="#" class="active">$2</a>', $links);
+                
+                // 2. Clear out all page-numbers related classes but preserving other potential classes (prev/next)
+                $links = preg_replace('/class=["\']([^"\']*)page-numbers([^"\']*)["\']/', 'class="$1 $2"', $links);
+                
+                // 3. Set the correct class for the ul 
+                $links = preg_replace('/<ul[^>]*>/', '<ul class="styled-pagination">', $links);
+                
+                // 4. Transform prev/next to control
+                $links = str_replace('class="prev"', 'class="control prev"', $links);
+                $links = str_replace('class="next"', 'class="control next"', $links);
+                
+                // 5. Final cleanup of class spacing
+                $links = str_replace('class=" "', '', $links);
+                $links = str_replace('class="  "', '', $links);
+                $links = str_replace('  ', ' ', $links);
+                
+                echo $links;
+            }
             ?>
         </div>
         <?php endif; wp_reset_postdata(); ?>
