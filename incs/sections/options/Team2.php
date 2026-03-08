@@ -78,8 +78,8 @@ function mthan_section_Team2_options() {
                 ),
                 array(
                     'id'    => 'phone_icon',
-                    'type'  => 'text',
-                    'title' => 'Phone/Email Icon Class',
+                    'type'  => 'upload',
+                    'title' => 'Phone/Email Icon',
                     'default' => 'flaticon-headphones',
                 ),
                 array(
@@ -100,8 +100,8 @@ function mthan_section_Team2_options() {
                     'fields' => array(
                         array(
                             'id'    => 'icon',
-                            'type'  => 'text',
-                            'title' => 'Icon Class (e.g. fab fa-facebook-f)',
+                            'type'  => 'upload',
+                            'title' => 'Icon (e.g. fab fa-facebook-f)',
                         ),
                         array(
                             'id'    => 'url',

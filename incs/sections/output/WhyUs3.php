@@ -51,8 +51,7 @@ function mthan_section_WhyUs3_html($section_data) { ?>
                 <div class="why-block-three col-lg-4 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <div class="icon-box">
-                            <span class="flap"></span>
-                            <span class="icon <?php echo esc_attr($item_icon); ?>"></span>
+                            <?php echo mthan_get_icon_html($item_icon, 'class="icon"'); ?>
                         </div>
                         <?php if ($item_title) { ?>
                         <h5><?php echo esc_html($item_title); ?></h5>

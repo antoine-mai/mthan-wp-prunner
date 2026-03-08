@@ -39,8 +39,8 @@ function mthan_section_Services_options() {
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon Class (flaticon-...)',
+                    'type'  => 'upload',
+                    'title' => 'Icon (Class or Image)',
                 ),
                 array(
                     'id'    => 'image',

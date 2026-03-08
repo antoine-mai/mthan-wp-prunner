@@ -76,8 +76,8 @@ function mthan_section_WhyUs3_options() {
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon Class',
+                    'type'  => 'upload',
+                    'title' => 'Icon (Class or Image)',
                 ),
                 array(
                     'id'    => 'text',

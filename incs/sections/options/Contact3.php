@@ -12,8 +12,8 @@ function mthan_section_Contact3_options() {
         // Left Column (Text & Info)
         array(
             'id'    => 'left_icon',
-            'type'  => 'text',
-            'title' => 'Top Hidden Icon (flaticon-...)',
+            'type'  => 'upload',
+            'title' => 'Top Hidden Icon',
             'default' => 'flaticon-internet',
         ),
         array(
@@ -85,8 +85,8 @@ function mthan_section_Contact3_options() {
                 ),
                 array(
                     'id'    => 'icon',
-                    'type'  => 'text',
-                    'title' => 'Icon Class',
+                    'type'  => 'upload',
+                    'title' => 'Icon (Class or Image)',
                 ),
                 array(
                     'id'    => 'lines',

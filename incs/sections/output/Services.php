@@ -31,10 +31,10 @@ function mthan_section_Services_html($section_data) { ?>
                             <img src="<?php echo esc_url($img); ?>" alt="<?php echo esc_attr($title); ?>">
                         </div>
                         <?php } ?>
-                        <div class="hvr-icon"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                        <div class="hvr-icon"><?php echo mthan_get_icon_html($icon); ?></div>
                     </div>
                     <div class="lower">
-                        <div class="icon-right"><span class="<?php echo esc_attr($icon); ?>"></span></div>
+                        <div class="icon-right"><?php echo mthan_get_icon_html($icon); ?></div>
                         <?php if ($title) { ?>
                         <h5><a href="<?php echo esc_url($lnk); ?>"><?php echo esc_html($title); ?></a></h5>
                         <?php } ?>

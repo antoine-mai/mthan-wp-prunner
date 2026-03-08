@@ -37,7 +37,7 @@ function mthan_section_Contact3_html($section_data) { ?>
             <div class="text-col col-xl-6 col-lg-12 col-md-12 col-sm-12">
                 <div class="inner clearfix">
                     <?php if ($left_icon) { ?>
-                    <div class="top-icon"><span class="<?php echo esc_attr($left_icon); ?>"></span></div>
+                    <div class="top-icon"><?php echo mthan_get_icon_html($left_icon); ?></div>
                     <?php } ?>
                     
                     <div class="content-box">
@@ -76,7 +76,7 @@ function mthan_section_Contact3_html($section_data) { ?>
                                 <div class="info-block col-xl-6 col-lg-6 col-md-6 col-sm-12">
                                     <div class="inner-box">
                                         <?php if ($item_icon) { ?>
-                                        <div class="icon"><span class="<?php echo esc_attr($item_icon); ?>"></span></div>
+                                        <div class="icon"><?php echo mthan_get_icon_html($item_icon); ?></div>
                                         <?php } ?>
                                         <?php if ($item_title) { ?><h6><?php echo esc_html($item_title); ?></h6><?php } ?>
                                         <ul>
