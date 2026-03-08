@@ -11,6 +11,7 @@ function mthan_section_Projects2_html($section_data) { ?>
     $title_icon = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'title_icon'));
     $subtitle   = mthan_get_section_val($slug, $section_data, 'subtitle');
     $title      = mthan_get_section_val($slug, $section_data, 'title');
+    $count      = mthan_get_section_val($slug, $section_data, 'count', 7);
     $btn_text   = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link   = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
 
@@ -24,6 +25,17 @@ function mthan_section_Projects2_html($section_data) { ?>
         6 => array('class' => 'col-lg-6 col-md-12 col-sm-12'),
         7 => array('class' => 'col-lg-3 col-md-6 col-sm-12'),
     );
+
+    $args = array(
+        'post_type'      => 'mthan_project',
+        'posts_per_page' => $count,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) return;
 ?>
 <section class="projects-two">
     <div class="auto-container">
@@ -55,34 +67,22 @@ function mthan_section_Projects2_html($section_data) { ?>
                 <div class="column-width col-lg-3 col-md-6 col-sm-12" style="height: 0; padding: 0; margin: 0; visibility: hidden;"></div>
 
                 <?php 
-                $options_func = 'mthan_section_Projects2_options';
-                $default_opts = function_exists($options_func) ? $options_func() : array();
-
-                for ($i = 1; $i <= 7; $i++) {
-                    $item_key = 'item_' . $i;
-                    $item = mthan_get_section_val($slug, $section_data, $item_key, array());
+                $i = 0;
+                while ($query->have_posts()) { 
+                    $query->the_post();
+                    $i++;
                     
-                    // Fallback to individual defaults if fields are missing or empty
-                    $item_defaults = array();
-                    foreach ($default_opts as $opt) {
-                        if (isset($opt['id']) && $opt['id'] == $item_key && isset($opt['fields'])) {
-                            foreach ($opt['fields'] as $f) {
-                                if (isset($f['id']) && isset($f['default'])) {
-                                    $item_defaults[$f['id']] = $f['default'];
-                                }
-                            }
-                        }
-                    }
-
-                    $tit    = !empty($item['title']) ? $item['title'] : (isset($item_defaults['title']) ? $item_defaults['title'] : '');
-                    $img    = mthan_sec_img(!empty($item['image']) ? $item['image'] : (isset($item_defaults['image']) ? $item_defaults['image'] : ''));
-                    $cat    = !empty($item['category']) ? $item['category'] : (isset($item_defaults['category']) ? $item_defaults['category'] : '');
-                    $link   = mthan_get_link(!empty($item['link']) ? $item['link'] : (isset($item_defaults['link']) ? $item_defaults['link'] : ''));
-                    $cat_l  = mthan_get_link(!empty($item['category_link']) ? $item['category_link'] : (isset($item_defaults['category_link']) ? $item_defaults['category_link'] : ''));
+                    $tit    = get_the_title();
+                    $img    = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                    $link   = get_permalink();
                     
-                    $class  = $item_configs[$i]['class'];
+                    // Try to get category from meta if available
+                    $cat    = get_post_meta(get_the_ID(), 'project_category', true);
+                    $cat_l  = '#';
                     
-                    if (empty($img) && empty($tit)) continue;
+                    // Cycle through configs if more than 7
+                    $config_idx = (($i - 1) % 7) + 1;
+                    $class  = $item_configs[$config_idx]['class'];
                 ?>
                 <!--Project Block-->
                 <div class="project-block-two masonry-item <?php echo esc_attr($class); ?>">
@@ -104,7 +104,7 @@ function mthan_section_Projects2_html($section_data) { ?>
                         </div>
                     </div>
                 </div>
-                <?php } ?>
+                <?php } wp_reset_postdata(); ?>
             </div>
         </div>
     </div>

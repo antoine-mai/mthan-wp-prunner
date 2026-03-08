@@ -11,12 +11,21 @@ function mthan_section_Projects1_html($section_data) { ?>
     $title_icon = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'title_icon'));
     $subtitle   = mthan_get_section_val($slug, $section_data, 'subtitle');
     $title      = mthan_get_section_val($slug, $section_data, 'title');
-    $items      = mthan_get_section_val($slug, $section_data, 'items', array());
+    $count      = mthan_get_section_val($slug, $section_data, 'count', 6);
     $lower_text = mthan_get_section_val($slug, $section_data, 'lower_text');
     $btn_text   = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link   = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
 
-    if (empty($items)) return;
+    $args = array(
+        'post_type'      => 'mthan_project',
+        'posts_per_page' => $count,
+        'orderby'        => 'date',
+        'order'          => 'DESC',
+    );
+
+    $query = new WP_Query($args);
+
+    if (!$query->have_posts()) return;
 ?>
 <section class="projects-section">
     <div class="auto-container">
@@ -34,12 +43,15 @@ function mthan_section_Projects1_html($section_data) { ?>
 
         <div class="carousel-box">
             <div class="project-carousel owl-theme owl-carousel">
-                <?php foreach ($items as $item) { 
-                    $img   = mthan_sec_img(isset($item['image']) ? $item['image'] : '');
-                    $cat   = isset($item['category']) ? $item['category'] : '';
-                    $cat_l = mthan_get_link(isset($item['category_link']) ? $item['category_link'] : '');
-                    $i_tit = isset($item['title']) ? $item['title'] : '';
-                    $link  = mthan_get_link(isset($item['link']) ? $item['link'] : '');
+                <?php while ($query->have_posts()) { 
+                    $query->the_post();
+                    $img   = get_the_post_thumbnail_url(get_the_ID(), 'full');
+                    $i_tit = get_the_title();
+                    $link  = get_permalink();
+                    
+                    // Try to get category from meta if available
+                    $cat   = get_post_meta(get_the_ID(), 'project_category', true);
+                    $cat_l = '#'; // Might need taxonomy link later
                 ?>
                 <!--Project Block-->
                 <div class="project-block">
@@ -62,7 +74,7 @@ function mthan_section_Projects1_html($section_data) { ?>
                         <div class="link-box"><a href="<?php echo esc_url($link); ?>"><span class="icon flaticon-right-arrow-1"></span></a></div>
                     </div>
                 </div>
-                <?php } ?>
+                <?php } wp_reset_postdata(); ?>
             </div>
         </div>
         

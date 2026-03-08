@@ -35,47 +35,13 @@ function mthan_section_Projects2_options() {
         mthan_page_select_field('btn_link', 'Button Link'),
     );
 
-    // Define 7 Fixed Items with their default values
-    $defaults = array(
-        1 => array('title' => 'Communual Garden', 'category' => 'Garden Care', 'image' => $gal_path . '1.jpg'),
-        2 => array('title' => 'Outdoor Living', 'category' => 'Landscape', 'image' => $gal_path . '2.jpg'),
-        3 => array('title' => 'Outdoor Living', 'category' => 'Garden Care', 'image' => $gal_path . '3.jpg'),
-        4 => array('title' => 'Outdoor Living', 'category' => 'Landscape', 'image' => $gal_path . '4.jpg'),
-        5 => array('title' => 'Outdoor Living', 'category' => 'Garden Care', 'image' => $gal_path . '6.jpg'),
-        6 => array('title' => 'Outdoor Living', 'category' => 'Garden Care', 'image' => $gal_path . '7.jpg'),
-        7 => array('title' => 'Outdoor Living', 'category' => 'Garden Care', 'image' => $gal_path . '5.jpg'),
+    $options[] = array(
+        'id'      => 'count',
+        'type'    => 'number',
+        'title'   => 'Project Count',
+        'default' => 7,
+        'help'    => 'This layout is best designed for 7 items.',
     );
-
-    for ($i = 1; $i <= 7; $i++) {
-        $options[] = array(
-            'id'    => 'item_' . $i,
-            'type'  => 'fieldset',
-            'title' => 'Project ' . $i . ($i == 1 || $i == 6 ? ' (Large)' : ' (Small)'),
-            'fields' => array(
-                array(
-                    'id'    => 'title',
-                    'type'  => 'text',
-                    'title' => 'Title',
-                    'default' => $defaults[$i]['title'],
-                ),
-                array(
-                    'id'    => 'category',
-                    'type'  => 'text',
-                    'title' => 'Category',
-                    'default' => $defaults[$i]['category'],
-                ),
-                mthan_page_select_field('category_link', 'Category Link'),
-                array(
-                    'id'    => 'image',
-                    'type'  => 'upload',
-                    'title' => 'Image',
-                    'default' => $defaults[$i]['image'],
-                    'help'    => ($i == 1 || $i == 6 ? 'Recommended size: 570x630px' : 'Recommended size: 270x300px'),
-                ),
-                mthan_page_select_field('link', 'Project Link'),
-            ),
-        );
-    }
 
     return $options;
 }
