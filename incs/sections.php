@@ -39,6 +39,7 @@ function mthan_get_sections() {
         'Contact1'      => 'Contact 1',
         'Contact2'      => 'Contact 2',
         'Contact3'      => 'Contact 3',
+        'ContentEditor' => 'Content Editor',
         // 'Map'           => 'Map',
         'Awards'        => 'Awards',
         'Sponsors'      => 'Sponsors',
