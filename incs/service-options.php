@@ -1,8 +1,7 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Service Options — Definining the layout of a single service.
- */
-
+**/
 CSF::createMetabox(MTHAN_SERVICE_OPTIONS, [
     'title'        => 'Service Options',
     'post_type'    => 'mthan_service',
@@ -14,10 +13,10 @@ CSF::createMetabox(MTHAN_SERVICE_OPTIONS, [
 
 // ── Sections Data ───────────────────────────────────────────────────
 $available_sections = array_merge(['' => '— Select Template —'], mthan_get_sections());
+$icon_path = get_template_directory_uri() . '/assets/images/icons/';
 $section_fields     = mthan_get_section_fields();
 // ── Helper to create section group ──
 $mthan_gen_section_group = function($id) use ($available_sections, $section_fields) {
-    $icon_path = get_template_directory_uri() . '/assets/images/icons/';
     return [
         [
             'id'                     => $id,
