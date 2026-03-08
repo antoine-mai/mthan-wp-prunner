@@ -32,6 +32,32 @@ if (!empty($spacing)) {
                         
                         $icon = !empty($service_meta['service_icon']) ? $service_meta['service_icon'] : 'flaticon-hedge'; // Fallback
                     ?>
+                        
+                        <!-- Service Pagination -->
+                        <?php 
+                        $prev_service = get_previous_post();
+                        $next_service = get_next_post();
+                        if ($prev_service || $next_service):
+                        ?>
+                        <div class="service-pagination clearfix" style="margin-bottom: 30px;">
+                            <?php if ($prev_service): ?>
+                            <div class="prev-service pull-left">
+                                <a href="<?php echo esc_url(get_permalink($prev_service->ID)); ?>" style="color: #24a77e; font-weight: 600;">
+                                    <span class="fa fa-angle-left"></span> <?php esc_html_e('Prev Service', 'mthan'); ?>
+                                </a>
+                            </div>
+                            <?php endif; ?>
+
+                            <?php if ($next_service): ?>
+                            <div class="next-service pull-right">
+                                <a href="<?php echo esc_url(get_permalink($next_service->ID)); ?>" style="color: #24a77e; font-weight: 600;">
+                                    <?php esc_html_e('Next Service', 'mthan'); ?> <span class="fa fa-angle-right"></span>
+                                </a>
+                            </div>
+                            <?php endif; ?>
+                        </div>
+                        <?php endif; ?>
+
                         <div class="sec-title">
                             <div class="title-icon"><span class="icon"><?php echo mthan_get_icon_html($icon); ?></span></div>
                             <div class="subtitle"><?php esc_html_e('Service Details', 'mthan'); ?></div>
