@@ -11,7 +11,7 @@ function mthan_section_Projects2_html($section_data) { ?>
     $title_icon = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'title_icon'));
     $subtitle   = mthan_get_section_val($slug, $section_data, 'subtitle');
     $title      = mthan_get_section_val($slug, $section_data, 'title');
-    $count      = mthan_get_section_val($slug, $section_data, 'count', 7);
+    $items      = mthan_get_section_val($slug, $section_data, 'items', array());
     $btn_text   = mthan_get_section_val($slug, $section_data, 'btn_text');
     $btn_link   = mthan_get_link(mthan_get_section_val($slug, $section_data, 'btn_link'));
 
@@ -26,17 +26,8 @@ function mthan_section_Projects2_html($section_data) { ?>
         7 => array('class' => 'col-lg-3 col-md-6 col-sm-12'),
     );
 
-    $args = array(
-        'post_type'      => 'mthan_project',
-        'posts_per_page' => $count,
-        'orderby'        => 'date',
-        'order'          => 'DESC',
-    );
-
-    $query = new WP_Query($args);
-
     $styles = mthan_section_styles($slug, $section_data);
-    if (!$query->have_posts()) return;
+    if (empty($items)) return;
 ?>
 <section class="projects-two <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
@@ -69,17 +60,14 @@ function mthan_section_Projects2_html($section_data) { ?>
 
                 <?php 
                 $i = 0;
-                while ($query->have_posts()) { 
-                    $query->the_post();
+                foreach ($items as $item) { 
                     $i++;
                     
-                    $tit    = get_the_title();
-                    $img    = get_the_post_thumbnail_url(get_the_ID(), 'full');
-                    $link   = get_permalink();
-                    
-                    // Try to get category from meta if available
-                    $cat    = get_post_meta(get_the_ID(), 'project_category', true);
-                    $cat_l  = '#';
+                    $tit    = isset($item['title']) ? $item['title'] : '';
+                    $img    = mthan_sec_img(isset($item['image']) ? $item['image'] : '');
+                    $link   = mthan_get_link(isset($item['link']) ? $item['link'] : '#');
+                    $cat    = isset($item['category']) ? $item['category'] : '';
+                    $cat_l  = '#'; // Category link usually placeholder here
                     
                     // Cycle through configs if more than 7
                     $config_idx = (($i - 1) % 7) + 1;
@@ -105,7 +93,7 @@ function mthan_section_Projects2_html($section_data) { ?>
                         </div>
                     </div>
                 </div>
-                <?php } wp_reset_postdata(); ?>
+                <?php } ?>
             </div>
         </div>
     </div>
