@@ -46,5 +46,15 @@ $mthan_gen_section_group = function($id) use ($available_sections, $section_fiel
 CSF::createSection(MTHAN_SERVICE_OPTIONS, [
     'title'  => 'Sections',
     'icon'   => 'fas fa-layer-group',
-    'fields' => $mthan_gen_section_group('service_sections'),
+    'fields' => array_merge(
+        [
+            [
+                'id'    => 'service_icon',
+                'type'  => 'upload',
+                'title' => 'Service Icon',
+                'help'  => 'Upload an icon image. If empty, the default font icon will be used.',
+            ],
+        ],
+        $mthan_gen_section_group('service_sections')
+    ),
 ]);

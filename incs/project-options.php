@@ -46,5 +46,15 @@ $mthan_gen_section_group = function($id) use ($available_sections, $section_fiel
 CSF::createSection(MTHAN_PROJECT_OPTIONS, [
     'title'  => 'Sections',
     'icon'   => 'fas fa-layer-group',
-    'fields' => $mthan_gen_section_group('project_sections'),
+    'fields' => array_merge(
+        [
+            [
+                'id'    => 'project_icon',
+                'type'  => 'upload',
+                'title' => 'Project Icon',
+                'help'  => 'Upload an icon image for this project.',
+            ],
+        ],
+        $mthan_gen_section_group('project_sections')
+    ),
 ]);
