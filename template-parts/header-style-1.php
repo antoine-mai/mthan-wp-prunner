@@ -1,6 +1,11 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); 
+<?php defined('ABSPATH') or die('Cheatin\' uh?');
+/**
+ * 
+**/
 $theme_options = get_option('mthan_theme_options');
-$header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
+$header_tabs = !empty($theme_options['header_tabs']) 
+    ? $theme_options['header_tabs'] 
+    : [];
 ?>
 <header class="main-header header-style-one inner-header">
     <div class="header-top">
@@ -20,8 +25,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                         <ul class="clearfix">
                             <?php 
                             $social_links = !empty($theme_options['social_links']) ? $theme_options['social_links'] : [];
-                            foreach ($social_links as $social) :
-                                if (empty($social['url']) || empty($social['icon'])) continue;
+                            foreach ($social_links as $social) { if (empty($social['url']) || empty($social['icon'])) continue;
                                 $icon_url = mthan_get_img_url($social['icon']);
                             ?>
                             <li>
@@ -29,7 +33,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                                     <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($social['title'] ?? ''); ?>" style="width: 16px; height: 16px; object-fit: contain;">
                                 </a>
                             </li>
-                            <?php endforeach; ?>
+                            <?php } ?>
                         </ul>
                     </div>
                 </div>
