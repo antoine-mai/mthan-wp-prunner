@@ -52,6 +52,21 @@ function mthan_section_WhyUs3_options() {
                     'icon'  => 'flaticon-medal-1',
                     'text'  => 'Take trivial example which of us ever undertakes rights.',
                 ),
+                array(
+                    'title' => 'Pet & Kid Safe',
+                    'icon'  => 'flaticon-dog-2',
+                    'text'  => 'How all this mistakens idea our pleasure & praising.',
+                ),
+                array(
+                    'title' => 'Professional Staff',
+                    'icon'  => 'flaticon-gardener-1',
+                    'text'  => 'Take trivial example which of us ever undertakes rights.',
+                ),
+                array(
+                    'title' => 'Competetive Pricing',
+                    'icon'  => 'flaticon-offer',
+                    'text'  => 'Indignation dislike worked who that our therefore holds.',
+                ),
             ),
             'fields' => array(
                 array(
