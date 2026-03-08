@@ -16459,7 +16459,7 @@ img.lazy-image.loaded {
      .main-header.header-style-one .header-lower .inner {
          display: flex !important;
          align-items: center;
-         justify-content: space-between !important; /* Icon left, Button right */
+         justify-content: space-between !important; /* Forces components to opposite sides */
          min-height: 70px;
          padding-left: 15px !important;
          padding-right: 15px !important;
@@ -16468,13 +16468,12 @@ img.lazy-image.loaded {
          float: none !important;
          margin: 0 !important;
          width: auto !important;
-         order: 1;
+         text-align: left !important;
      }
      .main-header.header-style-one .header-lower .more-links {
          display: block !important;
          float: none !important;
          margin: 0 !important;
-         order: 2;
      }
      .main-header.header-style-one .header-lower .more-links .quote-btn {
          display: block !important;
@@ -16488,12 +16487,13 @@ img.lazy-image.loaded {
          border-radius: 5px;
      }
      .main-header.header-style-one .header-lower .more-links .quote-btn a i {
-         display: none; /* Hide arrow on very small screens if it's too much */
+         display: none;
      }
      .main-header.header-style-one .nav-outer .mobile-nav-toggler {
          margin: 0 !important;
          padding: 0 !important;
          display: block !important;
+         float: left !important; /* Crucial: force the icon to the left */
          line-height: 1;
          color: #ffffff;
      }
