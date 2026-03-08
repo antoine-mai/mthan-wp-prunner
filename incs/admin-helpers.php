@@ -79,6 +79,17 @@ function mthan_admin_git_update_js() { ?>
 <?php }
 
 /**
+ * Custom Admin Styling
+ */
+function mthan_admin_styling() {
+    echo '<style>
+        .csf-field-group .csf-fieldset .chosen-container { width: 100% !important; }
+        .csf-field-select .chosen-container { width: 100% !important; }
+    </style>';
+}
+add_action('admin_head', 'mthan_admin_styling');
+
+/**
  * Helper to create a Page Select field for CSF.
  */
 function mthan_page_select_field($id, $title, $args = [])

@@ -33,7 +33,6 @@ $mthan_gen_section_group = function($id) use ($available_sections, $section_fiel
                         'type'  => 'select',
                         'title' => 'Select Template',
                         'options' => $available_sections,
-                        'chosen'  => true,
                     ],
                 ],
                 $section_fields
