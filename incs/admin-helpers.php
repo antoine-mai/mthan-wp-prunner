@@ -102,3 +102,24 @@ function mthan_page_select_field($id, $title, $args = [])
 
     return array_merge($default, $args);
 }
+/**
+ * Helper to get sidebar options for CSF.
+ */
+function mthan_get_sidebar_options() {
+    $options = get_option(MTHAN_THEME_OPTIONS);
+    $dynamic_sidebars = !empty($options['dynamic_sidebars']) ? $options['dynamic_sidebars'] : array();
+    
+    $sidebars = [
+        '' => '— Default Sidebar —'
+    ];
+
+    if (!empty($dynamic_sidebars)) {
+        foreach ($dynamic_sidebars as $sidebar) {
+            if (!empty($sidebar['id']) && !empty($sidebar['name'])) {
+                $sidebars[$sidebar['id']] = $sidebar['name'];
+            }
+        }
+    }
+
+    return $sidebars;
+}

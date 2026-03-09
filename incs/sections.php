@@ -5,10 +5,9 @@
  * 
  * @return array Slugs and labels.
  */
-function mthan_get_sections() {
-    return [
-        'Banners' => 'Banners',
-        'PageBanner' => 'Page Banner',
+function mthan_get_sections($type = 'all') {
+    $common = [
+        'Intro'   => 'Intro',
         'Areas'   => 'Areas',
         'About1'  => 'About 1',
         'About2'  => 'About 2',
@@ -40,18 +39,40 @@ function mthan_get_sections() {
         'Contact2'      => 'Contact 2',
         'Contact3'      => 'Contact 3',
         'ContentEditor' => 'Content Editor',
-        // 'Map'           => 'Map',
         'Awards'        => 'Awards',
         'Sponsors'      => 'Sponsors',
-        // Add more sections here...
     ];
+
+    $page_specific = [
+        'PageBanner' => 'Page Banner',
+    ];
+
+    $post_specific = [];
+    $service_specific = [];
+    $project_specific = [];
+
+    switch ($type) {
+        case 'page':
+            return array_merge($common, $page_specific);
+        case 'post':
+            return array_merge($common, $post_specific);
+        case 'service':
+            return array_merge($common, $service_specific);
+        case 'project':
+            return array_merge($common, $project_specific);
+        case 'common':
+            return $common;
+        case 'all':
+        default:
+            return array_merge($common, $page_specific, $post_specific, $service_specific, $project_specific);
+    }
 }
 
 /**
  * Collect all registered section fields with dependencies.
  */
-function mthan_get_section_fields() {
-    $sections = mthan_get_sections();
+function mthan_get_section_fields($type = 'all') {
+    $sections = mthan_get_sections($type);
     $all_fields = array();
 
     foreach ($sections as $slug => $label) {
@@ -264,8 +285,8 @@ function mthan_render_post_sections($position = 'before') {
             $data_key = ($position === 'after') ? 'page_after_sections' : 'page_before_sections';
             break;
         case 'post':
-            $meta_key = MTHAN_PAGE_OPTIONS;
-            $data_key = ($position === 'after') ? 'page_after_sections' : 'page_before_sections';
+            $meta_key = MTHAN_POST_OPTIONS;
+            $data_key = ($position === 'after') ? 'post_after_sections' : 'post_before_sections';
             break;
         case 'mthan_service':
             $meta_key = MTHAN_SERVICE_OPTIONS;

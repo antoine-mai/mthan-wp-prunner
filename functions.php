@@ -6,6 +6,7 @@
 // Prefixes
 define('MTHAN_THEME_OPTIONS', 'mthan_theme_options');
 define('MTHAN_PAGE_OPTIONS', 'mthan_page_options');
+define('MTHAN_POST_OPTIONS', 'mthan_post_options');
 define('MTHAN_SERVICE_OPTIONS', 'mthan_service_options');
 define('MTHAN_PROJECT_OPTIONS', 'mthan_project_options');
 
@@ -28,12 +29,15 @@ $mthan_autoload_incs = function($dir) use (&$mthan_autoload_incs) {
         $name = basename($file, '.php');
 
         // Skip manually loaded or specific files
-        if (in_array($name, ['theme-options', 'page-options', 'service-options', 'project-options', 'sections'])) {
+        if (in_array($name, ['theme-options', 'page-options', 'service-options', 'project-options', 'post-options', 'sections'])) {
             continue;
         }
 
+        // Check if we are inside options or output at any level
+        $is_section_file = (strpos($file, '/options/') !== false || strpos($file, '/output/') !== false);
+
         // Only load section-specific files if they are registered
-        if (($dir_name === 'options' || $dir_name === 'output') && !in_array($name, $registered)) {
+        if ($is_section_file && !in_array($name, $registered)) {
             continue;
         }
 

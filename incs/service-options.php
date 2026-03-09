@@ -12,9 +12,9 @@ CSF::createMetabox(MTHAN_SERVICE_OPTIONS, [
 ]);
 
 // ── Sections Data ───────────────────────────────────────────────────
-$available_sections = array_merge(['' => '— Select Template —'], mthan_get_sections());
+$available_sections = array_merge(['' => '— Select Template —'], mthan_get_sections('service'));
 $icon_path = get_template_directory_uri() . '/assets/images/icons/';
-$section_fields     = mthan_get_section_fields();
+$section_fields     = mthan_get_section_fields('service');
 // ── Helper to create section group ──
 $mthan_gen_section_group = function($id) use ($available_sections, $section_fields) {
     return [
@@ -100,7 +100,7 @@ CSF::createSection(MTHAN_SERVICE_OPTIONS, [
             'id'      => 'service_sidebar_select',
             'type'    => 'select',
             'title'   => 'Select Sidebar',
-            'options' => 'sidebars',
+            'options' => mthan_get_sidebar_options(),
             'dependency' => array('service_sidebar_enable', '==', true),
         ],
     ],

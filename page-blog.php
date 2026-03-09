@@ -5,16 +5,18 @@
 get_header();
 
 $theme_options = get_option('mthan_theme_options');
-$blog_layout   = !empty($theme_options['blog_layout']) ? $theme_options['blog_layout'] : 'list';
-$posts_per_page = !empty($theme_options['blog_posts_per_page']) ? $theme_options['blog_posts_per_page'] : 10;
+$layouts_tabs  = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : [];
+
+$blog_layout   = !empty($layouts_tabs['blog_layout']) ? $layouts_tabs['blog_layout'] : 'list';
+$posts_per_page = !empty($layouts_tabs['blog_posts_per_page']) ? $layouts_tabs['blog_posts_per_page'] : 10;
 
 // Render global sections - use 'post' context to match "Blog Layout" settings
 mthan_render_global_sections('before', 'post');
 mthan_render_page_sections('before');
 
 // Sidebar logic
-$sidebar_enabled  = !empty($theme_options['blog_sidebar_enable']);
-$sidebar_pos      = !empty($theme_options['blog_sidebar_position']) ? $theme_options['blog_sidebar_position'] : 'right';
+$sidebar_enabled  = isset($layouts_tabs['blog_sidebar_enable']) ? $layouts_tabs['blog_sidebar_enable'] : true;
+$sidebar_pos      = !empty($layouts_tabs['blog_sidebar_position']) ? $layouts_tabs['blog_sidebar_position'] : 'right';
 ?>
 
 <div class="sidebar-page-container blog-page">

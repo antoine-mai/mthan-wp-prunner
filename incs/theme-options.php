@@ -87,6 +87,9 @@ if (class_exists('CSF')) {
     if (file_exists($incs_dir . 'page-options.php')) {
         require_once $incs_dir . 'page-options.php';
     }
+    if (file_exists($incs_dir . 'post-options.php')) {
+        require_once $incs_dir . 'post-options.php';
+    }
     if (file_exists($incs_dir . 'service-options.php')) {
         require_once $incs_dir . 'service-options.php';
     }

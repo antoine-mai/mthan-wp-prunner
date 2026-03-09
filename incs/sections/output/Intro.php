@@ -1,12 +1,12 @@
 <?php defined('ABSPATH') || exit;
 /**
- * Render the Banners section.
+ * Render the Intro section.
  *
  * @param array $section_data CSF field values for this section instance.
  */
-function mthan_section_Banners_html($section_data) { ?>
+function mthan_section_Intro_html($section_data) { ?>
 <?php
-    $slug = 'Banners';
+    $slug = 'Intro';
     $slides = mthan_get_section_val($slug, $section_data, 'slides', array());
     $styles = mthan_section_styles($slug, $section_data);
     if (empty($slides)) return;

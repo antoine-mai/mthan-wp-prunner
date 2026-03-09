@@ -1,9 +1,9 @@
 <?php defined('ABSPATH') || exit;
 
 /**
- * Banners Section Options
+ * Intro Section Options
  */
-function mthan_section_Banners_options() {
+function mthan_section_Intro_options() {
     $img_path = get_template_directory_uri() . '/assets/images/main-slider/';
 
     return array(

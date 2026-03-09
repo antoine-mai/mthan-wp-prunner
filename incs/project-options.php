@@ -13,8 +13,8 @@ CSF::createMetabox(MTHAN_PROJECT_OPTIONS, [
 ]);
 
 // ── Sections Data ───────────────────────────────────────────────────
-$available_sections = array_merge(['' => '— Select Template —'], mthan_get_sections());
-$section_fields     = mthan_get_section_fields();
+$available_sections = array_merge(['' => '— Select Template —'], mthan_get_sections('project'));
+$section_fields     = mthan_get_section_fields('project');
 
 // ── Helper to create section group ──
 $mthan_gen_section_group = function($id) use ($available_sections, $section_fields) {

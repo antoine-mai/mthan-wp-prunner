@@ -122,7 +122,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'id'      => 'blog_sidebar_select',
                             'type'    => 'select',
                             'title'   => 'Select Sidebar',
-                            'options' => 'sidebars',
+                            'options' => mthan_get_sidebar_options(),
                             'dependency' => array('blog_sidebar_enable', '==', true),
                         ],
                         [
@@ -146,7 +146,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'id'      => 'blog_single_sidebar_select',
                             'type'    => 'select',
                             'title'   => 'Select Sidebar',
-                            'options' => 'sidebars',
+                            'options' => mthan_get_sidebar_options(),
                             'dependency' => array('blog_single_sidebar_enable', '==', true),
                         ],
                         [

@@ -155,17 +155,27 @@ function mthan_get_sidebar_settings() {
         $settings['position'] = !empty($options['shop_sidebar_position']) ? $options['shop_sidebar_position'] : 'left';
         $settings['id']       = !empty($options['shop_sidebar_select']) ? $options['shop_sidebar_select'] : '';
     } elseif (is_page()) {
-        $settings['enabled']  = !empty($options['page_sidebar_enable']);
-        $settings['position'] = !empty($options['page_sidebar_position']) ? $options['page_sidebar_position'] : 'right';
-        $settings['id']       = !empty($options['page_sidebar_select']) ? $options['page_sidebar_select'] : '';
+        $page_meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
+        $is_blog_page = (get_page_template_slug() === 'page-blog.php');
+        $layouts = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
+
+        $def_enabled = $is_blog_page ? (isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true) : (!empty($options['page_sidebar_enable']));
+        $def_pos     = $is_blog_page ? (!empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right') : (!empty($options['page_sidebar_position']) ? $options['page_sidebar_position'] : 'right');
+        $def_id      = $is_blog_page ? (!empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : '') : (!empty($options['page_sidebar_select']) ? $options['page_sidebar_select'] : '');
+
+        $settings['enabled']  = isset($page_meta['page_sidebar_enable']) ? $page_meta['page_sidebar_enable'] : $def_enabled;
+        $settings['position'] = !empty($page_meta['page_sidebar_position']) ? $page_meta['page_sidebar_position'] : $def_pos;
+        $settings['id']       = !empty($page_meta['page_sidebar_select']) ? $page_meta['page_sidebar_select'] : $def_id;
     } elseif (is_singular('post')) {
-        $settings['enabled']  = !empty($options['blog_single_sidebar_enable']);
-        $settings['position'] = !empty($options['blog_single_sidebar_position']) ? $options['blog_single_sidebar_position'] : 'right';
-        $settings['id']       = !empty($options['blog_single_sidebar_select']) ? $options['blog_single_sidebar_select'] : '';
+        $post_meta = get_post_meta(get_the_ID(), MTHAN_POST_OPTIONS, true);
+        $settings['enabled']  = isset($post_meta['post_sidebar_enable']) ? $post_meta['post_sidebar_enable'] : (!empty($options['blog_single_sidebar_enable']));
+        $settings['position'] = !empty($post_meta['post_sidebar_position']) ? $post_meta['post_sidebar_position'] : (!empty($options['blog_single_sidebar_position']) ? $options['blog_single_sidebar_position'] : 'right');
+        $settings['id']       = !empty($post_meta['post_sidebar_select']) ? $post_meta['post_sidebar_select'] : (!empty($options['blog_single_sidebar_select']) ? $options['blog_single_sidebar_select'] : '');
     } elseif (is_home() || is_archive() || is_search()) {
-        $settings['enabled']  = !empty($options['blog_sidebar_enable']);
-        $settings['position'] = !empty($options['blog_sidebar_position']) ? $options['blog_sidebar_position'] : 'right';
-        $settings['id']       = !empty($options['blog_sidebar_select']) ? $options['blog_sidebar_select'] : '';
+        $layouts = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
+        $settings['enabled']  = isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true;
+        $settings['position'] = !empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right';
+        $settings['id']       = !empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : '';
     }
     
     return $settings;
