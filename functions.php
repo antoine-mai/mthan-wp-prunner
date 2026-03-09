@@ -15,6 +15,7 @@ require_once get_template_directory() . '/incs/codestar/autoload.php';
 
 // ── Required Files (loaded manually to control order) ──────────────
 require_once get_template_directory() . '/incs/sections.php';
+require_once get_template_directory() . '/incs/widgets.php';
 require_once get_template_directory() . '/incs/custom-post-types.php';
 require_once get_template_directory() . '/incs/woocommerce-hooks.php';
 
@@ -29,16 +30,29 @@ $mthan_autoload_incs = function($dir) use (&$mthan_autoload_incs) {
         $name = basename($file, '.php');
 
         // Skip manually loaded or specific files
-        if (in_array($name, ['theme-options', 'page-options', 'service-options', 'project-options', 'post-options', 'sections'])) {
+        if (in_array($name, ['theme-options', 'page-options', 'service-options', 'project-options', 'post-options', 'sections', 'widgets'])) {
             continue;
         }
 
         // Check if we are inside options or output at any level
-        $is_section_file = (strpos($file, '/options/') !== false || strpos($file, '/output/') !== false);
+        $path = str_replace(get_template_directory(), '', $file);
+        $is_section_file = (strpos($path, '/sections/options/') !== false || strpos($path, '/sections/output/') !== false);
+        $is_widget_file  = (strpos($path, '/widgets/options/') !== false || strpos($path, '/widgets/output/') !== false);
 
         // Only load section-specific files if they are registered
-        if ($is_section_file && !in_array($name, $registered)) {
-            continue;
+        if ($is_section_file) {
+            $registered_sections = function_exists('mthan_get_sections') ? array_keys(mthan_get_sections()) : [];
+            if (!in_array($name, $registered_sections)) {
+                continue;
+            }
+        }
+
+        // Only load widget-specific files if they are registered
+        if ($is_widget_file) {
+            $registered_widgets = function_exists('mthan_get_widgets') ? array_keys(mthan_get_widgets()) : [];
+            if (!in_array($name, $registered_widgets)) {
+                continue;
+            }
         }
 
         require_once $file;
