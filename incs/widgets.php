@@ -48,7 +48,7 @@ function mthan_get_widget_fields() {
  */
 function mthan_get_widget_val($slug, $data, $key, $default = '') {
     $field_id = $slug . '_' . $key;
-    if (isset($data[$field_id]) && $data[$field_id] !== '' && $data[$field_id] !== array()) {
+    if (isset($data) && is_array($data) && array_key_exists($field_id, $data)) {
         return $data[$field_id];
     }
     return $default;

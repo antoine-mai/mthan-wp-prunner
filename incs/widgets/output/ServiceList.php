@@ -2,7 +2,7 @@
 
 function mthan_widget_ServiceList_output($widget_data) {
     $slug = 'ServiceList';
-    $title = mthan_get_widget_val($slug, $widget_data, 'title', esc_html__('Our Services', 'mthan'));
+    $title = mthan_get_widget_val($slug, $widget_data, 'title');
     ?>
     <div class="sidebar-widget services-widget services-list wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
         <div class="widget-inner">

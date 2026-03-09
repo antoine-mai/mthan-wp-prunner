@@ -19,13 +19,11 @@ function mthan_section_Services_options() {
             'id'    => 'subtitle',
             'type'  => 'text',
             'title' => 'Subtitle',
-            'default' => 'Our Services',
         ),
         array(
             'id'    => 'title',
             'type'  => 'text',
             'title' => 'Title',
-            'default' => 'Professional Services',
         ),
         array(
             'id'      => 'count',

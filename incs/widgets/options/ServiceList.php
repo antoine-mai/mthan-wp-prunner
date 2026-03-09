@@ -6,7 +6,6 @@ function mthan_widget_ServiceList_options() {
             'id'    => 'title',
             'type'  => 'text',
             'title' => 'Title',
-            'default' => 'Our Services',
         ]
     ];
 }

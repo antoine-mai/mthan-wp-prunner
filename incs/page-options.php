@@ -1,8 +1,7 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
  * Page Options — Definining the layout of a single page.
- */
-
+**/
 CSF::createMetabox(MTHAN_PAGE_OPTIONS, [
     'title'        => 'Page Options',
     'post_type'    => 'page',
