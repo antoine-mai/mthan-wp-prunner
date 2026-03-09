@@ -42,15 +42,15 @@ if ($header_layout === 'style-2') {
             <?php if (!empty($btn_text)) { ?>
             <div class="contact-link">
                 <a href="<?php echo esc_url($btn_url); ?>" class="theme-btn btn-style-three">
-                    <?php 
-                    if ($btn_icon_url && (strpos($btn_icon_url, 'http') === 0 || strpos($btn_icon_url, '/') === 0)) : ?>
-                        <img src="<?php echo esc_url($btn_icon_url); ?>" alt="">
-                    <?php elseif ($btn_icon_url) : ?>
-                        <i class="<?php echo esc_attr($btn_icon_url); ?>"></i>
-                    <?php else : ?>
-                        <span class="flaticon-smartphone icon-fallback"></span>
-                    <?php endif; ?>
                     <span class="btn-title">
+                        <?php 
+                        if ($btn_icon_url && (strpos($btn_icon_url, 'http') === 0 || strpos($btn_icon_url, '/') === 0)) : ?>
+                            <img src="<?php echo esc_url($btn_icon_url); ?>" alt="" style="width: 16px; margin-right: 8px; vertical-align: middle;">
+                        <?php elseif ($btn_icon_url) : ?>
+                            <i class="<?php echo esc_attr($btn_icon_url); ?>" style="margin-right: 8px; vertical-align: middle;"></i>
+                        <?php else : ?>
+                            <span class="flaticon-smartphone icon-fallback" style="margin-right: 8px; vertical-align: middle;"></span>
+                        <?php endif; ?>
                         <?php echo esc_html($btn_text); ?> 
                     </span>
                 </a>
