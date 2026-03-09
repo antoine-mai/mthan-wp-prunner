@@ -1888,7 +1888,7 @@ img {
 	display: none;
 }
 
-.inner-header .header-lower .more-links:after {
+.inner-header .header-lower .more-links a:after {
 	content: '';
 	position: absolute;
 	left: 0;
