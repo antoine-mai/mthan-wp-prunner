@@ -58,7 +58,9 @@ function mthan_section_Pricing_html($section_data) { ?>
                     <div class="inner-box">
                         <div class="leaf"></div>
                         <div class="content">
+                            <?php if ($price !== '') { ?>
                             <div class="price"><sup><?php echo esc_html($curr); ?></sup><?php echo esc_html($price); ?></div>
+                            <?php } ?>
                             <h6 class="plan-title"><?php echo wp_kses_post($p_tit); ?></h6>
                             <?php if ($freq) { ?>
                             <div class="frequency"><?php echo esc_html($freq); ?></div>

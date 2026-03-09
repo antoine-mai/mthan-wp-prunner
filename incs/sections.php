@@ -116,11 +116,13 @@ function mthan_get_section_fields($type = 'all') {
 function mthan_get_section_val($slug, $data, $key, $default = '') {
     $field_id = $slug . '_' . $key;
     
-    if (isset($data[$field_id]) && $data[$field_id] !== '' && $data[$field_id] !== array()) {
+    // If the field exists in the data (even if it's an empty string), use it.
+    // This allows users to clear a field in the admin to hide it.
+    if (isset($data) && is_array($data) && array_key_exists($field_id, $data)) {
         return $data[$field_id];
     }
 
-    // Otherwise, try to find the default from the section registration
+    // Otherwise, try to find the default from the section registration (new sections)
     static $sec_defaults = array();
     if (!isset($sec_defaults[$slug])) {
         $sec_defaults[$slug] = array();

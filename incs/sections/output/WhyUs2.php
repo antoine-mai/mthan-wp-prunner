@@ -111,7 +111,9 @@ function mthan_section_WhyUs2_html($section_data) { ?>
                                 <?php if ($txt) { ?>
                                 <div class="text"><?php echo wp_kses_post($txt); ?></div>
                                 <?php } ?>
+                                <?php if ($lnk && $lnk !== '#') { ?>
                                 <div class="link-box"><a href="<?php echo esc_url($lnk); ?>"><span class="flaticon-right-1"></span></a></div>
+                                <?php } ?>
                             </div>
                         </div>
                         <?php } ?>

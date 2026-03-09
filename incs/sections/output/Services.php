@@ -72,11 +72,13 @@ function mthan_section_Services_html($section_data) { ?>
                         <?php if ($desc) { ?>
                         <div class="text"><?php echo wp_kses_post($desc); ?></div>
                         <?php } ?>
+                        <?php if ($read_more) { ?>
                         <div class="more-link">
                             <a href="<?php echo esc_url($lnk); ?>">
                                 <?php echo esc_html($read_more); ?> <i class="icon fa fa-caret-right"></i>
                             </a>
                         </div>
+                        <?php } ?>
                     </div>
                 </div>
             </div>

@@ -58,6 +58,7 @@ function mthan_section_Team2_html($section_data) { ?>
                             <?php if ($name) { ?>
                             <h5><a href="<?php echo esc_url($lnk); ?>"><?php echo esc_html($name); ?></a></h5>
                             <?php } ?>
+                            <?php if ($phone || !empty($socials)) { ?>
                             <div class="phone-box">
                                 <?php if ($phone) { ?>
                                 <a href="<?php echo esc_url($lnk); ?>" class="phone"><?php echo mthan_get_icon_html($phone_icon, 'class="icon"'); ?><?php echo esc_html($phone); ?></a>
@@ -75,6 +76,7 @@ function mthan_section_Team2_html($section_data) { ?>
                                 </div>
                                 <?php } ?>
                             </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>
