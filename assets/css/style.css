@@ -2068,7 +2068,7 @@ img {
 }
 
 .fixed-header .sticky-header .logo {
-	padding: 12px 0px;
+	padding: 5px 0px;
 }
 
 .fixed-header .sticky-header .logo img {
@@ -2093,7 +2093,7 @@ img {
 }
 
 .sticky-header .main-menu .navigation>li>a {
-	padding: 24px 0px !important;
+	padding: 15px 0px !important;
 	line-height: 30px;
 	font-size: 16px;
 	font-weight: 600;
@@ -2122,7 +2122,7 @@ img {
 	position: relative;
 	float: left;
 	margin-left: 25px;
-	padding-top: 11px;
+	padding-top: 7px;
 }
 
 .sticky-header .contact-link .theme-btn .btn-title {
