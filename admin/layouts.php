@@ -192,6 +192,16 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'content' => 'Service Settings',
                         ],
                         [
+                            'id'    => 'service_layout',
+                            'type'  => 'radio',
+                            'title' => 'Service Layout',
+                            'options' => array(
+                                'boxed'    => 'Boxed',
+                                'fullwide' => 'Fullwide',
+                             ),
+                             'default' => 'boxed',
+                        ],
+                        [
                             'id'      => 'service_sidebar_enable',
                             'type'    => 'switcher',
                             'title'   => 'Enable Sidebar on Services',
