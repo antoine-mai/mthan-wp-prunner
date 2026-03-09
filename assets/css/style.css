@@ -2038,6 +2038,10 @@ img {
 
 ***/
 
+.sticky-header .pull-right {
+	margin-left: auto;
+}
+
 .sticky-header .auto-container {
 	display: flex;
 }
