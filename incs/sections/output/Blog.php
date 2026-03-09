@@ -23,7 +23,7 @@ function mthan_section_Blog_html($section_data) { ?>
     $default_thumb = mthan_sec_img(mthan_get_section_val($slug, $section_data, 'default_thumb', get_template_directory_uri() . '/assets/images/resource/news-image-1.jpg'));
     $show_header   = mthan_get_section_val($slug, $section_data, 'show_header', true);
 
-    $args = [;
+    $args = [
         'post_type'      => 'post',
         'posts_per_page' => $count,
         'paged'          => $paged,
