@@ -87,7 +87,7 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                         [
                             'id'      => 'blog_sidebar_enable',
                             'type'    => 'switcher',
-                            'title'   => 'Enable Sidebar on Blog List',
+                            'title'   => 'Enable Sidebar',
                             'default' => true
                         ],
                         [
@@ -107,30 +107,6 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'title'   => 'Select Sidebar',
                             'options' => mthan_get_sidebar_options(),
                             'dependency' => array('blog_sidebar_enable', '==', true),
-                        ],
-                        [
-                            'id'      => 'blog_single_sidebar_enable',
-                            'type'    => 'switcher',
-                            'title'   => 'Enable Sidebar on Single Post',
-                            'default' => true
-                        ],
-                        [
-                            'id'      => 'blog_single_sidebar_position',
-                            'type'    => 'radio',
-                            'title'   => 'Sidebar Position',
-                            'options' => array(
-                                'left'  => 'Left',
-                                'right' => 'Right',
-                            ),
-                            'default'    => 'right',
-                            'dependency' => array('blog_single_sidebar_enable', '==', true),
-                        ],
-                        [
-                            'id'      => 'blog_single_sidebar_select',
-                            'type'    => 'select',
-                            'title'   => 'Select Sidebar',
-                            'options' => mthan_get_sidebar_options(),
-                            'dependency' => array('blog_single_sidebar_enable', '==', true),
                         ],
                         [
                             'type'    => 'subheading',
