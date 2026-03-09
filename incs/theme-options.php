@@ -71,6 +71,7 @@ if (class_exists('CSF')) {
         'contact.php',
         'footer.php',
         'scripts.php',
+        'sidebars.php',
         'update.php'
     ];
 

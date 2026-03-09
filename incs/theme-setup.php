@@ -30,6 +30,28 @@ function mthan_widgets_init() {
         'before_title'  => '<div class="widget-inner"><div class="sidebar-title"><h4>',
         'after_title'   => '</h4></div>',
     ));
+
+    // Dynamic sidebars from Theme Options
+    $options = get_option(MTHAN_THEME_OPTIONS);
+    $dynamic_sidebars = !empty($options['dynamic_sidebars']) ? $options['dynamic_sidebars'] : array();
+
+    if (!empty($dynamic_sidebars)) {
+        foreach ($dynamic_sidebars as $sidebar) {
+            if (empty($sidebar['id']) || empty($sidebar['name'])) {
+                continue;
+            }
+
+            register_sidebar(array(
+                'name'          => esc_html($sidebar['name']),
+                'id'            => esc_attr($sidebar['id']),
+                'description'   => isset($sidebar['description']) ? esc_html($sidebar['description']) : '',
+                'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">',
+                'after_widget'  => '</div>',
+                'before_title'  => '<div class="widget-inner"><div class="sidebar-title"><h4>',
+                'after_title'   => '</h4></div>',
+            ));
+        }
+    }
 }
 add_action('widgets_init', 'mthan_widgets_init');
 
