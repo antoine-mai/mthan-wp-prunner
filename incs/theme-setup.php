@@ -21,16 +21,6 @@ if (!function_exists('mthan_setup')) {
  * Register widget area.
  */
 function mthan_widgets_init() {
-    register_sidebar(array(
-        'name'          => 'Blog Sidebar',
-        'id'            => 'blog-sidebar',
-        'description'   => 'Add widgets here to appear in your blog sidebar.',
-        'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">',
-        'after_widget'  => '</div>',
-        'before_title'  => '<div class="widget-inner"><div class="sidebar-title"><h4>',
-        'after_title'   => '</h4></div>',
-    ));
-
     // Dynamic sidebars from Theme Options
     $options = get_option(MTHAN_THEME_OPTIONS);
     $dynamic_sidebars = !empty($options['dynamic_sidebars']) ? $options['dynamic_sidebars'] : array();

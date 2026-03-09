@@ -65,6 +65,7 @@ if (class_exists('CSF')) {
         'general.php',
         'typography.php',
         'header.php',
+        'sidebars.php',
         'layouts.php',
         'mobile-bar.php',
         'search.php',

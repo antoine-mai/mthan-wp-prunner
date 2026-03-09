@@ -64,16 +64,37 @@ CSF::createSection(MTHAN_SERVICE_OPTIONS, [
     'icon'   => 'fas fa-cogs',
     'fields' => [
         [
+            'id'    => 'service_layout',
+            'type'  => 'radio',
+            'title' => 'Page Container',
+            'options' => array(
+                'boxed'    => 'Boxed',
+                'fullwide' => 'Fullwide',
+            ),
+            'default' => 'boxed',
+        ],
+        [
             'id'    => 'service_sidebar_enable',
             'type'  => 'switcher',
             'title' => 'Enable Sidebar',
-            'default' => true,
+            'default' => false,
+        ],
+        [
+            'id'      => 'service_sidebar_position',
+            'type'    => 'radio',
+            'title'   => 'Sidebar Position',
+            'options' => array(
+                'left'  => 'Left',
+                'right' => 'Right',
+            ),
+            'default'    => 'left',
+            'dependency' => array('service_sidebar_enable', '==', true),
         ],
         [
             'id'      => 'service_sidebar_select',
             'type'    => 'select',
             'title'   => 'Select Sidebar',
-            'options' => 'sidebars', // CSF built-in support for sidebars
+            'options' => 'sidebars',
             'dependency' => array('service_sidebar_enable', '==', true),
         ],
     ],

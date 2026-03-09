@@ -27,12 +27,21 @@ if (!empty($spacing)) {
         $icon = !empty($service_meta['service_icon']) 
             ? $service_meta['service_icon'] 
             : 'flaticon-hedge'; // Fallback
+        
+        $layout_type = !empty($service_meta['service_layout']) ? $service_meta['service_layout'] : 'boxed';
+        $sidebar_enabled = !empty($service_meta['service_sidebar_enable']) ? $service_meta['service_sidebar_enable'] : false;
+        $sidebar_pos     = !empty($service_meta['service_sidebar_position']) ? $service_meta['service_sidebar_position'] : 'left';
+        $sidebar_id      = !empty($service_meta['service_sidebar_select']) ? $service_meta['service_sidebar_select'] : '';
+
         $prev_service = get_previous_post();
         $next_service = get_next_post();
+
+        $container_class = ($layout_type === 'fullwide') ? 'container-fluid' : 'auto-container';
     ?>
+
     <?php if ($prev_service || $next_service) { ?>
-    <section>
-        <div class="auto-container">
+    <section class="post-controls-section">
+        <div class="<?php echo esc_attr($container_class); ?>">
             <div class="post-controls" style="margin-bottom: 40px; border-bottom: none; padding-bottom: 0;">
                 <div class="inner clearfix">
                     <?php if ($prev_service) { ?>
@@ -67,32 +76,58 @@ if (!empty($spacing)) {
             </div>
         </div>
     </section>
-    
     <?php } ?>
-    <section>
-        <div class="auto-container">
-            <div class="sec-title">
-                <div class="title-icon">
-                    <span class="icon">
-                        <?php echo mthan_get_icon_html($icon); ?>
-                    </span>
-                </div>
-                <div class="subtitle">
-                    <?php esc_html_e('Dịch vụ', 'mthan'); ?>
-                </div>
-                <h2>
-                    <?php the_title(); ?>
-                </h2>
+
+    <div class="<?php echo esc_attr($container_class); ?>">
+        <div class="row clearfix">
+            
+            <?php if ($sidebar_enabled && $sidebar_pos == 'left' && is_active_sidebar($sidebar_id)): ?>
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                <aside class="sidebar">
+                    <?php dynamic_sidebar($sidebar_id); ?>
+                </aside>
             </div>
+            <?php endif; ?>
+
+            <div class="content-side <?php echo ($sidebar_enabled && is_active_sidebar($sidebar_id)) ? 'col-lg-8' : 'col-lg-12'; ?> col-md-12 col-sm-12">
+                <section class="service-details">
+                    <div class="sec-title">
+                        <div class="title-icon">
+                            <span class="icon">
+                                <?php echo mthan_get_icon_html($icon); ?>
+                            </span>
+                        </div>
+                        <div class="subtitle">
+                            <?php esc_html_e('Dịch vụ', 'mthan'); ?>
+                        </div>
+                        <h2>
+                            <?php the_title(); ?>
+                        </h2>
+                    </div>
+
+                    <div class="service-content">
+                        <?php
+                            mthan_render_post_sections('before');
+                            the_content();
+                            mthan_render_post_sections('after');
+                        ?>
+                    </div>
+                </section>
+            </div>
+
+            <?php if ($sidebar_enabled && $sidebar_pos == 'right' && is_active_sidebar($sidebar_id)): ?>
+            <div class="sidebar-side col-lg-4 col-md-12 col-sm-12">
+                <aside class="sidebar">
+                    <?php dynamic_sidebar($sidebar_id); ?>
+                </aside>
+            </div>
+            <?php endif; ?>
+
         </div>
-    </section>   
-    <?php
-        mthan_render_post_sections('before');
-        the_content();
-    ?>
+    </div>
+
     <?php } } ?>
 </main>
 <?php
-mthan_render_post_sections('after');
 mthan_render_global_sections('after', 'service');
 get_footer();
