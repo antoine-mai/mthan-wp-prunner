@@ -11691,11 +11691,15 @@ img.lazy-image.loaded {
 
 .sidebar-page-container {
 	position: relative;
-	padding: 0px 0px;
+	padding: 100px 0px 50px;
 }
 
 .sidebar-page-container.blog-single {
-	padding-top: 0px;
+	padding-top: 220px;
+}
+
+.sidebar-page-container.no-padding {
+	padding: 0px 0px;
 }
 
 .sidebar-page-container .dotted-pattern-5 {

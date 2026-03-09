@@ -100,6 +100,16 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
             'default' => false,
         ],
         [
+            'id'      => 'page_spacing',
+            'type'    => 'spacing',
+            'title'   => 'Page Content Spacing',
+            'default' => [
+                'top'    => '100',
+                'bottom' => '100',
+                'unit'   => 'px',
+            ],
+        ],
+        [
             'id'      => 'page_sidebar_position',
             'type'    => 'radio',
             'title'   => 'Sidebar Position',

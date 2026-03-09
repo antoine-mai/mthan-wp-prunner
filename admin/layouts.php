@@ -54,6 +54,16 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'dependency' => array('page_sidebar_enable', '==', true),
                         ],
                         [
+                            'id'      => 'page_spacing',
+                            'type'    => 'spacing',
+                            'title'   => 'Page Content Spacing',
+                            'default' => [
+                                'top'    => '100',
+                                'bottom' => '100',
+                                'unit'   => 'px',
+                            ],
+                        ],
+                        [
                             'type'    => 'subheading',
                             'content' => 'Content Sections',
                         ],
