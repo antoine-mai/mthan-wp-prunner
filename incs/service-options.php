@@ -57,3 +57,24 @@ CSF::createSection(MTHAN_SERVICE_OPTIONS, [
         $mthan_gen_section_group('service_sections')
     ),
 ]);
+
+// ── Settings ──────────────────────────────────────────────────────
+CSF::createSection(MTHAN_SERVICE_OPTIONS, [
+    'title'  => 'Settings',
+    'icon'   => 'fas fa-cogs',
+    'fields' => [
+        [
+            'id'    => 'service_sidebar_enable',
+            'type'  => 'switcher',
+            'title' => 'Enable Sidebar',
+            'default' => true,
+        ],
+        [
+            'id'      => 'service_sidebar_select',
+            'type'    => 'select',
+            'title'   => 'Select Sidebar',
+            'options' => 'sidebars', // CSF built-in support for sidebars
+            'dependency' => array('service_sidebar_enable', '==', true),
+        ],
+    ],
+]);
