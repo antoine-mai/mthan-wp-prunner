@@ -8,7 +8,11 @@
  */
 function mthan_get_layout_type() {
     if (is_singular()) {
-        $meta = get_post_meta(get_the_ID(), 'mthan_page_options', true);
+        $meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
+        if (!empty($meta['page_layout'])) {
+            return $meta['page_layout'];
+        }
+        // Fallback or legacy
         return !empty($meta['page_layout_type']) ? $meta['page_layout_type'] : 'main';
     }
     return 'main';

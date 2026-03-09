@@ -60,6 +60,20 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
     'icon'   => 'fas fa-cogs',
     'fields' => [
         [
+            'id'    => 'page_layout',
+            'type'  => 'select',
+            'title' => 'Page Layout',
+            'options' => [
+                'main'    => 'Default (Main)',
+                'blog'    => 'Blog List',
+                'service' => 'Service List',
+                'shop'    => 'Shop / Products',
+                'project' => 'Project List',
+            ],
+            'default' => 'main',
+            'help'    => 'Choose the layout for this page. This replaces the need for separate Page Templates.',
+        ],
+        [
             'id'    => 'page_sidebar_enable',
             'type'  => 'switcher',
             'title' => 'Enable Sidebar',
