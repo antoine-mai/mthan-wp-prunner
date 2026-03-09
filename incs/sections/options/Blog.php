@@ -8,6 +8,12 @@ function mthan_section_Blog_options() {
 
     return array(
         array(
+            'id'    => 'show_header',
+            'type'  => 'switcher',
+            'title' => 'Show Header',
+            'default' => true,
+        ),
+        array(
             'id'    => 'title_icon',
             'type'  => 'upload',
             'title' => 'Title Icon',
