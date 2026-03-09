@@ -2038,6 +2038,10 @@ img {
 
 ***/
 
+.sticky-header .auto-container {
+	display: flex;
+}
+
 .sticky-header {
 	position: fixed;
 	visibility: hidden;
@@ -2048,6 +2052,8 @@ img {
 	padding: 0px 0px;
 	z-index: -1;
 	background: #ffffff;
+	display: flex;
+	flex-direction: column;
 	border-bottom: 1px solid #f0f0f0;
 	-webkit-box-shadow: 0 0 15px rgba(0, 0, 0, 0.10);
 	-moz-box-shadow: 0 0 15px rgba(0, 0, 0, 0.10);
@@ -16642,8 +16648,10 @@ img.lazy-image.loaded {
 
 	/* Footer Widgets Center on Mobile */
 	.main-footer {
-		padding-bottom: 70px !important; /* Space for Mobile Bar */
+		padding-bottom: 70px !important;
+		/* Space for Mobile Bar */
 	}
+
 	.main-footer .footer-widget,
 	.main-footer .footer-widget .widget-title,
 	.main-footer .footer-widget .widget-content,
@@ -16723,4 +16731,4 @@ img.lazy-image.loaded {
 	.subscribe-box .follow li:after {
 		display: none !important;
 	}
-}
+}
