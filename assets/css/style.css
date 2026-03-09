@@ -2012,7 +2012,7 @@ img {
 .sticky-header .contact-link a {
 	display: flex;
 	align-items: center;
-	padding: 10px 20px;
+	padding: 10px 0 10px 20px;
 	border-radius: 4px;
 	text-transform: capitalize;
 	font-weight: 700;
