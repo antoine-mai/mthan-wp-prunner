@@ -47,7 +47,7 @@ if (have_posts())
         : 'auto-container';
 
     get_header();
-    mthan_render_global_sections('before', 'service');
+    mthan_render_global_sections('before');
 ?>
 
 <main class="services-page-section" <?php if ($sec_style) echo 'style="' . esc_attr($sec_style) . '"'; ?>>
@@ -155,5 +155,5 @@ if (have_posts())
     <?php } ?>
 </main>
 <?php
-mthan_render_global_sections('after', 'service');
+mthan_render_global_sections('after');
 get_footer();

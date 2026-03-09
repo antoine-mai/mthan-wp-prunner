@@ -5,7 +5,7 @@
 get_header();
 
 // Render global sections
-mthan_render_global_sections('before', 'project');
+mthan_render_global_sections('before');
 
 // Render Project-specific sections from the builder
 mthan_render_post_sections('before');
@@ -19,6 +19,6 @@ if (have_posts()) {
 
 // Render footer sections
 mthan_render_post_sections('after');
-mthan_render_global_sections('after', 'project');
+mthan_render_global_sections('after');
 
 get_footer();

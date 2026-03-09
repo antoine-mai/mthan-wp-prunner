@@ -5,8 +5,7 @@
 **/
 get_header();
 
-$layout_type = mthan_get_layout_type();
-mthan_render_global_sections('before', $layout_type);
+mthan_render_global_sections('before');
 mthan_render_page_sections('before');
 ?>
 
@@ -131,7 +130,7 @@ mthan_render_page_sections('before');
 
 <?php 
 mthan_render_page_sections('after');
-mthan_render_global_sections('after', $layout_type);
+mthan_render_global_sections('after');
 get_footer(); 
 ?>
 
