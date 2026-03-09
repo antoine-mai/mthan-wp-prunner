@@ -27,17 +27,22 @@ function mthan_render_global_sections($position = 'before', $layout = 'main') {
     
     $key = '';
     
-    // 1. Determine context (Page vs Post vs Service etc)
-    if (is_page()) {
-        $key = ($position === 'before') ? 'page_before_content' : 'page_after_content';
-    } elseif (is_singular('mthan_service')) {
-        $key = ($position === 'before') ? 'service_before_content' : 'service_after_content';
-    } elseif (is_singular('mthan_project')) {
-        $key = ($position === 'before') ? 'project_before_content' : 'project_after_content';
-    } elseif (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout())) {
-        $key = ($position === 'before') ? 'shop_before_content' : 'shop_after_content';
-    } elseif (is_singular('post') || is_home() || is_archive() || is_search()) {
-        $key = ($position === 'before') ? 'post_before_content' : 'post_after_content';
+    // 0. Use provided layout if any
+    if ($layout && $layout !== 'main') {
+        $key = ($position === 'before') ? $layout . '_before_content' : $layout . '_after_content';
+    } else {
+        // 1. Determine context (Page vs Post vs Service etc)
+        if (is_page()) {
+            $key = ($position === 'before') ? 'page_before_content' : 'page_after_content';
+        } elseif (is_singular('mthan_service')) {
+            $key = ($position === 'before') ? 'service_before_content' : 'service_after_content';
+        } elseif (is_singular('mthan_project')) {
+            $key = ($position === 'before') ? 'project_before_content' : 'project_after_content';
+        } elseif (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout())) {
+            $key = ($position === 'before') ? 'shop_before_content' : 'shop_after_content';
+        } elseif (is_singular('post') || is_home() || is_archive() || is_search()) {
+            $key = ($position === 'before') ? 'post_before_content' : 'post_after_content';
+        }
     }
 
     // 2. Validate key and data in nested layouts array
