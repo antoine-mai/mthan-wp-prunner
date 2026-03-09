@@ -143,16 +143,6 @@ function mthan_get_img_url($field_value, $default_url = '')
 /**
  * Adjust the number of posts displayed on the blog archive.
  */
-function mthan_adjust_blog_posts_per_page($query) {
-    if (!is_admin() && $query->is_main_query() && (is_home() || is_archive() || is_search()) && !is_post_type_archive(array('mthan_service', 'mthan_project'))) {
-        $options = get_option('mthan_theme_options');
-        $layouts = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
-        $count   = !empty($layouts['blog_posts_per_page']) ? $layouts['blog_posts_per_page'] : 10;
-        
-        $query->set('posts_per_page', $count);
-    }
-}
-add_action('pre_get_posts', 'mthan_adjust_blog_posts_per_page');
 /**
  * Get sidebar settings based on context.
  */
@@ -188,17 +178,17 @@ function mthan_get_sidebar_settings() {
         $settings['enabled']  = isset($page_meta['page_sidebar_enable']) ? $page_meta['page_sidebar_enable'] : $def_enabled;
         $settings['position'] = !empty($page_meta['page_sidebar_position']) ? $page_meta['page_sidebar_position'] : $def_pos;
         $settings['id']       = !empty($page_meta['page_sidebar_select']) ? $page_meta['page_sidebar_select'] : $def_id;
-    }
- elseif (is_singular('post')) {
+    } elseif (is_singular('post')) {
         $post_meta = get_post_meta(get_the_ID(), MTHAN_POST_OPTIONS, true);
-        $settings['enabled']  = isset($post_meta['post_sidebar_enable']) ? $post_meta['post_sidebar_enable'] : (!empty($options['blog_single_sidebar_enable']));
-        $settings['position'] = !empty($post_meta['post_sidebar_position']) ? $post_meta['post_sidebar_position'] : (!empty($options['blog_single_sidebar_position']) ? $options['blog_single_sidebar_position'] : 'right');
-        $settings['id']       = !empty($post_meta['post_sidebar_select']) ? $post_meta['post_sidebar_select'] : (!empty($options['blog_single_sidebar_select']) ? $options['blog_single_sidebar_select'] : 'blog-sidebar');
-    } elseif (is_home() || is_archive() || is_search()) {
-        $layouts = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
-        $settings['enabled']  = isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true;
-        $settings['position'] = !empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right';
-        $settings['id']       = !empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : 'blog-sidebar';
+        $layouts   = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
+
+        $def_enabled = !empty($layouts['blog_sidebar_enable']);
+        $def_pos     = !empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right';
+        $def_id      = !empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : 'blog-sidebar';
+
+        $settings['enabled']  = isset($post_meta['post_sidebar_enable']) ? $post_meta['post_sidebar_enable'] : $def_enabled;
+        $settings['position'] = !empty($post_meta['post_sidebar_position']) ? $post_meta['post_sidebar_position'] : $def_pos;
+        $settings['id']       = !empty($post_meta['post_sidebar_select']) ? $post_meta['post_sidebar_select'] : $def_id;
     }
     
     return $settings;

@@ -81,10 +81,6 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                     'icon'   => 'fas fa-edit',
                     'fields' => [
                         [
-                            'type'    => 'subheading',
-                            'content' => 'Blog Settings',
-                        ],
-                        [
                             'id'      => 'blog_sidebar_enable',
                             'type'    => 'switcher',
                             'title'   => 'Enable Sidebar',
