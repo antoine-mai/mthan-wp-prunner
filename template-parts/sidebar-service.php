@@ -1,4 +1,18 @@
-<?php defined('ABSPATH') or die('Cheatin\' uh?'); ?>
+<?php defined('ABSPATH') or die('Cheatin\' uh?'); 
+$theme_options = get_option(MTHAN_THEME_OPTIONS);
+
+// CTA Data
+$cta_title     = !empty($theme_options['sidebar_cta_title']) ? $theme_options['sidebar_cta_title'] : esc_html__('Let’s Start Your Project <br>Contact Experts', 'mthan');
+$cta_email     = !empty($theme_options['sidebar_cta_email']) ? $theme_options['sidebar_cta_email'] : get_option('admin_email');
+$cta_phone     = !empty($theme_options['sidebar_cta_phone']) ? $theme_options['sidebar_cta_phone'] : '(+5) 678 90 12 345';
+$cta_btn_text  = !empty($theme_options['sidebar_cta_btn_text']) ? $theme_options['sidebar_cta_btn_text'] : esc_html__('Get a Quote', 'mthan');
+$cta_btn_url   = !empty($theme_options['sidebar_cta_btn_link']['url']) ? $theme_options['sidebar_cta_btn_link']['url'] : '#';
+$cta_bg        = !empty($theme_options['sidebar_cta_bg']) ? $theme_options['sidebar_cta_bg'] : get_template_directory_uri() . '/assets/images/background/call-to-bg-2.jpg';
+
+// Download Data
+$download_title = !empty($theme_options['sidebar_download_title']) ? $theme_options['sidebar_download_title'] : esc_html__('Download Materials', 'mthan');
+$downloads      = !empty($theme_options['sidebar_downloads']) ? $theme_options['sidebar_downloads'] : [];
+?>
 
 <aside class="sidebar services-sidebar">
 
@@ -32,29 +46,39 @@
     </div>
 
     <!-- Download Materials -->
+    <?php if (!empty($downloads)) : ?>
     <div class="sidebar-widget services-widget downloads wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
         <div class="widget-inner">
             <div class="sidebar-title">
-                <h4><?php esc_html_e('Download Materials', 'mthan'); ?></h4>
+                <h4><?php echo wp_kses_post($download_title); ?></h4>
             </div>
             <ul class="clearfix">
-                <li><a href="#"><span class="icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/icon-pdf.png" alt=""></span><span class="txt"><?php esc_html_e('Company', 'mthan'); ?> <br><?php esc_html_e('Presentation', 'mthan'); ?> <i class="flaticon-play-button-1"></i></span></a></li>
-                <li><a href="#"><span class="icon"><img src="<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/icons/icon-pdf.png" alt=""></span><span class="txt">128 KB <br><?php esc_html_e('Download', 'mthan'); ?> <i class="flaticon-play-button-1"></i></span></a></li>
+                <?php foreach ($downloads as $item) : 
+                    $file_url = !empty($item['file']) ? $item['file'] : '#';
+                    $icon_url = !empty($item['icon']) ? $item['icon'] : get_template_directory_uri() . '/assets/images/icons/icon-pdf.png';
+                ?>
+                <li>
+                    <a href="<?php echo esc_url($file_url); ?>" target="_blank">
+                        <span class="icon"><img src="<?php echo esc_url($icon_url); ?>" alt=""></span>
+                        <span class="txt"><?php echo wp_kses_post($item['name']); ?> <br><?php echo esc_html($item['subtitle']); ?> <i class="flaticon-play-button-1"></i></span>
+                    </a>
+                </li>
+                <?php endforeach; ?>
             </ul>
         </div>
     </div>
+    <?php endif; ?>
 
     <!-- Call To Action Widget -->
     <div class="sidebar-widget call-to-widget wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">
         <div class="widget-inner">
-            <div class="image-layer" style="background-image:url(<?php echo esc_url(get_template_directory_uri()); ?>/assets/images/background/call-to-bg-2.jpg);"></div>
+            <div class="image-layer" style="background-image:url(<?php echo esc_url($cta_bg); ?>);"></div>
             <div class="content">
                 <div class="icon-box"><span class="flaticon-gardener"></span></div>
-                <h5><?php esc_html_e('Let’s Start Your Project', 'mthan'); ?> <br><?php esc_html_e('Contact Experts', 'mthan'); ?></h5>
-                <?php $admin_email = get_option('admin_email'); ?>
-                <div class="email"><a href="mailto:<?php echo esc_attr($admin_email); ?>"><?php echo esc_html($admin_email); ?></a></div>
-                <div class="phone"><a href="tel:(+5)6789012345">(+5) 678 90 12 345</a></div>
-                <div class="link-box"><a href="<?php echo esc_url(get_permalink(get_page_by_path('contact'))); ?>" class="theme-btn btn-style-four"><span class="btn-title"><?php esc_html_e('Get a Quote', 'mthan'); ?> <i class="arrow flaticon-play-button-1"></i></span></a></div>
+                <h5><?php echo wp_kses_post($cta_title); ?></h5>
+                <div class="email"><a href="mailto:<?php echo esc_attr($cta_email); ?>"><?php echo esc_html($cta_email); ?></a></div>
+                <div class="phone"><a href="tel:<?php echo esc_attr(str_replace(' ', '', $cta_phone)); ?>"><?php echo esc_html($cta_phone); ?></a></div>
+                <div class="link-box"><a href="<?php echo esc_url($cta_btn_url); ?>" class="theme-btn btn-style-four"><span class="btn-title"><?php echo esc_html($cta_btn_text); ?> <i class="arrow flaticon-play-button-1"></i></span></a></div>
             </div>
         </div>
     </div>
