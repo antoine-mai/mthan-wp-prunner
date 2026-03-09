@@ -4,7 +4,7 @@
 **/
 get_header();
 
-$theme_options = get_option('mthan_theme_options');
+$theme_options = get_option(MTHAN_THEME_OPTIONS);
 $layouts_tabs  = !empty($theme_options['layouts_tabs']) ? $theme_options['layouts_tabs'] : [];
 
 $blog_layout   = !empty($layouts_tabs['blog_layout']) ? $layouts_tabs['blog_layout'] : 'list';
@@ -15,8 +15,9 @@ mthan_render_global_sections('before', 'post');
 mthan_render_page_sections('before');
 
 // Sidebar logic
-$sidebar_enabled  = isset($layouts_tabs['blog_sidebar_enable']) ? $layouts_tabs['blog_sidebar_enable'] : true;
-$sidebar_pos      = !empty($layouts_tabs['blog_sidebar_position']) ? $layouts_tabs['blog_sidebar_position'] : 'right';
+$sidebar_settings = mthan_get_sidebar_settings();
+$sidebar_enabled  = $sidebar_settings['enabled'];
+$sidebar_pos      = $sidebar_settings['position'];
 ?>
 
 <div class="sidebar-page-container blog-page">

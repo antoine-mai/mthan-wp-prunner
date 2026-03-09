@@ -25,9 +25,32 @@ function mthan_widgets_init() {
     $options = get_option(MTHAN_THEME_OPTIONS);
     $dynamic_sidebars = !empty($options['dynamic_sidebars']) ? $options['dynamic_sidebars'] : array();
 
+    // Standard fallback sidebars
+    $standard_sidebars = [
+        'blog-sidebar'    => 'Blog Sidebar',
+        'service-sidebar' => 'Service Sidebar',
+        'shop-sidebar'    => 'Shop Sidebar',
+    ];
+
+    foreach ($standard_sidebars as $id => $name) {
+        register_sidebar(array(
+            'name'          => esc_html($name),
+            'id'            => $id,
+            'before_widget' => '<div id="%1$s" class="sidebar-widget %2$s wow fadeInUp" data-wow-delay="0ms" data-wow-duration="1500ms">',
+            'after_widget'  => '</div>',
+            'before_title'  => '<div class="widget-inner"><div class="sidebar-title"><h4>',
+            'after_title'   => '</h4></div>',
+        ));
+    }
+
     if (!empty($dynamic_sidebars)) {
         foreach ($dynamic_sidebars as $sidebar) {
             if (empty($sidebar['id']) || empty($sidebar['name'])) {
+                continue;
+            }
+
+            // Skip if already registered as standard
+            if (isset($standard_sidebars[$sidebar['id']])) {
                 continue;
             }
 
@@ -145,23 +168,23 @@ function mthan_get_sidebar_settings() {
         $service_meta = get_post_meta(get_the_ID(), MTHAN_SERVICE_OPTIONS, true);
         $settings['enabled']  = !empty($service_meta['service_sidebar_enable']);
         $settings['position'] = !empty($service_meta['service_sidebar_position']) ? $service_meta['service_sidebar_position'] : 'left';
-        $settings['id']       = !empty($service_meta['service_sidebar_select']) ? $service_meta['service_sidebar_select'] : '';
+        $settings['id']       = !empty($service_meta['service_sidebar_select']) ? $service_meta['service_sidebar_select'] : 'service-sidebar';
     } elseif (is_singular('mthan_project')) {
         $settings['enabled']  = !empty($options['project_sidebar_enable']);
         $settings['position'] = !empty($options['project_sidebar_position']) ? $options['project_sidebar_position'] : 'right';
-        $settings['id']       = !empty($options['project_sidebar_select']) ? $options['project_sidebar_select'] : '';
+        $settings['id']       = !empty($options['project_sidebar_select']) ? $options['project_sidebar_select'] : 'service-sidebar';
     } elseif (function_exists('is_woocommerce') && (is_woocommerce() || is_cart() || is_checkout())) {
         $settings['enabled']  = !empty($options['shop_sidebar_enable']);
         $settings['position'] = !empty($options['shop_sidebar_position']) ? $options['shop_sidebar_position'] : 'left';
-        $settings['id']       = !empty($options['shop_sidebar_select']) ? $options['shop_sidebar_select'] : '';
+        $settings['id']       = !empty($options['shop_sidebar_select']) ? $options['shop_sidebar_select'] : 'shop-sidebar';
     } elseif (is_page()) {
         $page_meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
         $is_blog_page = (get_page_template_slug() === 'page-blog.php');
         $layouts = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
 
-        $def_enabled = $is_blog_page ? (isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true) : (!empty($options['page_sidebar_enable']));
-        $def_pos     = $is_blog_page ? (!empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right') : (!empty($options['page_sidebar_position']) ? $options['page_sidebar_position'] : 'right');
-        $def_id      = $is_blog_page ? (!empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : '') : (!empty($options['page_sidebar_select']) ? $options['page_sidebar_select'] : '');
+        $def_enabled = $is_blog_page ? (isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true) : (!empty($layouts['page_sidebar_enable']));
+        $def_pos     = $is_blog_page ? (!empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right') : (!empty($layouts['page_sidebar_position']) ? $layouts['page_sidebar_position'] : 'right');
+        $def_id      = $is_blog_page ? (!empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : 'blog-sidebar') : (!empty($layouts['page_sidebar_select']) ? $layouts['page_sidebar_select'] : 'blog-sidebar');
 
         $settings['enabled']  = isset($page_meta['page_sidebar_enable']) ? $page_meta['page_sidebar_enable'] : $def_enabled;
         $settings['position'] = !empty($page_meta['page_sidebar_position']) ? $page_meta['page_sidebar_position'] : $def_pos;
@@ -170,12 +193,12 @@ function mthan_get_sidebar_settings() {
         $post_meta = get_post_meta(get_the_ID(), MTHAN_POST_OPTIONS, true);
         $settings['enabled']  = isset($post_meta['post_sidebar_enable']) ? $post_meta['post_sidebar_enable'] : (!empty($options['blog_single_sidebar_enable']));
         $settings['position'] = !empty($post_meta['post_sidebar_position']) ? $post_meta['post_sidebar_position'] : (!empty($options['blog_single_sidebar_position']) ? $options['blog_single_sidebar_position'] : 'right');
-        $settings['id']       = !empty($post_meta['post_sidebar_select']) ? $post_meta['post_sidebar_select'] : (!empty($options['blog_single_sidebar_select']) ? $options['blog_single_sidebar_select'] : '');
+        $settings['id']       = !empty($post_meta['post_sidebar_select']) ? $post_meta['post_sidebar_select'] : (!empty($options['blog_single_sidebar_select']) ? $options['blog_single_sidebar_select'] : 'blog-sidebar');
     } elseif (is_home() || is_archive() || is_search()) {
         $layouts = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
         $settings['enabled']  = isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true;
         $settings['position'] = !empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right';
-        $settings['id']       = !empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : '';
+        $settings['id']       = !empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : 'blog-sidebar';
     }
     
     return $settings;
