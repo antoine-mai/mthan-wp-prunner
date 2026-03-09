@@ -179,31 +179,11 @@ function mthan_get_sidebar_settings() {
         $settings['id']       = !empty($options['shop_sidebar_select']) ? $options['shop_sidebar_select'] : 'shop-sidebar';
     } elseif (is_page()) {
         $page_meta   = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
-        $layout_type = mthan_get_layout_type();
         $layouts     = !empty($options['layouts_tabs']) ? $options['layouts_tabs'] : [];
 
-        // Determine defaults based on layout type
-        if ($layout_type === 'blog') {
-            $def_enabled = isset($layouts['blog_sidebar_enable']) ? $layouts['blog_sidebar_enable'] : true;
-            $def_pos     = !empty($layouts['blog_sidebar_position']) ? $layouts['blog_sidebar_position'] : 'right';
-            $def_id      = !empty($layouts['blog_sidebar_select']) ? $layouts['blog_sidebar_select'] : 'blog-sidebar';
-        } elseif ($layout_type === 'service') {
-            $def_enabled = isset($layouts['service_sidebar_enable']) ? $layouts['service_sidebar_enable'] : true;
-            $def_pos     = !empty($layouts['service_sidebar_position']) ? $layouts['service_sidebar_position'] : 'left';
-            $def_id      = !empty($layouts['service_sidebar_select']) ? $layouts['service_sidebar_select'] : 'service-sidebar';
-        } elseif ($layout_type === 'shop') {
-            $def_enabled = isset($layouts['shop_sidebar_enable']) ? $layouts['shop_sidebar_enable'] : true;
-            $def_pos     = !empty($layouts['shop_sidebar_position']) ? $layouts['shop_sidebar_position'] : 'left';
-            $def_id      = !empty($layouts['shop_sidebar_select']) ? $layouts['shop_sidebar_select'] : 'shop-sidebar';
-        } elseif ($layout_type === 'project') {
-            $def_enabled = isset($layouts['project_sidebar_enable']) ? $layouts['project_sidebar_enable'] : true;
-            $def_pos     = !empty($layouts['project_sidebar_position']) ? $layouts['project_sidebar_position'] : 'right';
-            $def_id      = !empty($layouts['project_sidebar_select']) ? $layouts['project_sidebar_select'] : 'service-sidebar';
-        } else {
-            $def_enabled = !empty($layouts['page_sidebar_enable']);
-            $def_pos     = !empty($layouts['page_sidebar_position']) ? $layouts['page_sidebar_position'] : 'right';
-            $def_id      = !empty($layouts['page_sidebar_select']) ? $layouts['page_sidebar_select'] : 'blog-sidebar';
-        }
+        $def_enabled = !empty($layouts['page_sidebar_enable']);
+        $def_pos     = !empty($layouts['page_sidebar_position']) ? $layouts['page_sidebar_position'] : 'right';
+        $def_id      = !empty($layouts['page_sidebar_select']) ? $layouts['page_sidebar_select'] : 'blog-sidebar';
 
         $settings['enabled']  = isset($page_meta['page_sidebar_enable']) ? $page_meta['page_sidebar_enable'] : $def_enabled;
         $settings['position'] = !empty($page_meta['page_sidebar_position']) ? $page_meta['page_sidebar_position'] : $def_pos;
