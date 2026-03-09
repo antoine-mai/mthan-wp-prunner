@@ -1,6 +1,5 @@
 <?php defined('ABSPATH') or die('Cheatin\' uh?');
 /**
- * Template Name: Page
  * 
 **/
 get_header();
