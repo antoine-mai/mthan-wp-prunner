@@ -1871,6 +1871,10 @@ img {
 	margin-right: 55px;
 }
 
+.inner-header .main-menu .navigation>li:last-child:after {
+	display: none;
+}
+
 .inner-header .main-menu .navigation>li:after {
 	content: '';
 	position: absolute;
