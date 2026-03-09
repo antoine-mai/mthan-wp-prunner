@@ -33,7 +33,10 @@ $sidebar_pos      = $sidebar_settings['position'];
             <div class="content-side <?php echo ($sidebar_enabled) ? 'col-lg-8' : 'col-lg-12'; ?> col-md-12 col-sm-12">
                 <div class="blog-content">
                     <?php
-                    mthan_render_page_sections('content');
+                    $page_meta = get_post_meta(get_the_ID(), MTHAN_PAGE_OPTIONS, true);
+                    if (!empty($page_meta['page_content_sections_enable'])) {
+                        mthan_render_page_sections('content');
+                    }
                     $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
                     $args = array(
                         'post_type'      => 'post',

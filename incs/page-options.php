@@ -52,7 +52,35 @@ CSF::createSection(MTHAN_PAGE_OPTIONS, [
 CSF::createSection(MTHAN_PAGE_OPTIONS, [
     'title'  => 'Content Sections',
     'icon'   => 'fas fa-th-list',
-    'fields' => $mthan_gen_section_group('page_content_sections'),
+    'fields' => [
+        [
+            'id'    => 'page_content_sections_enable',
+            'type'  => 'switcher',
+            'title' => 'Enable Content Sections',
+            'default' => false,
+            'help'    => 'If enabled, the sections below will replace the default page editor content.',
+        ],
+        [
+            'id'                     => 'page_content_sections',
+            'type'                   => 'group',
+            'button_title'           => 'Add Section',
+            'accordion_title_auto'   => true,
+            'accordion_title_prefix' => 'Section: ',
+            'accordion_title_number' => true,
+            'dependency'             => array('page_content_sections_enable', '==', true),
+            'fields'                 => array_merge(
+                [
+                    [
+                        'id'    => 'template',
+                        'type'  => 'select',
+                        'title' => 'Select Template',
+                        'options' => $available_sections,
+                    ],
+                ],
+                $section_fields
+            ),
+        ],
+    ],
 ]);
 
 // ── Sections After Content ─────────────────────────────────────────
