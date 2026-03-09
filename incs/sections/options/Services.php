@@ -19,5 +19,16 @@ function mthan_section_Services_options() {
             'title'   => 'Read More Text',
             'default' => 'Read More',
         ),
+        array(
+            'id'      => 'columns',
+            'type'    => 'select',
+            'title'   => 'Columns',
+            'options' => array(
+                '2' => '2 Columns',
+                '3' => '3 Columns',
+                '4' => '4 Columns',
+            ),
+            'default' => '3',
+        ),
     );
 }

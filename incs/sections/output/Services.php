@@ -17,6 +17,15 @@ function mthan_section_Services_html($section_data) { ?>
 
     $read_more = mthan_get_section_val($slug, $section_data, 'read_more_text', 'Read More');
 
+    $columns   = mthan_get_section_val($slug, $section_data, 'columns', '3');
+    $col_class = 'col-lg-4 col-md-6 col-sm-12'; // Default 3 columns
+
+    if ($columns == '2') {
+        $col_class = 'col-lg-6 col-md-6 col-sm-12';
+    } elseif ($columns == '4') {
+        $col_class = 'col-lg-3 col-md-6 col-sm-12';
+    }
+
     $args = array(
         'post_type'      => 'mthan_service',
         'posts_per_page' => $count,
@@ -45,7 +54,7 @@ function mthan_section_Services_html($section_data) { ?>
                 $icon         = !empty($service_meta['service_icon']) ? $service_meta['service_icon'] : 'flaticon-hedge';
             ?>
             <!--Service block-->
-            <div class="service-block col-lg-4 col-md-6 col-sm-12">
+            <div class="service-block <?php echo esc_attr($col_class); ?>">
                 <div class="inner-box">
                     <div class="upper">
                         <?php if ($img) { ?>
