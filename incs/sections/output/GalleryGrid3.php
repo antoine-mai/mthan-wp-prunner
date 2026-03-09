@@ -59,6 +59,11 @@ function mthan_section_GalleryGrid3_html($section_data) { ?>
                         $f_slug  = isset($f['slug']) ? $f['slug'] : 'all';
                         $f_count = isset($f['count']) ? $f['count'] : '';
                         $active_class = $first ? 'active' : '';
+
+                        // Ensure slug starts with a dot if not 'all'
+                        if ($f_slug !== 'all' && strpos($f_slug, '.') !== 0) {
+                            $f_slug = '.' . $f_slug;
+                        }
                     ?>
                     <li class="<?php echo esc_attr($active_class); ?> filter" data-role="button" data-filter="<?php echo esc_attr($f_slug); ?>">
                         <?php echo esc_html($f_label); ?>

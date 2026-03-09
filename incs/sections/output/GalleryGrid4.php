@@ -58,6 +58,11 @@ function mthan_section_GalleryGrid4_html($section_data) { ?>
                         $f_slug  = isset($f['slug']) ? $f['slug'] : 'all';
                         $f_count = isset($f['count']) ? $f['count'] : '';
                         $active_class = $first ? 'active' : '';
+                        
+                        // Ensure slug starts with a dot if not 'all'
+                        if ($f_slug !== 'all' && strpos($f_slug, '.') !== 0) {
+                            $f_slug = '.' . $f_slug;
+                        }
                     ?>
                     <li class="<?php echo esc_attr($active_class); ?> filter" data-role="button" data-filter="<?php echo esc_attr($f_slug); ?>">
                         <?php echo esc_html($f_label); ?>
@@ -81,7 +86,7 @@ function mthan_section_GalleryGrid4_html($section_data) { ?>
                     $item_lnk   = mthan_get_link(isset($item['link']) ? $item['link'] : '#');
                 ?>
                 <!-- Gallery Item -->
-                <div class="gallery-item-three mix all <?php echo esc_attr($item_fil); ?> col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                <div class="gallery-item-three mix all <?php echo esc_attr($item_fil); ?> col-lg-3 col-md-6 col-sm-12">
                     <div class="inner-box">
                         <?php if ($item_img) { ?>
                         <div class="image-box">
