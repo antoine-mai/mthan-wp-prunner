@@ -39,15 +39,15 @@ function mthan_section_Projects2_options() {
         ]),
     );
 
-    // Explicit 7 Items Field sets
+    // Explicit 7 Items Field sets - Dimensions verified from placeholder images
     $items_config = array(
-        1 => array('size' => '570x630px', 'title' => 'Communual Garden', 'cat' => 'Garden Care', 'img' => '1.jpg'),
-        2 => array('size' => '270x300px', 'title' => 'Outdoor Living',   'cat' => 'Landscape',   'img' => '2.jpg'),
-        3 => array('size' => '270x300px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '3.jpg'),
-        4 => array('size' => '270x300px', 'title' => 'Outdoor Living',   'cat' => 'Landscape',   'img' => '4.jpg'),
-        5 => array('size' => '270x300px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '6.jpg'),
-        6 => array('size' => '570x630px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '7.jpg'),
-        7 => array('size' => '270x300px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '5.jpg'),
+        1 => array('size' => '570x280px', 'title' => 'Communual Garden', 'cat' => 'Garden Care', 'img' => '1.jpg'),
+        2 => array('size' => '270x280px', 'title' => 'Outdoor Living',   'cat' => 'Landscape',   'img' => '2.jpg'),
+        3 => array('size' => '270x280px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '3.jpg'),
+        4 => array('size' => '270x280px', 'title' => 'Outdoor Living',   'cat' => 'Landscape',   'img' => '4.jpg'),
+        5 => array('size' => '270x590px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '6.jpg'),
+        6 => array('size' => '570x590px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '7.jpg'),
+        7 => array('size' => '270x280px', 'title' => 'Outdoor Living',   'cat' => 'Garden Care', 'img' => '5.jpg'),
     );
 
     foreach ($items_config as $i => $conf) {
