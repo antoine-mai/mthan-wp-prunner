@@ -29,6 +29,20 @@ function mthan_section_Blog_html($section_data) { ?>
 
     $query = new WP_Query($args);
     $styles = mthan_section_styles($slug, $section_data);
+
+    $layout_style = mthan_get_section_val($slug, $section_data, 'layout_style', 'grid');
+    $columns      = mthan_get_section_val($slug, $section_data, 'columns', '3');
+
+    $col_class = 'col-lg-12';
+    if ($layout_style === 'grid') {
+        if ($columns == '2') {
+            $col_class = 'col-lg-6 col-md-6 col-sm-12';
+        } elseif ($columns == '4') {
+            $col_class = 'col-lg-3 col-md-6 col-sm-12';
+        } else {
+            $col_class = 'col-lg-4 col-md-6 col-sm-12'; // Default 3
+        }
+    }
 ?>
 <section class="blog-section <?php echo esc_attr($styles['class']); ?>" <?php echo $styles['style']; ?>>
     <div class="auto-container">
@@ -57,9 +71,11 @@ function mthan_section_Blog_html($section_data) { ?>
                     $cats = get_the_category();
                     $cat_name = !empty($cats) ? $cats[0]->name : '';
                     $cat_link = !empty($cats) ? get_category_link($cats[0]->term_id) : '#';
+
+                    $block_class = ($layout_style === 'list') ? 'news-block alternate' : 'news-block';
                 ?>
                 <!--News block-->
-                <div class="news-block col-lg-4 col-md-6 col-sm-12">
+                <div class="<?php echo esc_attr($block_class . ' ' . $col_class); ?>">
                     <div class="inner-box">
                         <div class="upper">
                             <div class="image-box">

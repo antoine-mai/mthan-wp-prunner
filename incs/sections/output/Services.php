@@ -48,10 +48,16 @@ function mthan_section_Services_html($section_data) { ?>
         <?php if ($title_icon || $subtitle || $title) { ?>
         <div class="sec-title text-center">
             <?php if ($title_icon) { ?>
-            <div class="title-icon"><span class="icon"><img src="<?php echo esc_url($title_icon); ?>" alt="icon"></span></div>
+            <div class="title-icon">
+                <span class="icon">
+                    <img src="<?php echo esc_url($title_icon); ?>" alt="icon">
+                </span>
+            </div>
             <?php } ?>
             <?php if ($subtitle) { ?>
-            <div class="subtitle"><?php echo esc_html($subtitle); ?></div>
+            <div class="subtitle">
+                <?php echo esc_html($subtitle); ?>
+            </div>
             <?php } ?>
             <?php if ($title) { ?>
             <h2><?php echo wp_kses_post($title); ?></h2>

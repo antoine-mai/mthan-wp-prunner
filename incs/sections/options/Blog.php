@@ -46,6 +46,28 @@ function mthan_section_Blog_options() {
             'placeholder' => 'Select a category',
         ),
         array(
+            'id'    => 'layout_style',
+            'type'  => 'select',
+            'title' => 'Layout Style',
+            'options' => array(
+                'grid' => 'Grid',
+                'list' => 'List',
+            ),
+            'default' => 'grid',
+        ),
+        array(
+            'id'    => 'columns',
+            'type'  => 'select',
+            'title' => 'Columns',
+            'options' => array(
+                '2' => '2 Columns',
+                '3' => '3 Columns',
+                '4' => '4 Columns',
+            ),
+            'default'    => '3',
+            'dependency' => array('layout_style', '==', 'grid'),
+        ),
+        array(
             'id'    => 'default_thumb',
             'type'  => 'upload',
             'title' => 'Default Thumbnail',
