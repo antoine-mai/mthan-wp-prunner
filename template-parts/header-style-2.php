@@ -4,9 +4,20 @@
  * 
  * @package Mthan
  * @since 1.0.0
-**/
-$theme_options = get_option('mthan_theme_options');
-$header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
+ **/
+$theme_options      = get_option('mthan_theme_options');
+$header_tabs        = !empty($theme_options['header_tabs']) ? $theme_options['header_tabs'] : [];
+$social_links       = !empty($theme_options['social_links']) ? $theme_options['social_links'] : [];
+
+// 1. Data URLs & Text
+$quote_btn_url      = mthan_get_link($header_tabs['header_2_quote_btn_url'] ?? '#');
+$quote_btn_icon_url = !empty($header_tabs['header_2_quote_btn_icon']) ? mthan_get_img_url($header_tabs['header_2_quote_btn_icon']) : '';
+
+// 2. Logo URLs
+$logo_url           = mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
+
+// 3. Menus
+$menu_items = !empty($header_tabs['menu_items']) ? $header_tabs['menu_items'] : [];
 ?>
 <header class="main-header header-style-two">
     <div class="header-top-two">
@@ -64,9 +75,6 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 <!--Logo-->
                 <div class="logo-box">
                     <div class="logo">
-                        <?php 
-                        $logo_url = mthan_get_img_url($header_tabs['header_logo'] ?? '', get_template_directory_uri() . '/assets/images/logo.png');
-                        ?>
                         <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
                             <img src="<?php echo esc_url($logo_url); ?>" alt="<?php bloginfo('name'); ?>">
                         </a>
@@ -162,7 +170,6 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
                 </div>
 
                 <div class="more-links clearfix">
-                    <!-- <div class="cart-btn"><a href="#"><span class="flaticon-shopping-bag-2"></span><i class="count">0</i></a></div> -->
                     <div class="social-links">
                         <ul class="clearfix">
                             <?php 
@@ -189,90 +196,7 @@ $header_tabs = !empty($theme_options['header_tabs']) ? $theme_options['header_ta
     </div>
     <!--End Header Lower-->
 
-    <?php if (!empty($header_tabs['header_sticky'])) { ?>
-    <!-- Sticky Header  -->
-    <div class="sticky-header">
-        <div class="auto-container clearfix">
-            <!--Logo-->
-            <div class="logo pull-left">
-                <?php 
-                $sticky_logo_url = mthan_get_img_url($header_tabs['header_sticky_logo'] ?? '', mthan_get_img_url($theme_options['logo'] ?? '', ''));
-                ?>
-                <a href="<?php echo esc_url(home_url('/')); ?>" title="<?php bloginfo('name'); ?>">
-                    <img src="<?php echo esc_url($sticky_logo_url); ?>" alt="<?php bloginfo('name'); ?>">
-                </a>
-            </div>
-            <!--Right Col-->
-            <div class="pull-right clearfix">
-                <!-- Main Menu -->
-                <nav class="main-menu clearfix">
-                    <!--Keep This Empty / Menu will come through Javascript-->
-                </nav><!-- Main Menu End-->
+    <?php get_template_part('template-parts/sticky-header'); ?>
 
-                <?php if (!empty($header_tabs['header_2_quote_btn_text'])) { ?>
-                <!--Contact Btn-->
-                <div class="contact-link">
-                    <?php 
-                    $quote_btn_url = mthan_get_link($header_tabs['header_2_quote_btn_url'] ?? '#');
-                    ?>
-                    <a href="<?php echo esc_url($quote_btn_url); ?>" class="theme-btn btn-style-three">
-                        <span class="btn-title">
-                            <?php echo esc_html($header_tabs['header_2_quote_btn_text']); ?> 
-                            <i class="arrow flaticon-play-button-1"></i>
-                        </span>
-                    </a>
-                </div>
-                <?php } ?>
-            </div>
-        </div>
-    </div><!-- End Sticky Menu -->
-    <?php } ?>
-
-    <!-- Mobile Menu  -->
-    <div class="mobile-menu">
-        <div class="menu-backdrop"></div>
-        <div class="close-btn">
-            <span class="icon flaticon-letter-x"></span>
-        </div>
-        
-        <nav class="menu-box">
-            <div class="nav-logo">
-                <?php 
-                $nav_logo_url = mthan_get_img_url(
-                    $header_tabs['mobile_menu_logo'] ?? '', 
-                    mthan_get_img_url(
-                        $header_tabs['header_nav_logo'] ?? '', 
-                        mthan_get_img_url(
-                            $header_tabs['header_logo'] ?? '', 
-                            mthan_get_img_url($theme_options['logo'] ?? '', '')
-                        )
-                    )
-                );
-                ?>
-                <a href="<?php echo esc_url(home_url('/')); ?>">
-                    <img src="<?php echo esc_url($nav_logo_url); ?>" alt="" title="">
-                </a>
-            </div>
-            <div class="menu-outer">
-                <!--Here Menu Will Come Automatically Via Javascript / Same Menu as in Header-->
-            </div>
-            <div class="social-links">
-                <ul class="clearfix">
-                    <?php 
-                    $social_links = !empty($theme_options['social_links']) ? $theme_options['social_links'] : [];
-                    foreach ($social_links as $social) :
-                        if (empty($social['url']) || empty($social['icon'])) continue;
-                        $icon_url = mthan_get_img_url($social['icon']);
-                        $s_url = mthan_get_link($social['url']);
-                    ?>
-                        <li>
-                            <a href="<?php echo esc_url($s_url); ?>">
-                                <img src="<?php echo esc_url($icon_url); ?>" alt="<?php echo esc_attr($social['title'] ?? ''); ?>" style="width: 16px; height: 16px; object-fit: contain;">
-                            </a>
-                        </li>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-        </nav>
-    </div><!-- End Mobile Menu -->
+    <?php get_template_part('template-parts/mobile-menu'); ?>
 </header>

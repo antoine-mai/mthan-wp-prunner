@@ -211,6 +211,12 @@ CSF::createSection(MTHAN_THEME_OPTIONS, [
                             'default' => '/contact',
                         ]),
                         [
+                            'id'      => 'header_2_quote_btn_icon',
+                            'type'    => 'upload',
+                            'title'   => 'Topbar Button Icon (Upload)',
+                            'preview' => true,
+                        ],
+                        [
                             'id'      => 'header_2_help_text',
                             'type'    => 'text',
                             'title'   => 'Need Help Text',
