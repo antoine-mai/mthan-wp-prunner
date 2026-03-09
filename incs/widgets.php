@@ -81,3 +81,18 @@ function mthan_render_sidebar($sidebar_id) {
         mthan_render_widget($widget);
     }
 }
+
+/**
+ * Render a single widget based on its type.
+ */
+function mthan_render_widget($widget_data) {
+    $type = !empty($widget_data['type']) ? $widget_data['type'] : '';
+    if (empty($type)) {
+        return;
+    }
+
+    $func = 'mthan_widget_' . $type . '_output';
+    if (function_exists($func)) {
+        $func($widget_data);
+    }
+}
