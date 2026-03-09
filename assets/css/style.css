@@ -1895,7 +1895,8 @@ img {
 	top: 10px;
 	right: 0;
 	bottom: 10px;
-	border: 1px dashed rgba(255, 255, 255, 1);
+	border: 1px dashed rgba(255, 255, 255, .75);
+	border-left: 0;
 	z-index: 0;
 }
 
